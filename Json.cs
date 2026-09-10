@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Reus2Dump;
+namespace Reus2Archipelago;
 
 /// <summary>
 /// Minimal JSON writer. The game ships Newtonsoft, but referencing it would tie the plugin to the

@@ -2,30 +2,41 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <AssemblyName>Reus2Dump</AssemblyName>
-    <Product>Reus2Dump</Product>
-    <Version>1.0.0</Version>
+    <AssemblyName>Reus2Archipelago</AssemblyName>
+    <Product>Reus2Archipelago</Product>
+    <Description>Archipelago multiworld client for Reus 2</Description>
+    <Version>0.1.0</Version>
     <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
       https://nuget.samboy.dev/v3/index.json
     </RestoreAdditionalProjectSources>
-    <RootNamespace>Reus2Dump</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>E:\SteamLibrary\steamapps\common\Reus2\BepInEx\plugins</OutputPath>
+    <RootNamespace>Reus2Archipelago</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Archipelago.MultiClient.Net" Version="6.6.0" />
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" ExcludeAssets="runtime" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-    <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" />
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
+
+  <Target Name="CreateDistribution" AfterTargets="Build">
+    <ItemGroup>
+      <DistributionFiles Include="$(TargetPath)" />
+      <DistributionFiles Include="$(TargetDir)Archipelago.MultiClient.Net.dll" />
+      <DistributionFiles Include="$(TargetDir)Newtonsoft.Json.dll" />
+    </ItemGroup>
+    <RemoveDir Directories="$(TargetDir)dist" />
+    <MakeDir Directories="$(TargetDir)dist" />
+    <Copy SourceFiles="@(DistributionFiles)" DestinationFolder="$(TargetDir)dist" />
+  </Target>
 </Project>

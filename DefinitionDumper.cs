@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace Reus2Dump;
+namespace Reus2Archipelago;
 
 /// <summary>
 /// Walks the live <c>DefinitionProvider</c> and writes every game definition to JSON: ids, tags,
@@ -40,7 +40,7 @@ internal static class DefinitionDumper
         var definitions = GetDefinitions();
         if (definitions == null)
         {
-            Plugin.Logger.LogError("Could not reach DefinitionProvider.Instance.definitions — nothing dumped.");
+            Plugin.Log.LogError("Could not reach DefinitionProvider.Instance.definitions — nothing dumped.");
             return;
         }
 
@@ -90,12 +90,12 @@ internal static class DefinitionDumper
         {
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, json.ToString());
-            Plugin.Logger.LogInfo($"Wrote {definitions.Count} definitions across {byType.Count} types to {path}");
-            foreach (var pair in byType) Plugin.Logger.LogInfo($"  {pair.Value.Count,5}  {pair.Key}");
+            Plugin.Log.LogInfo($"Wrote {definitions.Count} definitions across {byType.Count} types to {path}");
+            foreach (var pair in byType) Plugin.Log.LogInfo($"  {pair.Value.Count,5}  {pair.Key}");
         }
         catch (Exception e)
         {
-            Plugin.Logger.LogError($"Write failed: {e.Message}");
+            Plugin.Log.LogError($"Write failed: {e.Message}");
         }
     }
 
@@ -141,7 +141,7 @@ internal static class DefinitionDumper
     {
         if (reason == lastWaitReason) return;
         lastWaitReason = reason;
-        Plugin.Logger.LogInfo($"Waiting: {reason}");
+        Plugin.Log.LogInfo($"Waiting: {reason}");
         Status($"waiting: {reason}");
     }
 
@@ -158,7 +158,7 @@ internal static class DefinitionDumper
         }
         catch (Exception e)
         {
-            Plugin.Logger.LogError($"Status write failed: {e.Message}");
+            Plugin.Log.LogError($"Status write failed: {e.Message}");
         }
     }
 
