@@ -19,6 +19,7 @@ public sealed class Plugin : BaseUnityPlugin
     private ConfigEntry<string> password;
     private ConfigEntry<bool> autoConnect;
     private ConfigEntry<bool> enableDefinitionDump;
+    private ConfigEntry<bool> enableProbes;
 
     private Harmony harmony;
 
@@ -40,17 +41,25 @@ public sealed class Plugin : BaseUnityPlugin
 
         enableDefinitionDump = Config.Bind("Diagnostics", "EnableDefinitionDump", false,
             "Write the live definition catalogue to JSON once it is available.");
+        enableProbes = Config.Bind("Diagnostics", "EnableProbes", true,
+            "Log every milestone, era feat and unlock as it happens, without changing progression. "
+            + "Writes BepInEx/plugins/reus2_probe.log.");
         DefinitionDumper.MaxDepth = Config.Bind("Dump", "MaxDepth", 4,
             "How deep to follow nested objects such as objective filters before writing a placeholder.").Value;
         DefinitionDumper.OutputPath = Config.Bind("Dump", "OutputPath", "",
             "Where to write the JSON. Empty means BepInEx/plugins/reus2_definitions.json.").Value;
 
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
+        harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+
         if (enableDefinitionDump.Value)
         {
             DefinitionDumper.Status("awake");
             HookDatabaseRegistration();
         }
+
+        if (enableProbes.Value)
+            GameProbes.Install(harmony);
     }
 
     private void Start()
@@ -91,7 +100,6 @@ public sealed class Plugin : BaseUnityPlugin
                 return;
             }
 
-            harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.Patch(register,
                 postfix: new HarmonyMethod(AccessTools.Method(typeof(Plugin), nameof(AfterDatabaseRegistered))));
             DefinitionDumper.Status("hooked DefinitionDatabase.RegisterInstance");
