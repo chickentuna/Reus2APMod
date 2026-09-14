@@ -28,12 +28,24 @@ internal static class GameAccess
         return type;
     }
 
-    internal static object CurrentProfile
+    internal static object Install
     {
         get
         {
             gameManagerInstance ??= AccessTools.Property(TypeNamed("GameManager"), "Instance");
-            return Get(Get(gameManagerInstance?.GetValue(null), "Install"), "CurrentProfile");
+            return Get(gameManagerInstance?.GetValue(null), "Install");
+        }
+    }
+
+    internal static object CurrentProfile => Get(Install, "CurrentProfile");
+
+    /// <summary>The running planet's GameplayController, or null outside a planet.</summary>
+    internal static object Gameplay
+    {
+        get
+        {
+            var gameplay = Get(SessionContext, "GameplayController");
+            return gameplay is UnityEngine.Object unityObject && unityObject == null ? null : gameplay;
         }
     }
 

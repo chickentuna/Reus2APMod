@@ -58,7 +58,10 @@ internal static class ItemApplier
         try
         {
             if (!ProfileBinding.EnsureBound(profile, ApState.Seed, ApState.SlotName))
+            {
+                dirty = true;
                 return;
+            }
             checkedProfile = profile;
             checkedBound = true;
 
@@ -115,12 +118,11 @@ internal static class ItemApplier
 
     private static void ApplyPlanet(object profile, Dictionary<string, int> received)
     {
-        var context = GameAccess.SessionContext;
-        var gameplay = GameAccess.Get(context, "GameplayController");
-        if (gameplay == null || (gameplay is UnityEngine.Object unityObject && unityObject == null))
+        var gameplay = GameAccess.Gameplay;
+        if (gameplay == null)
             return;
 
-        GameAccess.Set(GameAccess.Get(context, "Scenario"), "draftsLocked", true);
+        GameAccess.Set(GameAccess.Get(GameAccess.SessionContext, "Scenario"), "draftsLocked", true);
 
         var aspects = GameAccess.Get(gameplay, "aspectController");
         foreach (var micro in ReceivedMicros(received))

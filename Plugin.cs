@@ -15,8 +15,8 @@ public sealed class Plugin : BaseUnityPlugin
     internal static ManualLogSource Log { get; private set; }
     internal static ArchipelagoClient Client { get; private set; }
 
-    /// <summary>A slot is configured: gameplay patches are installed, and a fresh profile is handed
-    /// over to that slot on connect.</summary>
+    /// <summary>A slot is configured: saves move to their own folder, gameplay patches are installed,
+    /// and the current profile is handed to the slot on connect.</summary>
     internal static bool ApMode { get; private set; }
 
     private ConfigEntry<string> server;
@@ -59,6 +59,9 @@ public sealed class Plugin : BaseUnityPlugin
         ApMode = !string.IsNullOrWhiteSpace(slot.Value);
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+
+        if (ApMode)
+            SaveRoot.Install(harmony);
 
         if (enableDefinitionDump.Value)
         {

@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BepInEx;
 using Newtonsoft.Json;
 
 namespace Reus2Archipelago.Game;
 
 /// <summary>
-/// Ties a Reus 2 profile to one Archipelago slot. A fresh profile is claimed and cleared on first
-/// contact; a profile with progress, or one claimed by another slot, is refused so a real save is
-/// never overwritten. Bindings are stored beside the BepInEx config.
+/// Ties each profile in the Archipelago save folder to one seed and slot, so a planet never mixes two
+/// multiworlds. The binding is stored in the profile's own folder.
 /// </summary>
 internal static class ProfileBinding
 {
+    private const string FileName = "archipelago.json";
+
     private sealed class Record
     {
         public string Seed;
@@ -22,34 +22,54 @@ internal static class ProfileBinding
         public int EonBoostsApplied;
     }
 
-    private static readonly string Folder = Path.Combine(Paths.ConfigPath, "Reus2Archipelago");
     private static readonly Dictionary<string, Record> Cache = new Dictionary<string, Record>();
+    private static object warnedProfile;
 
-    internal static bool IsBound(object profile) => profile != null && Read(profile) != null;
+    internal static bool IsBound(object profile) => Read(profile) != null;
 
+    /// <summary>
+    /// True when the current profile is this slot's. Otherwise, from the main menu, switches to the
+    /// slot's profile or creates one — an unbound current profile is simply claimed — and returns false
+    /// so the caller retries against the new current profile.
+    /// </summary>
     internal static bool EnsureBound(object profile, string seed, string slot)
     {
         var record = Read(profile);
-        if (record != null)
+        if (record != null && Matches(record, seed, slot))
+            return true;
+
+        var install = GameAccess.Install;
+        var own = (GameAccess.Get(install, "UserProfiles") as IEnumerable)?.Cast<object>()
+            .FirstOrDefault(p => !ReferenceEquals(p, profile) && Read(p) is Record r && Matches(r, seed, slot));
+
+        if (own == null && record == null)
         {
-            if (record.Seed == seed && record.Slot == slot)
-                return true;
-            Plugin.Log.LogError(
-                $"Profile '{ProfileName(profile)}' belongs to another Archipelago seed or slot. Switch to a new profile.");
+            Clear(profile);
+            Write(profile, new Record { Seed = seed, Slot = slot });
+            Plugin.Log.LogInfo($"Profile '{ProfileName(profile)}' is now slot {slot}'s.");
+            return true;
+        }
+
+        if (GameAccess.Gameplay != null)
+        {
+            if (!ReferenceEquals(warnedProfile, profile))
+                Plugin.Log.LogWarning($"This planet belongs to another Archipelago slot. Return to the main menu to play slot {slot}.");
+            warnedProfile = profile;
             return false;
         }
 
-        if (!IsFresh(profile))
+        var switchOnly = GameAccess.EnumValue("ProfileSwitchMode", "SwitchOnly");
+        if (own != null)
         {
-            Plugin.Log.LogError(
-                $"Profile '{ProfileName(profile)}' already has progress. Create a new profile for this Archipelago slot.");
-            return false;
+            GameAccess.Call(install, "SwitchToUserProfile", own, switchOnly);
+            Plugin.Log.LogInfo($"Switched to profile '{ProfileName(own)}' for slot {slot}.");
         }
-
-        Clear(profile);
-        Write(profile, new Record { Seed = seed, Slot = slot });
-        Plugin.Log.LogInfo($"Profile '{ProfileName(profile)}' is now bound to slot {slot}.");
-        return true;
+        else
+        {
+            var created = GameAccess.Call(install, "CreateAndSwitchToFreshProfile", switchOnly);
+            Plugin.Log.LogInfo($"Created profile '{ProfileName(created)}' for slot {slot}.");
+        }
+        return false;
     }
 
     internal static int EonBoostsApplied(object profile) => Read(profile)?.EonBoostsApplied ?? 0;
@@ -63,15 +83,9 @@ internal static class ProfileBinding
         Write(profile, record);
     }
 
-    private static string ProfileName(object profile)
-        => profile is UnityEngine.Object unityObject ? unityObject.name : GameAccess.Get(profile, "name") as string ?? "profile";
+    private static bool Matches(Record record, string seed, string slot) => record.Seed == seed && record.Slot == slot;
 
-    private static bool IsFresh(object profile)
-    {
-        var level = GameAccess.Get(profile, "profileLevel") as int? ?? 0;
-        var sessions = GameAccess.Get(profile, "idToSessionData") as IEnumerable;
-        return level <= 1 && (sessions == null || !sessions.Cast<object>().Any());
-    }
+    private static string ProfileName(object profile) => (profile as UnityEngine.Object)?.name ?? "profile";
 
     // Vanilla level-one grants; everything the slot owns is re-added from received items.
     private static void Clear(object profile)
@@ -80,14 +94,21 @@ internal static class ProfileBinding
             (GameAccess.Get(profile, field) as IList)?.Clear();
     }
 
+    private static string PathFor(object profile)
+    {
+        var directory = GameAccess.Get(profile, "UserProfileDirectory") as string;
+        return directory == null ? null : Path.Combine(directory, FileName);
+    }
+
     private static Record Read(object profile)
     {
-        var name = ProfileName(profile);
-        if (Cache.TryGetValue(name, out var cached))
+        var path = PathFor(profile);
+        if (path == null)
+            return null;
+        if (Cache.TryGetValue(path, out var cached))
             return cached;
 
         Record record = null;
-        var path = PathFor(name);
         try
         {
             if (File.Exists(path))
@@ -97,17 +118,17 @@ internal static class ProfileBinding
         {
             Plugin.Log.LogError($"Could not read profile binding {path}: {e.Message}");
         }
-        Cache[name] = record;
+        Cache[path] = record;
         return record;
     }
 
     private static void Write(object profile, Record record)
     {
-        var name = ProfileName(profile);
-        Directory.CreateDirectory(Folder);
-        File.WriteAllText(PathFor(name), JsonConvert.SerializeObject(record, Formatting.Indented));
-        Cache[name] = record;
+        var path = PathFor(profile);
+        if (path == null)
+            return;
+        Directory.CreateDirectory(Path.GetDirectoryName(path));
+        File.WriteAllText(path, JsonConvert.SerializeObject(record, Formatting.Indented));
+        Cache[path] = record;
     }
-
-    private static string PathFor(string profileName) => Path.Combine(Folder, profileName + ".binding.json");
 }
