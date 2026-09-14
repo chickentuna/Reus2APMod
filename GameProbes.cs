@@ -35,9 +35,9 @@ internal static class GameProbes
             prefix: nameof(BeforeMilestone), postfix: nameof(AfterMilestone));
         Patch(harmony, "EraFeatController", "OnEraFeatAchieved", postfix: nameof(AfterEraFeat));
         Patch(harmony, "EraFeatController", "StartTrackingEraFeats", postfix: nameof(AfterTrackingStarted));
-        Patch(harmony, "UserProfile", "UnlockBioticum", postfix: nameof(AfterUnlockBioticum));
-        Patch(harmony, "UserProfile", "UnlockTurningPoint", postfix: nameof(AfterUnlockTurningPoint));
-        Patch(harmony, "UserProfile", "LevelUpProfile", postfix: nameof(AfterLevelUp));
+        Patch(harmony, "MetaGameProfile.UserProfile", "UnlockBioticum", postfix: nameof(AfterUnlockBioticum));
+        Patch(harmony, "MetaGameProfile.UserProfile", "UnlockTurningPoint", postfix: nameof(AfterUnlockTurningPoint));
+        Patch(harmony, "MetaGameProfile.UserProfile", "LevelUpProfile", postfix: nameof(AfterLevelUp));
     }
 
     private static void Patch(Harmony harmony, string typeName, string methodName,
