@@ -12,7 +12,7 @@ internal static class Patching
     {
         try
         {
-            var type = AccessTools.TypeByName(typeName);
+            var type = Game.GameAccess.TypeNamed(typeName);
             var method = type == null ? null : AccessTools.Method(type, methodName);
             if (method == null)
             {
@@ -23,6 +23,7 @@ internal static class Patching
             harmony.Patch(method,
                 prefix: prefix == null ? null : new HarmonyMethod(AccessTools.Method(owner, prefix)),
                 postfix: postfix == null ? null : new HarmonyMethod(AccessTools.Method(owner, postfix)));
+            Plugin.Log.LogInfo($"Patched {type.FullName}.{methodName} ({type.Assembly.GetName().Name})");
         }
         catch (Exception e)
         {

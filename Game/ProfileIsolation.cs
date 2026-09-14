@@ -19,29 +19,35 @@ internal static class ProfileIsolation
     internal static bool IsArchipelagoProfile(object profile)
         => (profile as UnityEngine.Object)?.name?.StartsWith(IdPrefix) == true;
 
-    private static Harmony patcher;
-    private static bool applied;
+    private static System.Reflection.PropertyInfo gameManagerInstance;
+    private static bool gameManagerReady;
 
     internal static void Install(Harmony harmony)
     {
-        patcher = harmony;
-        Patching.Apply(harmony, "Install", "Awake", typeof(ProfileIsolation), prefix: nameof(BeforeInstallAwake));
+        var owner = typeof(ProfileIsolation);
+        // First, so the patches below can safely run SaveFileManager's initialiser (see below).
+        Patching.Apply(harmony, "AbbeyBehaviour", "GetDebugToggle", owner, prefix: nameof(NoTogglesBeforeGameManager));
+        Patching.Apply(harmony, "Install", "LoadAllProfiles", owner, prefix: nameof(LoadArchipelagoProfiles));
+        Patching.Apply(harmony, "Install", "CreateAndSwitchToFreshProfile", owner, prefix: nameof(CreateArchipelagoProfile));
+        Patching.Apply(harmony, "Install", "WriteInstallToDisk", owner, prefix: nameof(Skip));
+        Patching.Apply(harmony, "GameManager", "ClearMetaGame", owner, prefix: nameof(Skip));
     }
 
-    // The profile methods read SaveFileManager, and patching them compiles those reads, which runs
-    // SaveFileManager's initialiser. Before the game has loaded its settings that initialiser throws
-    // and stays broken, so they are patched here: the game initialises SaveFileManager itself before
-    // creating Install, and Install.Awake is what loads the profiles.
-    private static void BeforeInstallAwake()
+    // Patching a method that reads SaveFileManager runs SaveFileManager's initialiser, which asks
+    // GetDebugToggle for the save folder. GetDebugToggle dereferences GameManager.Instance, which does
+    // not exist yet at plugin load; answering "off" until it does gives the normal save folder.
+    private static bool NoTogglesBeforeGameManager(ref bool __result)
     {
-        if (applied)
-            return;
-        applied = true;
-        var owner = typeof(ProfileIsolation);
-        Patching.Apply(patcher, "Install", "LoadAllProfiles", owner, prefix: nameof(LoadArchipelagoProfiles));
-        Patching.Apply(patcher, "Install", "CreateAndSwitchToFreshProfile", owner, prefix: nameof(CreateArchipelagoProfile));
-        Patching.Apply(patcher, "Install", "WriteInstallToDisk", owner, prefix: nameof(Skip));
-        Patching.Apply(patcher, "GameManager", "ClearMetaGame", owner, prefix: nameof(Skip));
+        if (gameManagerReady)
+            return true;
+        gameManagerInstance ??= AccessTools.Property(GameAccess.TypeNamed("GameManager"), "Instance");
+        if (gameManagerInstance?.GetValue(null) != null)
+        {
+            gameManagerReady = true;
+            return true;
+        }
+        __result = false;
+        return false;
     }
 
     private static string SaveFolder => Application.persistentDataPath;

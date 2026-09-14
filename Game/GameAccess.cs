@@ -21,10 +21,16 @@ internal static class GameAccess
     private static PropertyInfo gameManagerInstance;
     private static PropertyInfo sessionContext;
 
+    /// <summary>A game type by full name, looked up in Assembly-CSharp first so a same-named type
+    /// elsewhere is never picked.</summary>
     internal static Type TypeNamed(string name)
     {
-        if (!Types.TryGetValue(name, out var type))
-            Types[name] = type = AccessTools.TypeByName(name);
+        if (Types.TryGetValue(name, out var type))
+            return type;
+        var game = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == "Assembly-CSharp");
+        type = game?.GetType(name) ?? AccessTools.TypeByName(name);
+        if (type != null)
+            Types[name] = type;
         return type;
     }
 
