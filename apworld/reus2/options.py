@@ -8,7 +8,7 @@ class GoalBuilds(Range):
     display_name = "Goal: Biotica Built"
     range_start = 10
     range_end = 300
-    default = 80
+    default = 200
 
 
 class StartingBiotica(Range):
