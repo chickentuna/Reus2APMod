@@ -256,6 +256,17 @@ internal static class DefinitionDumper
             return;
         }
 
+        // KeyValuePair keeps its data in properties, which the field walk below would skip; this is
+        // how base yields are stored.
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+        {
+            json.StartObject(key);
+            WriteValue(json, "key", type.GetProperty("Key")?.GetValue(value), seen, depth + 1);
+            WriteValue(json, "value", type.GetProperty("Value")?.GetValue(value), seen, depth + 1);
+            json.EndObject();
+            return;
+        }
+
         // Structs like Vector2 and Color carry no logic information; their text form is enough.
         if (type.Namespace != null && type.Namespace.StartsWith("UnityEngine", StringComparison.Ordinal))
         {
