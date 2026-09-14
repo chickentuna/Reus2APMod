@@ -20,13 +20,15 @@ internal static class SaveRoot
         Folder = Path.Combine(Application.persistentDataPath, "Archipelago");
         Directory.CreateDirectory(Folder);
         Patching.Apply(harmony, "MetaGameProfile.UserProfile", "get_Reus2SaveFolder", typeof(SaveRoot),
-            postfix: nameof(RedirectSaveFolder));
-
-        // A static field computed once from the save folder, so it is pointed at the new one directly.
-        AccessTools.Field(GameAccess.TypeNamed("SaveFileManager"), "InstallSavePath")
-            ?.SetValue(null, Path.Combine(Folder, "install"));
+            prefix: nameof(RedirectSaveFolder));
         Plugin.Log.LogInfo($"Archipelago saves are kept in {Folder}");
     }
 
-    private static void RedirectSaveFolder(ref string __result) => __result = Folder;
+    // Replaces the getter outright: the original reads a debug toggle, which is not available yet when
+    // SaveFileManager first initialises.
+    private static bool RedirectSaveFolder(ref string __result)
+    {
+        __result = Folder;
+        return false;
+    }
 }
