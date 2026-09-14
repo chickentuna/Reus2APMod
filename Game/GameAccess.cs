@@ -138,8 +138,15 @@ internal static class GameAccess
     private static MemberInfo Member(Type type, string name)
     {
         var key = (type, name);
-        if (!Members.TryGetValue(key, out var member))
-            Members[key] = member = (MemberInfo)AccessTools.Property(type, name) ?? AccessTools.Field(type, name);
+        if (Members.TryGetValue(key, out var member))
+            return member;
+
+        for (var t = type; t != null && member == null; t = t.BaseType)
+        {
+            member = (MemberInfo)t.GetProperty(name, AnyInstance | BindingFlags.Static | BindingFlags.DeclaredOnly)
+                     ?? t.GetField(name, AnyInstance | BindingFlags.Static | BindingFlags.DeclaredOnly);
+        }
+        Members[key] = member;
         return member;
     }
 

@@ -25,7 +25,7 @@ internal static class ProfileBinding
     private static readonly Dictionary<string, Record> Cache = new Dictionary<string, Record>();
     private static object warnedProfile;
 
-    internal static bool IsBound(object profile) => Read(profile) != null;
+    internal static bool IsBound(object profile) => ProfileIsolation.IsArchipelagoProfile(profile) && Read(profile) != null;
 
     /// <summary>
     /// True when the current profile is this slot's. Otherwise, from the main menu, switches to the
@@ -34,6 +34,14 @@ internal static class ProfileBinding
     /// </summary>
     internal static bool EnsureBound(object profile, string seed, string slot)
     {
+        if (!ProfileIsolation.IsArchipelagoProfile(profile))
+        {
+            if (!ReferenceEquals(warnedProfile, profile))
+                Plugin.Log.LogError($"Refusing to use profile '{ProfileName(profile)}': it is not an Archipelago profile.");
+            warnedProfile = profile;
+            return false;
+        }
+
         var record = Read(profile);
         if (record != null && Matches(record, seed, slot))
             return true;
