@@ -1,34 +1,54 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 using Reus2Archipelago.Archipelago;
+using Reus2Archipelago.Game;
 
 namespace Reus2Archipelago;
 
 /// <summary>
-/// Main-thread boundary between game patches and the Archipelago network client.
-/// Gameplay item handlers will be added here once the AP world contract is fixed.
+/// Main-thread boundary between game patches and the Archipelago network client: received items,
+/// completed checks, slot data and the goal.
 /// </summary>
 internal static class ApState
 {
     private static readonly HashSet<string> CheckedLocations = new HashSet<string>();
-    private static readonly HashSet<int> ReceivedItemIndexes = new HashSet<int>();
+    private static readonly HashSet<string> UnsentChecks = new HashSet<string>();
+    private static readonly SortedDictionary<int, string> Received = new SortedDictionary<int, string>();
     private static readonly ConcurrentQueue<PendingItem> PendingItems =
         new ConcurrentQueue<PendingItem>();
     private static readonly ConcurrentQueue<PendingDisconnect> PendingDisconnects =
         new ConcurrentQueue<PendingDisconnect>();
 
     private static ArchipelagoClient client;
+    private static Dictionary<string, object> slotData = new Dictionary<string, object>();
+    private static bool goalSent;
 
     internal static bool Connected => client?.Connected == true;
 
+    /// <summary>A slot has been logged into since the game started; its items and slot data stay
+    /// known after a disconnect.</summary>
+    internal static bool HasSession { get; private set; }
+
+    internal static string Seed { get; private set; }
+
+    internal static string SlotName { get; private set; }
+
+    internal static IEnumerable<string> ReceivedItems => Received.Values;
+
     internal static void AdoptSession(
         ArchipelagoClient newClient,
-        IEnumerable<string> alreadyChecked)
+        IEnumerable<string> alreadyChecked,
+        string slot,
+        string seed,
+        Dictionary<string, object> newSlotData)
     {
         ClearPending();
         client = newClient;
         CheckedLocations.Clear();
-        ReceivedItemIndexes.Clear();
+        Received.Clear();
 
         if (alreadyChecked != null)
         {
@@ -36,8 +56,19 @@ internal static class ApState
                 CheckedLocations.Add(location);
         }
 
+        SlotName = slot;
+        Seed = seed;
+        slotData = newSlotData ?? new Dictionary<string, object>();
+        HasSession = true;
+        goalSent = false;
+        ItemApplier.MarkDirty();
+
         Plugin.Log.LogInfo(
             $"Archipelago session adopted with {CheckedLocations.Count} completed checks.");
+
+        foreach (var location in UnsentChecks.ToList())
+            SendCheck(location);
+        CheckGoal();
     }
 
     internal static void ReleaseSession(ArchipelagoClient source)
@@ -62,7 +93,7 @@ internal static class ApState
         PendingDisconnects.Enqueue(new PendingDisconnect(source, reason));
     }
 
-    /// <summary>Called by the plugin Update loop on Unity's main thread.</summary>
+    /// <summary>Called every frame on Unity's main thread.</summary>
     internal static void DrainNetworkEvents()
     {
         while (PendingDisconnects.TryDequeue(out var disconnect))
@@ -77,36 +108,60 @@ internal static class ApState
 
         while (PendingItems.TryDequeue(out var item))
         {
-            if (!ReferenceEquals(client, item.Source)
-                || !ReceivedItemIndexes.Add(item.Index))
+            if (!ReferenceEquals(client, item.Source) || Received.ContainsKey(item.Index))
                 continue;
 
-            // Receiving is intentionally non-destructive in this foundation. Later item
-            // handlers will rebuild game unlocks from this replayed, indexed stream.
-            Plugin.Log.LogInfo(
-                $"Received item #{item.Index}: {item.Name ?? "<unnamed>"} "
-                + "(no gameplay handler yet).");
+            Received[item.Index] = item.Name;
+            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"}");
+            ItemApplier.MarkDirty();
         }
     }
 
+    /// <summary>Sends a check, or keeps it until the next connection when offline.</summary>
     internal static bool SendCheck(string locationName)
     {
-        if (string.IsNullOrWhiteSpace(locationName)
-            || CheckedLocations.Contains(locationName)
-            || client == null)
+        if (string.IsNullOrWhiteSpace(locationName) || CheckedLocations.Contains(locationName))
             return false;
 
-        if (!client.SendCheck(locationName))
+        if (client == null || !client.SendCheck(locationName))
+        {
+            if (UnsentChecks.Add(locationName))
+                Plugin.Log.LogInfo($"Check kept until the next connection: {locationName}");
             return false;
+        }
 
+        UnsentChecks.Remove(locationName);
         CheckedLocations.Add(locationName);
         Plugin.Log.LogInfo($"Sent check: {locationName}");
+        CheckGoal();
         return true;
     }
 
-    internal static void SendGoal()
+    internal static int SlotInt(string key, int fallback)
     {
-        client?.SendGoal();
+        if (!slotData.TryGetValue(key, out var value) || value == null)
+            return fallback;
+        try
+        {
+            return value is JToken token ? token.Value<int>() : Convert.ToInt32(value);
+        }
+        catch
+        {
+            return fallback;
+        }
+    }
+
+    private static void CheckGoal()
+    {
+        if (goalSent || client == null)
+            return;
+        var goal = SlotInt("goal_builds", int.MaxValue);
+        if (CheckedLocations.Count(location => location.StartsWith("Build ")) < goal)
+            return;
+
+        client.SendGoal();
+        goalSent = true;
+        Plugin.Log.LogInfo($"Goal complete: {goal} biotica built.");
     }
 
     private static void ClearPending()

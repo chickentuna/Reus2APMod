@@ -1,0 +1,208 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Reus2Archipelago.Archipelago;
+
+namespace Reus2Archipelago.Game;
+
+/// <summary>
+/// Rebuilds the bound profile's unlocks from the full stream of received items, so the profile always
+/// matches the slot, and grants per-planet items (Micros, Eon) inside the running planet. Runs on the
+/// main thread whenever items arrive, the profile changes, or a planet loads.
+/// </summary>
+internal static class ItemApplier
+{
+    private const float EonPerBoost = 5f;
+
+    private static bool dirty = true;
+    private static object lastProfile;
+    private static object checkedProfile;
+    private static bool checkedBound;
+
+    internal static void MarkDirty() => dirty = true;
+
+    /// <summary>Whether the current profile belongs to an Archipelago slot; gates every gameplay patch.</summary>
+    internal static bool ProfileBound
+    {
+        get
+        {
+            var profile = GameAccess.CurrentProfile;
+            if (!ReferenceEquals(profile, checkedProfile))
+            {
+                checkedProfile = profile;
+                checkedBound = ProfileBinding.IsBound(profile);
+            }
+            return checkedBound;
+        }
+    }
+
+    internal static bool IsReceivedBioticum(object definition)
+    {
+        var state = definition == null ? null : GameAccess.Call(GameAccess.CurrentProfile, "GetBioticumData", definition);
+        return GameAccess.Get(state, "unlocked") is bool unlocked && unlocked;
+    }
+
+    internal static void Tick()
+    {
+        var profile = GameAccess.CurrentProfile;
+        if (!ReferenceEquals(profile, lastProfile))
+        {
+            lastProfile = profile;
+            dirty = true;
+        }
+        if (!dirty || profile == null || !ApState.HasSession || !GameAccess.DefinitionsReady)
+            return;
+        dirty = false;
+
+        try
+        {
+            if (!ProfileBinding.EnsureBound(profile, ApState.Seed, ApState.SlotName))
+                return;
+            checkedProfile = profile;
+            checkedBound = true;
+
+            var received = Count(ApState.ReceivedItems);
+            ApplyProfile(profile, received);
+            ApplyPlanet(profile, received);
+        }
+        catch (Exception e)
+        {
+            Plugin.Log.LogError($"Applying Archipelago items failed: {e}");
+        }
+    }
+
+    private static void ApplyProfile(object profile, Dictionary<string, int> received)
+    {
+        var data = ApData.Instance;
+
+        foreach (var bioticum in data.Biotica)
+            SetUnlocked(profile, "GetBioticumData", bioticum.Guid, received.ContainsKey(bioticum.Item));
+        foreach (var biome in data.Biomes)
+            SetUnlocked(profile, "GetBiomeData", biome.Guid, received.ContainsKey(biome.Item));
+        foreach (var character in data.Characters)
+            SetUnlocked(profile, "GetCharacterData", character.Guid, received.ContainsKey(character.Item));
+
+        foreach (var giant in data.Giants)
+        {
+            var definition = GameAccess.Definition(giant.Guid);
+            if (definition == null || !(GameAccess.Get(GameAccess.Call(profile, "GetGiantData", definition), "unlockedRoles") is IList roles))
+                continue;
+            roles.Clear();
+            if (received.ContainsKey(giant.Item))
+                roles.Add(Enum.Parse(GameAccess.ElementType(roles), giant.Role));
+        }
+
+        if (GameAccess.Get(profile, "unlockedAbilities") is IList abilities)
+        {
+            foreach (var ability in data.Abilities)
+            {
+                foreach (var definition in ability.Guids.Select(GameAccess.Definition).Where(d => d != null))
+                {
+                    while (abilities.Contains(definition))
+                        abilities.Remove(definition);
+                    if (received.ContainsKey(ability.Item))
+                        abilities.Add(definition);
+                }
+            }
+        }
+
+        ApplyEras(profile, received.TryGetValue(data.Eras.Item, out var eras) ? eras : 0);
+        GrantMissing(profile, "unlockedTurningPoints", data.TurningPoints.Select(GameAccess.Definition));
+        GrantShopOptions(profile, data.ShopOptions);
+        GameAccess.Call(profile, "InvalidateSaveFile");
+    }
+
+    private static void ApplyPlanet(object profile, Dictionary<string, int> received)
+    {
+        var context = GameAccess.SessionContext;
+        var gameplay = GameAccess.Get(context, "GameplayController");
+        if (gameplay == null || (gameplay is UnityEngine.Object unityObject && unityObject == null))
+            return;
+
+        GameAccess.Set(GameAccess.Get(context, "Scenario"), "draftsLocked", true);
+
+        var aspects = GameAccess.Get(gameplay, "aspectController");
+        foreach (var micro in ReceivedMicros(received))
+        {
+            var definition = GameAccess.Definition(micro.Guid);
+            if (aspects != null && definition != null)
+                GameAccess.Call(aspects, "UnlockAspectShopOption", definition);
+        }
+
+        var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
+        var applied = ProfileBinding.EonBoostsApplied(profile);
+        if (boosts <= applied)
+            return;
+        var bonusEon = GameAccess.EnumValue("PlayerResource", "BonusEon");
+        for (var i = applied; i < boosts; i++)
+            GameAccess.Call(gameplay, "ChangePlayerResource", bonusEon, EonPerBoost);
+        ProfileBinding.SetEonBoostsApplied(profile, boosts);
+    }
+
+    private static IEnumerable<MicroEntry> ReceivedMicros(Dictionary<string, int> received)
+    {
+        var data = ApData.Instance;
+        if (ApState.SlotInt("micro_mode", 0) == 1)
+        {
+            var count = received.TryGetValue(data.ProgressiveMicro.Item, out var n) ? n : 0;
+            return data.Micros.OrderBy(m => m.Order).Take(count);
+        }
+        return data.Micros.Where(m => received.ContainsKey(m.Item));
+    }
+
+    private static void ApplyEras(object profile, int received)
+    {
+        if (!(GameAccess.Get(profile, "unlockedEras") is IList eras))
+            return;
+        var eraType = GameAccess.ElementType(eras);
+        var names = ApData.Instance.Eras.Base.Concat(ApData.Instance.Eras.Eras.Take(received)).ToList();
+        eras.Clear();
+        foreach (var name in names)
+            eras.Add(Enum.Parse(eraType, name));
+
+        var latest = Convert.ToInt32(Enum.Parse(eraType, names[names.Count - 1])) - 1;
+        if (GameAccess.Get(profile, "finalEraSelected") is int selected && selected > latest)
+            GameAccess.Set(profile, "finalEraSelected", latest);
+    }
+
+    private static void SetUnlocked(object profile, string accessor, string guid, bool unlocked)
+    {
+        var definition = GameAccess.Definition(guid);
+        var state = definition == null ? null : GameAccess.Call(profile, accessor, definition);
+        if (state != null)
+            GameAccess.Set(state, "unlocked", unlocked);
+    }
+
+    private static void GrantMissing(object profile, string listField, IEnumerable<object> definitions)
+    {
+        if (!(GameAccess.Get(profile, listField) is IList list))
+            return;
+        foreach (var definition in definitions)
+        {
+            if (definition != null && !list.Contains(definition))
+                list.Add(definition);
+        }
+    }
+
+    private static void GrantShopOptions(object profile, IEnumerable<string> names)
+    {
+        if (!(GameAccess.Get(profile, "unlockedShopOptions") is IList options))
+            return;
+        var optionType = GameAccess.ElementType(options);
+        foreach (var name in names)
+        {
+            var value = Enum.Parse(optionType, name);
+            if (!options.Contains(value))
+                options.Add(value);
+        }
+    }
+
+    private static Dictionary<string, int> Count(IEnumerable<string> names)
+    {
+        var counts = new Dictionary<string, int>();
+        foreach (var name in names)
+            counts[name] = counts.TryGetValue(name, out var n) ? n + 1 : 1;
+        return counts;
+    }
+}

@@ -4,6 +4,8 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using Reus2Archipelago.Archipelago;
+using Reus2Archipelago.Game;
+using Reus2Archipelago.Patches;
 
 namespace Reus2Archipelago;
 
@@ -12,6 +14,10 @@ public sealed class Plugin : BaseUnityPlugin
 {
     internal static ManualLogSource Log { get; private set; }
     internal static ArchipelagoClient Client { get; private set; }
+
+    /// <summary>A slot is configured: gameplay patches are installed, and a fresh profile is handed
+    /// over to that slot on connect.</summary>
+    internal static bool ApMode { get; private set; }
 
     private ConfigEntry<string> server;
     private ConfigEntry<int> port;
@@ -33,7 +39,8 @@ public sealed class Plugin : BaseUnityPlugin
         port = Config.Bind("Archipelago", "Port", 38281,
             "Archipelago server port.");
         slot = Config.Bind("Archipelago", "Slot", "",
-            "Player slot name. Leave empty to disable auto-connect.");
+            "Player slot name. Setting one enables Archipelago mode: drafts, profile levels, "
+            + "alternate modes and challenges are turned off. Leave empty to play vanilla.");
         password = Config.Bind("Archipelago", "Password", "",
             "Optional room password.");
         autoConnect = Config.Bind("Archipelago", "AutoConnect", true,
@@ -49,6 +56,7 @@ public sealed class Plugin : BaseUnityPlugin
         DefinitionDumper.OutputPath = Config.Bind("Dump", "OutputPath", "",
             "Where to write the JSON. Empty means BepInEx/plugins/reus2_definitions.json.").Value;
 
+        ApMode = !string.IsNullOrWhiteSpace(slot.Value);
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
 
@@ -60,9 +68,17 @@ public sealed class Plugin : BaseUnityPlugin
 
         if (enableProbes.Value)
             GameProbes.Install(harmony);
+
+        if (ApMode && ApData.Load())
+        {
+            ProgressionPatches.Install(harmony);
+            CheckPatches.Install(harmony);
+        }
+
+        MainThreadRunner.Create(AutoConnect);
     }
 
-    private void Start()
+    private void AutoConnect()
     {
         if (!autoConnect.Value)
         {
@@ -70,10 +86,9 @@ public sealed class Plugin : BaseUnityPlugin
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(slot.Value))
+        if (!ApMode)
         {
-            Log.LogInfo(
-                "Set Archipelago.Slot in the BepInEx config to enable auto-connect.");
+            Log.LogInfo("Set Archipelago.Slot in the BepInEx config to play with Archipelago.");
             return;
         }
 
@@ -125,23 +140,20 @@ public sealed class Plugin : BaseUnityPlugin
         }
     }
 
+    // Fallback for the case where the database registration hook never fires.
     private void Update()
     {
-        ApState.DrainNetworkEvents();
-
-        // Fallback for the case where the database registration hook never fires.
-        if (enableDefinitionDump.Value)
+        if (!enableDefinitionDump.Value)
+            return;
+        try
         {
-            try
-            {
-                if (DefinitionDumper.Ready())
-                    DefinitionDumper.DumpOnce();
-            }
-            catch (Exception e)
-            {
-                DefinitionDumper.Status($"FAILED: {e}");
-                Log.LogError(e.ToString());
-            }
+            if (DefinitionDumper.Ready())
+                DefinitionDumper.DumpOnce();
+        }
+        catch (Exception e)
+        {
+            DefinitionDumper.Status($"FAILED: {e}");
+            Log.LogError(e.ToString());
         }
     }
 

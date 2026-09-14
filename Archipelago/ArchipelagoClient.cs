@@ -39,7 +39,8 @@ internal sealed class ArchipelagoClient
                 return string.IsNullOrWhiteSpace(reason) ? "Connection refused" : reason;
             }
 
-            ApState.AdoptSession(this, CheckedLocationNames());
+            var success = (LoginSuccessful)result;
+            ApState.AdoptSession(this, CheckedLocationNames(), slot, session.RoomState.Seed, success.SlotData);
 
             session.Items.ItemReceived += OnItemReceived;
             session.Socket.SocketClosed += OnSocketClosed;

@@ -25,6 +25,11 @@
     <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" ExcludeAssets="runtime" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="apworld\reus2\data\reus2.json" LogicalName="Reus2Archipelago.reus2.json" />
+    <Compile Remove="apworld\**;tools\**;dist\**" />
+  </ItemGroup>
+
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
