@@ -34,7 +34,8 @@ internal static class GameProbes
         Patch(harmony, "Milestone", "AchieveMilestone",
             prefix: nameof(BeforeMilestone), postfix: nameof(AfterMilestone));
         Patch(harmony, "EraFeatController", "OnEraFeatAchieved", postfix: nameof(AfterEraFeat));
-        Patch(harmony, "EraFeatController", "StartTrackingEraFeats", postfix: nameof(AfterTrackingStarted));
+        Patch(harmony, "EraFeatController", "OnWorldStageControllerActivated", postfix: nameof(AfterSessionLoaded));
+        Patch(harmony, "EraFeatController", "StartTrackingMainFeat", postfix: nameof(AfterMainFeatStarted));
         Patch(harmony, "MetaGameProfile.UserProfile", "UnlockBioticum", postfix: nameof(AfterUnlockBioticum));
         Patch(harmony, "MetaGameProfile.UserProfile", "UnlockTurningPoint", postfix: nameof(AfterUnlockTurningPoint));
         Patch(harmony, "MetaGameProfile.UserProfile", "LevelUpProfile", postfix: nameof(AfterLevelUp));
@@ -92,10 +93,17 @@ internal static class GameProbes
               + $" | would send check: \"Era Feat: {NameOf(definition)}\"");
     }
 
-    // Marks a run boundary, so repeated feats across runs are readable in the trace.
-    private static void AfterTrackingStarted()
+    // A planet was started or loaded. Fires once per session, so repeats across runs read clearly.
+    private static void AfterSessionLoaded()
     {
-        Write("--- era feat tracking started (new era / run) ---");
+        Write("=== planet session loaded ===");
+    }
+
+    // A new era began and its main feat is now tracked.
+    private static void AfterMainFeatStarted(object __instance)
+    {
+        var mainFeat = Field<object>(__instance, "mainEraFeat");
+        Write($"--- era started, main feat: {Describe(Field<object>(mainFeat, "definition"))} ---");
     }
 
     private static void AfterUnlockBioticum(object[] __args, bool __result)

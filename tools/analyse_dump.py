@@ -181,6 +181,38 @@ def main():
     milestone_census(definitions["MilestoneDefinition"])
     feat_census(definitions["EraFeatDefinition"])
     filter_report(definitions["EraFeatDefinition"], definitions["BioticumDefinition"])
+    profile_levels(definitions["MetaGameSettings"][0])
+
+
+def profile_levels(settings):
+    """The vanilla unlock stream: what each profile level grants. These are the natural AP items,
+    and the XP column is the pacing a randomizer replaces."""
+    levels = settings["profileLevels"]
+    print(f"\n=== profile levels ({len(levels)}) ===")
+
+    def names(entries):
+        out = []
+        for entry in entries or []:
+            if isinstance(entry, dict) and "giant" in entry:
+                out.append(f"{entry['giant'].get('name')}/{entry.get('giantRole')}")
+            elif isinstance(entry, dict):
+                out.append(entry.get("name"))
+            else:
+                out.append(str(entry))
+        return out
+
+    for number, level in enumerate(levels, 1):
+        grants = {
+            "eras": level.get("unlockedEras"),
+            "giants": names(level.get("giantRoleUnlocks")),
+            "characters": names(level.get("characterUnlocks")),
+            "biomes": level.get("biomeUnlocks"),
+            "turning points": names(level.get("unlockedTurningPoints")),
+            "abilities": names(level.get("unlockedAbilities")),
+            "shop": level.get("unlockedShopOptions"),
+        }
+        shown = "; ".join(f"{k}: {', '.join(map(str, v))}" for k, v in grants.items() if v)
+        print(f"  L{number:<2} xp {level.get('requiredXP'):>4}  [{level.get('reminder')}]  {shown}")
 
 
 if __name__ == "__main__":
