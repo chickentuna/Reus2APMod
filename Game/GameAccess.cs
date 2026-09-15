@@ -55,6 +55,10 @@ internal static class GameAccess
         }
     }
 
+    /// <summary>The running planet's session id, or null outside a planet. A save keeps it, a new
+    /// run gets a fresh one.</summary>
+    internal static string SessionId => Get(Get(SessionContext, "CurrentSession"), "SessionID") as string;
+
     internal static object SessionContext
     {
         get

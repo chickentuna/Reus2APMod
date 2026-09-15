@@ -14,6 +14,8 @@ namespace Reus2Archipelago.Game;
 internal static class ItemApplier
 {
     private const float EonPerBoost = 5f;
+    private const int MicroUnlocksOff = 0;
+    private const int MicroUnlocksProgressive = 2;
 
     private static bool dirty = true;
     private static object lastProfile;
@@ -80,7 +82,8 @@ internal static class ItemApplier
         var data = ApData.Instance;
 
         foreach (var bioticum in data.Biotica)
-            SetUnlocked(profile, "GetBioticumData", bioticum.Guid, received.ContainsKey(bioticum.Item));
+            SetUnlocked(profile, "GetBioticumData", bioticum.Guid,
+                data.ItemsGranting(bioticum.Guid).Any(received.ContainsKey));
         foreach (var biome in data.Biomes)
             SetUnlocked(profile, "GetBiomeData", biome.Guid, received.ContainsKey(biome.Item));
         foreach (var character in data.Characters)
@@ -125,12 +128,15 @@ internal static class ItemApplier
         GameAccess.Set(GameAccess.Get(GameAccess.SessionContext, "Scenario"), "draftsLocked", true);
 
         var aspects = GameAccess.Get(gameplay, "aspectController");
-        foreach (var micro in ReceivedMicros(received))
+        var unlocks = ApState.SlotInt("micro_unlocks", MicroUnlocksOff);
+        var sold = UnlockedMicros(received, unlocks).ToList();
+        foreach (var micro in sold)
         {
             var definition = GameAccess.Definition(micro.Guid);
             if (aspects != null && definition != null)
                 GameAccess.Call(aspects, "UnlockAspectShopOption", definition);
         }
+        GrantCharges(profile, aspects, received, unlocks == MicroUnlocksOff ? ApData.Instance.Micros : sold);
 
         var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
         var applied = ProfileBinding.EonBoostsApplied(profile);
@@ -142,15 +148,49 @@ internal static class ItemApplier
         ProfileBinding.SetEonBoostsApplied(profile, boosts);
     }
 
-    private static IEnumerable<MicroEntry> ReceivedMicros(Dictionary<string, int> received)
+    /// <summary>The Micro types to pass to UnlockAspectShopOption. With micro_unlocks off the game
+    /// draws the run's types itself.</summary>
+    private static IEnumerable<MicroEntry> UnlockedMicros(Dictionary<string, int> received, int unlocks)
     {
         var data = ApData.Instance;
-        if (ApState.SlotInt("micro_mode", 0) == 1)
+        if (unlocks == MicroUnlocksOff)
+            return Enumerable.Empty<MicroEntry>();
+        if (unlocks == MicroUnlocksProgressive)
         {
             var count = received.TryGetValue(data.ProgressiveMicro.Item, out var n) ? n : 0;
             return data.Micros.OrderBy(m => m.Order).Take(count);
         }
         return data.Micros.Where(m => received.ContainsKey(m.Item));
+    }
+
+    /// <summary>Calls GrantAspectCharge for each Micro the number of its charge items received minus
+    /// what the running session has already been granted, then records the new total against
+    /// Session.SessionID, so a reload of the same save adds nothing and a new planet adds them again.
+    /// <paramref name="usable"/> holds the types the shop sells; a charge for a type outside it is
+    /// granted on the tick the type's own item arrives.</summary>
+    private static void GrantCharges(object profile, object aspects, Dictionary<string, int> received,
+                                     IEnumerable<MicroEntry> usable)
+    {
+        var session = GameAccess.SessionId;
+        if (aspects == null || session == null)
+            return;
+
+        var granted = ProfileBinding.MicroChargesGranted(profile, session);
+        var changed = false;
+        foreach (var micro in usable)
+        {
+            var wanted = received.TryGetValue(micro.ChargeItem, out var n) ? n : 0;
+            var already = granted.TryGetValue(micro.Guid, out var g) ? g : 0;
+            var definition = GameAccess.Definition(micro.Guid);
+            if (wanted <= already || definition == null)
+                continue;
+            for (var i = already; i < wanted; i++)
+                GameAccess.Call(aspects, "GrantAspectCharge", definition);
+            granted[micro.Guid] = wanted;
+            changed = true;
+        }
+        if (changed)
+            ProfileBinding.SetMicroChargesGranted(profile, session, granted);
     }
 
     private static void ApplyEras(object profile, int received)

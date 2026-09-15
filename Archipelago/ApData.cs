@@ -35,6 +35,7 @@ internal sealed class ApData
     [JsonProperty("shop_options")] public List<string> ShopOptions = new List<string>();
 
     private Dictionary<string, BioticumEntry> bioticumByGuid;
+    private Dictionary<string, List<string>> bioticumItems;
     private Dictionary<string, string> comboLocations;
 
     internal static bool Load()
@@ -49,6 +50,14 @@ internal sealed class ApData
         using var reader = new StreamReader(stream);
         var data = JsonConvert.DeserializeObject<ApData>(reader.ReadToEnd());
         data.bioticumByGuid = data.Biotica.ToDictionary(b => b.Guid);
+        data.bioticumItems = data.Biotica.ToDictionary(b => b.Guid, b => new List<string> { b.Item });
+        var bioticumByName = data.Biotica.ToDictionary(b => b.Name);
+        foreach (var apex in data.Biotica.Where(b => b.ApexItem != null))
+        {
+            data.bioticumItems[apex.Guid].Add(apex.ApexItem);
+            foreach (var cohort in apex.Cohorts)
+                data.bioticumItems[bioticumByName[cohort].Guid].Add(apex.ApexItem);
+        }
         data.comboLocations = data.Biotica
             .SelectMany(b => b.Rules.Select(r => (key: ComboKey(b.Guid, r.RuleIndex), r.Location)))
             .ToDictionary(p => p.key, p => p.Location);
@@ -59,6 +68,10 @@ internal sealed class ApData
 
     internal BioticumEntry BioticumForGuid(string guid)
         => guid != null && bioticumByGuid.TryGetValue(guid, out var entry) ? entry : null;
+
+    /// <summary>The items that grant a bioticum: its own item, and the apex item of every apex
+    /// bioticum that lists it as a cohort. A seed's pool holds one kind or the other.</summary>
+    internal List<string> ItemsGranting(string guid) => bioticumItems[guid];
 
     internal string ComboLocation(string guid, int ruleIndex)
         => comboLocations.TryGetValue(ComboKey(guid, ruleIndex), out var location) ? location : null;
@@ -80,7 +93,10 @@ internal sealed class ApData
 internal sealed class BioticumEntry
 {
     [JsonProperty("guid")] public string Guid;
+    [JsonProperty("name")] public string Name;
     [JsonProperty("item")] public string Item;
+    [JsonProperty("cohorts")] public List<string> Cohorts = new List<string>();
+    [JsonProperty("apex_item")] public string ApexItem;
     [JsonProperty("build_location")] public string BuildLocation;
     [JsonProperty("rules")] public List<RuleEntry> Rules = new List<RuleEntry>();
 }
@@ -114,6 +130,7 @@ internal sealed class MicroEntry
 {
     [JsonProperty("guid")] public string Guid;
     [JsonProperty("item")] public string Item;
+    [JsonProperty("charge_item")] public string ChargeItem;
     [JsonProperty("order")] public int Order;
 }
 
