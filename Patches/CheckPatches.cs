@@ -89,7 +89,9 @@ internal static class CheckPatches
             Bail(ruleState, $"{source}: the slot holds no bioticum definition");
             return;
         }
-        if (!(GameAccess.Get(definition, "rules") is IList rules))
+        // BioticumDefinition.rules is a ReferenceList, which carries IList<T> but not IList, so it is
+        // walked as a plain sequence; its position is the rule index the data was built with.
+        if (!(GameAccess.Get(definition, "rules") is IEnumerable rules))
         {
             Bail(ruleState, $"{source}: the definition has no rules list");
             return;
@@ -97,9 +99,11 @@ internal static class CheckPatches
 
         var name = ApData.Instance.BioticumForGuid(guid)?.Name ?? guid;
         var rule = GameAccess.Get(ruleState, "RuleDefinitionBase");
-        for (var index = 0; index < rules.Count; index++)
+        var index = -1;
+        foreach (var candidate in rules)
         {
-            if (!ReferenceEquals(rules[index], rule))
+            index++;
+            if (!ReferenceEquals(candidate, rule))
                 continue;
             if (ApData.Instance.ComboRule(guid, index) is RuleEntry combo)
             {
