@@ -15,6 +15,8 @@ namespace Reus2Archipelago.Patches;
 /// </summary>
 internal static class ProgressionPatches
 {
+    private const int MicroTypesShuffled = 1;
+
     private const string UserProfile = "MetaGameProfile.UserProfile";
 
     internal static void Install(Harmony harmony)
@@ -98,11 +100,12 @@ internal static class ProgressionPatches
     }
 
     // DrawSetForEra draws one more Micro type from the era pools and names it in the era
-    // introduction; the types the shop sells come from the received items instead. Clearing
-    // latestUnlockedAspect is what makes EraIntroductionUI leave the panel out.
+    // introduction. With Micro Types shuffled the received items decide which types the player has,
+    // so the draw is skipped and clearing latestUnlockedAspect leaves the panel out of the era
+    // introduction; with them all unlocked the draw is the game's own and runs.
     private static bool SkipDrawnMicroType(MethodBase __originalMethod, object __instance)
     {
-        var run = !ItemApplier.ProfileBound;
+        var run = !ItemApplier.ProfileBound || ApState.SlotInt("micro_types", 0) != MicroTypesShuffled;
         if (!run)
             GameAccess.Set(__instance, "latestUnlockedAspect", null);
         Record(__originalMethod, () => run ? "original runs" : "original skipped");

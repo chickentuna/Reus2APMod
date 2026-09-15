@@ -21,7 +21,6 @@ internal static class ItemApplier
     private static object lastProfile;
     private static object lastGameplay;
     private static int pooledFrom;
-    private static int soldMicros = -1;
     private static object checkedProfile;
     private static bool checkedBound;
     private static bool logged;
@@ -77,11 +76,9 @@ internal static class ItemApplier
         {
             lastGameplay = gameplay;
             pooledFrom = 0;
-            soldMicros = -1;
             dirty = true;
         }
         HoldPlanetPool(gameplay);
-        HoldSoldMicros(gameplay);
         if (!dirty || profile == null || !ApState.HasSession || !GameAccess.DefinitionsReady)
             return;
         dirty = false;
@@ -182,17 +179,6 @@ internal static class ItemApplier
             dirty = true;
     }
 
-    /// <summary>AspectController.DrawInitialSet empties the aspect inventory when a planet starts and
-    /// UnlockMicroFromLevel adds a drawn type to it, so the sold types are counted every frame and
-    /// rewritten when the count moves.</summary>
-    private static void HoldSoldMicros(object gameplay)
-    {
-        if (gameplay == null || soldMicros < 0 || !ProfileBound)
-            return;
-        if (SoldMicroCount(GameAccess.Get(gameplay, "aspectController")) != soldMicros)
-            dirty = true;
-    }
-
     private static void ApplyPlanet(object profile, Dictionary<string, int> received)
     {
         var gameplay = GameAccess.Gameplay;
@@ -203,13 +189,10 @@ internal static class ItemApplier
 
         var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
         GameAccess.Set(scenario, "draftsLocked", true);
-        var aspects = GameAccess.Get(gameplay, "aspectController");
-        var data = ApData.Instance;
-        var shuffled = ApState.SlotInt("micro_types", 0) == MicroTypesShuffled;
-        SetSoldMicros(aspects, shuffled ? data.Micros.Where(m => received.ContainsKey(m.Item)) : data.Micros);
+        AddReceivedMicroTypes(GameAccess.Get(gameplay, "aspectController"), received);
         Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items"
-                           + $", the shop offers {soldMicros} Micro types, {MicroAllowance} Micros an era.");
+                           + $", {MicroAllowance} Micro charges an era.");
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
         var session = GameAccess.SessionId;
@@ -219,7 +202,7 @@ internal static class ItemApplier
             ProfileBinding.SetMicroSession(profile, session);
         }
 
-        var boosts = received.TryGetValue(data.Filler[0].Item, out var count) ? count : 0;
+        var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
         var applied = ProfileBinding.EonBoostsApplied(profile);
         if (boosts <= applied)
             return;
@@ -229,26 +212,19 @@ internal static class ItemApplier
         ProfileBinding.SetEonBoostsApplied(profile, boosts);
     }
 
-    /// <summary>Writes the aspect inventory the shop reads: an entry for each type in
-    /// <paramref name="sold"/> and nothing else. An entry that holds charges of one type — a giant's
-    /// base Micro, or one an in-run effect granted — is not sold and is left where it is.</summary>
-    private static void SetSoldMicros(object aspects, IEnumerable<MicroEntry> sold)
+    /// <summary>With Micro Types shuffled the game draws none of its own, so a type whose item has
+    /// arrived is added to the inventory, where a charge can be spent on it. With them all unlocked
+    /// the game's own per-era draw fills the inventory and this adds nothing.</summary>
+    private static void AddReceivedMicroTypes(object aspects, Dictionary<string, int> received)
     {
-        var inventory = GameAccess.Get(aspects, "aspectInventory") as IEnumerable;
-        if (inventory == null)
+        if (aspects == null || ApState.SlotInt("micro_types", 0) != MicroTypesShuffled)
             return;
-
-        var wanted = sold.Select(m => GameAccess.Definition(m.Guid)).Where(d => d != null).ToList();
-        var stale = inventory.Cast<object>()
-            .Where(entry => !(GameAccess.Get(GameAccess.Get(entry, "Value"), "UsesCharges") is bool uses && uses))
-            .Select(entry => GameAccess.Get(entry, "Key"))
-            .Where(key => !wanted.Contains(key))
-            .ToList();
-        foreach (var key in stale)
-            GameAccess.Call(inventory, "Remove", key);
-        foreach (var definition in wanted)
-            GameAccess.Call(aspects, "UnlockAspectShopOption", definition);
-        soldMicros = wanted.Count;
+        foreach (var micro in ApData.Instance.Micros.Where(m => received.ContainsKey(m.Item)))
+        {
+            var definition = GameAccess.Definition(micro.Guid);
+            if (definition != null)
+                GameAccess.Call(aspects, "UnlockAspectShopOption", definition);
+        }
     }
 
     /// <summary>Every entry the run's aspect inventory holds, with its charges, so a Micro on screen
@@ -273,12 +249,6 @@ internal static class ItemApplier
             lines.AddRange(baseAspects);
         return lines.Count == 0 ? "empty" : string.Join(", ", lines);
     }
-
-    private static int SoldMicroCount(object aspects)
-        => GameAccess.Get(aspects, "aspectInventory") is IEnumerable inventory
-            ? inventory.Cast<object>().Count(entry =>
-                !(GameAccess.Get(GameAccess.Get(entry, "Value"), "UsesCharges") is bool uses && uses))
-            : soldMicros;
 
     /// <summary>Sets the era's Micros to one per Bonus Micro received. GameplayController.Initialize
     /// puts three in a new planet and MainQuestCompletedMoment.GiveRewards adds one per active biome
