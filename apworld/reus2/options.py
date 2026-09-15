@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Range, StartInventoryPool
+from Options import Choice, PerGameCommonOptions, Range, StartInventoryPool
 
 
 class GoalBuilds(Range):
@@ -65,10 +65,17 @@ class BioticumItems(Choice):
     default = 0
 
 
-class ComboChecks(DefaultOnToggle):
-    """Whether triggering a bioticum's combo is a check. Off leaves only the builds, the request
-    rewards and the shop drafts."""
+class ComboChecks(Choice):
+    """Which checks a bioticum's combos send.
+
+    - **None:** no combo checks, leaving only the builds, the request rewards and the shop drafts.
+    - **Per rule:** one per combo rule.
+    - **Per bioticum:** one per bioticum, sent once all of its combo rules have been triggered."""
     display_name = "Combo Checks"
+    option_none = 0
+    option_per_rule = 1
+    option_per_bioticum = 2
+    default = 2
 
 
 class MicroTypes(Choice):

@@ -21,6 +21,7 @@ internal static class ProfileBinding
         public string Slot;
         public int EonBoostsApplied;
         public string MicroSession;
+        public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
     }
 
     private static readonly Dictionary<string, Record> Cache = new Dictionary<string, Record>();
@@ -96,6 +97,22 @@ internal static class ProfileBinding
             return;
         record.MicroSession = session;
         Write(profile, record);
+    }
+
+    /// <summary>Notes a bioticum's rule index as activated and returns how many of that bioticum's
+    /// rule indexes have been activated, over every planet the slot has played.</summary>
+    internal static int AddActivatedComboRule(object profile, string guid, int ruleIndex)
+    {
+        var record = Read(profile);
+        if (record == null)
+            return 0;
+        if (!record.ActivatedComboRules.TryGetValue(guid, out var indexes))
+            record.ActivatedComboRules[guid] = indexes = new List<int>();
+        if (indexes.Contains(ruleIndex))
+            return indexes.Count;
+        indexes.Add(ruleIndex);
+        Write(profile, record);
+        return indexes.Count;
     }
 
     private static bool Matches(Record record, string seed, string slot) => record.Seed == seed && record.Slot == slot;

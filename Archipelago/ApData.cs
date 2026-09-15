@@ -36,7 +36,7 @@ internal sealed class ApData
 
     private Dictionary<string, BioticumEntry> bioticumByGuid;
     private Dictionary<string, List<string>> bioticumItems;
-    private Dictionary<string, string> comboLocations;
+    private Dictionary<string, RuleEntry> comboRules;
 
     internal static bool Load()
     {
@@ -58,9 +58,9 @@ internal sealed class ApData
             foreach (var cohort in apex.Cohorts)
                 data.bioticumItems[bioticumByName[cohort].Guid].Add(apex.ApexItem);
         }
-        data.comboLocations = data.Biotica
-            .SelectMany(b => b.Rules.Select(r => (key: ComboKey(b.Guid, r.RuleIndex), r.Location)))
-            .ToDictionary(p => p.key, p => p.Location);
+        data.comboRules = data.Biotica
+            .SelectMany(b => b.Rules.Select(r => (key: ComboKey(b.Guid, r.RuleIndex), rule: r)))
+            .ToDictionary(p => p.key, p => p.rule);
         Instance = data;
         Plugin.Log.LogInfo($"Archipelago data for Reus 2 {data.GameVersion}: {data.Biotica.Count} biotica.");
         return true;
@@ -73,8 +73,10 @@ internal sealed class ApData
     /// bioticum that lists it as a cohort. A seed's pool holds one kind or the other.</summary>
     internal List<string> ItemsGranting(string guid) => bioticumItems[guid];
 
-    internal string ComboLocation(string guid, int ruleIndex)
-        => comboLocations.TryGetValue(ComboKey(guid, ruleIndex), out var location) ? location : null;
+    /// <summary>The rule at that index of a bioticum, or null for the rules the data leaves out,
+    /// which send no check of their own and do not count towards the bioticum's All Combos.</summary>
+    internal RuleEntry ComboRule(string guid, int ruleIndex)
+        => comboRules.TryGetValue(ComboKey(guid, ruleIndex), out var rule) ? rule : null;
 
     /// <summary>The location for the index-th draft-paying request of a level, if it is among the
     /// first <paramref name="enabled"/> the slot turned into checks.</summary>
@@ -98,6 +100,7 @@ internal sealed class BioticumEntry
     [JsonProperty("cohorts")] public List<string> Cohorts = new List<string>();
     [JsonProperty("apex_item")] public string ApexItem;
     [JsonProperty("build_location")] public string BuildLocation;
+    [JsonProperty("all_combos_location")] public string AllCombosLocation;
     [JsonProperty("rules")] public List<RuleEntry> Rules = new List<RuleEntry>();
 }
 

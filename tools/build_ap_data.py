@@ -50,7 +50,7 @@ ABILITY_ITEMS = {
 # takes bits 0, which no GUID produces.
 ITEM_CATEGORY = {"bioticum": 1, "giant": 2, "biome": 3, "ability": 4, "character": 5, "micro": 6, "era": 7,
                  "filler": 8, "apex": 9, "charge": 10}
-LOCATION_CATEGORY = {"build": 1, "combo": 2, "request": 3, "shop": 4}
+LOCATION_CATEGORY = {"build": 1, "combo": 2, "request": 3, "shop": 4, "all_combos": 5}
 
 
 def item_id(category, bits):
@@ -210,6 +210,9 @@ def build_biotica(definitions, micro_names):
         b["item_id"] = item_id("bioticum", guid_bits(b["guid"]))
         b["build_location"] = f"Build {b['name']}"
         b["build_location_id"] = location_id("build", guid_bits(b["guid"]))
+        if rules:
+            b["all_combos_location"] = f"{b['name']} All Combos"
+            b["all_combos_location_id"] = location_id("all_combos", guid_bits(b["guid"]))
     for b in pool:
         del b["raw_name"]
     return sorted(pool, key=lambda b: b["name"]), skipped_rules
@@ -286,6 +289,7 @@ def main():
     items += [(data["bonus_micro"]["item"], data["bonus_micro"]["item_id"]), (data["eras"]["item"], data["eras"]["item_id"])]
     locations = [(b["build_location"], b["build_location_id"]) for b in data["biotica"]]
     locations += [(r["location"], r["location_id"]) for b in data["biotica"] for r in b["rules"]]
+    locations += [(b["all_combos_location"], b["all_combos_location_id"]) for b in data["biotica"] if b["rules"]]
     locations += [(e["location"], e["location_id"]) for key in ("request_rewards", "shop_drafts") for e in data[key]]
     for label, table in (("item", items), ("location", locations)):
         names = collections.Counter(n for n, _ in table)

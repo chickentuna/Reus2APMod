@@ -209,7 +209,9 @@
    "item": "African Elephant",
    "item_id": 1156531234249,
    "build_location": "Build African Elephant",
-   "build_location_id": 1156531234249
+   "build_location_id": 1156531234249,
+   "all_combos_location": "African Elephant All Combos",
+   "all_combos_location_id": 5554577745353
   },
   {
    "guid": "d6771c85c763b2647b488f6daf609ddb",
@@ -239,7 +241,9 @@
    "item": "African Violet",
    "item_id": 1157081712732,
    "build_location": "Build African Violet",
-   "build_location_id": 1157081712732
+   "build_location_id": 1157081712732,
+   "all_combos_location": "African Violet All Combos",
+   "all_combos_location_id": 5555128223836
   },
   {
    "guid": "c80920b2f8b3de640a84c8833741053f",
@@ -331,7 +335,9 @@
    "item": "African Wild Dog",
    "item_id": 1153208290095,
    "build_location": "Build African Wild Dog",
-   "build_location_id": 1153208290095
+   "build_location_id": 1153208290095,
+   "all_combos_location": "African Wild Dog All Combos",
+   "all_combos_location_id": 5551254801199
   },
   {
    "guid": "2ddf303a31cc8564db5e57abaa61e266",
@@ -522,7 +528,9 @@
    "item": "Agave",
    "item_id": 1149701253249,
    "build_location": "Build Agave",
-   "build_location_id": 1149701253249
+   "build_location_id": 1149701253249,
+   "all_combos_location": "Agave All Combos",
+   "all_combos_location_id": 5547747764353
   },
   {
    "guid": "9b945a8314841df40920e520157a4582",
@@ -675,7 +683,9 @@
    "item": "Amaranth",
    "item_id": 1141274683441,
    "build_location": "Build Amaranth",
-   "build_location_id": 1141274683441
+   "build_location_id": 1141274683441,
+   "all_combos_location": "Amaranth All Combos",
+   "all_combos_location_id": 5539321194545
   },
   {
    "guid": "e7731e67d9e4b0c4da9956afa709d30a",
@@ -706,7 +716,9 @@
    "item": "Amber",
    "item_id": 1161640928893,
    "build_location": "Build Amber",
-   "build_location_id": 1161640928893
+   "build_location_id": 1161640928893,
+   "all_combos_location": "Amber All Combos",
+   "all_combos_location_id": 5559687439997
   },
   {
    "guid": "148bc31802f7c2a4aad17c329736c0c7",
@@ -873,7 +885,9 @@
    "item": "Amethyst",
    "item_id": 1105026888064,
    "build_location": "Build Amethyst",
-   "build_location_id": 1105026888064
+   "build_location_id": 1105026888064,
+   "all_combos_location": "Amethyst All Combos",
+   "all_combos_location_id": 5503073399168
   },
   {
    "guid": "36ba57de70feb904d8716d87c05cf205",
@@ -910,7 +924,9 @@
    "item": "Amur Leopard",
    "item_id": 1114202537447,
    "build_location": "Build Amur Leopard",
-   "build_location_id": 1114202537447
+   "build_location_id": 1114202537447,
+   "all_combos_location": "Amur Leopard All Combos",
+   "all_combos_location_id": 5512249048551
   },
   {
    "guid": "e0ccc8a1cdf235441b0eabaab03639ec",
@@ -949,7 +965,9 @@
    "item": "Anchovy",
    "item_id": 1159855901212,
    "build_location": "Build Anchovy",
-   "build_location_id": 1159855901212
+   "build_location_id": 1159855901212,
+   "all_combos_location": "Anchovy All Combos",
+   "all_combos_location_id": 5557902412316
   },
   {
    "guid": "f9ac35b612a1c934a8dbb945912a8f29",
@@ -981,7 +999,9 @@
    "item": "Angler Fish",
    "item_id": 1166532631393,
    "build_location": "Build Angler Fish",
-   "build_location_id": 1166532631393
+   "build_location_id": 1166532631393,
+   "all_combos_location": "Angler Fish All Combos",
+   "all_combos_location_id": 5564579142497
   },
   {
    "guid": "4b4b5f65b1f3aa647879ff15d17286f1",
@@ -1016,7 +1036,9 @@
    "item": "Antimony",
    "item_id": 1119723320923,
    "build_location": "Build Antimony",
-   "build_location_id": 1119723320923
+   "build_location_id": 1119723320923,
+   "all_combos_location": "Antimony All Combos",
+   "all_combos_location_id": 5517769832027
   },
   {
    "guid": "7130026fddd810a4aa046008d37db1e9",
@@ -1093,7 +1115,9 @@
    "item": "Apple Tree",
    "item_id": 1129895175933,
    "build_location": "Build Apple Tree",
-   "build_location_id": 1129895175933
+   "build_location_id": 1129895175933,
+   "all_combos_location": "Apple Tree All Combos",
+   "all_combos_location_id": 5527941687037
   },
   {
    "guid": "0f42535ca7640444daa571904d1e7d18",
@@ -1122,7 +1146,9 @@
    "item": "Aquamarine",
    "item_id": 1103607707082,
    "build_location": "Build Aquamarine",
-   "build_location_id": 1103607707082
+   "build_location_id": 1103607707082,
+   "all_combos_location": "Aquamarine All Combos",
+   "all_combos_location_id": 5501654218186
   },
   {
    "guid": "f7df096a75d488545a7d809384b79703",
@@ -1267,7 +1293,9 @@
    "item": "Armadillo",
    "item_id": 1166049056423,
    "build_location": "Build Armadillo",
-   "build_location_id": 1166049056423
+   "build_location_id": 1166049056423,
+   "all_combos_location": "Armadillo All Combos",
+   "all_combos_location_id": 5564095567527
   },
   {
    "guid": "d21ad4340519d5545bc98bed1455e792",
@@ -1412,7 +1440,9 @@
    "item": "Arrau Turtle",
    "item_id": 1155911205696,
    "build_location": "Build Arrau Turtle",
-   "build_location_id": 1155911205696
+   "build_location_id": 1155911205696,
+   "all_combos_location": "Arrau Turtle All Combos",
+   "all_combos_location_id": 5553957716800
   },
   {
    "guid": "8be16cad5ffd4504da097a78e8620802",
@@ -1580,7 +1610,9 @@
    "item": "Bamboo",
    "item_id": 1103447145628,
    "build_location": "Build Bamboo",
-   "build_location_id": 1103447145628
+   "build_location_id": 1103447145628,
+   "all_combos_location": "Bamboo All Combos",
+   "all_combos_location_id": 5501493656732
   },
   {
    "guid": "ee343780b467df948bde99e77449aa64",
@@ -1732,7 +1764,9 @@
    "item": "Banana",
    "item_id": 1163454019595,
    "build_location": "Build Banana",
-   "build_location_id": 1163454019595
+   "build_location_id": 1163454019595,
+   "all_combos_location": "Banana All Combos",
+   "all_combos_location_id": 5561500530699
   },
   {
    "guid": "210e11c9b2fa20c4891ebd465e42a52a",
@@ -1770,7 +1804,9 @@
    "item": "Baobab",
    "item_id": 1108384750747,
    "build_location": "Build Baobab",
-   "build_location_id": 1108384750747
+   "build_location_id": 1108384750747,
+   "all_combos_location": "Baobab All Combos",
+   "all_combos_location_id": 5506431261851
   },
   {
    "guid": "05eef46fd4af8694aac8d6bbf5d7d03e",
@@ -1853,7 +1889,9 @@
    "item": "Barley",
    "item_id": 1101104367357,
    "build_location": "Build Barley",
-   "build_location_id": 1101104367357
+   "build_location_id": 1101104367357,
+   "all_combos_location": "Barley All Combos",
+   "all_combos_location_id": 5499150878461
   },
   {
    "guid": "5b09a3f91ce9fa541acf89d7db376a22",
@@ -1908,7 +1946,9 @@
    "item": "Basalt",
    "item_id": 1115885645507,
    "build_location": "Build Basalt",
-   "build_location_id": 1115885645507
+   "build_location_id": 1115885645507,
+   "all_combos_location": "Basalt All Combos",
+   "all_combos_location_id": 5513932156611
   },
   {
    "guid": "3d8044c724580ed45be8e4d81933d1db",
@@ -2076,7 +2116,9 @@
    "item": "Basalt (Aquatic)",
    "item_id": 1116020690034,
    "build_location": "Build Basalt (Aquatic)",
-   "build_location_id": 1116020690034
+   "build_location_id": 1116020690034,
+   "all_combos_location": "Basalt (Aquatic) All Combos",
+   "all_combos_location_id": 5514067201138
   },
   {
    "guid": "3adaf1821bb913a4685464ce3e1cc470",
@@ -2108,7 +2150,9 @@
    "item": "Bauxite",
    "item_id": 1115310463009,
    "build_location": "Build Bauxite",
-   "build_location_id": 1115310463009
+   "build_location_id": 1115310463009,
+   "all_combos_location": "Bauxite All Combos",
+   "all_combos_location_id": 5513356974113
   },
   {
    "guid": "c9e72b3150e32174b9a5788c76140f82",
@@ -2146,7 +2190,9 @@
    "item": "Bearded Dragon",
    "item_id": 1153709552405,
    "build_location": "Build Bearded Dragon",
-   "build_location_id": 1153709552405
+   "build_location_id": 1153709552405,
+   "all_combos_location": "Bearded Dragon All Combos",
+   "all_combos_location_id": 5551756063509
   },
   {
    "guid": "69d939a2265c09d40b7a7447a9b6d8ea",
@@ -2242,7 +2288,9 @@
    "item": "Beaver",
    "item_id": 1127925127714,
    "build_location": "Build Beaver",
-   "build_location_id": 1127925127714
+   "build_location_id": 1127925127714,
+   "all_combos_location": "Beaver All Combos",
+   "all_combos_location_id": 5525971638818
   },
   {
    "guid": "c57a7b85ab2110d4fac1fb656ea13fb1",
@@ -2388,7 +2436,9 @@
    "item": "Bedrock",
    "item_id": 1152521844826,
    "build_location": "Build Bedrock",
-   "build_location_id": 1152521844826
+   "build_location_id": 1152521844826,
+   "all_combos_location": "Bedrock All Combos",
+   "all_combos_location_id": 5550568355930
   },
   {
    "guid": "42bff7ae42b209842936791641929cf0",
@@ -2475,7 +2525,9 @@
    "item": "Black Bear",
    "item_id": 1117429660388,
    "build_location": "Build Black Bear",
-   "build_location_id": 1117429660388
+   "build_location_id": 1117429660388,
+   "all_combos_location": "Black Bear All Combos",
+   "all_combos_location_id": 5515476171492
   },
   {
    "guid": "19dc9571be232734780b3ecabbe4c320",
@@ -2595,7 +2647,9 @@
    "item": "Blackberry",
    "item_id": 1106453813019,
    "build_location": "Build Blackberry",
-   "build_location_id": 1106453813019
+   "build_location_id": 1106453813019,
+   "all_combos_location": "Blackberry All Combos",
+   "all_combos_location_id": 5504500324123
   },
   {
    "guid": "a9d78d069059a554f900932fc539210a",
@@ -2660,7 +2714,9 @@
    "item": "Blue Whale",
    "item_id": 1145103241321,
    "build_location": "Build Blue Whale",
-   "build_location_id": 1145103241321
+   "build_location_id": 1145103241321,
+   "all_combos_location": "Blue Whale All Combos",
+   "all_combos_location_id": 5543149752425
   },
   {
    "guid": "8f5cd097c0de1864aa88b6a4ab34a305",
@@ -2743,7 +2799,9 @@
    "item": "Bluebead",
    "item_id": 1137995221372,
    "build_location": "Build Bluebead",
-   "build_location_id": 1137995221372
+   "build_location_id": 1137995221372,
+   "all_combos_location": "Bluebead All Combos",
+   "all_combos_location_id": 5536041732476
   },
   {
    "guid": "2f8e3101dbb28d24eb643c71160119cb",
@@ -2886,7 +2944,9 @@
    "item": "Blueberry",
    "item_id": 1112277192733,
    "build_location": "Build Blueberry",
-   "build_location_id": 1112277192733
+   "build_location_id": 1112277192733,
+   "all_combos_location": "Blueberry All Combos",
+   "all_combos_location_id": 5510323703837
   },
   {
    "guid": "f5c66410b2255834180531fafedadd36",
@@ -2923,7 +2983,9 @@
    "item": "Boar",
    "item_id": 1165486342411,
    "build_location": "Build Boar",
-   "build_location_id": 1165486342411
+   "build_location_id": 1165486342411,
+   "all_combos_location": "Boar All Combos",
+   "all_combos_location_id": 5563532853515
   },
   {
    "guid": "1bc37e19ba8522941b41934ad8a93d98",
@@ -3099,7 +3161,9 @@
    "item": "Bottlenose Dolphin",
    "item_id": 1106964373915,
    "build_location": "Build Bottlenose Dolphin",
-   "build_location_id": 1106964373915
+   "build_location_id": 1106964373915,
+   "all_combos_location": "Bottlenose Dolphin All Combos",
+   "all_combos_location_id": 5505010885019
   },
   {
    "guid": "2680753bb976d124da04c7dbe9fcdc87",
@@ -3193,7 +3257,9 @@
    "item": "Brazilwood",
    "item_id": 1109846873019,
    "build_location": "Build Brazilwood",
-   "build_location_id": 1109846873019
+   "build_location_id": 1109846873019,
+   "all_combos_location": "Brazilwood All Combos",
+   "all_combos_location_id": 5507893384123
   },
   {
    "guid": "5269782cb3524b34a86026b0b78474c8",
@@ -3403,7 +3469,9 @@
    "item": "Brown Bear",
    "item_id": 1121633927883,
    "build_location": "Build Brown Bear",
-   "build_location_id": 1121633927883
+   "build_location_id": 1121633927883,
+   "all_combos_location": "Brown Bear All Combos",
+   "all_combos_location_id": 5519680438987
   },
   {
    "guid": "89274f0c12553d545b7141da84659e2f",
@@ -3489,7 +3557,9 @@
    "item": "Cacao Tree",
    "item_id": 1136328503489,
    "build_location": "Build Cacao Tree",
-   "build_location_id": 1136328503489
+   "build_location_id": 1136328503489,
+   "all_combos_location": "Cacao Tree All Combos",
+   "all_combos_location_id": 5534375014593
   },
   {
    "guid": "ff7037a07f1a84d4fa2a33b4cc04b054",
@@ -3528,7 +3598,9 @@
    "item": "Caiman",
    "item_id": 1168080337415,
    "build_location": "Build Caiman",
-   "build_location_id": 1168080337415
+   "build_location_id": 1168080337415,
+   "all_combos_location": "Caiman All Combos",
+   "all_combos_location_id": 5566126848519
   },
   {
    "guid": "752b722a6d398134fba8e2eda1cfe34b",
@@ -3559,7 +3631,9 @@
    "item": "Camphor Tree",
    "item_id": 1130964132518,
    "build_location": "Build Camphor Tree",
-   "build_location_id": 1130964132518
+   "build_location_id": 1130964132518,
+   "all_combos_location": "Camphor Tree All Combos",
+   "all_combos_location_id": 5529010643622
   },
   {
    "guid": "9f71015bbc014bc43adcc04a55f5a8bb",
@@ -3650,7 +3724,9 @@
    "item": "Cape Buffalo",
    "item_id": 1142311359931,
    "build_location": "Build Cape Buffalo",
-   "build_location_id": 1142311359931
+   "build_location_id": 1142311359931,
+   "all_combos_location": "Cape Buffalo All Combos",
+   "all_combos_location_id": 5540357871035
   },
   {
    "guid": "089925b16b5f6944198dc555299259e7",
@@ -3819,7 +3895,9 @@
    "item": "Cape Fox",
    "item_id": 1101819697942,
    "build_location": "Build Cape Fox",
-   "build_location_id": 1101819697942
+   "build_location_id": 1101819697942,
+   "all_combos_location": "Cape Fox All Combos",
+   "all_combos_location_id": 5499866209046
   },
   {
    "guid": "da5c32591dc97d64189244b626aefb6b",
@@ -3995,7 +4073,9 @@
    "item": "Capybara",
    "item_id": 1158127232401,
    "build_location": "Build Capybara",
-   "build_location_id": 1158127232401
+   "build_location_id": 1158127232401,
+   "all_combos_location": "Capybara All Combos",
+   "all_combos_location_id": 5556173743505
   },
   {
    "guid": "485abd007d35ff84583846695c2edcad",
@@ -4138,7 +4218,9 @@
    "item": "Caribou",
    "item_id": 1118934126599,
    "build_location": "Build Caribou",
-   "build_location_id": 1118934126599
+   "build_location_id": 1118934126599,
+   "all_combos_location": "Caribou All Combos",
+   "all_combos_location_id": 5516980637703
   },
   {
    "guid": "50fac5b132b8df44da57048f7fd7dea8",
@@ -4307,7 +4389,9 @@
    "item": "Carnelian",
    "item_id": 1121249418003,
    "build_location": "Build Carnelian",
-   "build_location_id": 1121249418003
+   "build_location_id": 1121249418003,
+   "all_combos_location": "Carnelian All Combos",
+   "all_combos_location_id": 5519295929107
   },
   {
    "guid": "67defcd5fe748dd41b919dce9c02ac16",
@@ -4452,7 +4536,9 @@
    "item": "Carrot",
    "item_id": 1127394299231,
    "build_location": "Build Carrot",
-   "build_location_id": 1127394299231
+   "build_location_id": 1127394299231,
+   "all_combos_location": "Carrot All Combos",
+   "all_combos_location_id": 5525440810335
   },
   {
    "guid": "75fe9449b492c5d47a24c1e26f593f54",
@@ -4490,7 +4576,9 @@
    "item": "Cassave",
    "item_id": 1131185521819,
    "build_location": "Build Cassave",
-   "build_location_id": 1131185521819
+   "build_location_id": 1131185521819,
+   "all_combos_location": "Cassave All Combos",
+   "all_combos_location_id": 5529232032923
   },
   {
    "guid": "e62ca5e253b9ed143a9dcfe56fa9e825",
@@ -4689,7 +4777,9 @@
    "item": "Charoite",
    "item_id": 1161298599461,
    "build_location": "Build Charoite",
-   "build_location_id": 1161298599461
+   "build_location_id": 1161298599461,
+   "all_combos_location": "Charoite All Combos",
+   "all_combos_location_id": 5559345110565
   },
   {
    "guid": "a177de2f613c8144f9a1bfa91a75f499",
@@ -4871,7 +4961,9 @@
    "item": "Cheetah",
    "item_id": 1142855426806,
    "build_location": "Build Cheetah",
-   "build_location_id": 1142855426806
+   "build_location_id": 1142855426806,
+   "all_combos_location": "Cheetah All Combos",
+   "all_combos_location_id": 5540901937910
   },
   {
    "guid": "3ec2e6c24e8fab3448cd0c5d84598a13",
@@ -4910,7 +5002,9 @@
    "item": "Cherry Tree",
    "item_id": 1116358994980,
    "build_location": "Build Cherry Tree",
-   "build_location_id": 1116358994980
+   "build_location_id": 1116358994980,
+   "all_combos_location": "Cherry Tree All Combos",
+   "all_combos_location_id": 5514405506084
   },
   {
    "guid": "a956c578802acb644aa4a626057aa7e6",
@@ -5083,7 +5177,9 @@
    "item": "Chinese Jujube",
    "item_id": 1126725483364,
    "build_location": "Build Chinese Jujube",
-   "build_location_id": 1126725483364
+   "build_location_id": 1126725483364,
+   "all_combos_location": "Chinese Jujube All Combos",
+   "all_combos_location_id": 5524771994468
   },
   {
    "guid": "9c144ba0dd6fc2e4da130abb95694461",
@@ -5329,7 +5425,9 @@
    "item": "Christmas Tree Coral",
    "item_id": 1141408840205,
    "build_location": "Build Christmas Tree Coral",
-   "build_location_id": 1141408840205
+   "build_location_id": 1141408840205,
+   "all_combos_location": "Christmas Tree Coral All Combos",
+   "all_combos_location_id": 5539455351309
   },
   {
    "guid": "22a338da3223034468721c6b6253a68c",
@@ -5399,7 +5497,9 @@
    "item": "Chrome",
    "item_id": 1108809584035,
    "build_location": "Build Chrome",
-   "build_location_id": 1108809584035
+   "build_location_id": 1108809584035,
+   "all_combos_location": "Chrome All Combos",
+   "all_combos_location_id": 5506856095139
   },
   {
    "guid": "b233ba5a5090b5c448347a10336fa4b9",
@@ -5428,7 +5528,9 @@
    "item": "Cicer",
    "item_id": 1147347379621,
    "build_location": "Build Cicer",
-   "build_location_id": 1147347379621
+   "build_location_id": 1147347379621,
+   "all_combos_location": "Cicer All Combos",
+   "all_combos_location_id": 5545393890725
   },
   {
    "guid": "b2e4572107af5c24f83674446ad72d1a",
@@ -5458,7 +5560,9 @@
    "item": "Cinchona Tree",
    "item_id": 1147532571152,
    "build_location": "Build Cinchona Tree",
-   "build_location_id": 1147532571152
+   "build_location_id": 1147532571152,
+   "all_combos_location": "Cinchona Tree All Combos",
+   "all_combos_location_id": 5545579082256
   },
   {
    "guid": "2573cd2dafadfb345b966151dcf4435f",
@@ -5506,7 +5610,9 @@
    "item": "Cinnabar",
    "item_id": 1109565166298,
    "build_location": "Build Cinnabar",
-   "build_location_id": 1109565166298
+   "build_location_id": 1109565166298,
+   "all_combos_location": "Cinnabar All Combos",
+   "all_combos_location_id": 5507611677402
   },
   {
    "guid": "2376998f255e649428551be58b00efc3",
@@ -5599,7 +5705,9 @@
    "item": "Citrine",
    "item_id": 1109031229682,
    "build_location": "Build Citrine",
-   "build_location_id": 1109031229682
+   "build_location_id": 1109031229682,
+   "all_combos_location": "Citrine All Combos",
+   "all_combos_location_id": 5507077740786
   },
   {
    "guid": "c5b6a9ba504649548a1bbc7a3e68ddc9",
@@ -5689,7 +5797,9 @@
    "item": "Cloudberry",
    "item_id": 1152584948645,
    "build_location": "Build Cloudberry",
-   "build_location_id": 1152584948645
+   "build_location_id": 1152584948645,
+   "all_combos_location": "Cloudberry All Combos",
+   "all_combos_location_id": 5550631459749
   },
   {
    "guid": "9aa0aae0278d3e240bbb186c394ccd54",
@@ -5727,7 +5837,9 @@
    "item": "Clownfish",
    "item_id": 1141019160066,
    "build_location": "Build Clownfish",
-   "build_location_id": 1141019160066
+   "build_location_id": 1141019160066,
+   "all_combos_location": "Clownfish All Combos",
+   "all_combos_location_id": 5539065671170
   },
   {
    "guid": "c2049ee06aebe1649a5b952bc608679b",
@@ -5872,7 +5984,9 @@
    "item": "Clubhook Squid",
    "item_id": 1151592951302,
    "build_location": "Build Clubhook Squid",
-   "build_location_id": 1151592951302
+   "build_location_id": 1151592951302,
+   "all_combos_location": "Clubhook Squid All Combos",
+   "all_combos_location_id": 5549639462406
   },
   {
    "guid": "619bb19ec2d0ed349a7cb86c2d112275",
@@ -6032,7 +6146,9 @@
    "item": "Coal",
    "item_id": 1125713123820,
    "build_location": "Build Coal",
-   "build_location_id": 1125713123820
+   "build_location_id": 1125713123820,
+   "all_combos_location": "Coal All Combos",
+   "all_combos_location_id": 5523759634924
   },
   {
    "guid": "bd7397564dec9144689af372d193f6c3",
@@ -6185,7 +6301,9 @@
    "item": "Cobalt",
    "item_id": 1150367135076,
    "build_location": "Build Cobalt",
-   "build_location_id": 1150367135076
+   "build_location_id": 1150367135076,
+   "all_combos_location": "Cobalt All Combos",
+   "all_combos_location_id": 5548413646180
   },
   {
    "guid": "69333ec919b970f4399f68b19f5131ca",
@@ -6231,7 +6349,9 @@
    "item": "Coffea Robusta",
    "item_id": 1127751085201,
    "build_location": "Build Coffea Robusta",
-   "build_location_id": 1127751085201
+   "build_location_id": 1127751085201,
+   "all_combos_location": "Coffea Robusta All Combos",
+   "all_combos_location_id": 5525797596305
   },
   {
    "guid": "2656f40040ade964b922e55d695007be",
@@ -6260,7 +6380,9 @@
    "item": "Coober Opal",
    "item_id": 1109803352068,
    "build_location": "Build Coober Opal",
-   "build_location_id": 1109803352068
+   "build_location_id": 1109803352068,
+   "all_combos_location": "Coober Opal All Combos",
+   "all_combos_location_id": 5507849863172
   },
   {
    "guid": "833b8ea58fef8e741a86c954a53f628b",
@@ -6468,7 +6590,9 @@
    "item": "Copper (Taiga)",
    "item_id": 1134739122776,
    "build_location": "Build Copper (Taiga)",
-   "build_location_id": 1134739122776
+   "build_location_id": 1134739122776,
+   "all_combos_location": "Copper (Taiga) All Combos",
+   "all_combos_location_id": 5532785633880
   },
   {
    "guid": "05a5ac842864b2049bcb6e1ac28b48b1",
@@ -6646,7 +6770,9 @@
    "item": "Coral Rock",
    "item_id": 1101027526722,
    "build_location": "Build Coral Rock",
-   "build_location_id": 1101027526722
+   "build_location_id": 1101027526722,
+   "all_combos_location": "Coral Rock All Combos",
+   "all_combos_location_id": 5499074037826
   },
   {
    "guid": "19371b42509581a458fe9b89e3d9f4c7",
@@ -6813,7 +6939,9 @@
    "item": "Corsac",
    "item_id": 1106280297509,
    "build_location": "Build Corsac",
-   "build_location_id": 1106280297509
+   "build_location_id": 1106280297509,
+   "all_combos_location": "Corsac All Combos",
+   "all_combos_location_id": 5504326808613
   },
   {
    "guid": "04e8e4887cc621944ab9d34e42a3292d",
@@ -6883,7 +7011,9 @@
    "item": "Cotton",
    "item_id": 1100829575303,
    "build_location": "Build Cotton",
-   "build_location_id": 1100829575303
+   "build_location_id": 1100829575303,
+   "all_combos_location": "Cotton All Combos",
+   "all_combos_location_id": 5498876086407
   },
   {
    "guid": "fd978849267776348b3958ac7e8a47f2",
@@ -6915,7 +7045,9 @@
    "item": "Cougar",
    "item_id": 1167584691346,
    "build_location": "Build Cougar",
-   "build_location_id": 1167584691346
+   "build_location_id": 1167584691346,
+   "all_combos_location": "Cougar All Combos",
+   "all_combos_location_id": 5565631202450
   },
   {
    "guid": "3a01d6d986680a94fba0f9400364723c",
@@ -7008,7 +7140,9 @@
    "item": "Crab Meeting Spot",
    "item_id": 1115082812824,
    "build_location": "Build Crab Meeting Spot",
-   "build_location_id": 1115082812824
+   "build_location_id": 1115082812824,
+   "all_combos_location": "Crab Meeting Spot All Combos",
+   "all_combos_location_id": 5513129323928
   },
   {
    "guid": "d61076cbd88c9c44dad4ef6a29f2bf81",
@@ -7038,7 +7172,9 @@
    "item": "Cranberry",
    "item_id": 1156974079165,
    "build_location": "Build Cranberry",
-   "build_location_id": 1156974079165
+   "build_location_id": 1156974079165,
+   "all_combos_location": "Cranberry All Combos",
+   "all_combos_location_id": 5555020590269
   },
   {
    "guid": "e57e1c029fa228947a89ca7163cc5ae8",
@@ -7127,7 +7263,9 @@
    "item": "Crossbill",
    "item_id": 1161115582505,
    "build_location": "Build Crossbill",
-   "build_location_id": 1161115582505
+   "build_location_id": 1161115582505,
+   "all_combos_location": "Crossbill All Combos",
+   "all_combos_location_id": 5559162093609
   },
   {
    "guid": "031ca3c11aa0c8c49811a5df3b570e00",
@@ -7212,7 +7350,9 @@
    "item": "Damask Rose",
    "item_id": 1100346965009,
    "build_location": "Build Damask Rose",
-   "build_location_id": 1100346965009
+   "build_location_id": 1100346965009,
+   "all_combos_location": "Damask Rose All Combos",
+   "all_combos_location_id": 5498393476113
   },
   {
    "guid": "3b1759b1fa40476459737be60273c43c",
@@ -7248,7 +7388,9 @@
    "item": "Date Palm",
    "item_id": 1115373804319,
    "build_location": "Build Date Palm",
-   "build_location_id": 1115373804319
+   "build_location_id": 1115373804319,
+   "all_combos_location": "Date Palm All Combos",
+   "all_combos_location_id": 5513420315423
   },
   {
    "guid": "4e5333d788401ab4c8d8cb7c1b1dffe4",
@@ -7313,7 +7455,9 @@
    "item": "Desert Salt",
    "item_id": 1120536837496,
    "build_location": "Build Desert Salt",
-   "build_location_id": 1120536837496
+   "build_location_id": 1120536837496,
+   "all_combos_location": "Desert Salt All Combos",
+   "all_combos_location_id": 5518583348600
   },
   {
    "guid": "c8a17d7cb7c70aa4f9ec0e6bfb6c5070",
@@ -7343,7 +7487,9 @@
    "item": "Desert Tortoise",
    "item_id": 1153368053707,
    "build_location": "Build Desert Tortoise",
-   "build_location_id": 1153368053707
+   "build_location_id": 1153368053707,
+   "all_combos_location": "Desert Tortoise All Combos",
+   "all_combos_location_id": 5551414564811
   },
   {
    "guid": "1696c7a3a2217e746a5378eaa6023529",
@@ -7438,7 +7584,9 @@
    "item": "Diamond",
    "item_id": 1105575311930,
    "build_location": "Build Diamond",
-   "build_location_id": 1105575311930
+   "build_location_id": 1105575311930,
+   "all_combos_location": "Diamond All Combos",
+   "all_combos_location_id": 5503621823034
   },
   {
    "guid": "7935213f48c034c419e7739e5151058c",
@@ -7471,7 +7619,9 @@
    "item": "Dove",
    "item_id": 1132048028660,
    "build_location": "Build Dove",
-   "build_location_id": 1132048028660
+   "build_location_id": 1132048028660,
+   "all_combos_location": "Dove All Combos",
+   "all_combos_location_id": 5530094539764
   },
   {
    "guid": "8b0c9e42229bb8f4086e07c9bd5c19dd",
@@ -7501,7 +7651,9 @@
    "item": "Dove Tree",
    "item_id": 1136837387298,
    "build_location": "Build Dove Tree",
-   "build_location_id": 1136837387298
+   "build_location_id": 1136837387298,
+   "all_combos_location": "Dove Tree All Combos",
+   "all_combos_location_id": 5534883898402
   },
   {
    "guid": "073e37604ac30be4baed436a26bb99ff",
@@ -7546,7 +7698,9 @@
    "item": "Dromedary Camel",
    "item_id": 1101455914500,
    "build_location": "Build Dromedary Camel",
-   "build_location_id": 1101455914500
+   "build_location_id": 1101455914500,
+   "all_combos_location": "Dromedary Camel All Combos",
+   "all_combos_location_id": 5499502425604
   },
   {
    "guid": "a05fbc53b1801054d9fe5c4ef0bbaf93",
@@ -7700,7 +7854,9 @@
    "item": "Dugong",
    "item_id": 1142561686843,
    "build_location": "Build Dugong",
-   "build_location_id": 1142561686843
+   "build_location_id": 1142561686843,
+   "all_combos_location": "Dugong All Combos",
+   "all_combos_location_id": 5540608197947
   },
   {
    "guid": "815134120f7cdb84da33f6dea8cdaa11",
@@ -7816,7 +7972,9 @@
    "item": "Dysprosium",
    "item_id": 1134224949536,
    "build_location": "Build Dysprosium",
-   "build_location_id": 1134224949536
+   "build_location_id": 1134224949536,
+   "all_combos_location": "Dysprosium All Combos",
+   "all_combos_location_id": 5532271460640
   },
   {
    "guid": "b045c57ed54f515489794e247e378f53",
@@ -7923,7 +8081,9 @@
    "item": "Ebony",
    "item_id": 1146829428717,
    "build_location": "Build Ebony",
-   "build_location_id": 1146829428717
+   "build_location_id": 1146829428717,
+   "all_combos_location": "Ebony All Combos",
+   "all_combos_location_id": 5544875939821
   },
   {
    "guid": "f22fcae7e988260438c663f3b41ec36a",
@@ -8070,7 +8230,9 @@
    "item": "Egusi",
    "item_id": 1164523122302,
    "build_location": "Build Egusi",
-   "build_location_id": 1164523122302
+   "build_location_id": 1164523122302,
+   "all_combos_location": "Egusi All Combos",
+   "all_combos_location_id": 5562569633406
   },
   {
    "guid": "a4c9623be75f8914fbdcca20b3704d3f",
@@ -8237,7 +8399,9 @@
    "item": "Elephant Grass",
    "item_id": 1143746208702,
    "build_location": "Build Elephant Grass",
-   "build_location_id": 1143746208702
+   "build_location_id": 1143746208702,
+   "all_combos_location": "Elephant Grass All Combos",
+   "all_combos_location_id": 5541792719806
   },
   {
    "guid": "14495b8cd3cc6e9468729ed857468cb8",
@@ -8361,7 +8525,9 @@
    "item": "Emerald",
    "item_id": 1104957257933,
    "build_location": "Build Emerald",
-   "build_location_id": 1104957257933
+   "build_location_id": 1104957257933,
+   "all_combos_location": "Emerald All Combos",
+   "all_combos_location_id": 5503003769037
   },
   {
    "guid": "135ec2af45a0e8746af25bd5678674b0",
@@ -8538,7 +8704,9 @@
    "item": "Emu",
    "item_id": 1104711265012,
    "build_location": "Build Emu",
-   "build_location_id": 1104711265012
+   "build_location_id": 1104711265012,
+   "all_combos_location": "Emu All Combos",
+   "all_combos_location_id": 5502757776116
   },
   {
    "guid": "1dbd5712294dffb4daf31d05177f364d",
@@ -8682,7 +8850,9 @@
    "item": "Enargite",
    "item_id": 1107494793506,
    "build_location": "Build Enargite",
-   "build_location_id": 1107494793506
+   "build_location_id": 1107494793506,
+   "all_combos_location": "Enargite All Combos",
+   "all_combos_location_id": 5505541304610
   },
   {
    "guid": "73d66c1a2af0ffb4eabf8105f0207d24",
@@ -8714,7 +8884,9 @@
    "item": "Eucalyptus",
    "item_id": 1130606543266,
    "build_location": "Build Eucalyptus",
-   "build_location_id": 1130606543266
+   "build_location_id": 1130606543266,
+   "all_combos_location": "Eucalyptus All Combos",
+   "all_combos_location_id": 5528653054370
   },
   {
    "guid": "d4f865ba5d9c77d4f8df57f19b6020e3",
@@ -8931,7 +9103,9 @@
    "item": "Falcon",
    "item_id": 1156680407973,
    "build_location": "Build Falcon",
-   "build_location_id": 1156680407973
+   "build_location_id": 1156680407973,
+   "all_combos_location": "Falcon All Combos",
+   "all_combos_location_id": 5554726919077
   },
   {
    "guid": "98ca116d624b2154b9239955a07aa25f",
@@ -8962,7 +9136,9 @@
    "item": "False Trumpet Grounds",
    "item_id": 1140525700822,
    "build_location": "Build False Trumpet Grounds",
-   "build_location_id": 1140525700822
+   "build_location_id": 1140525700822,
+   "all_combos_location": "False Trumpet Grounds All Combos",
+   "all_combos_location_id": 5538572211926
   },
   {
    "guid": "0c641f2166b29c549b7937851bdb6ef1",
@@ -8991,7 +9167,9 @@
    "item": "Fan Palm",
    "item_id": 1102837838358,
    "build_location": "Build Fan Palm",
-   "build_location_id": 1102837838358
+   "build_location_id": 1102837838358,
+   "all_combos_location": "Fan Palm All Combos",
+   "all_combos_location_id": 5500884349462
   },
   {
    "guid": "762c1d6daa06ab1498ac55fe14b69d73",
@@ -9020,7 +9198,9 @@
    "item": "Feldspar",
    "item_id": 1131233269466,
    "build_location": "Build Feldspar",
-   "build_location_id": 1131233269466
+   "build_location_id": 1131233269466,
+   "all_combos_location": "Feldspar All Combos",
+   "all_combos_location_id": 5529279780570
   },
   {
    "guid": "d69bf8e216d656e4299b01cc99dd8edc",
@@ -9110,7 +9290,9 @@
    "item": "Fennec",
    "item_id": 1157120364065,
    "build_location": "Build Fennec",
-   "build_location_id": 1157120364065
+   "build_location_id": 1157120364065,
+   "all_combos_location": "Fennec All Combos",
+   "all_combos_location_id": 5555166875169
   },
   {
    "guid": "d43968a3211b0174297a0a2eb2459349",
@@ -9255,7 +9437,9 @@
    "item": "Field Eryngo",
    "item_id": 1156480141874,
    "build_location": "Build Field Eryngo",
-   "build_location_id": 1156480141874
+   "build_location_id": 1156480141874,
+   "all_combos_location": "Field Eryngo All Combos",
+   "all_combos_location_id": 5554526652978
   },
   {
    "guid": "342cd165e08b8fa4481f33cd6481f4ea",
@@ -9427,7 +9611,9 @@
    "item": "Fig",
    "item_id": 1113517266526,
    "build_location": "Build Fig",
-   "build_location_id": 1113517266526
+   "build_location_id": 1113517266526,
+   "all_combos_location": "Fig All Combos",
+   "all_combos_location_id": 5511563777630
   },
   {
    "guid": "261f7dbe0b20d7d4384039882989b909",
@@ -9594,7 +9780,9 @@
    "item": "Finger Coral",
    "item_id": 1109745196000,
    "build_location": "Build Finger Coral",
-   "build_location_id": 1109745196000
+   "build_location_id": 1109745196000,
+   "all_combos_location": "Finger Coral All Combos",
+   "all_combos_location_id": 5507791707104
   },
   {
    "guid": "bd0fafcf5cc25c2408573ffae07f36e3",
@@ -9653,7 +9841,9 @@
    "item": "Fire Opal",
    "item_id": 1144984091262,
    "build_location": "Build Fire Opal",
-   "build_location_id": 1144984091262
+   "build_location_id": 1144984091262,
+   "all_combos_location": "Fire Opal All Combos",
+   "all_combos_location_id": 5543030602366
   },
   {
    "guid": "b36f17a4a5e37964baf7e79031c8dfbb",
@@ -9740,7 +9930,9 @@
    "item": "Flint",
    "item_id": 1147678063178,
    "build_location": "Build Flint",
-   "build_location_id": 1147678063178
+   "build_location_id": 1147678063178,
+   "all_combos_location": "Flint All Combos",
+   "all_combos_location_id": 5545724574282
   },
   {
    "guid": "84d76351b29b9ca429c53629ae578baf",
@@ -9771,7 +9963,9 @@
    "item": "Fluorite",
    "item_id": 1135170958619,
    "build_location": "Build Fluorite",
-   "build_location_id": 1135170958619
+   "build_location_id": 1135170958619,
+   "all_combos_location": "Fluorite All Combos",
+   "all_combos_location_id": 5533217469723
   },
   {
    "guid": "fb6c66ddb01d70e408bc1470750500bf",
@@ -9945,7 +10139,9 @@
    "item": "Fox",
    "item_id": 1167002594779,
    "build_location": "Build Fox",
-   "build_location_id": 1167002594779
+   "build_location_id": 1167002594779,
+   "all_combos_location": "Fox All Combos",
+   "all_combos_location_id": 5565049105883
   },
   {
    "guid": "c8a156093df34e74dbc79fd8f1abf118",
@@ -10044,7 +10240,9 @@
    "item": "Foxglove",
    "item_id": 1153367892115,
    "build_location": "Build Foxglove",
-   "build_location_id": 1153367892115
+   "build_location_id": 1153367892115,
+   "all_combos_location": "Foxglove All Combos",
+   "all_combos_location_id": 5551414403219
   },
   {
    "guid": "7ccfda607cda9e24ca7c66f794abc061",
@@ -10080,7 +10278,9 @@
    "item": "Garnet",
    "item_id": 1133015574023,
    "build_location": "Build Garnet",
-   "build_location_id": 1133015574023
+   "build_location_id": 1133015574023,
+   "all_combos_location": "Garnet All Combos",
+   "all_combos_location_id": 5531062085127
   },
   {
    "guid": "587b5cc81c7d86141b44511f81030557",
@@ -10227,7 +10427,9 @@
    "item": "Gaur",
    "item_id": 1123263302785,
    "build_location": "Build Gaur",
-   "build_location_id": 1123263302785
+   "build_location_id": 1123263302785,
+   "all_combos_location": "Gaur All Combos",
+   "all_combos_location_id": 5521309813889
   },
   {
    "guid": "ec35b9cab83b1a646871acea13c8188e",
@@ -10372,7 +10574,9 @@
    "item": "Gazelle",
    "item_id": 1162918730923,
    "build_location": "Build Gazelle",
-   "build_location_id": 1162918730923
+   "build_location_id": 1162918730923,
+   "all_combos_location": "Gazelle All Combos",
+   "all_combos_location_id": 5560965242027
   },
   {
    "guid": "ded7de38cf6abc84796918870c25fb6d",
@@ -10555,7 +10759,9 @@
    "item": "Giant Cardon",
    "item_id": 1159330653068,
    "build_location": "Build Giant Cardon",
-   "build_location_id": 1159330653068
+   "build_location_id": 1159330653068,
+   "all_combos_location": "Giant Cardon All Combos",
+   "all_combos_location_id": 5557377164172
   },
   {
    "guid": "d7625d144f29d0b4cb43b485fb6fedfe",
@@ -10740,7 +10946,9 @@
    "item": "Gila Monster",
    "item_id": 1157328392516,
    "build_location": "Build Gila Monster",
-   "build_location_id": 1157328392516
+   "build_location_id": 1157328392516,
+   "all_combos_location": "Gila Monster All Combos",
+   "all_combos_location_id": 5555374903620
   },
   {
    "guid": "1fe2bac7acd80714c991ee0ae0a847c8",
@@ -10779,7 +10987,9 @@
    "item": "Ginkgo",
    "item_id": 1108070870138,
    "build_location": "Build Ginkgo",
-   "build_location_id": 1108070870138
+   "build_location_id": 1108070870138,
+   "all_combos_location": "Ginkgo All Combos",
+   "all_combos_location_id": 5506117381242
   },
   {
    "guid": "2c332cd2f64ef754f94cda6ceb88e07d",
@@ -10867,7 +11077,9 @@
    "item": "Giraffe",
    "item_id": 1111376448815,
    "build_location": "Build Giraffe",
-   "build_location_id": 1111376448815
+   "build_location_id": 1111376448815,
+   "all_combos_location": "Giraffe All Combos",
+   "all_combos_location_id": 5509422959919
   },
   {
    "guid": "ce308ad9da928554dbbabb4ebf07dc19",
@@ -10922,7 +11134,9 @@
    "item": "Gold",
    "item_id": 1154860232093,
    "build_location": "Build Gold",
-   "build_location_id": 1154860232093
+   "build_location_id": 1154860232093,
+   "all_combos_location": "Gold All Combos",
+   "all_combos_location_id": 5552906743197
   },
   {
    "guid": "3cbc502b7d412c04fb189590c07692c7",
@@ -10975,7 +11189,9 @@
    "item": "Gold (Legendary)",
    "item_id": 1115815215799,
    "build_location": "Build Gold (Legendary)",
-   "build_location_id": 1115815215799
+   "build_location_id": 1115815215799,
+   "all_combos_location": "Gold (Legendary) All Combos",
+   "all_combos_location_id": 5513861726903
   },
   {
    "guid": "554f057b894c1d24a93429a0c18ef76e",
@@ -11150,7 +11366,9 @@
    "item": "Golden Lion Tamarin",
    "item_id": 1122411501496,
    "build_location": "Build Golden Lion Tamarin",
-   "build_location_id": 1122411501496
+   "build_location_id": 1122411501496,
+   "all_combos_location": "Golden Lion Tamarin All Combos",
+   "all_combos_location_id": 5520458012600
   },
   {
    "guid": "ac771d2df5e1f4e4e9abf1e406b3d387",
@@ -11182,7 +11400,9 @@
    "item": "Goose",
    "item_id": 1145807426271,
    "build_location": "Build Goose",
-   "build_location_id": 1145807426271
+   "build_location_id": 1145807426271,
+   "all_combos_location": "Goose All Combos",
+   "all_combos_location_id": 5543853937375
   },
   {
    "guid": "1ce921736bdcb9447a13ea18f9c0f85b",
@@ -11469,7 +11689,9 @@
    "item": "Granite",
    "item_id": 1107272275766,
    "build_location": "Build Granite",
-   "build_location_id": 1107272275766
+   "build_location_id": 1107272275766,
+   "all_combos_location": "Granite All Combos",
+   "all_combos_location_id": 5505318786870
   },
   {
    "guid": "b8b0734c6481a2744906b8444806421c",
@@ -11500,7 +11722,9 @@
    "item": "Grape Vine",
    "item_id": 1149088773318,
    "build_location": "Build Grape Vine",
-   "build_location_id": 1149088773318
+   "build_location_id": 1149088773318,
+   "all_combos_location": "Grape Vine All Combos",
+   "all_combos_location_id": 5547135284422
   },
   {
    "guid": "92b116e50755e01428a8d556cb2f8781",
@@ -11621,7 +11845,9 @@
    "item": "Grey Wolf",
    "item_id": 1138888896080,
    "build_location": "Build Grey Wolf",
-   "build_location_id": 1138888896080
+   "build_location_id": 1138888896080,
+   "all_combos_location": "Grey Wolf All Combos",
+   "all_combos_location_id": 5536935407184
   },
   {
    "guid": "5099099f75672984090b9aa316380ddf",
@@ -11660,7 +11886,9 @@
    "item": "Guarana",
    "item_id": 1121146935799,
    "build_location": "Build Guarana",
-   "build_location_id": 1121146935799
+   "build_location_id": 1121146935799,
+   "all_combos_location": "Guarana All Combos",
+   "all_combos_location_id": 5519193446903
   },
   {
    "guid": "e662ffdbff997524894db1a1bc9b7d5f",
@@ -11742,7 +11970,9 @@
    "item": "Gumbo Limbo",
    "item_id": 1124323665709,
    "build_location": "Build Gumbo Limbo",
-   "build_location_id": 1124323665709
+   "build_location_id": 1124323665709,
+   "all_combos_location": "Gumbo Limbo All Combos",
+   "all_combos_location_id": 5522370176813
   },
   {
    "guid": "2a26883db3d1bb54998bd83323f8d479",
@@ -11863,7 +12093,9 @@
    "item": "Gypsum",
    "item_id": 1110826320859,
    "build_location": "Build Gypsum",
-   "build_location_id": 1110826320859
+   "build_location_id": 1110826320859,
+   "all_combos_location": "Gypsum All Combos",
+   "all_combos_location_id": 5508872831963
   },
   {
    "guid": "2994f2ca23646eb47a971f31b16dedd4",
@@ -12080,7 +12312,9 @@
    "item": "Hamadryas Baboon",
    "item_id": 1110673665186,
    "build_location": "Build Hamadryas Baboon",
-   "build_location_id": 1110673665186
+   "build_location_id": 1110673665186,
+   "all_combos_location": "Hamadryas Baboon All Combos",
+   "all_combos_location_id": 5508720176290
   },
   {
    "guid": "5da624644ceb1554280f6992c2b71abf",
@@ -12254,7 +12488,9 @@
    "item": "Harpy",
    "item_id": 1124650337860,
    "build_location": "Build Harpy",
-   "build_location_id": 1124650337860
+   "build_location_id": 1124650337860,
+   "all_combos_location": "Harpy All Combos",
+   "all_combos_location_id": 5522696848964
   },
   {
    "guid": "8aef02933a647df458c95419b947a52b",
@@ -12421,7 +12657,9 @@
    "item": "Hazelnut Tree",
    "item_id": 1136806340915,
    "build_location": "Build Hazelnut Tree",
-   "build_location_id": 1136806340915
+   "build_location_id": 1136806340915,
+   "all_combos_location": "Hazelnut Tree All Combos",
+   "all_combos_location_id": 5534852852019
   },
   {
    "guid": "50dd906bb8cdb6241858cdebb43fb5af",
@@ -12574,7 +12812,9 @@
    "item": "Heliconia",
    "item_id": 1121218791099,
    "build_location": "Build Heliconia",
-   "build_location_id": 1121218791099
+   "build_location_id": 1121218791099,
+   "all_combos_location": "Heliconia All Combos",
+   "all_combos_location_id": 5519265302203
   },
   {
    "guid": "b868a2b5f4fb7f5478159a8f45e48120",
@@ -12619,7 +12859,9 @@
    "item": "Helium",
    "item_id": 1149013470047,
    "build_location": "Build Helium",
-   "build_location_id": 1149013470047
+   "build_location_id": 1149013470047,
+   "all_combos_location": "Helium All Combos",
+   "all_combos_location_id": 5547059981151
   },
   {
    "guid": "7b43c24d7c299b24f996bbdfe09a8ce0",
@@ -12812,7 +13054,9 @@
    "item": "Hematite",
    "item_id": 1132600239319,
    "build_location": "Build Hematite",
-   "build_location_id": 1132600239319
+   "build_location_id": 1132600239319,
+   "all_combos_location": "Hematite All Combos",
+   "all_combos_location_id": 5530646750423
   },
   {
    "guid": "3a8bc81a09d3c1448a7f7029266ae934",
@@ -12995,7 +13239,9 @@
    "item": "Hemp",
    "item_id": 1115227455904,
    "build_location": "Build Hemp",
-   "build_location_id": 1115227455904
+   "build_location_id": 1115227455904,
+   "all_combos_location": "Hemp All Combos",
+   "all_combos_location_id": 5513273967008
   },
   {
    "guid": "f6b820dff5f4a8849860aade2dbe0da6",
@@ -13209,7 +13455,9 @@
    "item": "Hoopoe",
    "item_id": 1133756846254,
    "build_location": "Build Hoopoe",
-   "build_location_id": 1133756846254
+   "build_location_id": 1133756846254,
+   "all_combos_location": "Hoopoe All Combos",
+   "all_combos_location_id": 5531803357358
   },
   {
    "guid": "576878d55aa5d5848817242fd6ad92bf",
@@ -13240,7 +13488,9 @@
    "item": "Hydrothermal vents",
    "item_id": 1122975059285,
    "build_location": "Build Hydrothermal vents",
-   "build_location_id": 1122975059285
+   "build_location_id": 1122975059285,
+   "all_combos_location": "Hydrothermal vents All Combos",
+   "all_combos_location_id": 5521021570389
   },
   {
    "guid": "779ff2df727cec549923b87ab1295840",
@@ -13391,7 +13641,9 @@
    "item": "Ibex",
    "item_id": 1131623165431,
    "build_location": "Build Ibex",
-   "build_location_id": 1131623165431
+   "build_location_id": 1131623165431,
+   "all_combos_location": "Ibex All Combos",
+   "all_combos_location_id": 5529669676535
   },
   {
    "guid": "3ea25475df80cd248a6a6342c41c94a0",
@@ -13536,7 +13788,9 @@
    "item": "Iguana",
    "item_id": 1116324841309,
    "build_location": "Build Iguana",
-   "build_location_id": 1116324841309
+   "build_location_id": 1116324841309,
+   "all_combos_location": "Iguana All Combos",
+   "all_combos_location_id": 5514371352413
   },
   {
    "guid": "0a6c6053c8eacfe45a8779077dfdb58d",
@@ -13681,7 +13935,9 @@
    "item": "Impala",
    "item_id": 1102309623100,
    "build_location": "Build Impala",
-   "build_location_id": 1102309623100
+   "build_location_id": 1102309623100,
+   "all_combos_location": "Impala All Combos",
+   "all_combos_location_id": 5500356134204
   },
   {
    "guid": "506fb2a83f574a5488a63a915ebd5aa6",
@@ -13831,7 +14087,9 @@
    "item": "Index Fossil",
    "item_id": 1121103587971,
    "build_location": "Build Index Fossil",
-   "build_location_id": 1121103587971
+   "build_location_id": 1121103587971,
+   "all_combos_location": "Index Fossil All Combos",
+   "all_combos_location_id": 5519150099075
   },
   {
    "guid": "3787877816a117b48b4c25540d07116b",
@@ -13890,7 +14148,9 @@
    "item": "Iron",
    "item_id": 1114417690497,
    "build_location": "Build Iron",
-   "build_location_id": 1114417690497
+   "build_location_id": 1114417690497,
+   "all_combos_location": "Iron All Combos",
+   "all_combos_location_id": 5512464201601
   },
   {
    "guid": "42ecd904fc3445342ba1827430be60ca",
@@ -14057,7 +14317,9 @@
    "item": "Jabuticaba",
    "item_id": 1117476720719,
    "build_location": "Build Jabuticaba",
-   "build_location_id": 1117476720719
+   "build_location_id": 1117476720719,
+   "all_combos_location": "Jabuticaba All Combos",
+   "all_combos_location_id": 5515523231823
   },
   {
    "guid": "70b24b08ee8d12345b214d6e9ad3bba5",
@@ -14088,7 +14350,9 @@
    "item": "Jackal",
    "item_id": 1129763352718,
    "build_location": "Build Jackal",
-   "build_location_id": 1129763352718
+   "build_location_id": 1129763352718,
+   "all_combos_location": "Jackal All Combos",
+   "all_combos_location_id": 5527809863822
   },
   {
    "guid": "8c14a7c50ee89c74b914f1a56bcb800d",
@@ -14185,7 +14449,9 @@
    "item": "Jackalberry",
    "item_id": 1137114250320,
    "build_location": "Build Jackalberry",
-   "build_location_id": 1137114250320
+   "build_location_id": 1137114250320,
+   "all_combos_location": "Jackalberry All Combos",
+   "all_combos_location_id": 5535160761424
   },
   {
    "guid": "14152449eee9c054f82e3ca0abd65b21",
@@ -14458,7 +14724,9 @@
    "item": "Jade (Imperial)",
    "item_id": 1104902505630,
    "build_location": "Build Jade (Imperial)",
-   "build_location_id": 1104902505630
+   "build_location_id": 1104902505630,
+   "all_combos_location": "Jade (Imperial) All Combos",
+   "all_combos_location_id": 5502949016734
   },
   {
    "guid": "7bdfb822a68af9149a0f5423264a85e4",
@@ -14616,7 +14884,9 @@
    "item": "Jade (Ritual)",
    "item_id": 1132763775530,
    "build_location": "Build Jade (Ritual)",
-   "build_location_id": 1132763775530
+   "build_location_id": 1132763775530,
+   "all_combos_location": "Jade (Ritual) All Combos",
+   "all_combos_location_id": 5530810286634
   },
   {
    "guid": "f9454ec9ad42e8c48b19e5f7e64a290f",
@@ -14662,7 +14932,9 @@
    "item": "Jaguar",
    "item_id": 1166424730778,
    "build_location": "Build Jaguar",
-   "build_location_id": 1166424730778
+   "build_location_id": 1166424730778,
+   "all_combos_location": "Jaguar All Combos",
+   "all_combos_location_id": 5564471241882
   },
   {
    "guid": "b977e77ba66deab49a11935ed83b1aba",
@@ -14830,7 +15102,9 @@
    "item": "Jasper",
    "item_id": 1149297915834,
    "build_location": "Build Jasper",
-   "build_location_id": 1149297915834
+   "build_location_id": 1149297915834,
+   "all_combos_location": "Jasper All Combos",
+   "all_combos_location_id": 5547344426938
   },
   {
    "guid": "d5a0111fdf96c184ab6a3f67a6a73e37",
@@ -14976,7 +15250,9 @@
    "item": "Jellyfish",
    "item_id": 1156856222205,
    "build_location": "Build Jellyfish",
-   "build_location_id": 1156856222205
+   "build_location_id": 1156856222205,
+   "all_combos_location": "Jellyfish All Combos",
+   "all_combos_location_id": 5554902733309
   },
   {
    "guid": "5f9777eb9b000d848a2d5446fe4da2e5",
@@ -15119,7 +15395,9 @@
    "item": "Jerboa",
    "item_id": 1125171822265,
    "build_location": "Build Jerboa",
-   "build_location_id": 1125171822265
+   "build_location_id": 1125171822265,
+   "all_combos_location": "Jerboa All Combos",
+   "all_combos_location_id": 5523218333369
   },
   {
    "guid": "f04be77a8320d45428957b5d7dd02370",
@@ -15151,7 +15429,9 @@
    "item": "Jungle Fowl",
    "item_id": 1164015728552,
    "build_location": "Build Jungle Fowl",
-   "build_location_id": 1164015728552
+   "build_location_id": 1164015728552,
+   "all_combos_location": "Jungle Fowl All Combos",
+   "all_combos_location_id": 5562062239656
   },
   {
    "guid": "f681a864f870c624fbaf07273f7cdc09",
@@ -15451,7 +15731,9 @@
    "item": "Kangaroo",
    "item_id": 1165682705999,
    "build_location": "Build Kangaroo",
-   "build_location_id": 1165682705999
+   "build_location_id": 1165682705999,
+   "all_combos_location": "Kangaroo All Combos",
+   "all_combos_location_id": 5563729217103
   },
   {
    "guid": "46b760a49f933d84c8cccb152ba758de",
@@ -15538,7 +15820,9 @@
    "item": "Kaolin",
    "item_id": 1118494394953,
    "build_location": "Build Kaolin",
-   "build_location_id": 1118494394953
+   "build_location_id": 1118494394953,
+   "all_combos_location": "Kaolin All Combos",
+   "all_combos_location_id": 5516540906057
   },
   {
    "guid": "51d95c61591f37646b6db783a579e990",
@@ -15609,7 +15893,9 @@
    "item": "Kapok Tree",
    "item_id": 1121482819093,
    "build_location": "Build Kapok Tree",
-   "build_location_id": 1121482819093
+   "build_location_id": 1121482819093,
+   "all_combos_location": "Kapok Tree All Combos",
+   "all_combos_location_id": 5519529330197
   },
   {
    "guid": "d07bdf4b2972af44e86b7bb0c7e197f1",
@@ -15659,7 +15945,9 @@
    "item": "Kelp",
    "item_id": 1155476092082,
    "build_location": "Build Kelp",
-   "build_location_id": 1155476092082
+   "build_location_id": 1155476092082,
+   "all_combos_location": "Kelp All Combos",
+   "all_combos_location_id": 5553522603186
   },
   {
    "guid": "f3d68f8ef5098654bb970598eaa48ee1",
@@ -15692,7 +15980,9 @@
    "item": "Kentucky Coffeetree",
    "item_id": 1164966426863,
    "build_location": "Build Kentucky Coffeetree",
-   "build_location_id": 1164966426863
+   "build_location_id": 1164966426863,
+   "all_combos_location": "Kentucky Coffeetree All Combos",
+   "all_combos_location_id": 5563012937967
   },
   {
    "guid": "e491bee30b6f277458f787e94c670f86",
@@ -15802,7 +16092,9 @@
    "item": "King Brown Snake",
    "item_id": 1160867737136,
    "build_location": "Build King Brown Snake",
-   "build_location_id": 1160867737136
+   "build_location_id": 1160867737136,
+   "all_combos_location": "King Brown Snake All Combos",
+   "all_combos_location_id": 5558914248240
   },
   {
    "guid": "f2b72c4e73777344c9d06baca3e2d171",
@@ -15832,7 +16124,9 @@
    "item": "Kola Nut Tree",
    "item_id": 1164665079015,
    "build_location": "Build Kola Nut Tree",
-   "build_location_id": 1164665079015
+   "build_location_id": 1164665079015,
+   "all_combos_location": "Kola Nut Tree All Combos",
+   "all_combos_location_id": 5562711590119
   },
   {
    "guid": "b07d4a1b47b88a340bded035651a0ef8",
@@ -15962,7 +16256,9 @@
    "item": "Kookaburra",
    "item_id": 1146887643572,
    "build_location": "Build Kookaburra",
-   "build_location_id": 1146887643572
+   "build_location_id": 1146887643572,
+   "all_combos_location": "Kookaburra All Combos",
+   "all_combos_location_id": 5544934154676
   },
   {
    "guid": "92ebb79ae2c335f48b8a72b4f35a99e1",
@@ -16106,7 +16402,9 @@
    "item": "Kunzite",
    "item_id": 1138950371758,
    "build_location": "Build Kunzite",
-   "build_location_id": 1138950371758
+   "build_location_id": 1138950371758,
+   "all_combos_location": "Kunzite All Combos",
+   "all_combos_location_id": 5536996882862
   },
   {
    "guid": "8c45d58c09f2ef14782571cca3f94e30",
@@ -16269,7 +16567,9 @@
    "item": "Labrador Tea",
    "item_id": 1137165818048,
    "build_location": "Build Labrador Tea",
-   "build_location_id": 1137165818048
+   "build_location_id": 1137165818048,
+   "all_combos_location": "Labrador Tea All Combos",
+   "all_combos_location_id": 5535212329152
   },
   {
    "guid": "07b860d920d7ede4a8da0e8d3f8af17e",
@@ -16354,7 +16654,9 @@
    "item": "Labradorite",
    "item_id": 1101584010642,
    "build_location": "Build Labradorite",
-   "build_location_id": 1101584010642
+   "build_location_id": 1101584010642,
+   "all_combos_location": "Labradorite All Combos",
+   "all_combos_location_id": 5499630521746
   },
   {
    "guid": "012dc1abf1f6a7041b1efb9b2fb866fb",
@@ -16445,7 +16747,9 @@
    "item": "Lapis Lazuli",
    "item_id": 1099828042431,
    "build_location": "Build Lapis Lazuli",
-   "build_location_id": 1099828042431
+   "build_location_id": 1099828042431,
+   "all_combos_location": "Lapis Lazuli All Combos",
+   "all_combos_location_id": 5497874553535
   },
   {
    "guid": "af562ab875b730c428a0dcfcb2c7cd26",
@@ -16536,7 +16840,9 @@
    "item": "Larix",
    "item_id": 1146578185095,
    "build_location": "Build Larix",
-   "build_location_id": 1146578185095
+   "build_location_id": 1146578185095,
+   "all_combos_location": "Larix All Combos",
+   "all_combos_location_id": 5544624696199
   },
   {
    "guid": "5a73f51d840da7148afc679a16dc105c",
@@ -16671,7 +16977,9 @@
    "item": "Leaf Turquoise",
    "item_id": 1123792409048,
    "build_location": "Build Leaf Turquoise",
-   "build_location_id": 1123792409048
+   "build_location_id": 1123792409048,
+   "all_combos_location": "Leaf Turquoise All Combos",
+   "all_combos_location_id": 5521838920152
   },
   {
    "guid": "450548f2c415f814580b693b4a9c9fde",
@@ -16767,7 +17075,9 @@
    "item": "Lemongrass",
    "item_id": 1118039215916,
    "build_location": "Build Lemongrass",
-   "build_location_id": 1118039215916
+   "build_location_id": 1118039215916,
+   "all_combos_location": "Lemongrass All Combos",
+   "all_combos_location_id": 5516085727020
   },
   {
    "guid": "ad93e351c828f5f48a32a9ccbea65bd6",
@@ -16880,7 +17190,9 @@
    "item": "Leopard",
    "item_id": 1146106033436,
    "build_location": "Build Leopard",
-   "build_location_id": 1146106033436
+   "build_location_id": 1146106033436,
+   "all_combos_location": "Leopard All Combos",
+   "all_combos_location_id": 5544152544540
   },
   {
    "guid": "39f873584c30dc045a984eda89052076",
@@ -17024,7 +17336,9 @@
    "item": "Lignite",
    "item_id": 1115072968068,
    "build_location": "Build Lignite",
-   "build_location_id": 1115072968068
+   "build_location_id": 1115072968068,
+   "all_combos_location": "Lignite All Combos",
+   "all_combos_location_id": 5513119479172
   },
   {
    "guid": "dde9cbcff5b4ca44ca545a3a3ebd3fa5",
@@ -17175,7 +17489,9 @@
    "item": "Limestone",
    "item_id": 1159081016575,
    "build_location": "Build Limestone",
-   "build_location_id": 1159081016575
+   "build_location_id": 1159081016575,
+   "all_combos_location": "Limestone All Combos",
+   "all_combos_location_id": 5557127527679
   },
   {
    "guid": "30ef56cafedbae746930397aa89c3c04",
@@ -17365,7 +17681,9 @@
    "item": "Lion",
    "item_id": 1112647494831,
    "build_location": "Build Lion",
-   "build_location_id": 1112647494831
+   "build_location_id": 1112647494831,
+   "all_combos_location": "Lion All Combos",
+   "all_combos_location_id": 5510694005935
   },
   {
    "guid": "2ec365e2f3c8c604dba3ecde3991846f",
@@ -17459,7 +17777,9 @@
    "item": "Lions Ear",
    "item_id": 1112064548399,
    "build_location": "Build Lions Ear",
-   "build_location_id": 1112064548399
+   "build_location_id": 1112064548399,
+   "all_combos_location": "Lions Ear All Combos",
+   "all_combos_location_id": 5510111059503
   },
   {
    "guid": "881d7c39ddd4b97458dfd09821da8a38",
@@ -17584,7 +17904,9 @@
    "item": "Lithium",
    "item_id": 1136049767325,
    "build_location": "Build Lithium",
-   "build_location_id": 1136049767325
+   "build_location_id": 1136049767325,
+   "all_combos_location": "Lithium All Combos",
+   "all_combos_location_id": 5534096278429
   },
   {
    "guid": "6cbfe9fcf516f1a4bbe08d833dc0203c",
@@ -17643,7 +17965,9 @@
    "item": "Mahi-Mahi",
    "item_id": 1132271612869,
    "build_location": "Build Mahi-Mahi",
-   "build_location_id": 1132271612869
+   "build_location_id": 1132271612869,
+   "all_combos_location": "Mahi-Mahi All Combos",
+   "all_combos_location_id": 5530318123973
   },
   {
    "guid": "a1c4eea866404b84d8f816280ca014b9",
@@ -17727,7 +18051,9 @@
    "item": "Mandarin Duck",
    "item_id": 1142936234630,
    "build_location": "Build Mandarin Duck",
-   "build_location_id": 1142936234630
+   "build_location_id": 1142936234630,
+   "all_combos_location": "Mandarin Duck All Combos",
+   "all_combos_location_id": 5540982745734
   },
   {
    "guid": "9e48f5fce4c0bd54e8dfa1d44798a879",
@@ -17765,7 +18091,9 @@
    "item": "Mandril",
    "item_id": 1142000934862,
    "build_location": "Build Mandril",
-   "build_location_id": 1142000934862
+   "build_location_id": 1142000934862,
+   "all_combos_location": "Mandril All Combos",
+   "all_combos_location_id": 5540047445966
   },
   {
    "guid": "060326766c1c15642acec2d29725e562",
@@ -17908,7 +18236,9 @@
    "item": "Manganese",
    "item_id": 1101125543782,
    "build_location": "Build Manganese",
-   "build_location_id": 1101125543782
+   "build_location_id": 1101125543782,
+   "all_combos_location": "Manganese All Combos",
+   "all_combos_location_id": 5499172054886
   },
   {
    "guid": "77484f1a42da87f4abe7bd989f4b178c",
@@ -17993,7 +18323,9 @@
    "item": "Mango",
    "item_id": 1131531268516,
    "build_location": "Build Mango",
-   "build_location_id": 1131531268516
+   "build_location_id": 1131531268516,
+   "all_combos_location": "Mango All Combos",
+   "all_combos_location_id": 5529577779620
   },
   {
    "guid": "40a28e3358fb7074e9c849eedf3bcb66",
@@ -18030,7 +18362,9 @@
    "item": "Manta Ray",
    "item_id": 1116861948725,
    "build_location": "Build Manta Ray",
-   "build_location_id": 1116861948725
+   "build_location_id": 1116861948725,
+   "all_combos_location": "Manta Ray All Combos",
+   "all_combos_location_id": 5514908459829
   },
   {
    "guid": "f5fb9760625d29540947f56dcf13911b",
@@ -18126,7 +18460,9 @@
    "item": "Maple",
    "item_id": 1165542127110,
    "build_location": "Build Maple",
-   "build_location_id": 1165542127110
+   "build_location_id": 1165542127110,
+   "all_combos_location": "Maple All Combos",
+   "all_combos_location_id": 5563588638214
   },
   {
    "guid": "37d2dc2c54110bd4b9bc8b8425974c67",
@@ -18174,7 +18510,9 @@
    "item": "Marabou",
    "item_id": 1114496680645,
    "build_location": "Build Marabou",
-   "build_location_id": 1114496680645
+   "build_location_id": 1114496680645,
+   "all_combos_location": "Marabou All Combos",
+   "all_combos_location_id": 5512543191749
   },
   {
    "guid": "65aa641d3171ac44ea750a752a222c34",
@@ -18213,7 +18551,9 @@
    "item": "Marlin",
    "item_id": 1126802276819,
    "build_location": "Build Marlin",
-   "build_location_id": 1126802276819
+   "build_location_id": 1126802276819,
+   "all_combos_location": "Marlin All Combos",
+   "all_combos_location_id": 5524848787923
   },
   {
    "guid": "d4ffe501eff7fbc4394f67945c13aafc",
@@ -18381,7 +18721,9 @@
    "item": "Marula",
    "item_id": 1156688269342,
    "build_location": "Build Marula",
-   "build_location_id": 1156688269342
+   "build_location_id": 1156688269342,
+   "all_combos_location": "Marula All Combos",
+   "all_combos_location_id": 5554734780446
   },
   {
    "guid": "bbbc21d4cbac7a04a9739b56c132d863",
@@ -18496,7 +18838,9 @@
    "item": "Meerkat",
    "item_id": 1149906328908,
    "build_location": "Build Meerkat",
-   "build_location_id": 1149906328908
+   "build_location_id": 1149906328908,
+   "all_combos_location": "Meerkat All Combos",
+   "all_combos_location_id": 5547952840012
   },
   {
    "guid": "cc7656253bd44ef4bb1c219d7b0d655e",
@@ -18643,7 +18987,9 @@
    "item": "Methane",
    "item_id": 1154396545619,
    "build_location": "Build Methane",
-   "build_location_id": 1154396545619
+   "build_location_id": 1154396545619,
+   "all_combos_location": "Methane All Combos",
+   "all_combos_location_id": 5552443056723
   },
   {
    "guid": "54dfc26d4966cf442b1d5a369f6eebce",
@@ -18672,7 +19018,9 @@
    "item": "Mica",
    "item_id": 1122294834900,
    "build_location": "Build Mica",
-   "build_location_id": 1122294834900
+   "build_location_id": 1122294834900,
+   "all_combos_location": "Mica All Combos",
+   "all_combos_location_id": 5520341346004
   },
   {
    "guid": "7595c2a7c1c954b43b162410bfca8e27",
@@ -18900,7 +19248,9 @@
    "item": "Millet",
    "item_id": 1131075611260,
    "build_location": "Build Millet",
-   "build_location_id": 1131075611260
+   "build_location_id": 1131075611260,
+   "all_combos_location": "Millet All Combos",
+   "all_combos_location_id": 5529122122364
   },
   {
    "guid": "58e25e4eef40d1e4ebf4fbf14c0d8955",
@@ -19075,7 +19425,9 @@
    "item": "Monkey Orange",
    "item_id": 1123371312366,
    "build_location": "Build Monkey Orange",
-   "build_location_id": 1123371312366
+   "build_location_id": 1123371312366,
+   "all_combos_location": "Monkey Orange All Combos",
+   "all_combos_location_id": 5521417823470
   },
   {
    "guid": "fbc138f78f6e69846b84f2e8d9ec3ed9",
@@ -19142,7 +19494,9 @@
    "item": "Moonstone",
    "item_id": 1167091535736,
    "build_location": "Build Moonstone",
-   "build_location_id": 1167091535736
+   "build_location_id": 1167091535736,
+   "all_combos_location": "Moonstone All Combos",
+   "all_combos_location_id": 5565138046840
   },
   {
    "guid": "b8875363e98cb164da858121b215bbe2",
@@ -19303,7 +19657,9 @@
    "item": "Moose",
    "item_id": 1149045651006,
    "build_location": "Build Moose",
-   "build_location_id": 1149045651006
+   "build_location_id": 1149045651006,
+   "all_combos_location": "Moose All Combos",
+   "all_combos_location_id": 5547092162110
   },
   {
    "guid": "e5ab68b9e5bb8924495bb4a9f40851cf",
@@ -19447,7 +19803,9 @@
    "item": "Moss Agate",
    "item_id": 1161163082654,
    "build_location": "Build Moss Agate",
-   "build_location_id": 1161163082654
+   "build_location_id": 1161163082654,
+   "all_combos_location": "Moss Agate All Combos",
+   "all_combos_location_id": 5559209593758
   },
   {
    "guid": "3d43b2546e23d304fb9e0d75a76bd67c",
@@ -19558,7 +19916,9 @@
    "item": "Mouflon",
    "item_id": 1112018667672,
    "build_location": "Build Mouflon",
-   "build_location_id": 1112018667672
+   "build_location_id": 1112018667672,
+   "all_combos_location": "Mouflon All Combos",
+   "all_combos_location_id": 5510065178776
   },
   {
    "guid": "433392e99c9b14f47b10e89757b87ea1",
@@ -19709,7 +20069,9 @@
    "item": "Mud Volcano",
    "item_id": 1117550882457,
    "build_location": "Build Mud Volcano",
-   "build_location_id": 1117550882457
+   "build_location_id": 1117550882457,
+   "all_combos_location": "Mud Volcano All Combos",
+   "all_combos_location_id": 5515597393561
   },
   {
    "guid": "9f16b24ee590ce14587fee48b64a5b47",
@@ -19739,7 +20101,9 @@
    "item": "Mudcrack",
    "item_id": 1142216664302,
    "build_location": "Build Mudcrack",
-   "build_location_id": 1142216664302
+   "build_location_id": 1142216664302,
+   "all_combos_location": "Mudcrack All Combos",
+   "all_combos_location_id": 5540263175406
   },
   {
    "guid": "719ce31427b970941b8078041345dff2",
@@ -19906,7 +20270,9 @@
    "item": "Mudpool",
    "item_id": 1130009342274,
    "build_location": "Build Mudpool",
-   "build_location_id": 1130009342274
+   "build_location_id": 1130009342274,
+   "all_combos_location": "Mudpool All Combos",
+   "all_combos_location_id": 5528055853378
   },
   {
    "guid": "c8f24f22ad87cba42884ff24d253dfc8",
@@ -20048,7 +20414,9 @@
    "item": "Musk Deer",
    "item_id": 1153452798506,
    "build_location": "Build Musk Deer",
-   "build_location_id": 1153452798506
+   "build_location_id": 1153452798506,
+   "all_combos_location": "Musk Deer All Combos",
+   "all_combos_location_id": 5551499309610
   },
   {
    "guid": "cb74a9b2a8e2dbd4883ad44abbad73b7",
@@ -20085,7 +20453,9 @@
    "item": "Natural Gas",
    "item_id": 1154126355242,
    "build_location": "Build Natural Gas",
-   "build_location_id": 1154126355242
+   "build_location_id": 1154126355242,
+   "all_combos_location": "Natural Gas All Combos",
+   "all_combos_location_id": 5552172866346
   },
   {
    "guid": "5a9406a0371c889499cc1b0572810df1",
@@ -20113,7 +20483,9 @@
    "item": "Nephrite",
    "item_id": 1123826035203,
    "build_location": "Build Nephrite",
-   "build_location_id": 1123826035203
+   "build_location_id": 1123826035203,
+   "all_combos_location": "Nephrite All Combos",
+   "all_combos_location_id": 5521872546307
   },
   {
    "guid": "d1ad9aa7a78ddda478580c7a8a79bb8a",
@@ -20242,7 +20614,9 @@
    "item": "Nightjar",
    "item_id": 1136758440652,
    "build_location": "Build Nightjar",
-   "build_location_id": 1136758440652
+   "build_location_id": 1136758440652,
+   "all_combos_location": "Nightjar All Combos",
+   "all_combos_location_id": 5534804951756
   },
   {
    "guid": "c5ef7d8fe41e2a84cb98e9bf615b6577",
@@ -20545,7 +20919,9 @@
    "item": "Nightshade",
    "item_id": 1152644536574,
    "build_location": "Build Nightshade",
-   "build_location_id": 1152644536574
+   "build_location_id": 1152644536574,
+   "all_combos_location": "Nightshade All Combos",
+   "all_combos_location_id": 5550691047678
   },
   {
    "guid": "c335318914388794aa6a6e41a1d13a2c",
@@ -20728,7 +21104,9 @@
    "item": "Obsidian",
    "item_id": 1151912319121,
    "build_location": "Build Obsidian",
-   "build_location_id": 1151912319121
+   "build_location_id": 1151912319121,
+   "all_combos_location": "Obsidian All Combos",
+   "all_combos_location_id": 5549958830225
   },
   {
    "guid": "cd962197c25570e45a30d911b8032c7a",
@@ -20765,7 +21143,9 @@
    "item": "Ocelot",
    "item_id": 1154698320252,
    "build_location": "Build Ocelot",
-   "build_location_id": 1154698320252
+   "build_location_id": 1154698320252,
+   "all_combos_location": "Ocelot All Combos",
+   "all_combos_location_id": 5552744831356
   },
   {
    "guid": "377d3ba04378d0945a300d96640b6544",
@@ -20915,7 +21295,9 @@
    "item": "Octopus",
    "item_id": 1114406894084,
    "build_location": "Build Octopus",
-   "build_location_id": 1114406894084
+   "build_location_id": 1114406894084,
+   "all_combos_location": "Octopus All Combos",
+   "all_combos_location_id": 5512453405188
   },
   {
    "guid": "9bf4bb1f20e96b448ade41600269162e",
@@ -21072,7 +21454,9 @@
    "item": "Oil",
    "item_id": 1141375742450,
    "build_location": "Build Oil",
-   "build_location_id": 1141375742450
+   "build_location_id": 1141375742450,
+   "all_combos_location": "Oil All Combos",
+   "all_combos_location_id": 5539422253554
   },
   {
    "guid": "7e5f4fbe81074dc468f5f6cf2f7eeb13",
@@ -21111,7 +21495,9 @@
    "item": "Oil (Deep)",
    "item_id": 1133434436584,
    "build_location": "Build Oil (Deep)",
-   "build_location_id": 1133434436584
+   "build_location_id": 1133434436584,
+   "all_combos_location": "Oil (Deep) All Combos",
+   "all_combos_location_id": 5531480947688
   },
   {
    "guid": "c7f6ba2a2dc652245851ef87aa7de657",
@@ -21253,7 +21639,9 @@
    "item": "Okra",
    "item_id": 1153188995746,
    "build_location": "Build Okra",
-   "build_location_id": 1153188995746
+   "build_location_id": 1153188995746,
+   "all_combos_location": "Okra All Combos",
+   "all_combos_location_id": 5551235506850
   },
   {
    "guid": "0ac468b7150e22c4d86aded8ef301a10",
@@ -21400,7 +21788,9 @@
    "item": "Olive Tree",
    "item_id": 1102401932145,
    "build_location": "Build Olive Tree",
-   "build_location_id": 1102401932145
+   "build_location_id": 1102401932145,
+   "all_combos_location": "Olive Tree All Combos",
+   "all_combos_location_id": 5500448443249
   },
   {
    "guid": "8f56ad7f404d9dc47b9220a0d81bc1c8",
@@ -21576,7 +21966,9 @@
    "item": "Olivine",
    "item_id": 1137988786164,
    "build_location": "Build Olivine",
-   "build_location_id": 1137988786164
+   "build_location_id": 1137988786164,
+   "all_combos_location": "Olivine All Combos",
+   "all_combos_location_id": 5536035297268
   },
   {
    "guid": "b21e79312cfd8804b8b0708abcaef4cd",
@@ -21689,7 +22081,9 @@
    "item": "Onyx",
    "item_id": 1147325092626,
    "build_location": "Build Onyx",
-   "build_location_id": 1147325092626
+   "build_location_id": 1147325092626,
+   "all_combos_location": "Onyx All Combos",
+   "all_combos_location_id": 5545371603730
   },
   {
    "guid": "da8b076e43b30e94b961dca52e5734e0",
@@ -21840,7 +22234,9 @@
    "item": "Orange Tree",
    "item_id": 1150419840317,
    "build_location": "Build Orange Tree",
-   "build_location_id": 1150419840317
+   "build_location_id": 1150419840317,
+   "all_combos_location": "Orange Tree All Combos",
+   "all_combos_location_id": 5548466351421
   },
   {
    "guid": "c58d9052c6def2342ae9ca26d8f169bd",
@@ -21872,7 +22268,9 @@
    "item": "Oryx",
    "item_id": 1152541852972,
    "build_location": "Build Oryx",
-   "build_location_id": 1152541852972
+   "build_location_id": 1152541852972,
+   "all_combos_location": "Oryx All Combos",
+   "all_combos_location_id": 5550588364076
   },
   {
    "guid": "8236a411e4fd65c40aeb2d2836a48836",
@@ -21908,7 +22306,9 @@
    "item": "Ostrich",
    "item_id": 1134465532190,
    "build_location": "Build Ostrich",
-   "build_location_id": 1134465532190
+   "build_location_id": 1134465532190,
+   "all_combos_location": "Ostrich All Combos",
+   "all_combos_location_id": 5532512043294
   },
   {
    "guid": "c08203918bac0bb47b463a516bc23d3b",
@@ -21947,7 +22347,9 @@
    "item": "Palladium",
    "item_id": 1151187564824,
    "build_location": "Build Palladium",
-   "build_location_id": 1151187564824
+   "build_location_id": 1151187564824,
+   "all_combos_location": "Palladium All Combos",
+   "all_combos_location_id": 5549234075928
   },
   {
    "guid": "17bee1dcaa34bcf40a05220df98d9d86",
@@ -22034,7 +22436,9 @@
    "item": "Pallas Cat",
    "item_id": 1105885797834,
    "build_location": "Build Pallas Cat",
-   "build_location_id": 1105885797834
+   "build_location_id": 1105885797834,
+   "all_combos_location": "Pallas Cat All Combos",
+   "all_combos_location_id": 5503932308938
   },
   {
    "guid": "5522293b5cbf25541a294351cfe8d232",
@@ -22448,7 +22852,9 @@
    "item": "Panda Bear",
    "item_id": 1122364462005,
    "build_location": "Build Panda Bear",
-   "build_location_id": 1122364462005
+   "build_location_id": 1122364462005,
+   "all_combos_location": "Panda Bear All Combos",
+   "all_combos_location_id": 5520410973109
   },
   {
    "guid": "df03c48ee56f3bc49adb90752c7f004c",
@@ -22484,7 +22890,9 @@
    "item": "Pangolin",
    "item_id": 1159376685294,
    "build_location": "Build Pangolin",
-   "build_location_id": 1159376685294
+   "build_location_id": 1159376685294,
+   "all_combos_location": "Pangolin All Combos",
+   "all_combos_location_id": 5557423196398
   },
   {
    "guid": "d33899eff0cc0d248ae8cfd6a818e80d",
@@ -22514,7 +22922,9 @@
    "item": "Papaya Tree",
    "item_id": 1156210859775,
    "build_location": "Build Papaya Tree",
-   "build_location_id": 1156210859775
+   "build_location_id": 1156210859775,
+   "all_combos_location": "Papaya Tree All Combos",
+   "all_combos_location_id": 5554257370879
   },
   {
    "guid": "df8f936f4063c2348bf85120bdecbf97",
@@ -22550,7 +22960,9 @@
    "item": "Paper Mulberry",
    "item_id": 1159523284724,
    "build_location": "Build Paper Mulberry",
-   "build_location_id": 1159523284724
+   "build_location_id": 1159523284724,
+   "all_combos_location": "Paper Mulberry All Combos",
+   "all_combos_location_id": 5557569795828
   },
   {
    "guid": "63419f7152b380c4cab12be07f45368f",
@@ -22640,7 +23052,9 @@
    "item": "Parakeet",
    "item_id": 1126155548437,
    "build_location": "Build Parakeet",
-   "build_location_id": 1126155548437
+   "build_location_id": 1126155548437,
+   "all_combos_location": "Parakeet All Combos",
+   "all_combos_location_id": 5524202059541
   },
   {
    "guid": "9d2f005ac302fac4c9e36fad381b892b",
@@ -22700,7 +23114,9 @@
    "item": "Parrotfish",
    "item_id": 1141705278892,
    "build_location": "Build Parrotfish",
-   "build_location_id": 1141705278892
+   "build_location_id": 1141705278892,
+   "all_combos_location": "Parrotfish All Combos",
+   "all_combos_location_id": 5539751789996
   },
   {
    "guid": "9e248f6af6c391443a062bf054d2029f",
@@ -22731,7 +23147,9 @@
    "item": "Passion Fruit",
    "item_id": 1141962765999,
    "build_location": "Build Passion Fruit",
-   "build_location_id": 1141962765999
+   "build_location_id": 1141962765999,
+   "all_combos_location": "Passion Fruit All Combos",
+   "all_combos_location_id": 5540009277103
   },
   {
    "guid": "60f60510f34b8bc4bbf1e96f4d7d176d",
@@ -23019,7 +23437,9 @@
    "item": "Peach Tree",
    "item_id": 1125539401999,
    "build_location": "Build Peach Tree",
-   "build_location_id": 1125539401999
+   "build_location_id": 1125539401999,
+   "all_combos_location": "Peach Tree All Combos",
+   "all_combos_location_id": 5523585913103
   },
   {
    "guid": "c437062da1c2e854ca370f2e2d6736a4",
@@ -23049,7 +23469,9 @@
    "item": "Pear Tree",
    "item_id": 1152182674138,
    "build_location": "Build Pear Tree",
-   "build_location_id": 1152182674138
+   "build_location_id": 1152182674138,
+   "all_combos_location": "Pear Tree All Combos",
+   "all_combos_location_id": 5550229185242
   },
   {
    "guid": "5400f4d3073f80e4696d540df80a39b3",
@@ -23085,7 +23507,9 @@
    "item": "Pearls",
    "item_id": 1122061208880,
    "build_location": "Build Pearls",
-   "build_location_id": 1122061208880
+   "build_location_id": 1122061208880,
+   "all_combos_location": "Pearls All Combos",
+   "all_combos_location_id": 5520107719984
   },
   {
    "guid": "d7602b6a5b632f84f9826012faaa122d",
@@ -23168,7 +23592,9 @@
    "item": "Peat",
    "item_id": 1157326091941,
    "build_location": "Build Peat",
-   "build_location_id": 1157326091941
+   "build_location_id": 1157326091941,
+   "all_combos_location": "Peat All Combos",
+   "all_combos_location_id": 5555372603045
   },
   {
    "guid": "75dc2af4ee77c4a498496fb38e2fc099",
@@ -23200,7 +23626,9 @@
    "item": "Pheasant",
    "item_id": 1131149438798,
    "build_location": "Build Pheasant",
-   "build_location_id": 1131149438798
+   "build_location_id": 1131149438798,
+   "all_combos_location": "Pheasant All Combos",
+   "all_combos_location_id": 5529195949902
   },
   {
    "guid": "d408d06c5b44c5c4781bdc390ab743c4",
@@ -23236,7 +23664,9 @@
    "item": "Phosphorus",
    "item_id": 1156429186757,
    "build_location": "Build Phosphorus",
-   "build_location_id": 1156429186757
+   "build_location_id": 1156429186757,
+   "all_combos_location": "Phosphorus All Combos",
+   "all_combos_location_id": 5554475697861
   },
   {
    "guid": "0440da664fdc5e541b22c7552cedbd7a",
@@ -23266,7 +23696,9 @@
    "item": "Pink Diamond",
    "item_id": 1100653373028,
    "build_location": "Build Pink Diamond",
-   "build_location_id": 1100653373028
+   "build_location_id": 1100653373028,
+   "all_combos_location": "Pink Diamond All Combos",
+   "all_combos_location_id": 5498699884132
   },
   {
    "guid": "b1c4bcff990e00c4bb697d400bd2843b",
@@ -23297,7 +23729,9 @@
    "item": "Pit Viper",
    "item_id": 1147230998521,
    "build_location": "Build Pit Viper",
-   "build_location_id": 1147230998521
+   "build_location_id": 1147230998521,
+   "all_combos_location": "Pit Viper All Combos",
+   "all_combos_location_id": 5545277509625
   },
   {
    "guid": "40635a4bc94e6e34e96d6a79183f96c2",
@@ -23472,7 +23906,9 @@
    "item": "Pitaya",
    "item_id": 1116795675836,
    "build_location": "Build Pitaya",
-   "build_location_id": 1116795675836
+   "build_location_id": 1116795675836,
+   "all_combos_location": "Pitaya All Combos",
+   "all_combos_location_id": 5514842186940
   },
   {
    "guid": "5d4bb4150249811468cf5844537a3855",
@@ -23508,7 +23944,9 @@
    "item": "Platinum (Savanna)",
    "item_id": 1124555506000,
    "build_location": "Build Platinum (Savanna)",
-   "build_location_id": 1124555506000
+   "build_location_id": 1124555506000,
+   "all_combos_location": "Platinum (Savanna) All Combos",
+   "all_combos_location_id": 5522602017104
   },
   {
    "guid": "1072b961cd75e8e429ffa3cbf222a886",
@@ -23726,7 +24164,9 @@
    "item": "Platinum (Taiga)",
    "item_id": 1103926892060,
    "build_location": "Build Platinum (Taiga)",
-   "build_location_id": 1103926892060
+   "build_location_id": 1103926892060,
+   "all_combos_location": "Platinum (Taiga) All Combos",
+   "all_combos_location_id": 5501973403164
   },
   {
    "guid": "1bfe34c93e6cb4d43a8a30d4d32a86e6",
@@ -24022,7 +24462,9 @@
    "item": "Pomegranate",
    "item_id": 1107025939603,
    "build_location": "Build Pomegranate",
-   "build_location_id": 1107025939603
+   "build_location_id": 1107025939603,
+   "all_combos_location": "Pomegranate All Combos",
+   "all_combos_location_id": 5505072450707
   },
   {
    "guid": "394b73a901dc0c347910857c7143f433",
@@ -24224,7 +24666,9 @@
    "item": "Poplar",
    "item_id": 1114891565712,
    "build_location": "Build Poplar",
-   "build_location_id": 1114891565712
+   "build_location_id": 1114891565712,
+   "all_combos_location": "Poplar All Combos",
+   "all_combos_location_id": 5512938076816
   },
   {
    "guid": "63f6635296bca71458839829dd7f853e",
@@ -24367,7 +24811,9 @@
    "item": "Porcupine",
    "item_id": 1126345094441,
    "build_location": "Build Porcupine",
-   "build_location_id": 1126345094441
+   "build_location_id": 1126345094441,
+   "all_combos_location": "Porcupine All Combos",
+   "all_combos_location_id": 5524391605545
   },
   {
    "guid": "7f346099d8a79044ea6cbe74a0757814",
@@ -24509,7 +24955,9 @@
    "item": "Potash",
    "item_id": 1133657852317,
    "build_location": "Build Potash",
-   "build_location_id": 1133657852317
+   "build_location_id": 1133657852317,
+   "all_combos_location": "Potash All Combos",
+   "all_combos_location_id": 5531704363421
   },
   {
    "guid": "23a3960f442d5d84abcaa3da0754e110",
@@ -24596,7 +25044,9 @@
    "item": "Potato",
    "item_id": 1109078401268,
    "build_location": "Build Potato",
-   "build_location_id": 1109078401268
+   "build_location_id": 1109078401268,
+   "all_combos_location": "Potato All Combos",
+   "all_combos_location_id": 5507124912372
   },
   {
    "guid": "e04cb00390323a146aa982b2eefd0af2",
@@ -24636,7 +25086,9 @@
    "item": "Prickly Pear",
    "item_id": 1159721582649,
    "build_location": "Build Prickly Pear",
-   "build_location_id": 1159721582649
+   "build_location_id": 1159721582649,
+   "all_combos_location": "Prickly Pear All Combos",
+   "all_combos_location_id": 5557768093753
   },
   {
    "guid": "e7b0e817bd590b24abb417fd04355904",
@@ -24719,7 +25171,9 @@
    "item": "Ptarmagin",
    "item_id": 1161705718139,
    "build_location": "Build Ptarmagin",
-   "build_location_id": 1161705718139
+   "build_location_id": 1161705718139,
+   "all_combos_location": "Ptarmagin All Combos",
+   "all_combos_location_id": 5559752229243
   },
   {
    "guid": "21650085ac443954988261b24d23735a",
@@ -24774,7 +25228,9 @@
    "item": "Pygmy Falcon",
    "item_id": 1108475906138,
    "build_location": "Build Pygmy Falcon",
-   "build_location_id": 1108475906138
+   "build_location_id": 1108475906138,
+   "all_combos_location": "Pygmy Falcon All Combos",
+   "all_combos_location_id": 5506522417242
   },
   {
    "guid": "e43a11b5d60e2364c9af200a02c4df60",
@@ -24851,7 +25307,9 @@
    "item": "Raccoon Dog",
    "item_id": 1118697400272,
    "build_location": "Build Raccoon Dog",
-   "build_location_id": 1118697400272
+   "build_location_id": 1118697400272,
+   "all_combos_location": "Raccoon Dog All Combos",
+   "all_combos_location_id": 5516743911376
   },
   {
    "guid": "7388de686bdcf8545aec118f21fdfc6d",
@@ -24888,7 +25346,9 @@
    "item": "Rambutan",
    "item_id": 1130525222534,
    "build_location": "Build Rambutan",
-   "build_location_id": 1130525222534
+   "build_location_id": 1130525222534,
+   "all_combos_location": "Rambutan All Combos",
+   "all_combos_location_id": 5528571733638
   },
   {
    "guid": "d927891766bc2274087d1a2c0fe960f9",
@@ -24916,7 +25376,9 @@
    "item": "Ramon Tree",
    "item_id": 1157803577718,
    "build_location": "Build Ramon Tree",
-   "build_location_id": 1157803577718
+   "build_location_id": 1157803577718,
+   "all_combos_location": "Ramon Tree All Combos",
+   "all_combos_location_id": 5555850088822
   },
   {
    "guid": "6c742e8bdb984f849a11711d61b6ce70",
@@ -24948,7 +25410,9 @@
    "item": "Rat",
    "item_id": 1128624482493,
    "build_location": "Build Rat",
-   "build_location_id": 1128624482493
+   "build_location_id": 1128624482493,
+   "all_combos_location": "Rat All Combos",
+   "all_combos_location_id": 5526670993597
   },
   {
    "guid": "c1d4148c425dc2848a4f94aa39516d93",
@@ -25102,7 +25566,9 @@
    "item": "Rattlesnake",
    "item_id": 1151542053060,
    "build_location": "Build Rattlesnake",
-   "build_location_id": 1151542053060
+   "build_location_id": 1151542053060,
+   "all_combos_location": "Rattlesnake All Combos",
+   "all_combos_location_id": 5549588564164
   },
   {
    "guid": "ba83d83ee83597a46a3a02fd16d55c4d",
@@ -25131,7 +25597,9 @@
    "item": "Red Algea",
    "item_id": 1149578871790,
    "build_location": "Build Red Algea",
-   "build_location_id": 1149578871790
+   "build_location_id": 1149578871790,
+   "all_combos_location": "Red Algea All Combos",
+   "all_combos_location_id": 5547625382894
   },
   {
    "guid": "94a6dd25c6731594ebe97b8ee55ca42d",
@@ -25203,7 +25671,9 @@
    "item": "Red Cardinal",
    "item_id": 1139415044700,
    "build_location": "Build Red Cardinal",
-   "build_location_id": 1139415044700
+   "build_location_id": 1139415044700,
+   "all_combos_location": "Red Cardinal All Combos",
+   "all_combos_location_id": 5537461555804
   },
   {
    "guid": "8548f63e1eb039b4e9c6089b97a2b5e9",
@@ -25304,7 +25774,9 @@
    "item": "Red Howler",
    "item_id": 1143093452491,
    "build_location": "Build Red Howler",
-   "build_location_id": 1143093452491
+   "build_location_id": 1143093452491,
+   "all_combos_location": "Red Howler All Combos",
+   "all_combos_location_id": 5541139963595
   },
   {
    "guid": "0d895fb23dcc4f546ab7c385634a0511",
@@ -25450,7 +25922,9 @@
    "item": "Red Oat",
    "item_id": 1103145335587,
    "build_location": "Build Red Oat",
-   "build_location_id": 1103145335587
+   "build_location_id": 1103145335587,
+   "all_combos_location": "Red Oat All Combos",
+   "all_combos_location_id": 5501191846691
   },
   {
    "guid": "c9fc320ee642e9747a16b9d2c9d9c0f4",
@@ -25480,7 +25954,9 @@
    "item": "Red Panda",
    "item_id": 1153731600622,
    "build_location": "Build Red Panda",
-   "build_location_id": 1153731600622
+   "build_location_id": 1153731600622,
+   "all_combos_location": "Red Panda All Combos",
+   "all_combos_location_id": 5551778111726
   },
   {
    "guid": "7c72d930309868b43bcaa442f5b354bb",
@@ -25517,7 +25993,9 @@
    "item": "Red Sea Whip",
    "item_id": 1132918051587,
    "build_location": "Build Red Sea Whip",
-   "build_location_id": 1132918051587
+   "build_location_id": 1132918051587,
+   "all_combos_location": "Red Sea Whip All Combos",
+   "all_combos_location_id": 5530964562691
   },
   {
    "guid": "eb5ed2f4cd99c6b469774d6bcd6959e1",
@@ -25664,7 +26142,9 @@
    "item": "Red Stone",
    "item_id": 1162693390156,
    "build_location": "Build Red Stone",
-   "build_location_id": 1162693390156
+   "build_location_id": 1162693390156,
+   "all_combos_location": "Red Stone All Combos",
+   "all_combos_location_id": 5560739901260
   },
   {
    "guid": "691fdf3d4940b49459c2973aa1592136",
@@ -25754,7 +26234,9 @@
    "item": "Red-Backed Vole",
    "item_id": 1127730770900,
    "build_location": "Build Red-Backed Vole",
-   "build_location_id": 1127730770900
+   "build_location_id": 1127730770900,
+   "all_combos_location": "Red-Backed Vole All Combos",
+   "all_combos_location_id": 5525777282004
   },
   {
    "guid": "d8c7f8c7e7628a947934736d86476a55",
@@ -25840,7 +26322,9 @@
    "item": "Reef Shark",
    "item_id": 1157703371902,
    "build_location": "Build Reef Shark",
-   "build_location_id": 1157703371902
+   "build_location_id": 1157703371902,
+   "all_combos_location": "Reef Shark All Combos",
+   "all_combos_location_id": 5555749883006
   },
   {
    "guid": "d4be38d3c46803842845956c345a80bc",
@@ -25985,7 +26469,9 @@
    "item": "Rhesus Macaque",
    "item_id": 1156619406652,
    "build_location": "Build Rhesus Macaque",
-   "build_location_id": 1156619406652
+   "build_location_id": 1156619406652,
+   "all_combos_location": "Rhesus Macaque All Combos",
+   "all_combos_location_id": 5554665917756
   },
   {
    "guid": "8e2b8dab130f9fe479cc0d87ec5dcad1",
@@ -26021,7 +26507,9 @@
    "item": "Ribbon Eel",
    "item_id": 1137675131569,
    "build_location": "Build Ribbon Eel",
-   "build_location_id": 1137675131569
+   "build_location_id": 1137675131569,
+   "all_combos_location": "Ribbon Eel All Combos",
+   "all_combos_location_id": 5535721642673
   },
   {
    "guid": "acf22236f069b2745911e42ad9672751",
@@ -26223,7 +26711,9 @@
    "item": "Rowan",
    "item_id": 1145936421743,
    "build_location": "Build Rowan",
-   "build_location_id": 1145936421743
+   "build_location_id": 1145936421743,
+   "all_combos_location": "Rowan All Combos",
+   "all_combos_location_id": 5543982932847
   },
   {
    "guid": "8697f19191e74724e919eea9da6b5bbd",
@@ -26369,7 +26859,9 @@
    "item": "Rubber Tree",
    "item_id": 1135641303321,
    "build_location": "Build Rubber Tree",
-   "build_location_id": 1135641303321
+   "build_location_id": 1135641303321,
+   "all_combos_location": "Rubber Tree All Combos",
+   "all_combos_location_id": 5533687814425
   },
   {
    "guid": "83b38f9f3c74838448262c8606fdca71",
@@ -26521,7 +27013,9 @@
    "item": "Ruby",
    "item_id": 1134864955891,
    "build_location": "Build Ruby",
-   "build_location_id": 1134864955891
+   "build_location_id": 1134864955891,
+   "all_combos_location": "Ruby All Combos",
+   "all_combos_location_id": 5532911466995
   },
   {
    "guid": "0cab180f755c36e49a7e7098b3a48a86",
@@ -26612,7 +27106,9 @@
    "item": "Sable",
    "item_id": 1102912258295,
    "build_location": "Build Sable",
-   "build_location_id": 1102912258295
+   "build_location_id": 1102912258295,
+   "all_combos_location": "Sable All Combos",
+   "all_combos_location_id": 5500958769399
   },
   {
    "guid": "cc98dbe4a5ac06f46a333a30e294d34e",
@@ -26648,7 +27144,9 @@
    "item": "Saffron",
    "item_id": 1154432745034,
    "build_location": "Build Saffron",
-   "build_location_id": 1154432745034
+   "build_location_id": 1154432745034,
+   "all_combos_location": "Saffron All Combos",
+   "all_combos_location_id": 5552479256138
   },
   {
    "guid": "48be6a528e1c14b438768c3c861b2d5d",
@@ -26734,7 +27232,9 @@
    "item": "Sand Cat",
    "item_id": 1119038645544,
    "build_location": "Build Sand Cat",
-   "build_location_id": 1119038645544
+   "build_location_id": 1119038645544,
+   "all_combos_location": "Sand Cat All Combos",
+   "all_combos_location_id": 5517085156648
   },
   {
    "guid": "0fef67ec746a4b74d90aa6b2520a1341",
@@ -26786,7 +27286,9 @@
    "item": "Sandstone",
    "item_id": 1130737670295,
    "build_location": "Build Sandstone",
-   "build_location_id": 1130737670295
+   "build_location_id": 1130737670295,
+   "all_combos_location": "Sandstone All Combos",
+   "all_combos_location_id": 5528784181399
   },
   {
    "guid": "af9eeb833fd5b184c936213a92d8be42",
@@ -26829,7 +27331,9 @@
    "item": "Sapphire",
    "item_id": 1146654472243,
    "build_location": "Build Sapphire",
-   "build_location_id": 1146654472243
+   "build_location_id": 1146654472243,
+   "all_combos_location": "Sapphire All Combos",
+   "all_combos_location_id": 5544700983347
   },
   {
    "guid": "258a124208d2f19448beeff953a0a73b",
@@ -27116,7 +27620,9 @@
    "item": "Sargassum",
    "item_id": 1109588517920,
    "build_location": "Build Sargassum",
-   "build_location_id": 1109588517920
+   "build_location_id": 1109588517920,
+   "all_combos_location": "Sargassum All Combos",
+   "all_combos_location_id": 5507635029024
   },
   {
    "guid": "2d999f263604f9342b50eeac1ca475b8",
@@ -27151,7 +27657,9 @@
    "item": "Scarlet Macaw",
    "item_id": 1111752307299,
    "build_location": "Build Scarlet Macaw",
-   "build_location_id": 1111752307299
+   "build_location_id": 1111752307299,
+   "all_combos_location": "Scarlet Macaw All Combos",
+   "all_combos_location_id": 5509798818403
   },
   {
    "guid": "c738fa0381993e74a82b64b5b022f73a",
@@ -27341,7 +27849,9 @@
    "item": "Sea Grass",
    "item_id": 1154754651109,
    "build_location": "Build Sea Grass",
-   "build_location_id": 1154754651109
+   "build_location_id": 1154754651109,
+   "all_combos_location": "Sea Grass All Combos",
+   "all_combos_location_id": 5552801162213
   },
   {
    "guid": "d0e82c1b916dc4249856f68d4d4ac811",
@@ -27426,7 +27936,9 @@
    "item": "Sea Krait",
    "item_id": 1155589652921,
    "build_location": "Build Sea Krait",
-   "build_location_id": 1155589652921
+   "build_location_id": 1155589652921,
+   "all_combos_location": "Sea Krait All Combos",
+   "all_combos_location_id": 5553636164025
   },
   {
    "guid": "c9117d0575d72a44bac9079eee71e7f8",
@@ -27581,7 +28093,9 @@
    "item": "Sea turtle",
    "item_id": 1153485492311,
    "build_location": "Build Sea turtle",
-   "build_location_id": 1153485492311
+   "build_location_id": 1153485492311,
+   "all_combos_location": "Sea turtle All Combos",
+   "all_combos_location_id": 5551532003415
   },
   {
    "guid": "a7775d9a8bc122c4e9701490085adbae",
@@ -27665,7 +28179,9 @@
    "item": "Seabass",
    "item_id": 1144465512872,
    "build_location": "Build Seabass",
-   "build_location_id": 1144465512872
+   "build_location_id": 1144465512872,
+   "all_combos_location": "Seabass All Combos",
+   "all_combos_location_id": 5542512023976
   },
   {
    "guid": "85118c3cd98e7234e8aae56cd69a4871",
@@ -27804,7 +28320,9 @@
    "item": "Secretary Bird",
    "item_id": 1135231943629,
    "build_location": "Build Secretary Bird",
-   "build_location_id": 1135231943629
+   "build_location_id": 1135231943629,
+   "all_combos_location": "Secretary Bird All Combos",
+   "all_combos_location_id": 5533278454733
   },
   {
    "guid": "2e3be0de998c5174f8f9965211b6c5d4",
@@ -27851,7 +28369,9 @@
    "item": "Seep Community",
    "item_id": 1111922445801,
    "build_location": "Build Seep Community",
-   "build_location_id": 1111922445801
+   "build_location_id": 1111922445801,
+   "all_combos_location": "Seep Community All Combos",
+   "all_combos_location_id": 5509968956905
   },
   {
    "guid": "33366d1f58272814d9c7d5e8f8876279",
@@ -27911,7 +28431,9 @@
    "item": "Sequoia",
    "item_id": 1113258906101,
    "build_location": "Build Sequoia",
-   "build_location_id": 1113258906101
+   "build_location_id": 1113258906101,
+   "all_combos_location": "Sequoia All Combos",
+   "all_combos_location_id": 5511305417205
   },
   {
    "guid": "30e7e7d7c98fc35449880779625c8ea6",
@@ -27966,7 +28488,9 @@
    "item": "Serval",
    "item_id": 1112639700348,
    "build_location": "Build Serval",
-   "build_location_id": 1112639700348
+   "build_location_id": 1112639700348,
+   "all_combos_location": "Serval All Combos",
+   "all_combos_location_id": 5510686211452
   },
   {
    "guid": "86577e1d91a35684fb0ad2f0899ac3da",
@@ -28113,7 +28637,9 @@
    "item": "Shea Tree",
    "item_id": 1135573721561,
    "build_location": "Build Shea Tree",
-   "build_location_id": 1135573721561
+   "build_location_id": 1135573721561,
+   "all_combos_location": "Shea Tree All Combos",
+   "all_combos_location_id": 5533620232665
   },
   {
    "guid": "19efb3ec61a9c664c8769b945b2980ae",
@@ -28178,7 +28704,9 @@
    "item": "Shepherd Tree",
    "item_id": 1106473860806,
    "build_location": "Build Shepherd Tree",
-   "build_location_id": 1106473860806
+   "build_location_id": 1106473860806,
+   "all_combos_location": "Shepherd Tree All Combos",
+   "all_combos_location_id": 5504520371910
   },
   {
    "guid": "56915a48dbd7d0b4bb23fb9061e5f8b0",
@@ -28303,7 +28831,9 @@
    "item": "Shipwreck",
    "item_id": 1122749490317,
    "build_location": "Build Shipwreck",
-   "build_location_id": 1122749490317
+   "build_location_id": 1122749490317,
+   "all_combos_location": "Shipwreck All Combos",
+   "all_combos_location_id": 5520796001421
   },
   {
    "guid": "ea17b12229af15044bebc585c17d40aa",
@@ -28506,7 +29036,9 @@
    "item": "Siberian Pine",
    "item_id": 1162350367266,
    "build_location": "Build Siberian Pine",
-   "build_location_id": 1162350367266
+   "build_location_id": 1162350367266,
+   "all_combos_location": "Siberian Pine All Combos",
+   "all_combos_location_id": 5560396878370
   },
   {
    "guid": "b1f0a9aee583fb947980ce957d327ea8",
@@ -28697,7 +29229,9 @@
    "item": "Siberian Tiger",
    "item_id": 1147277056750,
    "build_location": "Build Siberian Tiger",
-   "build_location_id": 1147277056750
+   "build_location_id": 1147277056750,
+   "all_combos_location": "Siberian Tiger All Combos",
+   "all_combos_location_id": 5545323567854
   },
   {
    "guid": "8a167ee1fe4187f4ca614f6b311b29b9",
@@ -28735,7 +29269,9 @@
    "item": "Silver",
    "item_id": 1136579309087,
    "build_location": "Build Silver",
-   "build_location_id": 1136579309087
+   "build_location_id": 1136579309087,
+   "all_combos_location": "Silver All Combos",
+   "all_combos_location_id": 5534625820191
   },
   {
    "guid": "2af5e0cc59c804c4da64c530eef47c2d",
@@ -28766,7 +29302,9 @@
    "item": "Skunk",
    "item_id": 1111043738821,
    "build_location": "Build Skunk",
-   "build_location_id": 1111043738821
+   "build_location_id": 1111043738821,
+   "all_combos_location": "Skunk All Combos",
+   "all_combos_location_id": 5509090249925
   },
   {
    "guid": "e0c6d20e4944628499c46b9496b6ed5e",
@@ -28795,7 +29333,9 @@
    "item": "Sky Pillar",
    "item_id": 1159849648356,
    "build_location": "Build Sky Pillar",
-   "build_location_id": 1159849648356
+   "build_location_id": 1159849648356,
+   "all_combos_location": "Sky Pillar All Combos",
+   "all_combos_location_id": 5557896159460
   },
   {
    "guid": "d85582e893b99cd44b62a48d7a1cdee4",
@@ -28825,7 +29365,9 @@
    "item": "Smokey Quartz",
    "item_id": 1157583351433,
    "build_location": "Build Smokey Quartz",
-   "build_location_id": 1157583351433
+   "build_location_id": 1157583351433,
+   "all_combos_location": "Smokey Quartz All Combos",
+   "all_combos_location_id": 5555629862537
   },
   {
    "guid": "20479ea7693d875469384033cdf95eca",
@@ -29042,7 +29584,9 @@
    "item": "Snow Monkey",
    "item_id": 1108176661110,
    "build_location": "Build Snow Monkey",
-   "build_location_id": 1108176661110
+   "build_location_id": 1108176661110,
+   "all_combos_location": "Snow Monkey All Combos",
+   "all_combos_location_id": 5506223172214
   },
   {
    "guid": "99be9a02aa0f74e40b419e80bfa9970b",
@@ -29186,7 +29730,9 @@
    "item": "Snowshoe Hare",
    "item_id": 1140782112810,
    "build_location": "Build Snowshoe Hare",
-   "build_location_id": 1140782112810
+   "build_location_id": 1140782112810,
+   "all_combos_location": "Snowshoe Hare All Combos",
+   "all_combos_location_id": 5538828623914
   },
   {
    "guid": "26b439963865c39418c861aaa35b01b6",
@@ -29332,7 +29878,9 @@
    "item": "Soda Ash",
    "item_id": 1109901154659,
    "build_location": "Build Soda Ash",
-   "build_location_id": 1109901154659
+   "build_location_id": 1109901154659,
+   "all_combos_location": "Soda Ash All Combos",
+   "all_combos_location_id": 5507947665763
   },
   {
    "guid": "341c5fb8995aeca478ae4697d6afad5d",
@@ -29421,7 +29969,9 @@
    "item": "Sorghum",
    "item_id": 1113500023689,
    "build_location": "Build Sorghum",
-   "build_location_id": 1113500023689
+   "build_location_id": 1113500023689,
+   "all_combos_location": "Sorghum All Combos",
+   "all_combos_location_id": 5511546534793
   },
   {
    "guid": "54d56634a1df75c44bbf0c907606a7fb",
@@ -29746,7 +30296,9 @@
    "item": "South China Tiger",
    "item_id": 1122283971402,
    "build_location": "Build South China Tiger",
-   "build_location_id": 1122283971402
+   "build_location_id": 1122283971402,
+   "all_combos_location": "South China Tiger All Combos",
+   "all_combos_location_id": 5520330482506
   },
   {
    "guid": "6bbff14740fed284c9bb48adbc7d6b3d",
@@ -29783,7 +30335,9 @@
    "item": "Spectrolite",
    "item_id": 1128435487860,
    "build_location": "Build Spectrolite",
-   "build_location_id": 1128435487860
+   "build_location_id": 1128435487860,
+   "all_combos_location": "Spectrolite All Combos",
+   "all_combos_location_id": 5526481998964
   },
   {
    "guid": "24e0f74e74b8a66488527988107f5449",
@@ -29872,7 +30426,9 @@
    "item": "Spider Monkey",
    "item_id": 1109411198183,
    "build_location": "Build Spider Monkey",
-   "build_location_id": 1109411198183
+   "build_location_id": 1109411198183,
+   "all_combos_location": "Spider Monkey All Combos",
+   "all_combos_location_id": 5507457709287
   },
   {
    "guid": "6a4d0b067a59f5143995b9d3174d737e",
@@ -29902,7 +30458,9 @@
    "item": "Spinel",
    "item_id": 1128046571623,
    "build_location": "Build Spinel",
-   "build_location_id": 1128046571623
+   "build_location_id": 1128046571623,
+   "all_combos_location": "Spinel All Combos",
+   "all_combos_location_id": 5526093082727
   },
   {
    "guid": "a563c500e27732047a6667e8d26ecc57",
@@ -30054,7 +30612,9 @@
    "item": "Spotted Hyena",
    "item_id": 1143908093966,
    "build_location": "Build Spotted Hyena",
-   "build_location_id": 1143908093966
+   "build_location_id": 1143908093966,
+   "all_combos_location": "Spotted Hyena All Combos",
+   "all_combos_location_id": 5541954605070
   },
   {
    "guid": "a8b011ac939f2aa4c8e798ea399d0a3c",
@@ -30142,7 +30702,9 @@
    "item": "Squirrel",
    "item_id": 1144793406153,
    "build_location": "Build Squirrel",
-   "build_location_id": 1144793406153
+   "build_location_id": 1144793406153,
+   "all_combos_location": "Squirrel All Combos",
+   "all_combos_location_id": 5542839917257
   },
   {
    "guid": "904d51b8c4f6e954d8058d8c898eec53",
@@ -30172,7 +30734,9 @@
    "item": "Squirrel Monkey",
    "item_id": 1138247408524,
    "build_location": "Build Squirrel Monkey",
-   "build_location_id": 1138247408524
+   "build_location_id": 1138247408524,
+   "all_combos_location": "Squirrel Monkey All Combos",
+   "all_combos_location_id": 5536293919628
   },
   {
    "guid": "c1d0fa1e924e5a84b8696a87a5fd1245",
@@ -30258,7 +30822,9 @@
    "item": "Staghorn Coral",
    "item_id": 1151538799081,
    "build_location": "Build Staghorn Coral",
-   "build_location_id": 1151538799081
+   "build_location_id": 1151538799081,
+   "all_combos_location": "Staghorn Coral All Combos",
+   "all_combos_location_id": 5549585310185
   },
   {
    "guid": "65fefd169b297dc429adacb83f6ccdf4",
@@ -30309,7 +30875,9 @@
    "item": "Starflower",
    "item_id": 1126890983785,
    "build_location": "Build Starflower",
-   "build_location_id": 1126890983785
+   "build_location_id": 1126890983785,
+   "all_combos_location": "Starflower All Combos",
+   "all_combos_location_id": 5524937494889
   },
   {
    "guid": "babd3e262c3ed6e4f97755ef3271393a",
@@ -30393,7 +30961,9 @@
    "item": "Stellar_Eagle",
    "item_id": 1149639058018,
    "build_location": "Build Stellar_Eagle",
-   "build_location_id": 1149639058018
+   "build_location_id": 1149639058018,
+   "all_combos_location": "Stellar_Eagle All Combos",
+   "all_combos_location_id": 5547685569122
   },
   {
    "guid": "0e2b1c836842957439e2e47731beaad8",
@@ -30478,7 +31048,9 @@
    "item": "Stoat",
    "item_id": 1103314929718,
    "build_location": "Build Stoat",
-   "build_location_id": 1103314929718
+   "build_location_id": 1103314929718,
+   "all_combos_location": "Stoat All Combos",
+   "all_combos_location_id": 5501361440822
   },
   {
    "guid": "bc38353aa0eca0d40b12f5227a056a07",
@@ -30508,7 +31080,9 @@
    "item": "Stone",
    "item_id": 1150036431786,
    "build_location": "Build Stone",
-   "build_location_id": 1150036431786
+   "build_location_id": 1150036431786,
+   "all_combos_location": "Stone All Combos",
+   "all_combos_location_id": 5548082942890
   },
   {
    "guid": "e686feda642906a4cb423a8d6b3f389a",
@@ -30597,7 +31171,9 @@
    "item": "Strawberry",
    "item_id": 1161393335718,
    "build_location": "Build Strawberry",
-   "build_location_id": 1161393335718
+   "build_location_id": 1161393335718,
+   "all_combos_location": "Strawberry All Combos",
+   "all_combos_location_id": 5559439846822
   },
   {
    "guid": "e06a3036601d191448e317cc05b9d1dc",
@@ -30689,7 +31265,9 @@
    "item": "Suckerfish",
    "item_id": 1159752516454,
    "build_location": "Build Suckerfish",
-   "build_location_id": 1159752516454
+   "build_location_id": 1159752516454,
+   "all_combos_location": "Suckerfish All Combos",
+   "all_combos_location_id": 5557799027558
   },
   {
    "guid": "2c9a54a55c3e77e4a81ba38bdbe2bb81",
@@ -30839,7 +31417,9 @@
    "item": "Sugar Beet",
    "item_id": 1111484615253,
    "build_location": "Build Sugar Beet",
-   "build_location_id": 1111484615253
+   "build_location_id": 1111484615253,
+   "all_combos_location": "Sugar Beet All Combos",
+   "all_combos_location_id": 5509531126357
   },
   {
    "guid": "82a1d310fc59f184293fcad5e15dce36",
@@ -30932,7 +31512,9 @@
    "item": "Sulfur",
    "item_id": 1134577922319,
    "build_location": "Build Sulfur",
-   "build_location_id": 1134577922319
+   "build_location_id": 1134577922319,
+   "all_combos_location": "Sulfur All Combos",
+   "all_combos_location_id": 5532624433423
   },
   {
    "guid": "b9416630d5d6bed40bfb06f4e0cfd91d",
@@ -31075,7 +31657,9 @@
    "item": "Sun Coral",
    "item_id": 1149240763149,
    "build_location": "Build Sun Coral",
-   "build_location_id": 1149240763149
+   "build_location_id": 1149240763149,
+   "all_combos_location": "Sun Coral All Combos",
+   "all_combos_location_id": 5547287274253
   },
   {
    "guid": "add17e6b5644647468b52e79e7ea3a7b",
@@ -31133,7 +31717,9 @@
    "item": "Sunfish",
    "item_id": 1146170631861,
    "build_location": "Build Sunfish",
-   "build_location_id": 1146170631861
+   "build_location_id": 1146170631861,
+   "all_combos_location": "Sunfish All Combos",
+   "all_combos_location_id": 5544217142965
   },
   {
    "guid": "b439bcb9dcccdff429b99bb19311d771",
@@ -31194,7 +31780,9 @@
    "item": "Sunflower",
    "item_id": 1147890551709,
    "build_location": "Build Sunflower",
-   "build_location_id": 1147890551709
+   "build_location_id": 1147890551709,
+   "all_combos_location": "Sunflower All Combos",
+   "all_combos_location_id": 5545937062813
   },
   {
    "guid": "de827ebedb0771a4b8b6df6cfc1a995e",
@@ -31474,7 +32062,9 @@
    "item": "Sunstone",
    "item_id": 1159241133037,
    "build_location": "Build Sunstone",
-   "build_location_id": 1159241133037
+   "build_location_id": 1159241133037,
+   "all_combos_location": "Sunstone All Combos",
+   "all_combos_location_id": 5557287644141
   },
   {
    "guid": "3a2be48de37486646ba479a0a129d33b",
@@ -31541,7 +32131,9 @@
    "item": "Surgeon Fish",
    "item_id": 1115126909150,
    "build_location": "Build Surgeon Fish",
-   "build_location_id": 1115126909150
+   "build_location_id": 1115126909150,
+   "all_combos_location": "Surgeon Fish All Combos",
+   "all_combos_location_id": 5513173420254
   },
   {
    "guid": "3227e1380ea74f04f99a2743216eec79",
@@ -31659,7 +32251,9 @@
    "item": "Talc",
    "item_id": 1112975217536,
    "build_location": "Build Talc",
-   "build_location_id": 1112975217536
+   "build_location_id": 1112975217536,
+   "all_combos_location": "Talc All Combos",
+   "all_combos_location_id": 5511021728640
   },
   {
    "guid": "ba32e7b264e99144b9356a822745b1a3",
@@ -31766,7 +32360,9 @@
    "item": "Tanzanite",
    "item_id": 1149494000422,
    "build_location": "Build Tanzanite",
-   "build_location_id": 1149494000422
+   "build_location_id": 1149494000422,
+   "all_combos_location": "Tanzanite All Combos",
+   "all_combos_location_id": 5547540511526
   },
   {
    "guid": "12896c783493aee41852e15163213dbd",
@@ -31919,7 +32515,9 @@
    "item": "Tapir",
    "item_id": 1104487565187,
    "build_location": "Build Tapir",
-   "build_location_id": 1104487565187
+   "build_location_id": 1104487565187,
+   "all_combos_location": "Tapir All Combos",
+   "all_combos_location_id": 5502534076291
   },
   {
    "guid": "ca236001ab3ec144da405dae25098f20",
@@ -32062,7 +32660,9 @@
    "item": "Taro",
    "item_id": 1153772683290,
    "build_location": "Build Taro",
-   "build_location_id": 1153772683290
+   "build_location_id": 1153772683290,
+   "all_combos_location": "Taro All Combos",
+   "all_combos_location_id": 5551819194394
   },
   {
    "guid": "1661abbecbf46b24da22502e37d5ff7c",
@@ -32092,7 +32692,9 @@
    "item": "Termite Hill",
    "item_id": 1105519623148,
    "build_location": "Build Termite Hill",
-   "build_location_id": 1105519623148
+   "build_location_id": 1105519623148,
+   "all_combos_location": "Termite Hill All Combos",
+   "all_combos_location_id": 5503566134252
   },
   {
    "guid": "57666bac945222d43b03cd77edb5538a",
@@ -32267,7 +32869,9 @@
    "item": "Thorny Devil",
    "item_id": 1122972908233,
    "build_location": "Build Thorny Devil",
-   "build_location_id": 1122972908233
+   "build_location_id": 1122972908233,
+   "all_combos_location": "Thorny Devil All Combos",
+   "all_combos_location_id": 5521019419337
   },
   {
    "guid": "6a0e57e0dd4af684c967615a71af9748",
@@ -32415,7 +33019,9 @@
    "item": "Tin",
    "item_id": 1127980826125,
    "build_location": "Build Tin",
-   "build_location_id": 1127980826125
+   "build_location_id": 1127980826125,
+   "all_combos_location": "Tin All Combos",
+   "all_combos_location_id": 5526027337229
   },
   {
    "guid": "570d5e9c244f85c4dad74815761b2298",
@@ -32446,7 +33052,9 @@
    "item": "Tinamou",
    "item_id": 1122879531458,
    "build_location": "Build Tinamou",
-   "build_location_id": 1122879531458
+   "build_location_id": 1122879531458,
+   "all_combos_location": "Tinamou All Combos",
+   "all_combos_location_id": 5520926042562
   },
   {
    "guid": "a47c84488fcfb4e4d8784eb5e9fed748",
@@ -32621,7 +33229,9 @@
    "item": "Titan Graveyard",
    "item_id": 1143665607816,
    "build_location": "Build Titan Graveyard",
-   "build_location_id": 1143665607816
+   "build_location_id": 1143665607816,
+   "all_combos_location": "Titan Graveyard All Combos",
+   "all_combos_location_id": 5541712118920
   },
   {
    "guid": "e2e16750d76e3a5408176216d61c302b",
@@ -32676,7 +33286,9 @@
    "item": "Titan fall",
    "item_id": 1160414393613,
    "build_location": "Build Titan fall",
-   "build_location_id": 1160414393613
+   "build_location_id": 1160414393613,
+   "all_combos_location": "Titan fall All Combos",
+   "all_combos_location_id": 5558460904717
   },
   {
    "guid": "920b32df26402544995d1818290dd600",
@@ -32827,7 +33439,9 @@
    "item": "Titanite",
    "item_id": 1138714947058,
    "build_location": "Build Titanite",
-   "build_location_id": 1138714947058
+   "build_location_id": 1138714947058,
+   "all_combos_location": "Titanite All Combos",
+   "all_combos_location_id": 5536761458162
   },
   {
    "guid": "76239f3b3085fb046ac012e7c98c1466",
@@ -32857,7 +33471,9 @@
    "item": "Toco Toucan",
    "item_id": 1131224363955,
    "build_location": "Build Toco Toucan",
-   "build_location_id": 1131224363955
+   "build_location_id": 1131224363955,
+   "all_combos_location": "Toco Toucan All Combos",
+   "all_combos_location_id": 5529270875059
   },
   {
    "guid": "266f01d814f93504eb98015722d20289",
@@ -32943,7 +33559,9 @@
    "item": "Topaz",
    "item_id": 1109828574593,
    "build_location": "Build Topaz",
-   "build_location_id": 1109828574593
+   "build_location_id": 1109828574593,
+   "all_combos_location": "Topaz All Combos",
+   "all_combos_location_id": 5507875085697
   },
   {
    "guid": "8082c4005ff18274f8ec189c7713f041",
@@ -33033,7 +33651,9 @@
    "item": "Tourmaline",
    "item_id": 1134008483845,
    "build_location": "Build Tourmaline",
-   "build_location_id": 1134008483845
+   "build_location_id": 1134008483845,
+   "all_combos_location": "Tourmaline All Combos",
+   "all_combos_location_id": 5532054994949
   },
   {
    "guid": "7cc02226c3825764a81b4001504747f8",
@@ -33092,7 +33712,9 @@
    "item": "Tuna",
    "item_id": 1132999090796,
    "build_location": "Build Tuna",
-   "build_location_id": 1132999090796
+   "build_location_id": 1132999090796,
+   "all_combos_location": "Tuna All Combos",
+   "all_combos_location_id": 5531045601900
   },
   {
    "guid": "c4c2efe7294ed564bb28c090ba64eaad",
@@ -33184,7 +33806,9 @@
    "item": "Tungsten",
    "item_id": 1152329383538,
    "build_location": "Build Tungsten",
-   "build_location_id": 1152329383538
+   "build_location_id": 1152329383538,
+   "all_combos_location": "Tungsten All Combos",
+   "all_combos_location_id": 5550375894642
   },
   {
    "guid": "5579d59adc9697a41a24ff6f2f39d30a",
@@ -33451,7 +34075,9 @@
    "item": "Turquoise",
    "item_id": 1122456394157,
    "build_location": "Build Turquoise",
-   "build_location_id": 1122456394157
+   "build_location_id": 1122456394157,
+   "all_combos_location": "Turquoise All Combos",
+   "all_combos_location_id": 5520502905261
   },
   {
    "guid": "5bd2d43bc8b90104b9fc1de1fb35a264",
@@ -33597,7 +34223,9 @@
    "item": "Turtle Grass",
    "item_id": 1124160324540,
    "build_location": "Build Turtle Grass",
-   "build_location_id": 1124160324540
+   "build_location_id": 1124160324540,
+   "all_combos_location": "Turtle Grass All Combos",
+   "all_combos_location_id": 5522206835644
   },
   {
    "guid": "c3edcd64ac30e7d4aa0d31a1e1389ea7",
@@ -33685,7 +34313,9 @@
    "item": "Umbrella Thorn Acacia",
    "item_id": 1152105895498,
    "build_location": "Build Umbrella Thorn Acacia",
-   "build_location_id": 1152105895498
+   "build_location_id": 1152105895498,
+   "all_combos_location": "Umbrella Thorn Acacia All Combos",
+   "all_combos_location_id": 5550152406602
   },
   {
    "guid": "db1f929d88b982a4ca24aaee6ef46e22",
@@ -33809,7 +34439,9 @@
    "item": "Uranium",
    "item_id": 1158332099032,
    "build_location": "Build Uranium",
-   "build_location_id": 1158332099032
+   "build_location_id": 1158332099032,
+   "all_combos_location": "Uranium All Combos",
+   "all_combos_location_id": 5556378610136
   },
   {
    "guid": "b01e38fa5ef7e2541844eb8ad168e811",
@@ -33855,7 +34487,9 @@
    "item": "Vermiculite",
    "item_id": 1146787958693,
    "build_location": "Build Vermiculite",
-   "build_location_id": 1146787958693
+   "build_location_id": 1146787958693,
+   "all_combos_location": "Vermiculite All Combos",
+   "all_combos_location_id": 5544834469797
   },
   {
    "guid": "0f57530b9cc8bea49a70fa23d99a39f6",
@@ -33989,7 +34623,9 @@
    "item": "Vinaceous Amazon",
    "item_id": 1103629725881,
    "build_location": "Build Vinaceous Amazon",
-   "build_location_id": 1103629725881
+   "build_location_id": 1103629725881,
+   "all_combos_location": "Vinaceous Amazon All Combos",
+   "all_combos_location_id": 5501676236985
   },
   {
    "guid": "d469095f57b7a6a45bc4bbf26a4d3a2d",
@@ -34134,7 +34770,9 @@
    "item": "Warthog",
    "item_id": 1156530083317,
    "build_location": "Build Warthog",
-   "build_location_id": 1156530083317
+   "build_location_id": 1156530083317,
+   "all_combos_location": "Warthog All Combos",
+   "all_combos_location_id": 5554576594421
   },
   {
    "guid": "b45261b9f26f6694399b01adecb2c698",
@@ -34299,7 +34937,9 @@
    "item": "White Backed Vulture",
    "item_id": 1147916393375,
    "build_location": "Build White Backed Vulture",
-   "build_location_id": 1147916393375
+   "build_location_id": 1147916393375,
+   "all_combos_location": "White Backed Vulture All Combos",
+   "all_combos_location_id": 5545962904479
   },
   {
    "guid": "f2a42927c22d1b34bb29c0c51e5007b8",
@@ -34369,7 +35009,9 @@
    "item": "White Birch",
    "item_id": 1164645143164,
    "build_location": "Build White Birch",
-   "build_location_id": 1164645143164
+   "build_location_id": 1164645143164,
+   "all_combos_location": "White Birch All Combos",
+   "all_combos_location_id": 5562691654268
   },
   {
    "guid": "8386837e70a45ea48ae529f5840b7f20",
@@ -34398,7 +35040,9 @@
    "item": "White Mulberry",
    "item_id": 1134817720295,
    "build_location": "Build White Mulberry",
-   "build_location_id": 1134817720295
+   "build_location_id": 1134817720295,
+   "all_combos_location": "White Mulberry All Combos",
+   "all_combos_location_id": 5532864231399
   },
   {
    "guid": "4a1a1a5b907618743bc91e238343fb4e",
@@ -34548,7 +35192,9 @@
    "item": "White Plumed Anemone",
    "item_id": 1119403222457,
    "build_location": "Build White Plumed Anemone",
-   "build_location_id": 1119403222457
+   "build_location_id": 1119403222457,
+   "all_combos_location": "White Plumed Anemone All Combos",
+   "all_combos_location_id": 5517449733561
   },
   {
    "guid": "c9b6997ef47299348b84d1f3411348ac",
@@ -34905,7 +35551,9 @@
    "item": "White Rhino",
    "item_id": 1153658623983,
    "build_location": "Build White Rhino",
-   "build_location_id": 1153658623983
+   "build_location_id": 1153658623983,
+   "all_combos_location": "White Rhino All Combos",
+   "all_combos_location_id": 5551705135087
   },
   {
    "guid": "0d6d984ae4580e047a3381000c4e9daf",
@@ -34967,7 +35615,9 @@
    "item": "White Shark",
    "item_id": 1103116207278,
    "build_location": "Build White Shark",
-   "build_location_id": 1103116207278
+   "build_location_id": 1103116207278,
+   "all_combos_location": "White Shark All Combos",
+   "all_combos_location_id": 5501162718382
   },
   {
    "guid": "15e1ac5ce6965c44cb1274ffcb214209",
@@ -35055,7 +35705,9 @@
    "item": "White Willow",
    "item_id": 1105385407950,
    "build_location": "Build White Willow",
-   "build_location_id": 1105385407950
+   "build_location_id": 1105385407950,
+   "all_combos_location": "White Willow All Combos",
+   "all_combos_location_id": 5503431919054
   },
   {
    "guid": "221dfbbcee98c1a40b0048ffdfc16b3e",
@@ -35279,7 +35931,9 @@
    "item": "White Wolf",
    "item_id": 1108669873102,
    "build_location": "Build White Wolf",
-   "build_location_id": 1108669873102
+   "build_location_id": 1108669873102,
+   "all_combos_location": "White Wolf All Combos",
+   "all_combos_location_id": 5506716384206
   },
   {
    "guid": "26bdcf9a6aea8e44f910fbe6d4aea90d",
@@ -35482,7 +36136,9 @@
    "item": "Wildebeest",
    "item_id": 1109911206310,
    "build_location": "Build Wildebeest",
-   "build_location_id": 1109911206310
+   "build_location_id": 1109911206310,
+   "all_combos_location": "Wildebeest All Combos",
+   "all_combos_location_id": 5507957717414
   },
   {
    "guid": "e4ee4498f59c133449e5a74dd2b5958f",
@@ -35626,7 +36282,9 @@
    "item": "Wintergreen",
    "item_id": 1160964753807,
    "build_location": "Build Wintergreen",
-   "build_location_id": 1160964753807
+   "build_location_id": 1160964753807,
+   "all_combos_location": "Wintergreen All Combos",
+   "all_combos_location_id": 5559011264911
   },
   {
    "guid": "10c6fcf4f4c941e4f9759cc075f3ddcc",
@@ -35808,7 +36466,9 @@
    "item": "Yam",
    "item_id": 1108821342063,
    "build_location": "Build Yam",
-   "build_location_id": 1108821342063
+   "build_location_id": 1108821342063,
+   "all_combos_location": "Yam All Combos",
+   "all_combos_location_id": 5506867853167
   },
   {
    "guid": "3d61220d501b503429833c4949979ebc",
@@ -35836,7 +36496,9 @@
    "item": "Yellow Diamond",
    "item_id": 1115988041941,
    "build_location": "Build Yellow Diamond",
-   "build_location_id": 1115988041941
+   "build_location_id": 1115988041941,
+   "all_combos_location": "Yellow Diamond All Combos",
+   "all_combos_location_id": 5514034553045
   },
   {
    "guid": "0a7c42603e19c224bb1ec8e4a25a0c6a",
@@ -35954,7 +36616,9 @@
    "item": "Zebra",
    "item_id": 1102326277635,
    "build_location": "Build Zebra",
-   "build_location_id": 1102326277635
+   "build_location_id": 1102326277635,
+   "all_combos_location": "Zebra All Combos",
+   "all_combos_location_id": 5500372788739
   },
   {
    "guid": "b5349d0d40b40274ba496be045622e30",
@@ -36135,7 +36799,9 @@
    "item": "Zircon",
    "item_id": 1112655025339,
    "build_location": "Build Zircon",
-   "build_location_id": 1112655025339
+   "build_location_id": 1112655025339,
+   "all_combos_location": "Zircon All Combos",
+   "all_combos_location_id": 5510701536443
   }
  ],
  "giants": [

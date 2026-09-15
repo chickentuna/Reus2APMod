@@ -8,7 +8,7 @@ from .game_data import DATA
 from .items import (Reus2Item, bioticum_pool_items, classifications, filler_items,
                     item_groups, item_table, items_granting_biotica)
 from .locations import Reus2Location, location_table
-from .options import BioticumItems, MicroTypes, Reus2Options
+from .options import BioticumItems, ComboChecks, MicroTypes, Reus2Options
 from .rules import Reus2Rules
 
 GOAL_LOCATION = "Thriving Planet"
@@ -89,11 +89,14 @@ class Reus2World(World):
         menu = Region("Menu", self.player, self.multiworld)
         planet = Region("Planet", self.player, self.multiworld)
 
+        combo_checks = self.options.combo_checks.value
         locations: Dict[str, int] = {}
         for bioticum in DATA["biotica"]:
             locations[bioticum["build_location"]] = bioticum["build_location_id"]
-            if self.options.combo_checks.value:
+            if combo_checks == ComboChecks.option_per_rule:
                 locations.update({rule["location"]: rule["location_id"] for rule in bioticum["rules"]})
+            elif combo_checks == ComboChecks.option_per_bioticum and bioticum["rules"]:
+                locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             locations[reward["location"]] = reward["location_id"]
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:
@@ -149,13 +152,17 @@ class Reus2World(World):
 
     def set_rules(self) -> None:
         rules = Reus2Rules(self)
+        combo_checks = self.options.combo_checks.value
         for bioticum in DATA["biotica"]:
             self.get_location(bioticum["build_location"]).access_rule = \
                 lambda state, b=bioticum: rules.can_build(state, b)
-            if self.options.combo_checks.value:
+            if combo_checks == ComboChecks.option_per_rule:
                 for rule in bioticum["rules"]:
                     self.get_location(rule["location"]).access_rule = \
                         lambda state, b=bioticum, r=rule: rules.can_combo(state, b, r)
+            elif combo_checks == ComboChecks.option_per_bioticum and bioticum["rules"]:
+                self.get_location(bioticum["all_combos_location"]).access_rule = \
+                    lambda state, b=bioticum: rules.can_combo_all(state, b)
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             self.get_location(reward["location"]).access_rule = lambda state, r=reward: rules.request_reward_ok(state, r)
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:

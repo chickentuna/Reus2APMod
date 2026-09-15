@@ -80,6 +80,9 @@ class Reus2Rules:
         return any(self.can_place(state, bioticum, biome) and self.requirement_met(state, bioticum, rule, biome)
                    for biome in biomes)
 
+    def can_combo_all(self, state: CollectionState, bioticum) -> bool:
+        return all(self.can_combo(state, bioticum, rule) for rule in bioticum["rules"])
+
     def requirement_met(self, state: CollectionState, bioticum, rule, biome: str) -> bool:
         kind = rule["kind"]
         if kind == "none":

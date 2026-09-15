@@ -8,11 +8,15 @@ using Reus2Archipelago.Game;
 namespace Reus2Archipelago.Patches;
 
 /// <summary>
-/// Sends checks: a bioticum's first build, a combo rule's first activation, and the draft-paying
-/// request rewards and shop draft purchases within a planet that the slot turned into checks.
+/// Sends checks: a bioticum's first build, its combo rules — one check each or one for all of them
+/// together, as combo_checks says — and the draft-paying request rewards and shop draft purchases
+/// within a planet that the slot turned into checks.
 /// </summary>
 internal static class CheckPatches
 {
+    private const int ComboChecksNone = 0;
+    private const int ComboChecksPerRule = 1;
+
     internal static void Install(Harmony harmony)
     {
         var owner = typeof(CheckPatches);
@@ -46,6 +50,9 @@ internal static class CheckPatches
         Record(__originalMethod, () => $"value={value} bound={ItemApplier.ProfileBound}", quiet: true);
         if (!value || !ItemApplier.ProfileBound)
             return;
+        var mode = ApState.SlotInt("combo_checks", ComboChecksNone);
+        if (mode == ComboChecksNone)
+            return;
         var context = GameAccess.Get(__instance, "slotContext");
         if (context == null || GameAccess.Get(context, "PreviewedBioticum") != null)
             return;
@@ -60,11 +67,27 @@ internal static class CheckPatches
         {
             if (!ReferenceEquals(rules[index], rule))
                 continue;
-            var location = ApData.Instance.ComboLocation(guid, index);
-            if (location != null)
-                ApState.SendCheck(location);
+            if (ApData.Instance.ComboRule(guid, index) is RuleEntry combo)
+            {
+                if (mode == ComboChecksPerRule)
+                    ApState.SendCheck(combo.Location);
+                else
+                    SendWhenEveryRuleActivated(guid, index);
+            }
             return;
         }
+    }
+
+    // A bioticum's rules are activated over several placements and several planets, so the profile
+    // keeps the indexes that have fired and the check waits for the last of them.
+    private static void SendWhenEveryRuleActivated(string guid, int ruleIndex)
+    {
+        var bioticum = ApData.Instance.BioticumForGuid(guid);
+        if (bioticum?.AllCombosLocation == null)
+            return;
+        var activated = ProfileBinding.AddActivatedComboRule(GameAccess.CurrentProfile, guid, ruleIndex);
+        if (activated >= bioticum.Rules.Count)
+            ApState.SendCheck(bioticum.AllCombosLocation);
     }
 
     // Runs before the reward is paid and before the request is counted, so the reward's number is
