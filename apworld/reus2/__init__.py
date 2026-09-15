@@ -5,8 +5,8 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .game_data import DATA
-from .items import (Reus2Item, bioticum_pool_items, bonus_micro_copies, classifications,
-                    filler_items, item_groups, item_table, items_granting_biotica)
+from .items import (Reus2Item, bioticum_pool_items, classifications, filler_items,
+                    item_groups, item_table, items_granting_biotica)
 from .locations import Reus2Location, location_table
 from .options import BioticumItems, MicroTypes, Reus2Options
 from .rules import Reus2Rules
@@ -129,7 +129,6 @@ class Reus2World(World):
             for entry in DATA[key]:
                 add(entry["item"])
         add(DATA["eras"]["item"], len(DATA["eras"]["eras"]))
-        add(DATA["bonus_micro"]["item"], bonus_micro_copies())
         if self.options.micro_types.value == MicroTypes.option_shuffled:
             for micro in DATA["micros"]:
                 add(micro["item"])

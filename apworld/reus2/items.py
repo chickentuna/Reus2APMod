@@ -18,15 +18,9 @@ def apex_items() -> List[str]:
     return [b["apex_item"] for b in DATA["biotica"] if "apex_item" in b]
 
 
-def bonus_micro_copies() -> int:
-    """The vanilla handout gives one Micro per active biome at the start of an era, so the pool holds
-    one Bonus Micro per biome."""
-    return len(DATA["biomes"])
-
-
 def filler_items() -> List[str]:
     """What a filler slot can hold."""
-    return [f["item"] for f in DATA["filler"]]
+    return [f["item"] for f in DATA["filler"]] + [DATA["bonus_micro"]["item"]]
 
 
 def items_granting_biotica(apex: bool) -> Dict[str, List[str]]:
@@ -72,7 +66,7 @@ def classifications() -> Dict[str, ItemClassification]:
     result.update({c["item"]: useful for c in DATA["characters"]})
     result.update({m["item"]: progression if m["name"] in needed_micros else useful for m in DATA["micros"]})
     result.update({item: ItemClassification.filler for item in filler_items()})
-    result[DATA["bonus_micro"]["item"]] = progression
+    result[DATA["bonus_micro"]["item"]] = ItemClassification.filler
     result[DATA["eras"]["item"]] = progression
     return result
 

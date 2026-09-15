@@ -37,7 +37,6 @@ class Reus2Rules:
                     self.providers[biome].append(bioticum)
         self.era_item = DATA["eras"]["item"]
         self.micro_item = {m["name"]: m["item"] for m in DATA["micros"]}
-        self.bonus_micro = DATA["bonus_micro"]["item"]
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
         return state.has_any(self.granting[bioticum["name"]], self.player)
@@ -111,10 +110,8 @@ class Reus2Rules:
         return False
 
     def has_micro(self, state: CollectionState, micro: str) -> bool:
-        """An era starts with one Micro per Bonus Micro received, and the shop sells the type for
-        one of them. With Micro Types shuffled the type is sold once its own item arrives."""
-        if not state.has(self.bonus_micro, self.player):
-            return False
+        """Bonus Micro is filler, so the count of Micros an era starts with never gates a location.
+        With Micro Types shuffled the shop sells the type once its own item arrives."""
         return (self.micro_types == MicroTypes.option_all_unlocked
                 or state.has(self.micro_item[micro], self.player))
 
