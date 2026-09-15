@@ -113,6 +113,9 @@ internal static class ItemApplier
             }
         }
 
+        // The tutorial scenario waits for the player to spend a draft, and drafts are locked.
+        GameAccess.Set(profile, "tutorialCheckValue", false);
+
         ApplyEras(profile, received.TryGetValue(data.Eras.Item, out var eras) ? eras : 0);
         GrantMissing(profile, "unlockedTurningPoints", data.TurningPoints.Select(GameAccess.Definition));
         GrantShopOptions(profile, data.ShopOptions);
