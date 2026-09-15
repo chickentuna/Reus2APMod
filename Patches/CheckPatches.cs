@@ -14,18 +14,19 @@ internal static class CheckPatches
     internal static void Install(Harmony harmony)
     {
         var owner = typeof(CheckPatches);
-        Patching.Apply(harmony, "Giant", "OnBioticumPlaced", owner, postfix: nameof(AfterBioticumPlaced));
+        Patching.Apply(harmony, "GameplayController", "OnBioticumPlaced", owner, postfix: nameof(AfterBioticumPlaced));
         Patching.Apply(harmony, "RuleState", "set_IsActive", owner, postfix: nameof(AfterRuleActivityChanged));
         Patching.Apply(harmony, "EraFeatController", "GiveRewardForQuest", owner, prefix: nameof(BeforeRequestReward));
         Patching.Apply(harmony, "GameplayShop", "BuyOption", owner, prefix: nameof(BeforeShopPurchase));
     }
 
+    // Mono inlines Giant.OnBioticumPlaced, two statements long, into PlaceBioticumAction, so the
+    // detour holds on this one, which the same placement completion calls with the definition.
     private static void AfterBioticumPlaced(object[] __args)
     {
         if (!ItemApplier.ProfileBound || __args == null || __args.Length == 0)
             return;
-        var definition = GameAccess.Get(__args[0], "Definition");
-        var guid = GameAccess.DefinitionId(definition);
+        var guid = GameAccess.DefinitionId(__args[0]);
         var entry = ApData.Instance.BioticumForGuid(guid);
         if (entry == null)
         {
