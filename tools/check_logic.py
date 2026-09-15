@@ -51,30 +51,34 @@ def main():
     modules = load_world_modules()
     data = modules["game_data"].DATA
 
-    combo_checks = modules["options"].ComboChecks
+    checks = modules["options"].BioticumChecks
+    values = (checks.option_build_only, checks.option_build_and_combos,
+              checks.option_combos_only, checks.option_per_rule)
 
     failures = []
-    modes = [(micro_types, bioticum_items, combos)
+    modes = [(micro_types, bioticum_items, bioticum_checks)
              for micro_types in (0, 1) for bioticum_items in (0, 1)
-             for combos in (combo_checks.option_none, combo_checks.option_per_rule,
-                            combo_checks.option_per_bioticum)]
-    for micro_types, bioticum_items, combos in modes:
-        mode = f"micro_types={micro_types} bioticum_items={bioticum_items} combo_checks={combos}"
+             for bioticum_checks in values]
+    for micro_types, bioticum_items, bioticum_checks in modes:
+        mode = (f"micro_types={micro_types} bioticum_items={bioticum_items}"
+                f" bioticum_checks={bioticum_checks}")
         world = types.SimpleNamespace(player=1, options=types.SimpleNamespace(
             micro_types=types.SimpleNamespace(value=micro_types),
             bioticum_items=types.SimpleNamespace(value=bioticum_items),
-            combo_checks=types.SimpleNamespace(value=combos)))
+            bioticum_checks=types.SimpleNamespace(value=bioticum_checks)))
         rules = modules["rules"].Reus2Rules(world)
         state = FullInventory()
         for bioticum in data["biotica"]:
-            if not rules.can_build(state, bioticum):
-                failures.append((mode, bioticum["build_location"], "build"))
-            if combos == combo_checks.option_per_rule:
-                for rule in bioticum["rules"]:
-                    if not rules.can_combo(state, bioticum, rule):
-                        failures.append((mode, rule["location"], rule["type"]))
-            elif combos == combo_checks.option_per_bioticum and bioticum["rules"]:
-                if not rules.can_combo_all(state, bioticum):
+            combos = bioticum["rules"]
+            if not (combos and bioticum_checks == checks.option_combos_only):
+                if not rules.can_build(state, bioticum):
+                    failures.append((mode, bioticum["build_location"], "build"))
+            if combos and bioticum_checks != checks.option_build_only:
+                if bioticum_checks == checks.option_per_rule:
+                    for rule in combos:
+                        if not rules.can_combo(state, bioticum, rule):
+                            failures.append((mode, rule["location"], rule["type"]))
+                elif not rules.can_combo_all(state, bioticum):
                     failures.append((mode, bioticum["all_combos_location"], "all combos"))
         if not rules.builds_reachable(state, len(data["biotica"])):
             failures.append((mode, "goal", "not every build reachable"))
@@ -85,7 +89,7 @@ def main():
             print(f"  [{mode}] {location}  ({reason})")
         sys.exit(1)
     print(f"every location is reachable with a full inventory, in all {len(modes)} micro_types,"
-          " bioticum_items and combo_checks combinations")
+          " bioticum_items and bioticum_checks combinations")
 
 
 if __name__ == "__main__":

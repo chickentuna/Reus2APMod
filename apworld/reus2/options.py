@@ -65,16 +65,21 @@ class BioticumItems(Choice):
     default = 0
 
 
-class ComboChecks(Choice):
-    """Which checks a bioticum's combos send.
+class BioticumChecks(Choice):
+    """Which locations a bioticum carries.
 
-    - **None:** no combo checks, leaving only the builds, the request rewards and the shop drafts.
-    - **Per rule:** one per combo rule.
-    - **Per bioticum:** one per bioticum, sent once all of its combo rules have been triggered."""
-    display_name = "Combo Checks"
-    option_none = 0
-    option_per_rule = 1
-    option_per_bioticum = 2
+    - **Build only:** building it, and nothing for its combos.
+    - **Build and combos:** building it, and a second one for triggering every combo rule it has.
+    - **Combos only:** one location, sent once every combo rule it has has been triggered, which
+      takes building it along the way.
+    - **Per rule:** building it, and one for each combo rule separately.
+
+    A bioticum with no combo rule carries its build in every case."""
+    display_name = "Bioticum Checks"
+    option_build_only = 0
+    option_build_and_combos = 1
+    option_combos_only = 2
+    option_per_rule = 3
     default = 2
 
 
@@ -112,6 +117,6 @@ class Reus2Options(PerGameCommonOptions):
     request_reward_checks: RequestRewardChecks
     shop_draft_checks: ShopDraftChecks
     bioticum_items: BioticumItems
-    combo_checks: ComboChecks
+    bioticum_checks: BioticumChecks
     micro_types: MicroTypes
     starting_micro_types: StartingMicroTypes

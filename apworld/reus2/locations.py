@@ -11,7 +11,7 @@ class Reus2Location(Location):
 
 def location_table() -> Dict[str, int]:
     """Every name and id, holding both the per-rule and the per-bioticum combo locations whatever
-    `combo_checks` is: `Reus2World.location_name_to_id` is set on the class, where the options of a
+    `bioticum_checks` is: `Reus2World.location_name_to_id` is set on the class, where the options of a
     slot cannot be read."""
     table = {}
     for b in DATA["biotica"]:

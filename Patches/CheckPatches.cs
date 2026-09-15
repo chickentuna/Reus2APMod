@@ -9,14 +9,15 @@ namespace Reus2Archipelago.Patches;
 
 /// <summary>
 /// Sends checks: a bioticum's first build, its combo rules — one check each or one for all of them
-/// together, as combo_checks says — and the draft-paying request rewards and shop draft purchases
+/// together, as bioticum_checks says — and the draft-paying request rewards and shop draft purchases
 /// within a planet that the slot turned into checks.
 /// </summary>
 internal static class CheckPatches
 {
-    private const int ComboChecksNone = 0;
-    private const int ComboChecksPerRule = 1;
-    private const int ComboChecksPerBioticum = 2;
+    private const int BuildOnly = 0;
+    private const int BuildAndCombos = 1;
+    private const int CombosOnly = 2;
+    private const int PerRule = 3;
 
     internal static void Install(Harmony harmony)
     {
@@ -44,7 +45,7 @@ internal static class CheckPatches
         }
         // Per bioticum, a bioticum that has combo rules carries one location, its combos, so its
         // build sends nothing; one with no rule keeps its build.
-        if (ApState.SlotInt("combo_checks", ComboChecksNone) == ComboChecksPerBioticum && entry.Rules.Count > 0)
+        if (ApState.SlotInt("bioticum_checks", BuildOnly) == CombosOnly && entry.Rules.Count > 0)
             return;
         ApState.SendCheck(entry.BuildLocation);
     }
@@ -55,8 +56,8 @@ internal static class CheckPatches
         Record(__originalMethod, () => $"value={value} bound={ItemApplier.ProfileBound}", quiet: true);
         if (!value || !ItemApplier.ProfileBound)
             return;
-        var mode = ApState.SlotInt("combo_checks", ComboChecksNone);
-        if (mode == ComboChecksNone)
+        var mode = ApState.SlotInt("bioticum_checks", BuildOnly);
+        if (mode == BuildOnly)
             return;
         var context = GameAccess.Get(__instance, "slotContext");
         if (context == null || GameAccess.Get(context, "PreviewedBioticum") != null)
@@ -74,7 +75,7 @@ internal static class CheckPatches
                 continue;
             if (ApData.Instance.ComboRule(guid, index) is RuleEntry combo)
             {
-                if (mode == ComboChecksPerRule)
+                if (mode == PerRule)
                     ApState.SendCheck(combo.Location);
                 else
                     SendWhenEveryRuleActivated(guid, index);
