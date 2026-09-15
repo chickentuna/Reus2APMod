@@ -83,6 +83,14 @@ internal static class GameAccess
 
     internal static string DefinitionId(object definition) => Get(definition, "ID") as string;
 
+    /// <summary>Every loaded definition whose type carries that name.</summary>
+    internal static IEnumerable<object> DefinitionsOfType(string typeName)
+    {
+        if (!LoadDefinitions())
+            return Enumerable.Empty<object>();
+        return definitionsByGuid.Values.Where(d => d.GetType().Name == typeName);
+    }
+
     internal static object Get(object target, string name)
     {
         if (target == null)
