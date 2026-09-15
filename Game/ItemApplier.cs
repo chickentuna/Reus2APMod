@@ -85,6 +85,8 @@ internal static class ItemApplier
 
         try
         {
+            ApIcon.Apply();
+
             if (!ProfileBinding.EnsureBound(profile, ApState.Seed, ApState.SlotName))
             {
                 dirty = true;
@@ -184,8 +186,6 @@ internal static class ItemApplier
         var gameplay = GameAccess.Gameplay;
         if (gameplay == null)
             return;
-
-        ApIcon.Apply();
 
         var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
         GameAccess.Set(scenario, "draftsLocked", true);
