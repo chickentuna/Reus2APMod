@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Reus2Archipelago.Game;
@@ -25,6 +27,7 @@ internal static class ProgressionPatches
         Patching.Apply(harmony, "NewGameViewModel", "SetPlayMode", owner, prefix: nameof(ForceStandardMode));
         Patching.Apply(harmony, "NewGameViewModel", "SetDraftMode", owner, prefix: nameof(ForceStandardMode));
         Patching.Apply(harmony, "NewGameViewModel", "SetHorizonMode", owner, prefix: nameof(ForceStandardMode));
+        Patching.Apply(harmony, "Scenario", "IsAbilityLocked", owner, postfix: nameof(LockUnreceivedBiome));
         Patching.Apply(harmony, "CommunityChallengeUI", "OnChallengeSelected", owner, prefix: nameof(BlockChallenge));
         Patching.Apply(harmony, "EraFeatController", "OnWorldStageControllerActivated", owner, postfix: nameof(PlanetLoaded));
         Patching.Apply(harmony, "AspectController", "DrawSetForEra", owner, prefix: nameof(SkipDrawnMicroType));
@@ -61,6 +64,24 @@ internal static class ProgressionPatches
         if (__args.Length > 0 && __args[0] is Enum mode)
             __args[0] = Enum.ToObject(mode.GetType(), 0);
         Record(__originalMethod, () => $"mode={Naming.Of(__args.Length > 0 ? __args[0] : null)}");
+    }
+
+    /// <summary>A place-biome ability carries needsToBeUnlocked false, so a run lets every giant
+    /// terraform both of its biomes; IsLockedForMetaGame, which reads the profile, is only asked by
+    /// the giant information menu. This locks the ones whose biome the slot has not sent.</summary>
+    private static void LockUnreceivedBiome(object[] __args, ref bool __result)
+    {
+        if (__result || !ItemApplier.ProfileBound || __args == null || __args.Length == 0)
+            return;
+        var definition = GameAccess.Get(__args[0], "Definition");
+        if (definition == null || definition.GetType().Name != "PlaceBiomeAbilityDefinition")
+            return;
+        var type = GameAccess.Get(GameAccess.Get(definition, "biomeType"), "biomeType");
+        if (type == null)
+            return;
+        if (GameAccess.Get(GameAccess.CurrentProfile, "UnlockedBiomes") is IEnumerable unlocked
+            && !unlocked.Cast<object>().Any(b => Equals(b, type)))
+            __result = true;
     }
 
     private static bool BlockChallenge(MethodBase __originalMethod)
