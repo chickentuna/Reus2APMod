@@ -32,6 +32,16 @@ internal static class HarmonySelfTest
             Plugin.Log.LogError($"Harmony self-test failed: {e}");
         }
 
+        var folder = System.IO.Path.GetDirectoryName(typeof(HarmonySelfTest).Assembly.Location);
+        var beside = System.IO.Directory.GetFiles(folder, "*.dll").Select(System.IO.Path.GetFileName).ToList();
+        Plugin.Log.LogInfo($"Beside the plugin: {string.Join(", ", beside)}");
+        var clashes = beside.Where(f => f.StartsWith("0Harmony") || f.StartsWith("BepInEx")
+                                        || f.StartsWith("Mono.Cecil") || f.StartsWith("MonoMod")
+                                        || f.StartsWith("UnityEngine") || f.StartsWith("Assembly-CSharp")).ToList();
+        if (clashes.Any())
+            Plugin.Log.LogError($"These belong to the host, and a second copy here takes the detours "
+                                + $"away from the running game: {string.Join(", ", clashes)}");
+
         var loaded = AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => a.GetName().Name == "Assembly-CSharp").ToList();
         Plugin.Log.LogInfo($"Assembly-CSharp loaded {loaded.Count} time(s): "

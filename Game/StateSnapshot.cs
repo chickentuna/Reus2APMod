@@ -43,6 +43,36 @@ internal static class StateSnapshot
             yield return line;
     }
 
+    /// <summary>The biotica the profile holds against the ones the slot sent, so a kit that did not
+    /// land shows up as the names on either side rather than as a count.</summary>
+    private static IEnumerable<string> ReceivedAgainstProfile(object profile)
+    {
+        var received = new HashSet<string>(Reus2Archipelago.ApState.ReceivedItems);
+        var granted = new HashSet<string>();
+        foreach (var bioticum in Archipelago.ApData.Instance.Biotica)
+        {
+            if (Archipelago.ApData.Instance.ItemsGranting(bioticum.Guid).Any(received.Contains))
+                granted.Add(bioticum.Name);
+        }
+
+        var held = new HashSet<string>();
+        if (GameAccess.Get(profile, "UnlockedBiotica") is IEnumerable unlocked)
+        {
+            foreach (var definition in unlocked)
+            {
+                var entry = Archipelago.ApData.Instance.BioticumForGuid(GameAccess.DefinitionId(definition));
+                held.Add(entry?.Name ?? Naming.Of(definition));
+            }
+        }
+
+        yield return $"biotica from items ({granted.Count}): {string.Join(", ", granted.OrderBy(n => n))}";
+        yield return $"biotica on profile ({held.Count}): {string.Join(", ", held.OrderBy(n => n))}";
+        var extra = held.Except(granted).OrderBy(n => n).ToList();
+        var missing = granted.Except(held).OrderBy(n => n).ToList();
+        yield return $"profile beyond the items ({extra.Count}): {string.Join(", ", extra)}"
+                     + $" | items not on the profile ({missing.Count}): {string.Join(", ", missing)}";
+    }
+
     private static IEnumerable<string> Profile(object profile)
     {
         if (profile == null)
@@ -55,6 +85,9 @@ internal static class StateSnapshot
         yield return $"profile: id={name} name={GameAccess.Get(profile, "VisualName")}"
                      + $" bound={ItemApplier.ProfileBound} slot={ApState.SlotName ?? "none"}"
                      + $" seed={ApState.Seed ?? "none"} connected={ApState.Connected}";
+
+        foreach (var line in ReceivedAgainstProfile(profile))
+            yield return line;
 
         yield return $"unlocked: biotica={Naming.Count(GameAccess.Get(profile, "UnlockedBiotica"))}"
                      + $" biomes={Naming.Count(GameAccess.Get(profile, "UnlockedBiomes"))}"

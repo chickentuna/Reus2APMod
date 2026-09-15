@@ -19,6 +19,8 @@ internal static class ItemApplier
 
     private static bool dirty = true;
     private static object lastProfile;
+    private static object lastGameplay;
+    private static int pooledFrom;
     private static object checkedProfile;
     private static bool checkedBound;
     private static bool logged;
@@ -66,6 +68,14 @@ internal static class ItemApplier
             lastProfile = profile;
             dirty = true;
         }
+        var gameplay = GameAccess.Gameplay;
+        if (!ReferenceEquals(gameplay, lastGameplay))
+        {
+            lastGameplay = gameplay;
+            pooledFrom = 0;
+            dirty = true;
+        }
+        HoldPlanetPool(gameplay);
         if (!dirty || profile == null || !ApState.HasSession || !GameAccess.DefinitionsReady)
             return;
         dirty = false;
@@ -134,13 +144,47 @@ internal static class ItemApplier
         GameAccess.Call(profile, "InvalidateSaveFile");
     }
 
+    /// <summary>GameplayController.UnlockBaseBiotica fills masteredBiotica with each legal biome's
+    /// base biotica, and GetAllAvailableBiotica returns that list, so the run's pool is written from
+    /// the received items instead. Returns how many it holds.</summary>
+    private static int SetPlanetPool(object gameplay, Dictionary<string, int> received)
+    {
+        if (!(GameAccess.Get(gameplay, "masteredBiotica") is IList pool))
+            return -1;
+
+        var wanted = ApData.Instance.Biotica
+            .Where(b => ApData.Instance.ItemsGranting(b.Guid).Any(received.ContainsKey))
+            .Select(b => GameAccess.Definition(b.Guid))
+            .Where(d => d != null)
+            .ToList();
+
+        pool.Clear();
+        foreach (var definition in wanted)
+            pool.Add(definition);
+        pooledFrom = pool.Count;
+        return pool.Count;
+    }
+
+    /// <summary>Evolving, shop purchases and era grants add to masteredBiotica while a planet runs,
+    /// so the pool is compared every frame and rewritten when it grows.</summary>
+    private static void HoldPlanetPool(object gameplay)
+    {
+        if (gameplay == null || pooledFrom == 0 || !ProfileBound)
+            return;
+        if (GameAccess.Get(gameplay, "masteredBiotica") is IList pool && pool.Count != pooledFrom)
+            dirty = true;
+    }
+
     private static void ApplyPlanet(object profile, Dictionary<string, int> received)
     {
         var gameplay = GameAccess.Gameplay;
         if (gameplay == null)
             return;
 
-        GameAccess.Set(GameAccess.Get(GameAccess.SessionContext, "Scenario"), "draftsLocked", true);
+        var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
+        GameAccess.Set(scenario, "draftsLocked", true);
+        Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
+                           + $", pool={SetPlanetPool(gameplay, received)} biotica from items.");
 
         var aspects = GameAccess.Get(gameplay, "aspectController");
         var unlocks = ApState.SlotInt("micro_unlocks", MicroUnlocksOff);

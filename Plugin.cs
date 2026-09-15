@@ -162,6 +162,7 @@ public sealed class Plugin : BaseUnityPlugin
 
     private void OnDestroy()
     {
+        Log.LogWarning("Plugin destroyed: disconnecting and removing every patch.");
         Client?.Disconnect();
         harmony?.UnpatchSelf();
     }
