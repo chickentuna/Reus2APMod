@@ -71,7 +71,7 @@ class BioticumItems(Choice):
     display_name = "Biotica"
     option_individual = 0
     option_apex = 1
-    default = 0
+    default = 1
 
 
 class BioticumChecks(Choice):
