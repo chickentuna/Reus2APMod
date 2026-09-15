@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using HarmonyLib;
 using HarmonyLib.Tools;
 
@@ -26,7 +27,7 @@ internal static class HarmonySelfTest
         {
             harmony.Patch(AccessTools.Method(typeof(HarmonySelfTest), nameof(Target)),
                 postfix: new HarmonyMethod(AccessTools.Method(typeof(HarmonySelfTest), nameof(AfterTarget))));
-            Target();
+            CallTarget();
             Plugin.Log.LogInfo(postfixRan
                 ? "Harmony self-test: a detour on the plugin's own method ran."
                 : "Harmony self-test: a detour on the plugin's own method did not run.");
@@ -113,9 +114,13 @@ internal static class HarmonySelfTest
               + $"{string.Join(", ", info.Owners)}; Harmony knows {Harmony.GetAllPatchedMethods().Count()} patched methods.");
     }
 
-    private static void Target()
-    {
-    }
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static void CallTarget() => Target();
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static void Target() => sideEffect++;
+
+    private static int sideEffect;
 
     private static void AfterTarget() => postfixRan = true;
 }

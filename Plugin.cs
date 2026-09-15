@@ -161,10 +161,9 @@ public sealed class Plugin : BaseUnityPlugin
         }
     }
 
+    /// <summary>Reus 2 destroys this component once the chainloader finishes, which is why its
+    /// Update never ticks. The patches and the session belong to the static Harmony instance and to
+    /// MainThreadRunner's own object, both of which outlive it, so nothing is torn down here.</summary>
     private void OnDestroy()
-    {
-        Log.LogWarning("Plugin destroyed: disconnecting and removing every patch.");
-        Client?.Disconnect();
-        harmony?.UnpatchSelf();
-    }
+        => Log.LogWarning("Plugin component destroyed; patches and the Archipelago session stay.");
 }
