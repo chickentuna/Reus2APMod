@@ -8,8 +8,8 @@ using Newtonsoft.Json;
 namespace Reus2Archipelago.Game;
 
 /// <summary>
-/// Ties each profile in the Archipelago save folder to one seed and slot, so a planet never mixes two
-/// multiworlds. The binding is stored in the profile's own folder.
+/// Ties each Archipelago profile to one seed and slot, so a planet never mixes two multiworlds. The
+/// binding is stored in the profile's own folder.
 /// </summary>
 internal static class ProfileBinding
 {
@@ -29,28 +29,22 @@ internal static class ProfileBinding
 
     /// <summary>
     /// True when the current profile is this slot's. Otherwise, from the main menu, switches to the
-    /// slot's profile or creates one — an unbound current profile is simply claimed — and returns false
-    /// so the caller retries against the new current profile.
+    /// slot's Archipelago profile or creates one — an unbound Archipelago profile is simply claimed —
+    /// and returns false so the caller retries against the new current profile.
     /// </summary>
     internal static bool EnsureBound(object profile, string seed, string slot)
     {
-        if (!ProfileIsolation.IsArchipelagoProfile(profile))
-        {
-            if (!ReferenceEquals(warnedProfile, profile))
-                Plugin.Log.LogError($"Refusing to use profile '{ProfileName(profile)}': it is not an Archipelago profile.");
-            warnedProfile = profile;
-            return false;
-        }
-
-        var record = Read(profile);
+        var archipelago = ProfileIsolation.IsArchipelagoProfile(profile);
+        var record = archipelago ? Read(profile) : null;
         if (record != null && Matches(record, seed, slot))
             return true;
 
         var install = GameAccess.Install;
         var own = (GameAccess.Get(install, "UserProfiles") as IEnumerable)?.Cast<object>()
-            .FirstOrDefault(p => !ReferenceEquals(p, profile) && Read(p) is Record r && Matches(r, seed, slot));
+            .FirstOrDefault(p => !ReferenceEquals(p, profile) && ProfileIsolation.IsArchipelagoProfile(p)
+                                 && Read(p) is Record r && Matches(r, seed, slot));
 
-        if (own == null && record == null)
+        if (archipelago && own == null && record == null)
         {
             Clear(profile);
             Write(profile, new Record { Seed = seed, Slot = slot });
@@ -61,20 +55,19 @@ internal static class ProfileBinding
         if (GameAccess.Gameplay != null)
         {
             if (!ReferenceEquals(warnedProfile, profile))
-                Plugin.Log.LogWarning($"This planet belongs to another Archipelago slot. Return to the main menu to play slot {slot}.");
+                Plugin.Log.LogWarning($"This planet is not slot {slot}'s. Return to the main menu to play slot {slot}.");
             warnedProfile = profile;
             return false;
         }
 
-        var switchOnly = GameAccess.EnumValue("ProfileSwitchMode", "SwitchOnly");
         if (own != null)
         {
-            GameAccess.Call(install, "SwitchToUserProfile", own, switchOnly);
+            GameAccess.Call(install, "SwitchToUserProfile", own, GameAccess.EnumValue("ProfileSwitchMode", "SwitchOnly"));
             Plugin.Log.LogInfo($"Switched to profile '{ProfileName(own)}' for slot {slot}.");
         }
         else
         {
-            var created = GameAccess.Call(install, "CreateAndSwitchToFreshProfile", switchOnly);
+            var created = ProfileIsolation.CreateAndSwitchToFreshProfile(install);
             Plugin.Log.LogInfo($"Created profile '{ProfileName(created)}' for slot {slot}.");
         }
         return false;
