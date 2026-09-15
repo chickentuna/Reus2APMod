@@ -143,16 +143,7 @@ class Reus2World(World):
 
         slots = len(self.multiworld.get_unfilled_locations(self.player))
         if len(pool) > slots:
-            # A starting count says how many of these the player opens with, so they are the last
-            # thing the surplus draws from.
-            counted = {c["item"] for c in DATA["characters"]}
-            counted |= {a["item"] for a in DATA["abilities"]}
-            counted |= {m["item"] for m in DATA["micros"]}
-            free = [i for i, item in enumerate(pool) if item.name not in counted]
-            held = [i for i, item in enumerate(pool) if item.name in counted]
-            self.random.shuffle(free)
-            self.random.shuffle(held)
-            surplus = set((free + held)[: len(pool) - slots])
+            surplus = set(self.random.sample(range(len(pool)), len(pool) - slots))
             kept: List[Reus2Item] = []
             for index, item in enumerate(pool):
                 if index in surplus:

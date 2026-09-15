@@ -13,7 +13,10 @@ class GoalBuilds(Range):
 
 class StartingBiotica(Range):
     """Number of early biotica you start with, drawn from what your starting giants can place in
-    their starting biomes."""
+    their starting biomes.
+
+    An item that does not fit the seed's locations is given to you at the start as well, so
+    you can open with more than this."""
     display_name = "Starting Biotica"
     range_start = 4
     range_end = 30
@@ -21,7 +24,10 @@ class StartingBiotica(Range):
 
 
 class StartingPowers(Range):
-    """Number of your starting giants' special terraforming powers you start with."""
+    """Number of your starting giants' special terraforming powers you start with.
+
+    An item that does not fit the seed's locations is given to you at the start as well, so
+    you can open with more than this."""
     display_name = "Starting Powers"
     range_start = 0
     range_end = 3
@@ -29,7 +35,10 @@ class StartingPowers(Range):
 
 
 class StartingCharacters(Range):
-    """Number of city leaders you start with."""
+    """Number of city leaders you start with.
+
+    An item that does not fit the seed's locations is given to you at the start as well, so
+    you can open with more than this."""
     display_name = "Starting Characters"
     range_start = 1
     range_end = 5
@@ -100,7 +109,10 @@ class MicroTypes(Choice):
 
 class StartingMicroTypes(Range):
     """Number of Micro types the shop sells from the start, drawn at random. Read only when Micro
-    Types is shuffled."""
+    Types is shuffled.
+
+    An item that does not fit the seed's locations is given to you at the start as well, so
+    you can open with more than this."""
     display_name = "Starting Micro Types"
     range_start = 0
     range_end = 33
