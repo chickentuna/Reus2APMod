@@ -25,6 +25,8 @@ internal static class CheckPatches
         var owner = typeof(CheckPatches);
         Patching.Apply(harmony, "GameplayController", "OnBioticumPlaced", owner, postfix: nameof(AfterBioticumPlaced));
         Patching.Apply(harmony, "RuleState", "set_IsActive", owner, postfix: nameof(AfterRuleActivityChanged));
+        Patching.Apply(harmony, "BioticumSlot", "OnRuleActivityChanged", owner, postfix: nameof(AfterSlotRuleActivity));
+        Patching.Apply(harmony, "BioticumSlot", "OnForEachRuleCountChanged", owner, postfix: nameof(AfterSlotForEachCount));
         Patching.Apply(harmony, "EraFeatController", "GiveRewardForQuest", owner, prefix: nameof(BeforeRequestReward));
         Patching.Apply(harmony, "GameplayShop", "BuyOption", owner, prefix: nameof(BeforeShopPurchase));
     }
@@ -55,15 +57,26 @@ internal static class CheckPatches
     private static void AfterRuleActivityChanged(MethodBase __originalMethod, object __instance, bool value)
     {
         Record(__originalMethod, () => $"value={value} bound={ItemApplier.ProfileBound}", quiet: true);
-        if (!value || !ItemApplier.ProfileBound)
+        if (!value)
+            return;
+        SendCombo(__instance, "rule activity");
+    }
+
+    /// <summary>Resolves a rule state to the bioticum and rule index it belongs to and sends what the
+    /// mode calls for. Three callbacks reach this, and the first of them to arrive wins, since a
+    /// location is only ever sent once.</summary>
+    private static void SendCombo(object ruleState, string source)
+    {
+        if (ruleState == null || !ItemApplier.ProfileBound)
             return;
         var mode = ApState.SlotInt("bioticum_checks", BuildOnly);
         if (mode == BuildOnly)
             return;
-        var context = GameAccess.Get(__instance, "slotContext");
+
+        var context = GameAccess.Get(ruleState, "slotContext");
         if (context == null)
         {
-            Bail(__instance, "the rule has no slot context");
+            Bail(ruleState, $"{source}: the rule has no slot context");
             return;
         }
         if (GameAccess.Get(context, "PreviewedBioticum") != null)
@@ -73,16 +86,17 @@ internal static class CheckPatches
         var guid = GameAccess.DefinitionId(definition);
         if (guid == null)
         {
-            Bail(__instance, "the slot holds no bioticum definition");
+            Bail(ruleState, $"{source}: the slot holds no bioticum definition");
             return;
         }
         if (!(GameAccess.Get(definition, "rules") is IList rules))
         {
-            Bail(__instance, "the definition has no rules list");
+            Bail(ruleState, $"{source}: the definition has no rules list");
             return;
         }
 
-        var rule = GameAccess.Get(__instance, "RuleDefinitionBase");
+        var name = ApData.Instance.BioticumForGuid(guid)?.Name ?? guid;
+        var rule = GameAccess.Get(ruleState, "RuleDefinitionBase");
         for (var index = 0; index < rules.Count; index++)
         {
             if (!ReferenceEquals(rules[index], rule))
@@ -96,11 +110,11 @@ internal static class CheckPatches
             }
             else
             {
-                Bail(__instance, $"rule {index} of {ApData.Instance.BioticumForGuid(guid)?.Name ?? guid} carries no location");
+                Bail(ruleState, $"{source}: rule {index} of {name} carries no location");
             }
             return;
         }
-        Bail(__instance, $"the activated rule is not in {ApData.Instance.BioticumForGuid(guid)?.Name ?? guid}'s rules list");
+        Bail(ruleState, $"{source}: the rule is not in {name}'s rules list");
     }
 
     private static readonly HashSet<string> BailReasons = new HashSet<string>();
@@ -113,8 +127,26 @@ internal static class CheckPatches
             Plugin.Log.LogWarning($"Combo activation sent no check — {key}");
     }
 
-    // A bioticum's rules are activated over several placements and several planets, so the profile
-    // keeps the indexes that have fired and the check waits for the last of them.
+    /// <summary>The slot's own activity callback, which PuzzleBonusHandler subscribes for a placed
+    /// bioticum. A ForEach rule is not routed here: its count goes to OnForEachRuleCountChanged.</summary>
+    private static void AfterSlotRuleActivity(MethodBase __originalMethod, object[] __args)
+    {
+        Record(__originalMethod, () => $"state={__args?[0]} bound={ItemApplier.ProfileBound}", quiet: true);
+        if (__args == null || __args.Length < 2 || !(__args[0] is bool state) || !state)
+            return;
+        SendCombo(__args[1], "slot activity");
+    }
+
+    /// <summary>The slot's callback for a ForEach rule, which counts rather than flips active, and
+    /// carries 229 of the 397 combo rules.</summary>
+    private static void AfterSlotForEachCount(MethodBase __originalMethod, object[] __args)
+    {
+        Record(__originalMethod, () => $"diff={__args?[1]} bound={ItemApplier.ProfileBound}", quiet: true);
+        if (__args == null || __args.Length < 3 || !(__args[1] is int diff) || diff <= 0)
+            return;
+        SendCombo(__args[2], "slot for-each count");
+    }
+
     private static void SendWhenEveryRuleActivated(string guid, int ruleIndex)
     {
         var bioticum = ApData.Instance.BioticumForGuid(guid);
