@@ -61,6 +61,7 @@ public sealed class Plugin : BaseUnityPlugin
         ApMode = !string.IsNullOrWhiteSpace(slot.Value);
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        HarmonySelfTest.Run(harmony);
 
         if (enableDefinitionDump.Value)
         {
