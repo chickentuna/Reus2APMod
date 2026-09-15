@@ -82,6 +82,8 @@ class BioticumChecks(Choice):
     - **Combos only:** one location, sent once every combo rule it has has been triggered, which
       takes building it along the way.
     - **Per rule:** building it, and one for each combo rule separately.
+    - **Max combos:** the combos-only location, sent once every combo rule that stacks 6 times or
+      fewer has reached its maximum stack and every other rule has been triggered.
 
     A bioticum with no combo rule carries its build in every case."""
     display_name = "Bioticum Checks"
@@ -89,6 +91,7 @@ class BioticumChecks(Choice):
     option_build_and_combos = 1
     option_combos_only = 2
     option_per_rule = 3
+    option_max_combos = 4
     default = 2
 
 

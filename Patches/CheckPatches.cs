@@ -9,9 +9,10 @@ using Reus2Archipelago.Game;
 namespace Reus2Archipelago.Patches;
 
 /// <summary>
-/// Sends checks: a bioticum's first build, its combo rules — one check each or one for all of them
-/// together, as bioticum_checks says — and the draft-paying request rewards and shop draft purchases
-/// within a planet that the slot turned into checks.
+/// Sends checks: a bioticum's first build, its combo rules — one check each, or one for all of them
+/// fired, or one for all of them at their maximum stack, as bioticum_checks says — and the
+/// draft-paying request rewards and shop draft purchases within a planet that the slot turned into
+/// checks.
 /// </summary>
 internal static class CheckPatches
 {
@@ -19,6 +20,7 @@ internal static class CheckPatches
     private const int BuildAndCombos = 1;
     private const int CombosOnly = 2;
     private const int PerRule = 3;
+    private const int MaxCombos = 4;
 
     internal static void Install(Harmony harmony)
     {
@@ -46,9 +48,10 @@ internal static class CheckPatches
             Plugin.Log.LogWarning($"Placed a bioticum the data does not hold: {guid ?? "no id"}.");
             return;
         }
-        // Per bioticum, a bioticum that has combo rules carries one location, its combos, so its
-        // build sends nothing; one with no rule keeps its build.
-        if (ApState.SlotInt("bioticum_checks", BuildOnly) == CombosOnly && entry.Rules.Count > 0)
+        // Under combos_only and max_combos a bioticum that has combo rules carries one location, its
+        // combos, so its build sends nothing; one with no rule keeps its build.
+        var checks = ApState.SlotInt("bioticum_checks", BuildOnly);
+        if ((checks == CombosOnly || checks == MaxCombos) && entry.Rules.Count > 0)
             return;
         ApState.SendCheck(entry.BuildLocation);
     }
@@ -63,8 +66,8 @@ internal static class CheckPatches
     }
 
     /// <summary>Resolves a rule state to the bioticum and rule index it belongs to and sends what the
-    /// mode calls for. Three callbacks reach this, and the first of them to arrive wins, since a
-    /// location is only ever sent once.</summary>
+    /// mode calls for. Three callbacks reach this; a location is only ever sent once, and under
+    /// max_combos every arrival notes the stack the rule has reached.</summary>
     private static void SendCombo(object ruleState, string source)
     {
         if (ruleState == null || !ItemApplier.ProfileBound)
@@ -109,6 +112,8 @@ internal static class CheckPatches
             {
                 if (mode == PerRule)
                     ApState.SendCheck(combo.Location);
+                else if (mode == MaxCombos)
+                    SendWhenEveryRuleMaxed(guid, index, StackReached(ruleState));
                 else
                     SendWhenEveryRuleActivated(guid, index);
             }
@@ -159,6 +164,27 @@ internal static class CheckPatches
         var activated = ProfileBinding.AddActivatedComboRule(GameAccess.CurrentProfile, guid, ruleIndex);
         if (activated >= bioticum.Rules.Count)
             ApState.SendCheck(bioticum.AllCombosLocation);
+    }
+
+    /// <summary>SlotForEachRuleState.ForeachCount is the count the rule last calculated, which
+    /// SlotForeachRule.CapOnMaxStacks has already held to the rule's maxStacks. The states of rules
+    /// that only turn active carry no count, and turning active is their one stack.</summary>
+    private static int StackReached(object ruleState)
+        => GameAccess.Get(ruleState, "ForeachCount") is int count ? count : 1;
+
+    private static void SendWhenEveryRuleMaxed(string guid, int ruleIndex, int stack)
+    {
+        var bioticum = ApData.Instance.BioticumForGuid(guid);
+        if (bioticum?.AllCombosLocation == null)
+            return;
+        var stacks = ProfileBinding.AddComboRuleStack(GameAccess.CurrentProfile, guid, ruleIndex, stack);
+        foreach (var rule in bioticum.Rules)
+        {
+            var wanted = rule.MaxStacks > 0 ? rule.MaxStacks : 1;
+            if (!stacks.TryGetValue(rule.RuleIndex, out var reached) || reached < wanted)
+                return;
+        }
+        ApState.SendCheck(bioticum.AllCombosLocation);
     }
 
     // Runs before the reward is paid and before the request is counted, so the reward's number is

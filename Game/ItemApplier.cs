@@ -190,6 +190,7 @@ internal static class ItemApplier
         var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
         GameAccess.Set(scenario, "draftsLocked", true);
         AddReceivedMicroTypes(GameAccess.Get(gameplay, "aspectController"), received);
+        LockUnreceivedBiomes(gameplay);
         Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items"
                            + $", {MicroAllowance} Micro charges an era.");
@@ -210,6 +211,28 @@ internal static class ItemApplier
         for (var i = applied; i < boosts; i++)
             GameAccess.Call(gameplay, "ChangePlayerResource", bonusEon, EonPerBoost);
         ProfileBinding.SetEonBoostsApplied(profile, boosts);
+    }
+
+    /// <summary>A place-biome ability is flagged as never needing an unlock, and the profile check
+    /// that would stop it is only read by the giant information menu, so the run's own locked-ability
+    /// list carries it: GiantAbility reads that list before it asks the scenario.</summary>
+    private static void LockUnreceivedBiomes(object gameplay)
+    {
+        if (!(GameAccess.Get(GameAccess.CurrentProfile, "UnlockedBiomes") is IEnumerable unlocked))
+            return;
+        var held = unlocked.Cast<object>().ToList();
+
+        foreach (var definition in GameAccess.DefinitionsOfType("PlaceBiomeAbilityDefinition"))
+        {
+            var biome = GameAccess.Get(GameAccess.Get(definition, "biomeType"), "biomeType");
+            if (biome == null)
+                continue;
+            if (held.Any(b => Equals(b, biome)))
+                GameAccess.Call(gameplay, "UnlockAbility", definition);
+            else
+                GameAccess.Call(gameplay, "LockAbility", definition,
+                    $"{biome} has not arrived from Archipelago yet.");
+        }
     }
 
     /// <summary>With Micro Types shuffled the game draws none of its own, so a type whose item has

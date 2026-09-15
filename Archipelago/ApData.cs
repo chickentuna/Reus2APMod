@@ -108,6 +108,11 @@ internal sealed class RuleEntry
 {
     [JsonProperty("rule_index")] public int RuleIndex;
     [JsonProperty("location")] public string Location;
+
+    /// <summary>The stack max_combos asks this rule to reach. 0 asks only that it activate, which is
+    /// what the data writes for a rule the game does not cap and for one whose cap counts something
+    /// a planet cannot reach.</summary>
+    [JsonProperty("max_stacks")] public int MaxStacks;
 }
 
 internal sealed class GiantEntry

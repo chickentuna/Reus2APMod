@@ -14,6 +14,10 @@ from .rules import Reus2Rules
 GOAL_LOCATION = "Thriving Planet"
 VICTORY = "Victory"
 ROLE_TYPES = ("Plant", "Animal", "Geo")
+# The values under which a bioticum that has combo rules carries its All Combos location alone, its
+# build sending nothing. They differ in what the location asks of each rule, not in which locations
+# exist, so both read the same All Combos name and id.
+ALL_COMBOS_ALONE = (BioticumChecks.option_combos_only, BioticumChecks.option_max_combos)
 
 
 class Reus2World(World):
@@ -98,9 +102,7 @@ class Reus2World(World):
                     locations.update({rule["location"]: rule["location_id"] for rule in combos})
                 else:
                     locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
-            # Combos only leaves a bioticum that has them with that one location; everything else,
-            # and every bioticum with no combo rule, carries its build.
-            if not (combos and checks == BioticumChecks.option_combos_only):
+            if not (combos and checks in ALL_COMBOS_ALONE):
                 locations[bioticum["build_location"]] = bioticum["build_location_id"]
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             locations[reward["location"]] = reward["location_id"]
@@ -168,7 +170,7 @@ class Reus2World(World):
                 else:
                     self.get_location(bioticum["all_combos_location"]).access_rule = \
                         lambda state, b=bioticum: rules.can_combo_all(state, b)
-            if not (combos and checks == BioticumChecks.option_combos_only):
+            if not (combos and checks in ALL_COMBOS_ALONE):
                 self.get_location(bioticum["build_location"]).access_rule = \
                     lambda state, b=bioticum: rules.can_build(state, b)
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
