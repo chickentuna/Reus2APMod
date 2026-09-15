@@ -202,10 +202,20 @@ internal static class ItemApplier
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
         var session = GameAccess.SessionId;
+        var bonus = MicroAllowance - VanillaMicros;
         if (session != null && ProfileBinding.MicroSession(profile) != session)
         {
             SetEraMicros();
-            ProfileBinding.SetMicroSession(profile, session);
+            ProfileBinding.SetMicroSession(profile, session, bonus);
+        }
+        else if (session != null && bonus > ProfileBinding.MicroChargesGiven(profile))
+        {
+            // A Bonus Micro that lands mid-planet is worth a charge now rather than at the next era.
+            var charges = GameAccess.Resource(AspectCharges);
+            var owed = bonus - ProfileBinding.MicroChargesGiven(profile);
+            GameAccess.Call(gameplay, "ChangePlayerResource", charges, (float)owed);
+            ProfileBinding.SetMicroSession(profile, session, bonus);
+            Plugin.Log.LogInfo($"Bonus Micro: {owed} more Micro charge(s) this planet.");
         }
 
         var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
