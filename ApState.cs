@@ -160,12 +160,24 @@ internal static class ApState
         }
     }
 
+    /// <summary>Biotica the slot has checked. A bioticum whose location is its combos was built to
+    /// get there, so both families count, and a bioticum is counted once.</summary>
+    private static int BioticaBuilt()
+    {
+        var data = Archipelago.ApData.Instance;
+        if (data == null)
+            return CheckedLocations.Count(location => location.StartsWith("Build "));
+        return data.Biotica.Count(b => CheckedLocations.Contains(b.BuildLocation)
+                                       || (b.AllCombosLocation != null
+                                           && CheckedLocations.Contains(b.AllCombosLocation)));
+    }
+
     private static void CheckGoal()
     {
         if (goalSent || client == null)
             return;
         var goal = SlotInt("goal_builds", int.MaxValue);
-        if (CheckedLocations.Count(location => location.StartsWith("Build ")) < goal)
+        if (BioticaBuilt() < goal)
             return;
 
         client.SendGoal();
