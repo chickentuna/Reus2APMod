@@ -27,7 +27,11 @@ internal static class ItemApplier
 
     internal static void MarkDirty() => dirty = true;
 
-    /// <summary>The Micros an era starts with: one per Bonus Micro received.</summary>
+    /// <summary>GameplayController.Initialize opens a planet with this many Micros, and the era
+    /// allowance never drops below it, so a received Micro type is always usable.</summary>
+    private const int VanillaMicros = 3;
+
+    /// <summary>The Micros an era starts with: the vanilla three, and one more per Bonus Micro.</summary>
     internal static int MicroAllowance { get; private set; }
 
     /// <summary>Whether the current profile belongs to an Archipelago slot; gates every gameplay patch.</summary>
@@ -95,7 +99,8 @@ internal static class ItemApplier
             RecordBound(profile, true);
 
             var received = Count(ApState.ReceivedItems);
-            MicroAllowance = received.TryGetValue(ApData.Instance.BonusMicro.Item, out var micros) ? micros : 0;
+            MicroAllowance = VanillaMicros
+                             + (received.TryGetValue(ApData.Instance.BonusMicro.Item, out var micros) ? micros : 0);
             ApplyProfile(profile, received);
             ApplyPlanet(profile, received);
         }
