@@ -1,33 +1,61 @@
 using System;
 using HarmonyLib;
+using Reus2Archipelago.Game;
 
 namespace Reus2Archipelago.Patches;
 
 internal static class Patching
 {
     /// <summary>Patches a game method found by type and method name. A missing target is logged and
-    /// skipped, so one moved method does not stop the others from loading.</summary>
+    /// skipped, so one moved method does not stop the others from loading. The line names the
+    /// target's IL size and shape, which is what says whether Mono can inline the call away.</summary>
     internal static void Apply(Harmony harmony, string typeName, string methodName, Type owner,
         string prefix = null, string postfix = null)
     {
         try
         {
-            var type = Game.GameAccess.TypeNamed(typeName);
+            var type = GameAccess.TypeNamed(typeName);
             var method = type == null ? null : AccessTools.Method(type, methodName);
             if (method == null)
             {
-                Plugin.Log.LogError($"Patch target missing: {typeName}.{methodName}");
+                Report($"Patch target missing: {typeName}.{methodName}", error: true);
+                return;
+            }
+
+            if (method.IsAbstract)
+            {
+                Report($"Patch target {typeName}.{methodName} is abstract and has no body to detour; "
+                       + "each override is patched instead.", error: false);
+                return;
+            }
+
+            if (!ProbeTally.Register(method, owner, $"{prefix}+{postfix}"))
+            {
+                Report($"{typeName}.{methodName} resolves to {ProbeTally.Key(method)}, "
+                       + "which this patch is already on.", error: false);
                 return;
             }
 
             harmony.Patch(method,
                 prefix: prefix == null ? null : new HarmonyMethod(AccessTools.Method(owner, prefix)),
                 postfix: postfix == null ? null : new HarmonyMethod(AccessTools.Method(owner, postfix)));
-            Plugin.Log.LogInfo($"Patched {type.FullName}.{methodName} ({type.Assembly.GetName().Name})");
+
+            var shape = ProbeTally.Describe(method);
+            Report($"Patched {method.DeclaringType?.FullName}.{methodName} ({type.Assembly.GetName().Name})"
+                   + (shape == null ? "" : $" | {shape}"), error: false);
         }
         catch (Exception e)
         {
-            Plugin.Log.LogError($"Patching {typeName}.{methodName} failed: {e}");
+            Report($"Patching {typeName}.{methodName} failed: {e}", error: true);
         }
+    }
+
+    private static void Report(string line, bool error)
+    {
+        if (error)
+            Plugin.Log.LogError(line);
+        else
+            Plugin.Log.LogInfo(line);
+        ProbeLog.Append(line);
     }
 }

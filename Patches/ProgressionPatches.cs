@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using HarmonyLib;
 using Reus2Archipelago.Game;
 
@@ -27,30 +28,51 @@ internal static class ProgressionPatches
         Patching.Apply(harmony, "EraFeatController", "OnWorldStageControllerActivated", owner, postfix: nameof(PlanetLoaded));
     }
 
-    private static bool RunUnlessBound() => !ItemApplier.ProfileBound;
+    private static bool RunUnlessBound(MethodBase __originalMethod)
+    {
+        var run = !ItemApplier.ProfileBound;
+        Record(__originalMethod, () => run ? "original runs" : "original skipped");
+        return run;
+    }
 
     // Every received bioticum is placeable: a bound profile's unlocked set is exactly what it received.
-    private static void AllReceivedBiotica(ref object __result)
+    private static void AllReceivedBiotica(MethodBase __originalMethod, ref object __result)
     {
         if (ItemApplier.ProfileBound)
             __result = GameAccess.Get(GameAccess.CurrentProfile, "UnlockedBiotica");
+        var replaced = __result;
+        Record(__originalMethod, () => $"bound={ItemApplier.ProfileBound} biotica={Naming.Count(replaced)}",
+            quiet: true);
     }
 
-    private static bool OnlyReceivedBioticum(object[] __args)
-        => !ItemApplier.ProfileBound || ItemApplier.IsReceivedBioticum(__args[0]);
+    private static bool OnlyReceivedBioticum(MethodBase __originalMethod, object[] __args)
+    {
+        var run = !ItemApplier.ProfileBound || ItemApplier.IsReceivedBioticum(__args[0]);
+        Record(__originalMethod, () => $"bioticum={Naming.Of(__args[0])} original {(run ? "runs" : "skipped")}");
+        return run;
+    }
 
     // The first value of each mode enum is the standard one: Normal, FullDraft, Standard.
-    private static void ForceStandardMode(object[] __args)
+    private static void ForceStandardMode(MethodBase __originalMethod, object[] __args)
     {
         if (__args.Length > 0 && __args[0] is Enum mode)
             __args[0] = Enum.ToObject(mode.GetType(), 0);
+        Record(__originalMethod, () => $"mode={Naming.Of(__args.Length > 0 ? __args[0] : null)}");
     }
 
-    private static bool BlockChallenge()
+    private static bool BlockChallenge(MethodBase __originalMethod)
     {
         Plugin.Log.LogInfo("Daily and weekly challenges are unavailable while an Archipelago slot is configured.");
+        Record(__originalMethod, () => "original skipped");
         return false;
     }
 
-    private static void PlanetLoaded() => ItemApplier.MarkDirty();
+    private static void PlanetLoaded(MethodBase __originalMethod)
+    {
+        ItemApplier.MarkDirty();
+        Record(__originalMethod, () => "items will be reapplied");
+    }
+
+    private static void Record(MethodBase original, Func<string> detail, bool quiet = false)
+        => ProbeTally.Record(typeof(ProgressionPatches), original, detail, quiet);
 }

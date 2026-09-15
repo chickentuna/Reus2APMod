@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Reflection;
 using HarmonyLib;
 using Reus2Archipelago.Archipelago;
 using Reus2Archipelago.Game;
@@ -22,11 +24,13 @@ internal static class CheckPatches
 
     // Mono inlines Giant.OnBioticumPlaced, two statements long, into PlaceBioticumAction, so the
     // detour holds on this one, which the same placement completion calls with the definition.
-    private static void AfterBioticumPlaced(object[] __args)
+    private static void AfterBioticumPlaced(MethodBase __originalMethod, object[] __args)
     {
-        if (!ItemApplier.ProfileBound || __args == null || __args.Length == 0)
+        var bioticum = __args == null || __args.Length == 0 ? null : __args[0];
+        Record(__originalMethod, () => $"bound={ItemApplier.ProfileBound} bioticum={Naming.Of(bioticum)}");
+        if (!ItemApplier.ProfileBound || bioticum == null)
             return;
-        var guid = GameAccess.DefinitionId(__args[0]);
+        var guid = GameAccess.DefinitionId(bioticum);
         var entry = ApData.Instance.BioticumForGuid(guid);
         if (entry == null)
         {
@@ -37,8 +41,9 @@ internal static class CheckPatches
     }
 
     // Rule states are also generated for the placement preview; only a placed bioticum counts.
-    private static void AfterRuleActivityChanged(object __instance, bool value)
+    private static void AfterRuleActivityChanged(MethodBase __originalMethod, object __instance, bool value)
     {
+        Record(__originalMethod, () => $"value={value} bound={ItemApplier.ProfileBound}", quiet: true);
         if (!value || !ItemApplier.ProfileBound)
             return;
         var context = GameAccess.Get(__instance, "slotContext");
@@ -64,8 +69,9 @@ internal static class CheckPatches
 
     // Runs before the reward is paid and before the request is counted, so the reward's number is
     // the level's completed count plus one.
-    private static void BeforeRequestReward(object __instance, int level)
+    private static void BeforeRequestReward(MethodBase __originalMethod, object __instance, int level)
     {
+        Record(__originalMethod, () => $"level={level} bound={ItemApplier.ProfileBound}");
         if (!ItemApplier.ProfileBound)
             return;
         if (!(GameAccess.Call(__instance, "GainsDraftForRequest", level) is bool gainsDraft && gainsDraft))
@@ -79,12 +85,11 @@ internal static class CheckPatches
             ApState.SendCheck(location);
     }
 
-    private static void BeforeShopPurchase(object __instance, object[] __args)
+    private static void BeforeShopPurchase(MethodBase __originalMethod, object __instance, object[] __args)
     {
-        if (!ItemApplier.ProfileBound || __args == null || __args.Length == 0)
-            return;
-        var option = __args[0];
-        if (option == null || !option.ToString().StartsWith("Draft"))
+        var option = __args == null || __args.Length == 0 ? null : __args[0];
+        Record(__originalMethod, () => $"option={Naming.Of(option)} bound={ItemApplier.ProfileBound}");
+        if (!ItemApplier.ProfileBound || option == null || !option.ToString().StartsWith("Draft"))
             return;
         if (!(GameAccess.Get(GameAccess.Call(__instance, "CanBuy", option), "Item1") is bool affordable && affordable))
             return;
@@ -104,4 +109,7 @@ internal static class CheckPatches
         if (location != null)
             ApState.SendCheck(location);
     }
+
+    private static void Record(MethodBase original, Func<string> detail, bool quiet = false)
+        => ProbeTally.Record(typeof(CheckPatches), original, detail, quiet);
 }

@@ -49,7 +49,9 @@ public sealed class Plugin : BaseUnityPlugin
         enableDefinitionDump = Config.Bind("Diagnostics", "EnableDefinitionDump", false,
             "Write the live definition catalogue to JSON once it is available.");
         enableProbes = Config.Bind("Diagnostics", "EnableProbes", true,
-            "Log every milestone, era feat and unlock as it happens, without changing progression. "
+            "Log every milestone, era feat, placement, combo, request, purchase and unlock as it "
+            + "happens, without changing progression, together with a tally of which patched methods "
+            + "ever ran and a snapshot of the profile and session. "
             + "Writes BepInEx/plugins/reus2_probe.log.");
         DefinitionDumper.MaxDepth = Config.Bind("Dump", "MaxDepth", 4,
             "How deep to follow nested objects such as objective filters before writing a placeholder.").Value;
