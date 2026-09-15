@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="apworld\reus2\data\reus2.json" LogicalName="Reus2Archipelago.reus2.json" />
+    <EmbeddedResource Include="assets\archipelago.png" LogicalName="Reus2Archipelago.archipelago.png" />
     <Compile Remove="apworld\**;tools\**;dist\**;decomp\**" />
   </ItemGroup>
 

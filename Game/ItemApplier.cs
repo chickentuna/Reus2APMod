@@ -199,6 +199,8 @@ internal static class ItemApplier
         if (gameplay == null)
             return;
 
+        ApIcon.Apply();
+
         var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
         GameAccess.Set(scenario, "draftsLocked", true);
         var aspects = GameAccess.Get(gameplay, "aspectController");
