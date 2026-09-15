@@ -53,7 +53,8 @@ def main():
 
     checks = modules["options"].BioticumChecks
     values = (checks.option_build_only, checks.option_build_and_combos,
-              checks.option_combos_only, checks.option_per_rule)
+              checks.option_combos_only, checks.option_per_rule, checks.option_max_combos)
+    all_combos_alone = (checks.option_combos_only, checks.option_max_combos)
 
     failures = []
     modes = [(micro_types, bioticum_items, bioticum_checks)
@@ -70,7 +71,7 @@ def main():
         state = FullInventory()
         for bioticum in data["biotica"]:
             combos = bioticum["rules"]
-            if not (combos and bioticum_checks == checks.option_combos_only):
+            if not (combos and bioticum_checks in all_combos_alone):
                 if not rules.can_build(state, bioticum):
                     failures.append((mode, bioticum["build_location"], "build"))
             if combos and bioticum_checks != checks.option_build_only:

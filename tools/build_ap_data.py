@@ -31,6 +31,13 @@ MICRO_RARITY_ORDER = {"Basic": 0, "Era1": 1, "Era2": 2, "Era3": 3}
 # Rule counters that count across the whole planet; every other counter looks around the bioticum,
 # so its candidates must share the bioticum's biome.
 PLANET_WIDE_COUNTERS = {"Global", "GlobalExceptThisBiome"}
+# SlotForeachRule.maxStacks is how far a rule stacks, and the game reads 0 as no limit. The caps the
+# base game gives the rules kept here are 2 to 6, then 8 and up to 1500 with nothing in between. Each
+# cap of 6 or less counts biotica around the bioticum, at most the six adjacent slots that
+# SlotForeachRule.GetMaxOptimalConnections gives an uncapped adjacency rule; each larger one counts
+# empty slots, biodiversity, fossil fuel or ruggedness instead, and 1500 of any of those is beyond a
+# planet. A rule capped above this is written out as 0, so max_combos asks it to activate and no more.
+MAX_STACKS_REQUIRED = 6
 
 ABILITY_ITEMS = {
     "PlaceMountain_FrostGiant": "Mountain (Frost Giant)",
@@ -83,6 +90,12 @@ def ref_names(values):
 
 def clean(name):
     return re.sub(r"^\d+\.?\s+", "", name).strip()
+
+
+def required_stacks(rule):
+    """The stack count max_combos asks a rule to reach, 0 when it asks only that the rule fire."""
+    stacks = int(rule.get("maxStacks") or 0)
+    return stacks if stacks <= MAX_STACKS_REQUIRED else 0
 
 
 def candidates(groups, count=1, **extra):
@@ -197,6 +210,7 @@ def build_biotica(definitions, micro_names):
             rules.append({
                 "rule_index": index, "type": rule["$type"], "location": name,
                 "location_id": location_id("combo", (guid_bits(b["guid"], 8) << 5) | index),
+                "max_stacks": required_stacks(rule),
                 **requirement,
             })
         b["rules"] = rules

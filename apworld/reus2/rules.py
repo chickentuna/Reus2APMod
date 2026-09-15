@@ -4,7 +4,7 @@ from BaseClasses import CollectionState
 
 from .game_data import DATA
 from .items import items_granting_biotica
-from .options import BioticumItems, MicroTypes
+from .options import BioticumChecks, BioticumItems, MicroTypes
 
 
 class Reus2Rules:
@@ -19,6 +19,7 @@ class Reus2Rules:
     def __init__(self, world) -> None:
         self.player = world.player
         self.micro_types = world.options.micro_types.value
+        self.max_combos = world.options.bioticum_checks.value == BioticumChecks.option_max_combos
         self.granting = items_granting_biotica(
             world.options.bioticum_items.value == BioticumItems.option_apex)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
@@ -93,22 +94,28 @@ class Reus2Rules:
             return self.has_micro(state, rule["micro"])
         in_biome = None if rule.get("any_biome") else biome
         allow_self = rule.get("allow_self", False)
-        return all(self.enough_candidates(state, bioticum, group, rule["count"], in_biome, allow_self)
+        return all(self.enough_candidates(state, bioticum, group, self.needed(rule), in_biome, allow_self)
                    for group in rule["groups"])
 
+    def needed(self, rule) -> int:
+        """How many of a group's biotica the rule asks for. Each stack of a capped rule counts one
+        more of them, so max_combos asks for `max_stacks` where that is the larger number."""
+        return max(rule["count"], rule["max_stacks"]) if self.max_combos else rule["count"]
+
     def enough_candidates(self, state: CollectionState, bioticum, group, count: int, biome, allow_self: bool) -> bool:
+        """A group names each bioticum once, and the player may place a bioticum as many times as
+        there are slots, so a count beyond the group's size is reached with further copies of one
+        already there and asks for no further item."""
+        others = [other for other in (self.biotica.get(name) for name in group)
+                  if other is not None and (allow_self or other is not bioticum)]
+        if not others:
+            return False
         found = 0
-        for name in group:
-            other = self.biotica.get(name)
-            if other is None or (other is bioticum and not allow_self):
-                continue
-            if biome is None:
-                placeable = self.can_build(state, other)
-            else:
-                placeable = biome in other["biomes"] and self.can_place(state, other, biome)
-            if placeable:
+        for other in others:
+            if (self.can_build(state, other) if biome is None
+                    else biome in other["biomes"] and self.can_place(state, other, biome)):
                 found += 1
-                if found >= count:
+                if found >= min(count, len(others)):
                     return True
         return False
 

@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using UnityEngine;
 
 namespace Reus2Archipelago.Game;
@@ -25,15 +24,11 @@ internal static class ApIcon
             return;
 
         applied = true;
-        var field = draftPoints.GetType().GetField("sprite",
-            BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-        if (field == null)
-        {
-            Plugin.Log.LogWarning("DraftPoints has no sprite field; the draft icon is unchanged.");
-            return;
-        }
-        field.SetValue(draftPoints, sprite);
-        Plugin.Log.LogInfo("Draft points now show the Archipelago icon.");
+        // sprite is private on Stat, which PlayerResource derives from, so the write goes through
+        // GameAccess, which walks base types.
+        GameAccess.Set(draftPoints, "sprite", sprite);
+        Plugin.Log.LogInfo($"Draft points now show the Archipelago icon: "
+                           + $"{GameAccess.Get(draftPoints, "sprite")}");
     }
 
     private static Sprite Load()

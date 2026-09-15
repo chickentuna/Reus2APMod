@@ -23,6 +23,7 @@
      "type": "ForEachTagRule",
      "location": "African Elephant Combo 1",
      "location_id": 2313062468480,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -113,6 +114,7 @@
      "type": "ForEachTagRule",
      "location": "African Elephant Combo 2",
      "location_id": 2313062468481,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -235,6 +237,7 @@
      "type": "YieldConditionRule",
      "location": "African Violet Combo",
      "location_id": 2314163425440,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -268,6 +271,7 @@
      "type": "TagConditionRule",
      "location": "African Wild Dog Combo",
      "location_id": 2306416580160,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -384,6 +388,7 @@
      "type": "TypeConditionRule",
      "location": "Agave Combo",
      "location_id": 2299402506496,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -554,6 +559,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Amaranth Combo",
      "location_id": 2282549366880,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -710,6 +716,7 @@
      "type": "BasicDiversityRule",
      "location": "Amber Combo",
      "location_id": 2323281857760,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -741,6 +748,7 @@
      "type": "TypeConditionRule",
      "location": "Amethyst Combo",
      "location_id": 2210053776128,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -911,6 +919,7 @@
      "type": "ForEachDistanceRule",
      "location": "Amur Leopard Combo",
      "location_id": 2228405074880,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -951,6 +960,7 @@
      "type": "SpecificConditionRule",
      "location": "Anchovy Combo",
      "location_id": 2319711802400,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -993,6 +1003,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Angler Fish Combo",
      "location_id": 2333065262785,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -1024,6 +1035,7 @@
      "type": "ForEachYieldRule",
      "location": "Antimony Combo",
      "location_id": 2239446641824,
+     "max_stacks": 2,
      "kind": "none"
     }
    ],
@@ -1061,6 +1073,7 @@
      "type": "ForEachTagRule",
      "location": "Apple Tree Combo",
      "location_id": 2259790351840,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -1140,6 +1153,7 @@
      "type": "UniqueConditionRule",
      "location": "Aquamarine Combo",
      "location_id": 2207215414144,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -1172,6 +1186,7 @@
      "type": "TagConditionRule",
      "location": "Armadillo Combo 1",
      "location_id": 2332098112832,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -1235,6 +1250,7 @@
      "type": "TagConditionRule",
      "location": "Armadillo Combo 2",
      "location_id": 2332098112833,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -1320,6 +1336,7 @@
      "type": "TypeConditionRule",
      "location": "Arrau Turtle Combo",
      "location_id": 2311822411392,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -1488,6 +1505,7 @@
      "type": "TypeConditionRule",
      "location": "Bamboo Combo",
      "location_id": 2206894291232,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -1636,6 +1654,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Banana Combo",
      "location_id": 2326908039168,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -1791,6 +1810,7 @@
      "type": "ForEachYieldRule",
      "location": "Baobab Combo",
      "location_id": 2216769501473,
+     "max_stacks": 3,
      "kind": "none"
     }
    ],
@@ -1831,6 +1851,7 @@
      "type": "TagConditionRule",
      "location": "Barley Combo",
      "location_id": 2202208734688,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -1940,6 +1961,7 @@
      "type": "NotTypeConditionRule",
      "location": "Basalt Combo",
      "location_id": 2231771291009,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -1972,6 +1994,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Basalt (Aquatic) Combo",
      "location_id": 2232041380064,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2144,6 +2167,7 @@
      "type": "ForEachLevelRule",
      "location": "Bauxite Combo",
      "location_id": 2230620926016,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -2177,6 +2201,7 @@
      "type": "ForEachAspectRule",
      "location": "Bearded Dragon Combo 1",
      "location_id": 2307419104800,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -2184,6 +2209,7 @@
      "type": "NotTypeConditionRule",
      "location": "Bearded Dragon Combo 2",
      "location_id": 2307419104801,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -2217,6 +2243,7 @@
      "type": "ForEachTagRule",
      "location": "Beaver Combo",
      "location_id": 2255850255424,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -2314,6 +2341,7 @@
      "type": "TypeConditionRule",
      "location": "Bedrock Combo",
      "location_id": 2305043689632,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2465,6 +2493,7 @@
      "type": "ForEachTagRule",
      "location": "Black Bear Combo",
      "location_id": 2234859320768,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -2551,6 +2580,7 @@
      "type": "TagConditionRule",
      "location": "Blackberry Combo 1",
      "location_id": 2212907626016,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2641,6 +2671,7 @@
      "type": "DistanceConditionRule",
      "location": "Blackberry Combo 2",
      "location_id": 2212907626017,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -2674,6 +2705,7 @@
      "type": "ForEachTagRule",
      "location": "Blue Whale Combo",
      "location_id": 2290206482625,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2741,6 +2773,7 @@
      "type": "TagConditionRule",
      "location": "Bluebead Combo",
      "location_id": 2275990442720,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2824,6 +2857,7 @@
      "type": "TypeConditionRule",
      "location": "Blueberry Combo",
      "location_id": 2224554385440,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -2970,6 +3004,7 @@
      "type": "ForEachYieldRule",
      "location": "Boar Combo",
      "location_id": 2330972684800,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -3010,6 +3045,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Bottlenose Dolphin Combo",
      "location_id": 2213928747808,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -3186,6 +3222,7 @@
      "type": "ForEachTagRule",
      "location": "Brazilwood Combo",
      "location_id": 2219693746016,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -3285,6 +3322,7 @@
      "type": "ForEachRuggedRule",
      "location": "Brown Bear Combo",
      "location_id": 2243267855744,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -3495,6 +3533,7 @@
      "type": "ForEachYieldRule",
      "location": "Cacao Tree Combo 1",
      "location_id": 2272657006976,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -3502,6 +3541,7 @@
      "type": "ForEachTagRule",
      "location": "Cacao Tree Combo 2",
      "location_id": 2272657006977,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -3585,6 +3625,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Caiman Combo",
      "location_id": 2336160674816,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -3625,6 +3666,7 @@
      "type": "BasicDiversityRule",
      "location": "Camphor Tree Combo",
      "location_id": 2261928265024,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -3659,6 +3701,7 @@
      "type": "ForEachTagRule",
      "location": "Cape Buffalo Combo",
      "location_id": 2284622719840,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -3751,6 +3794,7 @@
      "type": "TypeConditionRule",
      "location": "Cape Fox Combo",
      "location_id": 2203639395872,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -3922,6 +3966,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Capybara Combo",
      "location_id": 2316254464800,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -4098,6 +4143,7 @@
      "type": "TypeConditionRule",
      "location": "Caribou Combo",
      "location_id": 2237868253184,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -4245,6 +4291,7 @@
      "type": "TypeConditionRule",
      "location": "Carnelian Combo",
      "location_id": 2242498836001,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -4414,6 +4461,7 @@
      "type": "TypeConditionRule",
      "location": "Carrot Combo",
      "location_id": 2254788598432,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -4563,6 +4611,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Cassave Combo",
      "location_id": 2262371043616,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -4600,6 +4649,7 @@
      "type": "RuggedConditionRule",
      "location": "Charoite Combo",
      "location_id": 2322597198912,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -4803,6 +4853,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Cheetah Combo 1",
      "location_id": 2285710853600,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -4948,6 +4999,7 @@
      "type": "ForEachEmptyRule",
      "location": "Cheetah Combo 2",
      "location_id": 2285710853601,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -4989,6 +5041,7 @@
      "type": "ForEachDiversityRule",
      "location": "Cherry Tree Combo",
      "location_id": 2232717989952,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -5048,6 +5101,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Chinese Jujube Combo",
      "location_id": 2253450966721,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -5203,6 +5257,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Christmas Tree Coral Combo 1",
      "location_id": 2282817680385,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -5324,6 +5379,7 @@
      "type": "ForEachMulTagRule",
      "location": "Christmas Tree Coral Combo 2",
      "location_id": 2282817680386,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -5452,6 +5508,7 @@
      "type": "ForEachYieldRule",
      "location": "Chrome Combo 1",
      "location_id": 2217619168064,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -5459,6 +5516,7 @@
      "type": "ForEachTagRule",
      "location": "Chrome Combo 2",
      "location_id": 2217619168065,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -5522,6 +5580,7 @@
      "type": "DesolateRule",
      "location": "Cicer Combo",
      "location_id": 2294694759232,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -5554,6 +5613,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Cinchona Tree Combo",
      "location_id": 2295065142304,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -5587,6 +5647,7 @@
      "type": "TagConditionRule",
      "location": "Cinnabar Combo",
      "location_id": 2219130332576,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -5636,6 +5697,7 @@
      "type": "ForEachTagRule",
      "location": "Citrine Combo",
      "location_id": 2218062459360,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -5730,6 +5792,7 @@
      "type": "ForEachTagRule",
      "location": "Cloudberry Combo 1",
      "location_id": 2305169897280,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -5791,6 +5854,7 @@
      "type": "DistanceConditionRule",
      "location": "Cloudberry Combo 2",
      "location_id": 2305169897281,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -5823,6 +5887,7 @@
      "type": "SpecificConditionRule",
      "location": "Clownfish Combo",
      "location_id": 2282038320128,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -5864,6 +5929,7 @@
      "type": "TypeConditionRule",
      "location": "Clubhook Squid Combo",
      "location_id": 2303185902593,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -6010,6 +6076,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Coal Combo 1",
      "location_id": 2251426247616,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -6133,6 +6200,7 @@
      "type": "ForEachYieldRule",
      "location": "Coal Combo 2",
      "location_id": 2251426247617,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -6173,6 +6241,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Cobalt Combo",
      "location_id": 2300734270144,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -6329,6 +6398,7 @@
      "type": "ForEachYieldRule",
      "location": "Coffea Robusta Combo 1",
      "location_id": 2255502170400,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -6336,6 +6406,7 @@
      "type": "ForEachYieldRule",
      "location": "Coffea Robusta Combo 2",
      "location_id": 2255502170401,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -6374,6 +6445,7 @@
      "type": "ForEachBiomeRule",
      "location": "Coober Opal Combo",
      "location_id": 2219606704128,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -6407,6 +6479,7 @@
      "type": "ForEachRuggedRule",
      "location": "Copper (Taiga) Combo",
      "location_id": 2269478245536,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -6615,6 +6688,7 @@
      "type": "ForEachSetRule",
      "location": "Coral Rock Combo",
      "location_id": 2202055053440,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -6795,6 +6869,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Corsac Combo",
      "location_id": 2212560595008,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -6966,6 +7041,7 @@
      "type": "ForEachTagRule",
      "location": "Cotton Combo",
      "location_id": 2201659150593,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7039,6 +7115,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Cougar Combo",
      "location_id": 2335169382688,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -7072,6 +7149,7 @@
      "type": "ForEachTagRule",
      "location": "Crab Meeting Spot Combo",
      "location_id": 2230165625633,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7166,6 +7244,7 @@
      "type": "ForEachYieldRule",
      "location": "Cranberry Combo",
      "location_id": 2313948158304,
+     "max_stacks": 2,
      "kind": "none"
     }
    ],
@@ -7199,6 +7278,7 @@
      "type": "TagConditionRule",
      "location": "Crossbill Combo",
      "location_id": 2322231164992,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7288,6 +7368,7 @@
      "type": "TagConditionRule",
      "location": "Damask Rose Combo",
      "location_id": 2200693930016,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7375,6 +7456,7 @@
      "type": "ForEachYieldRule",
      "location": "Date Palm Combo",
      "location_id": 2230747608608,
+     "max_stacks": 4,
      "kind": "none"
     }
    ],
@@ -7413,6 +7495,7 @@
      "type": "ForEachTagRule",
      "location": "Desert Salt Combo 1",
      "location_id": 2241073674976,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7442,6 +7525,7 @@
      "type": "DesolateRule",
      "location": "Desert Salt Combo 2",
      "location_id": 2241073674977,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -7481,6 +7565,7 @@
      "type": "DesolateRule",
      "location": "Desert Tortoise Combo",
      "location_id": 2306736107392,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -7515,6 +7600,7 @@
      "type": "ForEachTagRule",
      "location": "Diamond Combo",
      "location_id": 2211150623840,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7613,6 +7699,7 @@
      "type": "ForEachCityLevelRule",
      "location": "Dove Combo",
      "location_id": 2264096057312,
+     "max_stacks": 3,
      "kind": "none"
     }
    ],
@@ -7645,6 +7732,7 @@
      "type": "UniqueConditionRule",
      "location": "Dove Tree Combo",
      "location_id": 2273674774592,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -7678,6 +7766,7 @@
      "type": "ForEachEmptyRule",
      "location": "Dromedary Camel Combo 1",
      "location_id": 2202911828992,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -7685,6 +7774,7 @@
      "type": "ForEachYieldRule",
      "location": "Dromedary Camel Combo 2",
      "location_id": 2202911828993,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -7725,6 +7815,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Dugong Combo",
      "location_id": 2285123373666,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7882,6 +7973,7 @@
      "type": "ForEachTagRule",
      "location": "Dysprosium Combo",
      "location_id": 2268449899072,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -7998,6 +8090,7 @@
      "type": "TagConditionRule",
      "location": "Ebony Combo",
      "location_id": 2293658857408,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8108,6 +8201,7 @@
      "type": "TypeConditionRule",
      "location": "Egusi Combo",
      "location_id": 2329046244576,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8255,6 +8349,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Elephant Grass Combo",
      "location_id": 2287492417376,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -8426,6 +8521,7 @@
      "type": "ForEachTagRule",
      "location": "Emerald Combo 1",
      "location_id": 2209914515840,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8456,6 +8552,7 @@
      "type": "ForEachTagRule",
      "location": "Emerald Combo 2",
      "location_id": 2209914515841,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8553,6 +8650,7 @@
      "type": "TypeConditionRule",
      "location": "Emu Combo 1",
      "location_id": 2209422530016,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8698,6 +8796,7 @@
      "type": "NotTypeConditionRule",
      "location": "Emu Combo 2",
      "location_id": 2209422530017,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -8730,6 +8829,7 @@
      "type": "TypeConditionRule",
      "location": "Enargite Combo",
      "location_id": 2214989587008,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8878,6 +8978,7 @@
      "type": "NotTypeConditionRule",
      "location": "Eucalyptus Combo",
      "location_id": 2261213086529,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -8912,6 +9013,7 @@
      "type": "ForEachTagRule",
      "location": "Falcon Combo 1",
      "location_id": 2313360815936,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -8974,6 +9076,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Falcon Combo 2",
      "location_id": 2313360815937,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9130,6 +9233,7 @@
      "type": "BasicDiversityRule",
      "location": "False Trumpet Grounds Combo",
      "location_id": 2281051401632,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -9161,6 +9265,7 @@
      "type": "YieldConditionRule",
      "location": "Fan Palm Combo",
      "location_id": 2205675676704,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -9192,6 +9297,7 @@
      "type": "ForEachYieldRule",
      "location": "Feldspar Combo",
      "location_id": 2262466538912,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -9223,6 +9329,7 @@
      "type": "TagConditionRule",
      "location": "Fennec Combo",
      "location_id": 2314240728129,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9317,6 +9424,7 @@
      "type": "TypeConditionRule",
      "location": "Field Eryngo Combo",
      "location_id": 2312960283745,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9463,6 +9571,7 @@
      "type": "ForEachSetRule",
      "location": "Fig Combo",
      "location_id": 2227034533024,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9636,6 +9745,7 @@
      "type": "TypeConditionRule",
      "location": "Finger Coral Combo",
      "location_id": 2219490392001,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9829,6 +9939,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Fire Opal Combo",
      "location_id": 2289968182496,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -9866,6 +9977,7 @@
      "type": "TagConditionRule",
      "location": "Flint Combo",
      "location_id": 2295356126336,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -9957,6 +10069,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Fluorite Combo",
      "location_id": 2270341917216,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -9989,6 +10102,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Fox Combo",
      "location_id": 2334005189536,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -10166,6 +10280,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Foxglove Combo 1",
      "location_id": 2306735784224,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10196,6 +10311,7 @@
      "type": "ForEachTagRule",
      "location": "Foxglove Combo 2",
      "location_id": 2306735784225,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10266,6 +10382,7 @@
      "type": "ForEachDistanceRule",
      "location": "Garnet Combo",
      "location_id": 2266031148032,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -10305,6 +10422,7 @@
      "type": "TypeConditionRule",
      "location": "Gaur Combo",
      "location_id": 2246526605568,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10452,6 +10570,7 @@
      "type": "TypeConditionRule",
      "location": "Gazelle Combo",
      "location_id": 2325837461824,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10601,6 +10720,7 @@
      "type": "ForEachEmptyRule",
      "location": "Giant Cardon Combo 1",
      "location_id": 2318661306113,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -10608,6 +10728,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Giant Cardon Combo 2",
      "location_id": 2318661306114,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10788,6 +10909,7 @@
      "type": "NotTypeConditionRule",
      "location": "Gila Monster Combo 1",
      "location_id": 2314656785024,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -10795,6 +10917,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Gila Monster Combo 2",
      "location_id": 2314656785025,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -10974,6 +11097,7 @@
      "type": "BasicDiversityRule",
      "location": "Ginkgo Combo 1",
      "location_id": 2216141740256,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -10981,6 +11105,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Ginkgo Combo 2",
      "location_id": 2216141740257,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -11013,6 +11138,7 @@
      "type": "TagConditionRule",
      "location": "Giraffe Combo",
      "location_id": 2222752897600,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -11106,6 +11232,7 @@
      "type": "ForEachYieldRule",
      "location": "Gold Combo 1",
      "location_id": 2309720464160,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -11113,6 +11240,7 @@
      "type": "ForEachSpecificRule",
      "location": "Gold Combo 2",
      "location_id": 2309720464161,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -11161,6 +11289,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Gold (Legendary) Combo 1",
      "location_id": 2231630431584,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -11168,6 +11297,7 @@
      "type": "SpecificConditionRule",
      "location": "Gold (Legendary) Combo 2",
      "location_id": 2231630431585,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -11215,6 +11345,7 @@
      "type": "ForEachUniqueTagRule",
      "location": "Golden Lion Tamarin Combo",
      "location_id": 2244823002976,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -11394,6 +11525,7 @@
      "type": "ForEachBiomeRule",
      "location": "Goose Combo",
      "location_id": 2291614852512,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -11425,6 +11557,7 @@
      "type": "ForEachSetRule",
      "location": "Granite Combo",
      "location_id": 2214544551520,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -11716,6 +11849,7 @@
      "type": "BasicDiversityRule",
      "location": "Grape Vine Combo",
      "location_id": 2298177546624,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -11749,6 +11883,7 @@
      "type": "ForEachTagRule",
      "location": "Grey Wolf Combo",
      "location_id": 2277777792160,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -11873,6 +12008,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Guarana Combo",
      "location_id": 2242293871584,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -11958,6 +12094,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Gumbo Limbo Combo",
      "location_id": 2248647331392,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -11996,6 +12133,7 @@
      "type": "ForEachDistanceRule",
      "location": "Gypsum Combo 1",
      "location_id": 2221652641696,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -12003,6 +12141,7 @@
      "type": "ForEachTagRule",
      "location": "Gypsum Combo 2",
      "location_id": 2221652641697,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -12122,6 +12261,7 @@
      "type": "ForEachTagRule",
      "location": "Hamadryas Baboon Combo 1",
      "location_id": 2221347330368,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -12161,6 +12301,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Hamadryas Baboon Combo 2",
      "location_id": 2221347330369,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -12337,6 +12478,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Harpy Combo",
      "location_id": 2249300675712,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -12513,6 +12655,7 @@
      "type": "ForEachYieldRule",
      "location": "Hazelnut Tree Combo",
      "location_id": 2273612681824,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -12683,6 +12826,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Heliconia Combo",
      "location_id": 2242437582177,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -12839,6 +12983,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Helium Combo 1",
      "location_id": 2298026940064,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -12846,6 +12991,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Helium Combo 2",
      "location_id": 2298026940065,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -12885,6 +13031,7 @@
      "type": "ForEachTagRule",
      "location": "Hematite Combo 1",
      "location_id": 2265200478624,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -12925,6 +13072,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Hematite Combo 2",
      "location_id": 2265200478625,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13081,6 +13229,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Hemp Combo 1",
      "location_id": 2230454911808,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13226,6 +13375,7 @@
      "type": "UniqueConditionRule",
      "location": "Hemp Combo 2",
      "location_id": 2230454911809,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -13311,6 +13461,7 @@
      "type": "TypeConditionRule",
      "location": "Hoopoe Combo",
      "location_id": 2267513692480,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13482,6 +13633,7 @@
      "type": "ForEachAspectRule",
      "location": "Hydrothermal vents Combo",
      "location_id": 2245950118561,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -13514,6 +13666,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Ibex Combo",
      "location_id": 2263246330848,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13668,6 +13821,7 @@
      "type": "TypeConditionRule",
      "location": "Iguana Combo",
      "location_id": 2232649682592,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13813,6 +13967,7 @@
      "type": "TypeConditionRule",
      "location": "Impala Combo",
      "location_id": 2204619246176,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -13960,6 +14115,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Index Fossil Combo",
      "location_id": 2242207175937,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -14119,6 +14275,7 @@
      "type": "ForEachSpecificRule",
      "location": "Iron Combo 1",
      "location_id": 2228835380992,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -14134,6 +14291,7 @@
      "type": "SpecificConditionRule",
      "location": "Iron Combo 2",
      "location_id": 2228835380993,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -14173,6 +14331,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Jabuticaba Combo",
      "location_id": 2234953441408,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -14344,6 +14503,7 @@
      "type": "ForEachEmptyRule",
      "location": "Jackal Combo",
      "location_id": 2259526705408,
+     "max_stacks": 3,
      "kind": "none"
     }
    ],
@@ -14375,6 +14535,7 @@
      "type": "ForEachTagRule",
      "location": "Jackalberry Combo",
      "location_id": 2274228500640,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -14473,6 +14634,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Jade (Imperial) Combo 1",
      "location_id": 2209805011232,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -14618,6 +14780,7 @@
      "type": "ForEachLevelRule",
      "location": "Jade (Imperial) Combo 2",
      "location_id": 2209805011233,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -14748,6 +14911,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Jade (Ritual) Combo 1",
      "location_id": 2265527551040,
+     "max_stacks": 6,
      "kind": "candidates",
      "groups": [
       [
@@ -14871,6 +15035,7 @@
      "type": "UniqueConditionRule",
      "location": "Jade (Ritual) Combo 2",
      "location_id": 2265527551041,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -14912,6 +15077,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Jaguar Combo 1",
      "location_id": 2332849461536,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -14919,6 +15085,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Jaguar Combo 2",
      "location_id": 2332849461537,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -14958,6 +15125,7 @@
      "type": "TypeConditionRule",
      "location": "Jasper Combo",
      "location_id": 2298595831648,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15128,6 +15296,7 @@
      "type": "TypeConditionRule",
      "location": "Jellyfish Combo",
      "location_id": 2313712444384,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15275,6 +15444,7 @@
      "type": "TypeConditionRule",
      "location": "Jerboa Combo",
      "location_id": 2250343644512,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15423,6 +15593,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Jungle Fowl Combo",
      "location_id": 2328031457088,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -15456,6 +15627,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Kangaroo Combo 1",
      "location_id": 2331365411968,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15602,6 +15774,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Kangaroo Combo 2",
      "location_id": 2331365411969,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15756,6 +15929,7 @@
      "type": "TagConditionRule",
      "location": "Kaolin Combo",
      "location_id": 2236988789888,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15846,6 +16020,7 @@
      "type": "MulTagConditionRule",
      "location": "Kapok Tree Combo",
      "location_id": 2242965638176,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15917,6 +16092,7 @@
      "type": "TagConditionRule",
      "location": "Kelp Combo",
      "location_id": 2310952184160,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -15974,6 +16150,7 @@
      "type": "HumanConditionRule",
      "location": "Kentucky Coffeetree Combo",
      "location_id": 2329932853696,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -16009,6 +16186,7 @@
      "type": "ForEachTagRule",
      "location": "King Brown Snake Combo",
      "location_id": 2321735474272,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -16118,6 +16296,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Kola Nut Tree Combo",
      "location_id": 2329330158016,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -16151,6 +16330,7 @@
      "type": "ForEachTagRule",
      "location": "Kookaburra Combo 1",
      "location_id": 2293775287136,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -16182,6 +16362,7 @@
      "type": "ForEachTagRule",
      "location": "Kookaburra Combo 2",
      "location_id": 2293775287137,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -16282,6 +16463,7 @@
      "type": "TypeConditionRule",
      "location": "Kunzite Combo",
      "location_id": 2277900743488,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -16429,6 +16611,7 @@
      "type": "ForEachSetRule",
      "location": "Labrador Tea Combo",
      "location_id": 2274331636096,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -16594,6 +16777,7 @@
      "type": "TagConditionRule",
      "location": "Labradorite Combo",
      "location_id": 2203168021280,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -16679,6 +16863,7 @@
      "type": "ForEachTagRule",
      "location": "Lapis Lazuli Combo",
      "location_id": 2199656084832,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -16773,6 +16958,7 @@
      "type": "ForEachTagRule",
      "location": "Larix Combo",
      "location_id": 2293156370176,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -16864,6 +17050,7 @@
      "type": "ForEachSetRule",
      "location": "Leaf Turquoise Combo",
      "location_id": 2247584818080,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17003,6 +17190,7 @@
      "type": "ForEachTagRule",
      "location": "Lemongrass Combo 1",
      "location_id": 2236078431808,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17036,6 +17224,7 @@
      "type": "ForEachTagRule",
      "location": "Lemongrass Combo 2",
      "location_id": 2236078431809,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17101,6 +17290,7 @@
      "type": "TagConditionRule",
      "location": "Leopard Combo",
      "location_id": 2292212066848,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17216,6 +17406,7 @@
      "type": "TypeConditionRule",
      "location": "Lignite Combo",
      "location_id": 2230145936128,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17363,6 +17554,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Limestone Combo",
      "location_id": 2318162033121,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -17516,6 +17708,7 @@
      "type": "ForEachTagRule",
      "location": "Lion Combo 1",
      "location_id": 2225294989632,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17585,6 +17778,7 @@
      "type": "ForEachTagRule",
      "location": "Lion Combo 2",
      "location_id": 2225294989633,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17710,6 +17904,7 @@
      "type": "TagConditionRule",
      "location": "Lions Ear Combo",
      "location_id": 2224129096768,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17804,6 +17999,7 @@
      "type": "ForEachTagRule",
      "location": "Lithium Combo 1",
      "location_id": 2272099534624,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17836,6 +18032,7 @@
      "type": "ForEachTagRule",
      "location": "Lithium Combo 2",
      "location_id": 2272099534625,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -17959,6 +18156,7 @@
      "type": "TypeConditionRule",
      "location": "Mahi-Mahi Combo",
      "location_id": 2264543225728,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -17993,6 +18191,7 @@
      "type": "TagConditionRule",
      "location": "Mandarin Duck Combo",
      "location_id": 2285872469248,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18078,6 +18277,7 @@
      "type": "ForEachPositiveBioRule",
      "location": "Mandril Combo 1",
      "location_id": 2284001869696,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -18116,6 +18316,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Manganese Combo",
      "location_id": 2202251087552,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18261,6 +18462,7 @@
      "type": "ForEachTagRule",
      "location": "Mango Combo 1",
      "location_id": 2263062537024,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18310,6 +18512,7 @@
      "type": "UniqueConditionRule",
      "location": "Mango Combo 2",
      "location_id": 2263062537025,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -18349,6 +18552,7 @@
      "type": "ForEachYieldRule",
      "location": "Manta Ray Combo",
      "location_id": 2233723897440,
+     "max_stacks": 5,
      "kind": "none"
     }
    ],
@@ -18389,6 +18593,7 @@
      "type": "ForEachTagRule",
      "location": "Maple Combo",
      "location_id": 2331084254209,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18487,6 +18692,7 @@
      "type": "ForEachTagRule",
      "location": "Marabou Combo",
      "location_id": 2228993361281,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18537,6 +18743,7 @@
      "type": "ForEachPatchInBiomeRule",
      "location": "Marlin Combo",
      "location_id": 2253604553633,
+     "max_stacks": 0,
      "kind": "biome",
      "biome": "Ocean"
     }
@@ -18577,6 +18784,7 @@
      "type": "TypeConditionRule",
      "location": "Marula Combo",
      "location_id": 2313376538656,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18748,6 +18956,7 @@
      "type": "ForEachTagRule",
      "location": "Meerkat Combo",
      "location_id": 2299812657793,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -18865,6 +19074,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Methane Combo",
      "location_id": 2308793091233,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -19012,6 +19222,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Mica Combo",
      "location_id": 2244589669792,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -19045,6 +19256,7 @@
      "type": "TypeConditionRule",
      "location": "Millet Combo 1",
      "location_id": 2262151222496,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -19190,6 +19402,7 @@
      "type": "TagConditionRule",
      "location": "Millet Combo 2",
      "location_id": 2262151222497,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -19274,6 +19487,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Monkey Orange Combo",
      "location_id": 2246742624704,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -19450,6 +19664,7 @@
      "type": "ForEachTagRule",
      "location": "Moonstone Combo",
      "location_id": 2334183071456,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -19521,6 +19736,7 @@
      "type": "ForEachDistanceRule",
      "location": "Moose Combo 1",
      "location_id": 2298091301984,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -19528,6 +19744,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Moose Combo 2",
      "location_id": 2298091301985,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -19681,6 +19898,7 @@
      "type": "TypeConditionRule",
      "location": "Moss Agate Combo",
      "location_id": 2322326165280,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -19851,6 +20069,7 @@
      "type": "ForEachTagRule",
      "location": "Mouflon Combo",
      "location_id": 2224037335328,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -19942,6 +20161,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Mud Volcano Combo",
      "location_id": 2235101764896,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -20095,6 +20315,7 @@
      "type": "DesolateRule",
      "location": "Mudcrack Combo",
      "location_id": 2284433328576,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -20126,6 +20347,7 @@
      "type": "TypeConditionRule",
      "location": "Mudpool Combo",
      "location_id": 2260018684544,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -20294,6 +20516,7 @@
      "type": "TypeConditionRule",
      "location": "Musk Deer Combo",
      "location_id": 2306905596992,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -20440,6 +20663,7 @@
      "type": "ForEachDistanceRule",
      "location": "Natural Gas Combo",
      "location_id": 2308252710464,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -20477,6 +20701,7 @@
      "type": "ForEachDistanceRule",
      "location": "Nephrite Combo",
      "location_id": 2247652070400,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -20531,6 +20756,7 @@
      "type": "ForEachMulTagRule",
      "location": "Nightjar Combo",
      "location_id": 2273516881281,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -20641,6 +20867,7 @@
      "type": "ForEachSetRule",
      "location": "Nightshade Combo 1",
      "location_id": 2305289073120,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -20875,6 +21102,7 @@
      "type": "TagConditionRule",
      "location": "Nightshade Combo 2",
      "location_id": 2305289073121,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -20947,6 +21175,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Obsidian Combo 1",
      "location_id": 2303824638240,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -21068,6 +21297,7 @@
      "type": "ForEachTagRule",
      "location": "Obsidian Combo 2",
      "location_id": 2303824638241,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21130,6 +21360,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Ocelot Combo",
      "location_id": 2309396640481,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -21168,6 +21399,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Octopus Combo",
      "location_id": 2228813788160,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21323,6 +21555,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Oil Combo",
      "location_id": 2282751484897,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21482,6 +21715,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Oil (Deep) Combo",
      "location_id": 2266868873153,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -21519,6 +21753,7 @@
      "type": "TypeConditionRule",
      "location": "Okra Combo",
      "location_id": 2306377991488,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21666,6 +21901,7 @@
      "type": "TypeConditionRule",
      "location": "Olive Tree Combo",
      "location_id": 2204803864289,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21815,6 +22051,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Olivine Combo",
      "location_id": 2275977572320,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -21992,6 +22229,7 @@
      "type": "TagConditionRule",
      "location": "Onyx Combo",
      "location_id": 2294650185248,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -22128,6 +22366,7 @@
      "type": "ForEachTagRule",
      "location": "Orange Tree Combo 1",
      "location_id": 2300839680608,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -22178,6 +22417,7 @@
      "type": "ForEachTagRule",
      "location": "Orange Tree Combo 2",
      "location_id": 2300839680609,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -22262,6 +22502,7 @@
      "type": "NotTagConditionRule",
      "location": "Oryx Combo",
      "location_id": 2305083705920,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22293,6 +22534,7 @@
      "type": "ForEachEmptyRule",
      "location": "Ostrich Combo",
      "location_id": 2268931064352,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22334,6 +22576,7 @@
      "type": "ForEachUniqueTagRule",
      "location": "Palladium Combo",
      "location_id": 2302375129632,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22374,6 +22617,7 @@
      "type": "TagConditionRule",
      "location": "Pallas Cat Combo",
      "location_id": 2211771595648,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -22462,6 +22706,7 @@
      "type": "ForEachSpecificRule",
      "location": "Panda Bear Combo 1",
      "location_id": 2244728924000,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -22477,6 +22722,7 @@
      "type": "ForEachSetRule",
      "location": "Panda Bear Combo 2",
      "location_id": 2244728924001,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -22878,6 +23124,7 @@
      "type": "ForEachDiversityRule",
      "location": "Pangolin Combo",
      "location_id": 2318753370560,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22916,6 +23163,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Papaya Tree Combo",
      "location_id": 2312421719520,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22947,6 +23195,7 @@
      "type": "ForEachYieldRule",
      "location": "Paper Mulberry Combo",
      "location_id": 2319046569440,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -22988,6 +23237,7 @@
      "type": "TagConditionRule",
      "location": "Parakeet Combo",
      "location_id": 2252311096864,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -23079,6 +23329,7 @@
      "type": "TagConditionRule",
      "location": "Parrotfish Combo",
      "location_id": 2283410557761,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -23141,6 +23392,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Passion Fruit Combo",
      "location_id": 2283925531968,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23174,6 +23426,7 @@
      "type": "ForEachSetRule",
      "location": "Peach Tree Combo",
      "location_id": 2251078803968,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -23463,6 +23716,7 @@
      "type": "BasicDiversityRule",
      "location": "Pear Tree Combo",
      "location_id": 2304365348256,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23495,6 +23749,7 @@
      "type": "CoastConditionRule",
      "location": "Pearls Combo",
      "location_id": 2244122417761,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23534,6 +23789,7 @@
      "type": "TagConditionRule",
      "location": "Peat Combo",
      "location_id": 2314652183872,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -23620,6 +23876,7 @@
      "type": "BasicDiversityRule",
      "location": "Pheasant Combo",
      "location_id": 2262298877568,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23652,6 +23909,7 @@
      "type": "YieldConditionRule",
      "location": "Phosphorus Combo",
      "location_id": 2312858373505,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23690,6 +23948,7 @@
      "type": "UniqueConditionRule",
      "location": "Pink Diamond Combo",
      "location_id": 2201306746048,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23723,6 +23982,7 @@
      "type": "HunterRule",
      "location": "Pit Viper Combo",
      "location_id": 2294461997024,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23755,6 +24015,7 @@
      "type": "TypeConditionRule",
      "location": "Pitaya Combo 1",
      "location_id": 2233591351648,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -23900,6 +24161,7 @@
      "type": "UniqueConditionRule",
      "location": "Pitaya Combo 2",
      "location_id": 2233591351649,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -23931,6 +24193,7 @@
      "type": "ForEachYieldRule",
      "location": "Platinum (Savanna) Combo",
      "location_id": 2249111012000,
+     "max_stacks": 4,
      "kind": "none"
     }
    ],
@@ -23973,6 +24236,7 @@
      "type": "ForEachRuggedRule",
      "location": "Platinum (Taiga) Combo 1",
      "location_id": 2207853784096,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -24151,6 +24415,7 @@
      "type": "ForEachYieldRule",
      "location": "Platinum (Taiga) Combo 2",
      "location_id": 2207853784097,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -24190,6 +24455,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Pomegranate Combo 1",
      "location_id": 2214051879200,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -24311,6 +24577,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Pomegranate Combo 2",
      "location_id": 2214051879201,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -24489,6 +24756,7 @@
      "type": "RuggedConditionRule",
      "location": "Poplar Combo",
      "location_id": 2229783131424,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -24691,6 +24959,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Porcupine Combo",
      "location_id": 2252690188864,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -24835,6 +25104,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Potash Combo",
      "location_id": 2267315704608,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -24980,6 +25250,7 @@
      "type": "ForEachTagRule",
      "location": "Potato Combo",
      "location_id": 2218156802528,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -25073,6 +25344,7 @@
      "type": "NotTypeConditionRule",
      "location": "Prickly Pear Combo",
      "location_id": 2319443165281,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25113,6 +25385,7 @@
      "type": "TagConditionRule",
      "location": "Ptarmagin Combo",
      "location_id": 2323411436256,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25197,6 +25470,7 @@
      "type": "TagConditionRule",
      "location": "Pygmy Falcon Combo",
      "location_id": 2216951812256,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25301,6 +25575,7 @@
      "type": "BasicDiversityRule",
      "location": "Raccoon Dog Combo",
      "location_id": 2237394800544,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25333,6 +25608,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Rambutan Combo 1",
      "location_id": 2261050445056,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -25340,6 +25616,7 @@
      "type": "UniqueConditionRule",
      "location": "Rambutan Combo 2",
      "location_id": 2261050445057,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25370,6 +25647,7 @@
      "type": "UniqueConditionRule",
      "location": "Ramon Tree Combo",
      "location_id": 2315607155424,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25404,6 +25682,7 @@
      "type": "HumanConditionRule",
      "location": "Rat Combo",
      "location_id": 2257248964960,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25438,6 +25717,7 @@
      "type": "TagConditionRule",
      "location": "Rattlesnake Combo 1",
      "location_id": 2303084106112,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25499,6 +25779,7 @@
      "type": "TagConditionRule",
      "location": "Rattlesnake Combo 2",
      "location_id": 2303084106113,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25591,6 +25872,7 @@
      "type": "YieldConditionRule",
      "location": "Red Algea Combo",
      "location_id": 2299157743552,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25623,6 +25905,7 @@
      "type": "TagConditionRule",
      "location": "Red Cardinal Combo",
      "location_id": 2278830089376,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25719,6 +26002,7 @@
      "type": "ForEachTagRule",
      "location": "Red Howler Combo 1",
      "location_id": 2286186904960,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -25768,6 +26052,7 @@
      "type": "UniqueConditionRule",
      "location": "Red Howler Combo 2",
      "location_id": 2286186904961,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25800,6 +26085,7 @@
      "type": "TypeConditionRule",
      "location": "Red Oat Combo",
      "location_id": 2206290671168,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -25948,6 +26234,7 @@
      "type": "BasicDiversityRule",
      "location": "Red Panda Combo",
      "location_id": 2307463201216,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -25980,6 +26267,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Red Sea Whip Combo",
      "location_id": 2265836103169,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -26020,6 +26308,7 @@
      "type": "TypeConditionRule",
      "location": "Red Stone Combo",
      "location_id": 2325386780288,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26167,6 +26456,7 @@
      "type": "TagConditionRule",
      "location": "Red-Backed Vole Combo",
      "location_id": 2255461541792,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26261,6 +26551,7 @@
      "type": "ForEachSetRule",
      "location": "Reef Shark Combo",
      "location_id": 2315406743777,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26349,6 +26640,7 @@
      "type": "ExtraStatMultiplierRule",
      "location": "Rhesus Macaque Combo 1",
      "location_id": 2313238813280,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26414,6 +26706,7 @@
      "type": "ForEachTagRule",
      "location": "Rhesus Macaque Combo 2",
      "location_id": 2313238813281,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26495,6 +26788,7 @@
      "type": "ForEachYieldRule",
      "location": "Ribbon Eel Combo",
      "location_id": 2275350263136,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -26534,6 +26828,7 @@
      "type": "ForEachRuggedRule",
      "location": "Rowan Combo",
      "location_id": 2291872843456,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26737,6 +27032,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Rubber Tree Combo",
      "location_id": 2271282606624,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -26886,6 +27182,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Ruby Combo",
      "location_id": 2269729911777,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -27039,6 +27336,7 @@
      "type": "ForEachTagRule",
      "location": "Sable Combo",
      "location_id": 2205824516577,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -27131,6 +27429,7 @@
      "type": "ForEachEmptyRule",
      "location": "Saffron Combo",
      "location_id": 2308865490048,
+     "max_stacks": 4,
      "kind": "none"
     }
    ],
@@ -27172,6 +27471,7 @@
      "type": "TagConditionRule",
      "location": "Sand Cat Combo",
      "location_id": 2238077291072,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -27280,6 +27580,7 @@
      "type": "YieldConditionRule",
      "location": "Sandstone Combo",
      "location_id": 2261475340576,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -27311,6 +27612,7 @@
      "type": "ForEachBiomeRule",
      "location": "Sapphire Combo 1",
      "location_id": 2293308944480,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -27318,6 +27620,7 @@
      "type": "ForEachBiomeRule",
      "location": "Sapphire Combo 2",
      "location_id": 2293308944481,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -27356,6 +27659,7 @@
      "type": "ForEachSetRule",
      "location": "Sargassum Combo",
      "location_id": 2219177035840,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -27645,6 +27949,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Scarlet Macaw Combo",
      "location_id": 2223504614592,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -27705,6 +28010,7 @@
      "type": "TypeConditionRule",
      "location": "Sea Grass Combo",
      "location_id": 2309509302208,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -27876,6 +28182,7 @@
      "type": "TagConditionRule",
      "location": "Sea Krait Combo",
      "location_id": 2311179305825,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -27964,6 +28271,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Sea turtle Combo",
      "location_id": 2306970984608,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -28119,6 +28427,7 @@
      "type": "TagConditionRule",
      "location": "Seabass Combo",
      "location_id": 2288931025728,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28205,6 +28514,7 @@
      "type": "ForEachTagRule",
      "location": "Secretary Bird Combo 1",
      "location_id": 2270463887232,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28246,6 +28556,7 @@
      "type": "ForEachTagRule",
      "location": "Secretary Bird Combo 2",
      "location_id": 2270463887233,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28346,6 +28657,7 @@
      "type": "TagConditionRule",
      "location": "Seep Community Combo",
      "location_id": 2223844891585,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28397,6 +28709,7 @@
      "type": "ForEachTagRule",
      "location": "Sequoia Combo",
      "location_id": 2226517812192,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28457,6 +28770,7 @@
      "type": "ForEachTagRule",
      "location": "Serval Combo",
      "location_id": 2225279400672,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -28515,6 +28829,7 @@
      "type": "TypeConditionRule",
      "location": "Shea Tree Combo",
      "location_id": 2271147443104,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28665,6 +28980,7 @@
      "type": "ForEachTagRule",
      "location": "Shepherd Tree Combo",
      "location_id": 2212947721601,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -28732,6 +29048,7 @@
      "type": "ForEachTagRule",
      "location": "Shipwreck Combo 1",
      "location_id": 2245498980609,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28796,6 +29113,7 @@
      "type": "ForEachTagRule",
      "location": "Shipwreck Combo 2",
      "location_id": 2245498980610,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -28858,6 +29176,7 @@
      "type": "ForEachSetRule",
      "location": "Siberian Pine Combo",
      "location_id": 2324700734528,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29064,6 +29383,7 @@
      "type": "ForEachTagRule",
      "location": "Siberian Tiger Combo 1",
      "location_id": 2294554113472,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29154,6 +29474,7 @@
      "type": "ForEachTagRule",
      "location": "Siberian Tiger Combo 2",
      "location_id": 2294554113473,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29256,6 +29577,7 @@
      "type": "ForEachYieldRule",
      "location": "Silver Combo",
      "location_id": 2273158618144,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -29296,6 +29618,7 @@
      "type": "ForEachDistanceRule",
      "location": "Skunk Combo",
      "location_id": 2222087477632,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -29327,6 +29650,7 @@
      "type": "BasicDiversityRule",
      "location": "Sky Pillar Combo",
      "location_id": 2319699296704,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -29359,6 +29683,7 @@
      "type": "NotTypeConditionRule",
      "location": "Smokey Quartz Combo",
      "location_id": 2315166702848,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -29393,6 +29718,7 @@
      "type": "ForEachDistanceRule",
      "location": "Snow Monkey Combo 1",
      "location_id": 2216353322208,
+     "max_stacks": 0,
      "kind": "none"
     },
     {
@@ -29400,6 +29726,7 @@
      "type": "ForEachRuggedRule",
      "location": "Snow Monkey Combo 2",
      "location_id": 2216353322209,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29610,6 +29937,7 @@
      "type": "TypeConditionRule",
      "location": "Snowshoe Hare Combo",
      "location_id": 2281564225600,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29756,6 +30084,7 @@
      "type": "TypeConditionRule",
      "location": "Soda Ash Combo",
      "location_id": 2219802309312,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29904,6 +30233,7 @@
      "type": "ForEachTagRule",
      "location": "Sorghum Combo",
      "location_id": 2227000047361,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -29997,6 +30327,7 @@
      "type": "ForEachSetRule",
      "location": "South China Tiger Combo 1",
      "location_id": 2244567942784,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -30145,6 +30476,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "South China Tiger Combo 2",
      "location_id": 2244567942785,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -30322,6 +30654,7 @@
      "type": "ForEachDiversityRule",
      "location": "Spectrolite Combo",
      "location_id": 2256870975712,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -30362,6 +30695,7 @@
      "type": "ForEachTagRule",
      "location": "Spider Monkey Combo",
      "location_id": 2218822396352,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -30452,6 +30786,7 @@
      "type": "BasicDiversityRule",
      "location": "Spinel Combo",
      "location_id": 2256093143232,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -30486,6 +30821,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Spotted Hyena Combo",
      "location_id": 2287816187904,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -30638,6 +30974,7 @@
      "type": "TagConditionRule",
      "location": "Squirrel Combo",
      "location_id": 2289586812288,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -30728,6 +31065,7 @@
      "type": "ForEachYieldRule",
      "location": "Squirrel Monkey Combo",
      "location_id": 2276494817024,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -30759,6 +31097,7 @@
      "type": "ForEachTagRule",
      "location": "Staghorn Coral Combo 1",
      "location_id": 2303077598144,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -30780,6 +31119,7 @@
      "type": "ForEachTagRule",
      "location": "Staghorn Coral Combo 2",
      "location_id": 2303077598145,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -30848,6 +31188,7 @@
      "type": "ForEachTagRule",
      "location": "Starflower Combo",
      "location_id": 2253781967552,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -30901,6 +31242,7 @@
      "type": "ForEachTagRule",
      "location": "Stellar_Eagle Combo",
      "location_id": 2299278116032,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -30988,6 +31330,7 @@
      "type": "TagConditionRule",
      "location": "Stoat Combo",
      "location_id": 2206629859424,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31074,6 +31417,7 @@
      "type": "YieldConditionRule",
      "location": "Stone Combo",
      "location_id": 2300072863552,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -31105,6 +31449,7 @@
      "type": "ForEachTagRule",
      "location": "Strawberry Combo",
      "location_id": 2322786671424,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31198,6 +31543,7 @@
      "type": "ForEachTagRule",
      "location": "Suckerfish Combo",
      "location_id": 2319505032896,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -31290,6 +31636,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Sugar Beet Combo",
      "location_id": 2222969230496,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31445,6 +31792,7 @@
      "type": "ForEachTagRule",
      "location": "Sulfur Combo",
      "location_id": 2269155844608,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31537,6 +31885,7 @@
      "type": "TypeConditionRule",
      "location": "Sun Coral Combo",
      "location_id": 2298481526272,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31684,6 +32033,7 @@
      "type": "TagConditionRule",
      "location": "Sunfish Combo",
      "location_id": 2292341263712,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31743,6 +32093,7 @@
      "type": "TagConditionRule",
      "location": "Sunflower Combo",
      "location_id": 2295781103392,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -31805,6 +32156,7 @@
      "type": "ForEachSetRule",
      "location": "Sunstone Combo",
      "location_id": 2318482266048,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -32089,6 +32441,7 @@
      "type": "ForEachTagRule",
      "location": "Surgeon Fish Combo",
      "location_id": 2230253818273,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -32156,6 +32509,7 @@
      "type": "ForEachMulTagRule",
      "location": "Talc Combo",
      "location_id": 2225950435072,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -32277,6 +32631,7 @@
      "type": "TagConditionRule",
      "location": "Tanzanite Combo",
      "location_id": 2298988000832,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -32386,6 +32741,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Tapir Combo",
      "location_id": 2208975130368,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -32540,6 +32896,7 @@
      "type": "TypeConditionRule",
      "location": "Taro Combo",
      "location_id": 2307545366560,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -32685,6 +33042,7 @@
      "type": "MicroSpreadRule",
      "location": "Termite Hill Combo",
      "location_id": 2211039246272,
+     "max_stacks": 0,
      "kind": "micro",
      "micro": "Termites"
     }
@@ -32719,6 +33077,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Thorny Devil Combo",
      "location_id": 2245945816449,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
@@ -32897,6 +33256,7 @@
      "type": "TypeConditionRule",
      "location": "Tin Combo",
      "location_id": 2255961652224,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33046,6 +33406,7 @@
      "type": "PositiveBioConditionRule",
      "location": "Tinamou Combo",
      "location_id": 2245759062912,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -33078,6 +33439,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Titan Graveyard Combo 1",
      "location_id": 2287331215616,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33199,6 +33561,7 @@
      "type": "ForEachTagRule",
      "location": "Titan Graveyard Combo 2",
      "location_id": 2287331215617,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33256,6 +33619,7 @@
      "type": "ForEachTagRule",
      "location": "Titan fall Combo",
      "location_id": 2320828787202,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33312,6 +33676,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Titanite Combo",
      "location_id": 2277429894112,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33465,6 +33830,7 @@
      "type": "ForEachDiversityRule",
      "location": "Toco Toucan Combo",
      "location_id": 2262448727904,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -33497,6 +33863,7 @@
      "type": "TagConditionRule",
      "location": "Topaz Combo",
      "location_id": 2219657149184,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33584,6 +33951,7 @@
      "type": "ForEachTagRule",
      "location": "Tourmaline Combo",
      "location_id": 2268016967680,
+     "max_stacks": 5,
      "kind": "candidates",
      "groups": [
       [
@@ -33678,6 +34046,7 @@
      "type": "ForEachTagRule",
      "location": "Tuna Combo",
      "location_id": 2265998181568,
+     "max_stacks": 3,
      "kind": "candidates",
      "groups": [
       [
@@ -33739,6 +34108,7 @@
      "type": "TagConditionRule",
      "location": "Tungsten Combo",
      "location_id": 2304658767072,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33832,6 +34202,7 @@
      "type": "ForEachSetRule",
      "location": "Turquoise Combo 1",
      "location_id": 2244912788288,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -33953,6 +34324,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Turquoise Combo 2",
      "location_id": 2244912788289,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34101,6 +34473,7 @@
      "type": "TypeConditionRule",
      "location": "Turtle Grass Combo",
      "location_id": 2248320649056,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34249,6 +34622,7 @@
      "type": "ForEachTagRule",
      "location": "Umbrella Thorn Acacia Combo",
      "location_id": 2304211790976,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -34341,6 +34715,7 @@
      "type": "ForEachTagRule",
      "location": "Uranium Combo 1",
      "location_id": 2316664198048,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34426,6 +34801,7 @@
      "type": "ForEachDistanceRule",
      "location": "Uranium Combo 2",
      "location_id": 2316664198049,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -34465,6 +34841,7 @@
      "type": "ForEachTagRule",
      "location": "Vermiculite Combo",
      "location_id": 2293575917376,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -34512,6 +34889,7 @@
      "type": "TagConditionRule",
      "location": "Vinaceous Amazon Combo 1",
      "location_id": 2207259451744,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34561,6 +34939,7 @@
      "type": "TagConditionRule",
      "location": "Vinaceous Amazon Combo 2",
      "location_id": 2207259451745,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34650,6 +35029,7 @@
      "type": "TypeConditionRule",
      "location": "Warthog Combo",
      "location_id": 2313060166624,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34796,6 +35176,7 @@
      "type": "MulTagConditionRule",
      "location": "White Backed Vulture Combo",
      "location_id": 2295832786720,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -34963,6 +35344,7 @@
      "type": "TagConditionRule",
      "location": "White Birch Combo",
      "location_id": 2329290286305,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35034,6 +35416,7 @@
      "type": "ForEachAspectRule",
      "location": "White Mulberry Combo",
      "location_id": 2269635440576,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -35066,6 +35449,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "White Plumed Anemone Combo",
      "location_id": 2238806444896,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -35219,6 +35603,7 @@
      "type": "ForEachSetRule",
      "location": "White Rhino Combo 1",
      "location_id": 2307317247936,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35422,6 +35807,7 @@
      "type": "TypeConditionRule",
      "location": "White Rhino Combo 2",
      "location_id": 2307317247937,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35580,6 +35966,7 @@
      "type": "ForEachTagRule",
      "location": "White Shark Combo",
      "location_id": 2206232414529,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35641,6 +36028,7 @@
      "type": "ForEachTagRule",
      "location": "White Willow Combo",
      "location_id": 2210770815872,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -35732,6 +36120,7 @@
      "type": "ForEachRuggedRule",
      "location": "White Wolf Combo 1",
      "location_id": 2217339746176,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35910,6 +36299,7 @@
      "type": "SpecificConditionRule",
      "location": "White Wolf Combo 2",
      "location_id": 2217339746177,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -35957,6 +36347,7 @@
      "type": "ForEachTagRule",
      "location": "Wildebeest Combo 1",
      "location_id": 2219822412608,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -36047,6 +36438,7 @@
      "type": "ForEachTagRule",
      "location": "Wildebeest Combo 2",
      "location_id": 2219822412609,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -36162,6 +36554,7 @@
      "type": "TypeConditionRule",
      "location": "Wintergreen Combo",
      "location_id": 2321929507584,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -36328,6 +36721,7 @@
      "type": "MulTagConditionRule",
      "location": "Yam Combo",
      "location_id": 2217642684096,
+     "max_stacks": 0,
      "kind": "candidates",
      "groups": [
       [
@@ -36490,6 +36884,7 @@
      "type": "UniqueConditionRule",
      "location": "Yellow Diamond Combo",
      "location_id": 2231976083872,
+     "max_stacks": 0,
      "kind": "none"
     }
    ],
@@ -36521,6 +36916,7 @@
      "type": "ForEachTagRule",
      "location": "Zebra Combo",
      "location_id": 2204652555264,
+     "max_stacks": 2,
      "kind": "candidates",
      "groups": [
       [
@@ -36672,6 +37068,7 @@
      "type": "ForEachBioticumTypeRule",
      "location": "Zircon Combo",
      "location_id": 2225310050656,
+     "max_stacks": 4,
      "kind": "candidates",
      "groups": [
       [
