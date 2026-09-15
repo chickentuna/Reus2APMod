@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 using Reus2Archipelago.Archipelago;
@@ -60,13 +61,26 @@ internal static class CheckPatches
         if (mode == BuildOnly)
             return;
         var context = GameAccess.Get(__instance, "slotContext");
-        if (context == null || GameAccess.Get(context, "PreviewedBioticum") != null)
+        if (context == null)
+        {
+            Bail(__instance, "the rule has no slot context");
+            return;
+        }
+        if (GameAccess.Get(context, "PreviewedBioticum") != null)
             return;
 
         var definition = GameAccess.Get(GameAccess.Get(context, "slot"), "BioticumDefinition");
         var guid = GameAccess.DefinitionId(definition);
-        if (guid == null || !(GameAccess.Get(definition, "rules") is IList rules))
+        if (guid == null)
+        {
+            Bail(__instance, "the slot holds no bioticum definition");
             return;
+        }
+        if (!(GameAccess.Get(definition, "rules") is IList rules))
+        {
+            Bail(__instance, "the definition has no rules list");
+            return;
+        }
 
         var rule = GameAccess.Get(__instance, "RuleDefinitionBase");
         for (var index = 0; index < rules.Count; index++)
@@ -80,8 +94,23 @@ internal static class CheckPatches
                 else
                     SendWhenEveryRuleActivated(guid, index);
             }
+            else
+            {
+                Bail(__instance, $"rule {index} of {ApData.Instance.BioticumForGuid(guid)?.Name ?? guid} carries no location");
+            }
             return;
         }
+        Bail(__instance, $"the activated rule is not in {ApData.Instance.BioticumForGuid(guid)?.Name ?? guid}'s rules list");
+    }
+
+    private static readonly HashSet<string> BailReasons = new HashSet<string>();
+
+    /// <summary>Says once why an activation sent nothing; a rule recalculates every frame.</summary>
+    private static void Bail(object ruleState, string reason)
+    {
+        var key = $"{ruleState?.GetType().Name}: {reason}";
+        if (BailReasons.Add(key))
+            Plugin.Log.LogWarning($"Combo activation sent no check — {key}");
     }
 
     // A bioticum's rules are activated over several placements and several planets, so the profile
