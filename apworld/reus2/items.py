@@ -57,17 +57,18 @@ def item_table() -> Dict[str, int]:
 def classifications() -> Dict[str, ItemClassification]:
     progression = ItemClassification.progression
     useful = ItemClassification.useful
+    useful_progression = ItemClassification.useful | ItemClassification.progression
     needed_micros = _micros_needed_by_logic()
     result = {b["item"]: progression for b in DATA["biotica"]}
     result.update({item: progression for item in apex_items()})
     result.update({g["item"]: progression for g in DATA["giants"]})
-    result.update({b["item"]: progression for b in DATA["biomes"]})
+    result.update({b["item"]: useful_progression for b in DATA["biomes"]})
     result.update({a["item"]: useful for a in DATA["abilities"]})
     result.update({c["item"]: useful for c in DATA["characters"]})
     result.update({m["item"]: progression if m["name"] in needed_micros else useful for m in DATA["micros"]})
     result.update({item: ItemClassification.filler for item in filler_items()})
     result[DATA["bonus_micro"]["item"]] = ItemClassification.filler
-    result[DATA["eras"]["item"]] = progression
+    result[DATA["eras"]["item"]] = useful_progression
     return result
 
 
