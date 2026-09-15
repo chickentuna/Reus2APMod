@@ -57,6 +57,7 @@ internal static class GameProbes
             return;
         nextDump = Time.realtimeSinceStartup + DumpSeconds;
         HarmonySelfTest.CompareAssemblies();
+        HarmonySelfTest.SelfInvoke();
         ProbeTally.Dump($"every {DumpSeconds:0} seconds");
         StateSnapshot.Dump($"every {DumpSeconds:0} seconds");
     }

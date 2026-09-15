@@ -1,5 +1,6 @@
 using System;
 using HarmonyLib;
+using HarmonyLib.Tools;
 using Reus2Archipelago.Game;
 
 namespace Reus2Archipelago.Patches;
@@ -36,9 +37,14 @@ internal static class Patching
                 return;
             }
 
+            // Two targets are traced, which makes HarmonyX write the replacement it builds and the
+            // steps it takes to install it into BepInEx/plugins/reus2_harmony.log; tracing all 53
+            // buries the rest of the log.
+            HarmonyFileLog.Enabled = methodName == "BuyOption" || methodName == "OnBioticumPlaced";
             harmony.Patch(method,
                 prefix: prefix == null ? null : new HarmonyMethod(AccessTools.Method(owner, prefix)),
                 postfix: postfix == null ? null : new HarmonyMethod(AccessTools.Method(owner, postfix)));
+            HarmonyFileLog.Enabled = false;
 
             var shape = ProbeTally.Describe(method);
             Report($"Patched {method.DeclaringType?.FullName}.{methodName} ({type.Assembly.GetName().Name})"

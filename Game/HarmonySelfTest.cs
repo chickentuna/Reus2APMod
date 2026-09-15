@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
+using HarmonyLib.Tools;
 
 namespace Reus2Archipelago.Game;
 
@@ -15,6 +16,9 @@ internal static class HarmonySelfTest
 
     internal static void Run(Harmony harmony)
     {
+        HarmonyFileLog.FileWriterPath = System.IO.Path.Combine(BepInEx.Paths.PluginPath, "reus2_harmony.log");
+        Logger.ChannelFilter = Logger.LogChannel.All;
+
         var runtime = typeof(Harmony).Assembly;
         Plugin.Log.LogInfo($"Harmony {runtime.GetName().Version} from {runtime.Location}");
 
@@ -50,8 +54,48 @@ internal static class HarmonySelfTest
 
     /// <summary>Compares the assembly a live game object came from with the one the patches went to.
     /// Called once the game is running, since it needs an object the game itself made.</summary>
+    /// <summary>Applies the attribute-class patch and turns HarmonyX's own tracing on for two
+    /// targets, so the log carries the replacement IL and the detour steps for them.</summary>
+    internal static void SecondOpinion(Harmony harmony)
+    {
+        try
+        {
+            harmony.CreateClassProcessor(typeof(AttributeCheck)).Patch();
+            Plugin.Log.LogInfo($"Attribute patch applied to {AttributeCheck.TargetMethod()?.FullDescription() ?? "nothing"}.");
+        }
+        catch (Exception e)
+        {
+            Plugin.Log.LogError($"Attribute patch failed: {e}");
+        }
+    }
+
+    /// <summary>Calls two patched game methods from the plugin. A count that rises here while the
+    /// game's own calls never arrive means the game runs a different method than the patched one.</summary>
+    internal static void SelfInvoke()
+    {
+        var session = GameAccess.Get(GameAccess.SessionContext, "CurrentSession");
+        var feats = GameAccess.Get(session, "eraFeatController");
+        if (feats == null)
+            return;
+        var before = ProbeTally.CountFor("EraFeatController.GainsDraftForRequest");
+        GameAccess.Call(feats, "GainsDraftForRequest", 0);
+        var after = ProbeTally.CountFor("EraFeatController.GainsDraftForRequest");
+        Plugin.Log.LogInfo(after > before
+            ? "Self-invoke: calling a patched game method reached the probe."
+            : "Self-invoke: calling a patched game method did not reach the probe.");
+    }
+
     internal static void CompareAssemblies()
     {
+        var gameplay = GameAccess.Gameplay;
+        if (gameplay != null)
+        {
+            var liveType = gameplay.GetType();
+            var namedType = GameAccess.TypeNamed("GameplayController");
+            Plugin.Log.LogInfo($"Live GameplayController type {(ReferenceEquals(liveType, namedType) ? "is" : "IS NOT")} "
+                + $"the patched one: live={liveType.AssemblyQualifiedName}, patched={namedType?.AssemblyQualifiedName}");
+        }
+
         var profile = GameAccess.CurrentProfile;
         if (profile == null)
             return;

@@ -62,6 +62,7 @@ public sealed class Plugin : BaseUnityPlugin
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         HarmonySelfTest.Run(harmony);
+        HarmonySelfTest.SecondOpinion(harmony);
 
         if (enableDefinitionDump.Value)
         {

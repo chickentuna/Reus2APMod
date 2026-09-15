@@ -67,6 +67,10 @@ internal static class ProbeTally
     /// out. Null while probes are off, so the install line stays as it was.</summary>
     internal static string Describe(MethodBase method) => Enabled ? Shape(method) : null;
 
+    /// <summary>Calls recorded for every row whose method matches this Type.Method name.</summary>
+    internal static long CountFor(string key)
+        => Targets.Where(t => t.Key.StartsWith(key + " ", StringComparison.Ordinal)).Sum(t => t.Value.Count);
+
     /// <summary>Counts the call and writes the detail. A detail that throws is reported once and
     /// replaced, so the call still raises the count: a probe that reads a member the game no longer
     /// has must not read as a probe that never ran.</summary>
