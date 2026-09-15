@@ -25,9 +25,14 @@ internal static class CheckPatches
         if (!ItemApplier.ProfileBound || __args == null || __args.Length == 0)
             return;
         var definition = GameAccess.Get(__args[0], "Definition");
-        var entry = ApData.Instance.BioticumForGuid(GameAccess.DefinitionId(definition));
-        if (entry != null)
-            ApState.SendCheck(entry.BuildLocation);
+        var guid = GameAccess.DefinitionId(definition);
+        var entry = ApData.Instance.BioticumForGuid(guid);
+        if (entry == null)
+        {
+            Plugin.Log.LogWarning($"Placed a bioticum the data does not hold: {guid ?? "no id"}.");
+            return;
+        }
+        ApState.SendCheck(entry.BuildLocation);
     }
 
     // Rule states are also generated for the placement preview; only a placed bioticum counts.

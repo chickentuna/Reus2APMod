@@ -21,6 +21,7 @@ internal static class ItemApplier
     private static object lastProfile;
     private static object checkedProfile;
     private static bool checkedBound;
+    private static bool logged;
 
     internal static void MarkDirty() => dirty = true;
 
@@ -31,12 +32,24 @@ internal static class ItemApplier
         {
             var profile = GameAccess.CurrentProfile;
             if (!ReferenceEquals(profile, checkedProfile))
-            {
-                checkedProfile = profile;
-                checkedBound = ProfileBinding.IsBound(profile);
-            }
+                RecordBound(profile, ProfileBinding.IsBound(profile));
             return checkedBound;
         }
+    }
+
+    /// <summary>Every gameplay patch and every check reads ProfileBound, so the log says which way
+    /// it went each time it changes.</summary>
+    private static void RecordBound(object profile, bool bound)
+    {
+        checkedProfile = profile;
+        if (bound == checkedBound && logged)
+            return;
+        checkedBound = bound;
+        logged = true;
+        var name = (profile as UnityEngine.Object)?.name ?? "no profile";
+        Plugin.Log.LogInfo(bound
+            ? $"Profile '{name}' is bound to slot {ApState.SlotName}: checks are sent and progression is replaced."
+            : $"Profile '{name}' is not bound to slot {ApState.SlotName}: no checks are sent.");
     }
 
     internal static bool IsReceivedBioticum(object definition)
@@ -64,8 +77,7 @@ internal static class ItemApplier
                 dirty = true;
                 return;
             }
-            checkedProfile = profile;
-            checkedBound = true;
+            RecordBound(profile, true);
 
             var received = Count(ApState.ReceivedItems);
             ApplyProfile(profile, received);
