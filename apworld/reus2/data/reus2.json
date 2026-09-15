@@ -199,6 +199,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Impala",
+    "Leopard",
+    "Oryx"
+   ],
+   "apex_item": "Apex: African Elephant",
+   "apex_item_id": 9952624256457,
    "item": "African Elephant",
    "item_id": 1156531234249,
    "build_location": "Build African Elephant",
@@ -658,6 +665,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "African Violet",
+    "Gazelle",
+    "Marula"
+   ],
+   "apex_item": "Apex: Amaranth",
+   "apex_item_id": 9937367705649,
    "item": "Amaranth",
    "item_id": 1141274683441,
    "build_location": "Build Amaranth",
@@ -886,6 +900,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Poplar",
+    "Rowan",
+    "Tungsten"
+   ],
+   "apex_item": "Apex: Amur Leopard",
+   "apex_item_id": 9910295559655,
    "item": "Amur Leopard",
    "item_id": 1114202537447,
    "build_location": "Build Amur Leopard",
@@ -986,6 +1007,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Tin",
+    "White Willow"
+   ],
+   "apex_item": "Apex: Antimony",
+   "apex_item_id": 9915816343131,
    "item": "Antimony",
    "item_id": 1119723320923,
    "build_location": "Build Antimony",
@@ -1057,6 +1084,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Pear Tree",
+    "Squirrel"
+   ],
+   "apex_item": "Apex: Apple Tree",
+   "apex_item_id": 9925988198141,
    "item": "Apple Tree",
    "item_id": 1129895175933,
    "build_location": "Build Apple Tree",
@@ -1690,6 +1723,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Jungle Fowl",
+    "Taro"
+   ],
+   "apex_item": "Apex: Banana",
+   "apex_item_id": 9959547041803,
    "item": "Banana",
    "item_id": 1163454019595,
    "build_location": "Build Banana",
@@ -1721,6 +1760,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Egusi",
+    "Fluorite",
+    "Giraffe"
+   ],
+   "apex_item": "Apex: Baobab",
+   "apex_item_id": 9904477772955,
    "item": "Baobab",
    "item_id": 1108384750747,
    "build_location": "Build Baobab",
@@ -2186,6 +2232,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Pear Tree",
+    "White Mulberry",
+    "White Willow"
+   ],
+   "apex_item": "Apex: Beaver",
+   "apex_item_id": 9924018149922,
    "item": "Beaver",
    "item_id": 1127925127714,
    "build_location": "Build Beaver",
@@ -2597,6 +2650,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Seep Community",
+    "Sun Coral",
+    "Sunfish"
+   ],
+   "apex_item": "Apex: Blue Whale",
+   "apex_item_id": 9941196263529,
    "item": "Blue Whale",
    "item_id": 1145103241321,
    "build_location": "Build Blue Whale",
@@ -2853,6 +2913,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Blackberry",
+    "Pheasant",
+    "Squirrel"
+   ],
+   "apex_item": "Apex: Boar",
+   "apex_item_id": 9961579364619,
    "item": "Boar",
    "item_id": 1165486342411,
    "build_location": "Build Boar",
@@ -3022,6 +3089,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Anchovy",
+    "Open-Brain Coral",
+    "Turtle Grass"
+   ],
+   "apex_item": "Apex: Bottlenose Dolphin",
+   "apex_item_id": 9903057396123,
    "item": "Bottlenose Dolphin",
    "item_id": 1106964373915,
    "build_location": "Build Bottlenose Dolphin",
@@ -3109,6 +3183,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cinchona Tree",
+    "Cinnabar",
+    "Jabuticaba"
+   ],
+   "apex_item": "Apex: Brazilwood",
+   "apex_item_id": 9905939895227,
    "item": "Brazilwood",
    "item_id": 1109846873019,
    "build_location": "Build Brazilwood",
@@ -3312,6 +3393,13 @@
      "require_biome": "Taiga"
     }
    ],
+   "cohorts": [
+    "Charoite",
+    "Sunstone",
+    "Yellow Diamond"
+   ],
+   "apex_item": "Apex: Brown Bear",
+   "apex_item_id": 9917726950091,
    "item": "Brown Bear",
    "item_id": 1121633927883,
    "build_location": "Build Brown Bear",
@@ -3391,6 +3479,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Jabuticaba",
+    "Rambutan",
+    "Taro"
+   ],
+   "apex_item": "Apex: Cacao Tree",
+   "apex_item_id": 9932421525697,
    "item": "Cacao Tree",
    "item_id": 1136328503489,
    "build_location": "Build Cacao Tree",
@@ -3423,6 +3518,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Armadillo",
+    "Iguana",
+    "Taro"
+   ],
+   "apex_item": "Apex: Caiman",
+   "apex_item_id": 9964173359623,
    "item": "Caiman",
    "item_id": 1168080337415,
    "build_location": "Build Caiman",
@@ -3538,6 +3640,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Egusi",
+    "Red Oat",
+    "Warthog"
+   ],
+   "apex_item": "Apex: Cape Buffalo",
+   "apex_item_id": 9938404382139,
    "item": "Cape Buffalo",
    "item_id": 1142311359931,
    "build_location": "Build Cape Buffalo",
@@ -3876,6 +3985,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Arrau Turtle",
+    "Bamboo",
+    "Squirrel Monkey"
+   ],
+   "apex_item": "Apex: Capybara",
+   "apex_item_id": 9954220254609,
    "item": "Capybara",
    "item_id": 1158127232401,
    "build_location": "Build Capybara",
@@ -4364,6 +4480,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Aquamarine",
+    "Jungle Fowl",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Cassave",
+   "apex_item_id": 9927278544027,
    "item": "Cassave",
    "item_id": 1131185521819,
    "build_location": "Build Cassave",
@@ -4738,6 +4861,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Oryx",
+    "Rattlesnake",
+    "Sandgrouse"
+   ],
+   "apex_item": "Apex: Cheetah",
+   "apex_item_id": 9938948449014,
    "item": "Cheetah",
    "item_id": 1142855426806,
    "build_location": "Build Cheetah",
@@ -4770,6 +4900,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Red Deer",
+    "Spinel",
+    "Tin"
+   ],
+   "apex_item": "Apex: Cherry Tree",
+   "apex_item_id": 9912452017188,
    "item": "Cherry Tree",
    "item_id": 1116358994980,
    "build_location": "Build Cherry Tree",
@@ -4936,6 +5073,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Dove",
+    "Dove Tree",
+    "Marula"
+   ],
+   "apex_item": "Apex: Chinese Jujube",
+   "apex_item_id": 9922818505572,
    "item": "Chinese Jujube",
    "item_id": 1126725483364,
    "build_location": "Build Chinese Jujube",
@@ -5175,6 +5319,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Chert",
+    "Manganese",
+    "Seep Community"
+   ],
+   "apex_item": "Apex: Christmas Tree Coral",
+   "apex_item_id": 9937501862413,
    "item": "Christmas Tree Coral",
    "item_id": 1141408840205,
    "build_location": "Build Christmas Tree Coral",
@@ -5238,6 +5389,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Barley",
+    "Lions Ear",
+    "Soda Ash"
+   ],
+   "apex_item": "Apex: Chrome",
+   "apex_item_id": 9904902606243,
    "item": "Chrome",
    "item_id": 1108809584035,
    "build_location": "Build Chrome",
@@ -5431,6 +5589,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cape Fox",
+    "Kunzite",
+    "Spinel"
+   ],
+   "apex_item": "Apex: Citrine",
+   "apex_item_id": 9905124251890,
    "item": "Citrine",
    "item_id": 1109031229682,
    "build_location": "Build Citrine",
@@ -5857,6 +6022,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Feldspar",
+    "Ginkgo",
+    "Sandstone"
+   ],
+   "apex_item": "Apex: Coal",
+   "apex_item_id": 9921806146028,
    "item": "Coal",
    "item_id": 1125713123820,
    "build_location": "Build Coal",
@@ -6003,6 +6175,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Spider Monkey",
+    "Vinaceous Amazon"
+   ],
+   "apex_item": "Apex: Cobalt",
+   "apex_item_id": 9946460157284,
    "item": "Cobalt",
    "item_id": 1150367135076,
    "build_location": "Build Cobalt",
@@ -6042,6 +6221,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Bauxite",
+    "Cinchona Tree",
+    "Mica"
+   ],
+   "apex_item": "Apex: Coffea Robusta",
+   "apex_item_id": 9923844107409,
    "item": "Coffea Robusta",
    "item_id": 1127751085201,
    "build_location": "Build Coffea Robusta",
@@ -6273,6 +6459,12 @@
      "require_biome": "Taiga"
     }
    ],
+   "cohorts": [
+    "Skunk",
+    "Tin"
+   ],
+   "apex_item": "Apex: Copper (Taiga)",
+   "apex_item_id": 9930832144984,
    "item": "Copper (Taiga)",
    "item_id": 1134739122776,
    "build_location": "Build Copper (Taiga)",
@@ -6681,6 +6873,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Bearded Dragon",
+    "Fig",
+    "Sunstone"
+   ],
+   "apex_item": "Apex: Cotton",
+   "apex_item_id": 9896922597511,
    "item": "Cotton",
    "item_id": 1100829575303,
    "build_location": "Build Cotton",
@@ -6799,6 +6998,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Anchovy",
+    "Basalt (Aquatic)",
+    "Clubhook Squid"
+   ],
+   "apex_item": "Apex: Crab Meeting Spot",
+   "apex_item_id": 9911175835032,
    "item": "Crab Meeting Spot",
    "item_id": 1115082812824,
    "build_location": "Build Crab Meeting Spot",
@@ -7032,6 +7238,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Armadillo",
+    "Jasper",
+    "Sunstone"
+   ],
+   "apex_item": "Apex: Date Palm",
+   "apex_item_id": 9911466826527,
    "item": "Date Palm",
    "item_id": 1115373804319,
    "build_location": "Build Date Palm",
@@ -7090,6 +7303,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Fan Palm",
+    "Mudcrack",
+    "Olive Tree"
+   ],
+   "apex_item": "Apex: Desert Salt",
+   "apex_item_id": 9916629859704,
    "item": "Desert Salt",
    "item_id": 1120536837496,
    "build_location": "Build Desert Salt",
@@ -7208,6 +7428,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Rattlesnake",
+    "Sunstone",
+    "Turquoise"
+   ],
+   "apex_item": "Apex: Diamond",
+   "apex_item_id": 9901668334138,
    "item": "Diamond",
    "item_id": 1105575311930,
    "build_location": "Build Diamond",
@@ -7309,6 +7536,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Olive Tree",
+    "Sandgrouse",
+    "Turquoise"
+   ],
+   "apex_item": "Apex: Dromedary Camel",
+   "apex_item_id": 9897548936708,
    "item": "Dromedary Camel",
    "item_id": 1101455914500,
    "build_location": "Build Dromedary Camel",
@@ -7456,6 +7690,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Finger Coral",
+    "Red Algea",
+    "Turtle Grass"
+   ],
+   "apex_item": "Apex: Dugong",
+   "apex_item_id": 9938654709051,
    "item": "Dugong",
    "item_id": 1142561686843,
    "build_location": "Build Dugong",
@@ -7565,6 +7806,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Basalt",
+    "Enargite",
+    "Iron"
+   ],
+   "apex_item": "Apex: Dysprosium",
+   "apex_item_id": 9930317971744,
    "item": "Dysprosium",
    "item_id": 1134224949536,
    "build_location": "Build Dysprosium",
@@ -8103,6 +8351,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Kaolin",
+    "Leaf Turquoise",
+    "Raccoon Dog"
+   ],
+   "apex_item": "Apex: Emerald",
+   "apex_item_id": 9901050280141,
    "item": "Emerald",
    "item_id": 1104957257933,
    "build_location": "Build Emerald",
@@ -8666,6 +8921,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Carnelian",
+    "Desert Tortoise",
+    "Jackal"
+   ],
+   "apex_item": "Apex: Falcon",
+   "apex_item_id": 9952773430181,
    "item": "Falcon",
    "item_id": 1156680407973,
    "build_location": "Build Falcon",
@@ -8838,6 +9100,13 @@
      "count": 2
     }
    ],
+   "cohorts": [
+    "Bearded Dragon",
+    "Dove",
+    "Sunstone"
+   ],
+   "apex_item": "Apex: Fennec",
+   "apex_item_id": 9953213386273,
    "item": "Fennec",
    "item_id": 1157120364065,
    "build_location": "Build Fennec",
@@ -9375,6 +9644,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Iguana",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Fire Opal",
+   "apex_item_id": 9941077113470,
    "item": "Fire Opal",
    "item_id": 1144984091262,
    "build_location": "Build Fire Opal",
@@ -9661,6 +9936,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Charoite",
+    "Red-Backed Vole"
+   ],
+   "apex_item": "Apex: Fox",
+   "apex_item_id": 9963095616987,
    "item": "Fox",
    "item_id": 1167002594779,
    "build_location": "Build Fox",
@@ -9753,6 +10034,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Sandstone",
+    "Sunflower",
+    "White Mulberry"
+   ],
+   "apex_item": "Apex: Foxglove",
+   "apex_item_id": 9949460914323,
    "item": "Foxglove",
    "item_id": 1153367892115,
    "build_location": "Build Foxglove",
@@ -9783,6 +10071,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Peat",
+    "Rowan"
+   ],
+   "apex_item": "Apex: Garnet",
+   "apex_item_id": 9929108596231,
    "item": "Garnet",
    "item_id": 1133015574023,
    "build_location": "Build Garnet",
@@ -10251,6 +10545,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Armadillo",
+    "Damask Rose",
+    "Field Eryngo"
+   ],
+   "apex_item": "Apex: Giant Cardon",
+   "apex_item_id": 9955423675276,
    "item": "Giant Cardon",
    "item_id": 1159330653068,
    "build_location": "Build Giant Cardon",
@@ -10429,6 +10730,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Enargite",
+    "Field Eryngo",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Gila Monster",
+   "apex_item_id": 9953421414724,
    "item": "Gila Monster",
    "item_id": 1157328392516,
    "build_location": "Build Gila Monster",
@@ -10604,6 +10912,13 @@
      "allow_self": true
     }
    ],
+   "cohorts": [
+    "Carnelian",
+    "Desert Tortoise",
+    "Gazelle"
+   ],
+   "apex_item": "Apex: Gold",
+   "apex_item_id": 9950953254301,
    "item": "Gold",
    "item_id": 1154860232093,
    "build_location": "Build Gold",
@@ -10650,6 +10965,13 @@
      "allow_self": true
     }
    ],
+   "cohorts": [
+    "Aquamarine",
+    "Iguana",
+    "Red Howler"
+   ],
+   "apex_item": "Apex: Gold (Legendary)",
+   "apex_item_id": 9911908238007,
    "item": "Gold (Legendary)",
    "item_id": 1115815215799,
    "build_location": "Build Gold (Legendary)",
@@ -10818,6 +11140,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cinchona Tree",
+    "Fluorite",
+    "Squirrel Monkey"
+   ],
+   "apex_item": "Apex: Golden Lion Tamarin",
+   "apex_item_id": 9918504523704,
    "item": "Golden Lion Tamarin",
    "item_id": 1122411501496,
    "build_location": "Build Golden Lion Tamarin",
@@ -11130,6 +11459,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Bluebead",
+    "Cranberry",
+    "Crossbill"
+   ],
+   "apex_item": "Apex: Granite",
+   "apex_item_id": 9903365297974,
    "item": "Granite",
    "item_id": 1107272275766,
    "build_location": "Build Granite",
@@ -11275,6 +11611,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Amber",
+    "Musk Deer",
+    "Raccoon Dog"
+   ],
+   "apex_item": "Apex: Grey Wolf",
+   "apex_item_id": 9934981918288,
    "item": "Grey Wolf",
    "item_id": 1138888896080,
    "build_location": "Build Grey Wolf",
@@ -11307,6 +11650,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Cinchona Tree",
+    "Passion Fruit",
+    "Tinamou"
+   ],
+   "apex_item": "Apex: Guarana",
+   "apex_item_id": 9917239958007,
    "item": "Guarana",
    "item_id": 1121146935799,
    "build_location": "Build Guarana",
@@ -11383,6 +11733,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Flint",
+    "Parakeet"
+   ],
+   "apex_item": "Apex: Gumbo Limbo",
+   "apex_item_id": 9920416687917,
    "item": "Gumbo Limbo",
    "item_id": 1124323665709,
    "build_location": "Build Gumbo Limbo",
@@ -11497,6 +11853,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Poplar",
+    "Potash",
+    "Tin"
+   ],
+   "apex_item": "Apex: Gypsum",
+   "apex_item_id": 9906919343067,
    "item": "Gypsum",
    "item_id": 1110826320859,
    "build_location": "Build Gypsum",
@@ -11707,6 +12070,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cape Fox",
+    "Pygmy Falcon",
+    "Shepherd Tree"
+   ],
+   "apex_item": "Apex: Hamadryas Baboon",
+   "apex_item_id": 9906766687394,
    "item": "Hamadryas Baboon",
    "item_id": 1110673665186,
    "build_location": "Build Hamadryas Baboon",
@@ -11874,6 +12244,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cinnabar",
+    "Jungle Fowl",
+    "Toco Toucan"
+   ],
+   "apex_item": "Apex: Harpy",
+   "apex_item_id": 9920743360068,
    "item": "Harpy",
    "item_id": 1124650337860,
    "build_location": "Build Harpy",
@@ -12187,6 +12564,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Kapok Tree",
+    "Mica",
+    "Pitaya"
+   ],
+   "apex_item": "Apex: Heliconia",
+   "apex_item_id": 9917311813307,
    "item": "Heliconia",
    "item_id": 1121218791099,
    "build_location": "Build Heliconia",
@@ -12225,6 +12609,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Flint",
+    "Fluorite",
+    "Kapok Tree"
+   ],
+   "apex_item": "Apex: Helium",
+   "apex_item_id": 9945106492255,
    "item": "Helium",
    "item_id": 1149013470047,
    "build_location": "Build Helium",
@@ -12411,6 +12802,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cinchona Tree",
+    "Kentucky Coffeetree",
+    "Parakeet"
+   ],
+   "apex_item": "Apex: Hematite",
+   "apex_item_id": 9928693261527,
    "item": "Hematite",
    "item_id": 1132600239319,
    "build_location": "Build Hematite",
@@ -12587,6 +12985,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Flint",
+    "Iguana",
+    "Tinamou"
+   ],
+   "apex_item": "Apex: Hemp",
+   "apex_item_id": 9911320478112,
    "item": "Hemp",
    "item_id": 1115227455904,
    "build_location": "Build Hemp",
@@ -12976,6 +13381,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Basalt",
+    "Rat"
+   ],
+   "apex_item": "Apex: Ibex",
+   "apex_item_id": 9927716187639,
    "item": "Ibex",
    "item_id": 1131623165431,
    "build_location": "Build Ibex",
@@ -13409,6 +13821,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Basalt",
+    "Fan Palm",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Index Fossil",
+   "apex_item_id": 9917196610179,
    "item": "Index Fossil",
    "item_id": 1121103587971,
    "build_location": "Build Index Fossil",
@@ -13756,6 +14175,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cape Fox",
+    "Leopard",
+    "Pygmy Falcon"
+   ],
+   "apex_item": "Apex: Jackalberry",
+   "apex_item_id": 9933207272528,
    "item": "Jackalberry",
    "item_id": 1137114250320,
    "build_location": "Build Jackalberry",
@@ -14022,6 +14448,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Corsac",
+    "Raccoon Dog",
+    "Red Deer"
+   ],
+   "apex_item": "Apex: Jade (Imperial)",
+   "apex_item_id": 9900995527838,
    "item": "Jade (Imperial)",
    "item_id": 1104902505630,
    "build_location": "Build Jade (Imperial)",
@@ -14173,6 +14606,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Rubber Tree",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Jade (Ritual)",
+   "apex_item_id": 9928856797738,
    "item": "Jade (Ritual)",
    "item_id": 1132763775530,
    "build_location": "Build Jade (Ritual)",
@@ -14212,6 +14652,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Arrau Turtle",
+    "Bamboo",
+    "Onyx"
+   ],
+   "apex_item": "Apex: Jaguar",
+   "apex_item_id": 9962517752986,
    "item": "Jaguar",
    "item_id": 1166424730778,
    "build_location": "Build Jaguar",
@@ -14994,6 +15441,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Emu",
+    "Eucalyptus",
+    "Gazelle"
+   ],
+   "apex_item": "Apex: Kangaroo",
+   "apex_item_id": 9961775728207,
    "item": "Kangaroo",
    "item_id": 1165682705999,
    "build_location": "Build Kangaroo",
@@ -15498,6 +15952,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Bearded Dragon",
+    "Emu",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Kookaburra",
+   "apex_item_id": 9942980665780,
    "item": "Kookaburra",
    "item_id": 1146887643572,
    "build_location": "Build Kookaburra",
@@ -15975,6 +16436,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Jasper",
+    "Topaz"
+   ],
+   "apex_item": "Apex: Lapis Lazuli",
+   "apex_item_id": 9895921064639,
    "item": "Lapis Lazuli",
    "item_id": 1099828042431,
    "build_location": "Build Lapis Lazuli",
@@ -16059,6 +16526,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Blackberry",
+    "Red Cardinal",
+    "Red-Backed Vole"
+   ],
+   "apex_item": "Apex: Larix",
+   "apex_item_id": 9942671207303,
    "item": "Larix",
    "item_id": 1146578185095,
    "build_location": "Build Larix",
@@ -16283,6 +16757,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Egusi",
+    "Millet",
+    "Spinel"
+   ],
+   "apex_item": "Apex: Lemongrass",
+   "apex_item_id": 9914132238124,
    "item": "Lemongrass",
    "item_id": 1118039215916,
    "build_location": "Build Lemongrass",
@@ -16685,6 +17166,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Fan Palm",
+    "Rattlesnake"
+   ],
+   "apex_item": "Apex: Limestone",
+   "apex_item_id": 9955174038783,
    "item": "Limestone",
    "item_id": 1159081016575,
    "build_location": "Build Limestone",
@@ -16868,6 +17355,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Lions Ear",
+    "Serval",
+    "White Backed Vulture"
+   ],
+   "apex_item": "Apex: Lion",
+   "apex_item_id": 9908740517039,
    "item": "Lion",
    "item_id": 1112647494831,
    "build_location": "Build Lion",
@@ -17080,6 +17574,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Carnelian",
+    "Iron",
+    "King Brown Snake"
+   ],
+   "apex_item": "Apex: Lithium",
+   "apex_item_id": 9932142789533,
    "item": "Lithium",
    "item_id": 1136049767325,
    "build_location": "Build Lithium",
@@ -17102,6 +17603,13 @@
     "Fruit"
    ],
    "rules": [],
+   "cohorts": [
+    "Blackberry",
+    "Grape Vine",
+    "Pallas Cat"
+   ],
+   "apex_item": "Apex: Lychee Tree",
+   "apex_item_id": 9924796915663,
    "item": "Lychee Tree",
    "item_id": 1128703893455,
    "build_location": "Build Lychee Tree",
@@ -17247,6 +17755,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Ebony",
+    "Flint",
+    "Kola Nut Tree"
+   ],
+   "apex_item": "Apex: Mandril",
+   "apex_item_id": 9938093957070,
    "item": "Mandril",
    "item_id": 1142000934862,
    "build_location": "Build Mandril",
@@ -17468,6 +17983,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Parakeet",
+    "Pitaya"
+   ],
+   "apex_item": "Apex: Mango",
+   "apex_item_id": 9927624290724,
    "item": "Mango",
    "item_id": 1131531268516,
    "build_location": "Build Mango",
@@ -17498,6 +18020,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Jasper",
+    "Jellyfish",
+    "Manganese"
+   ],
+   "apex_item": "Apex: Manta Ray",
+   "apex_item_id": 9912954970933,
    "item": "Manta Ray",
    "item_id": 1116861948725,
    "build_location": "Build Manta Ray",
@@ -17587,6 +18116,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Ginkgo",
+    "Musk Deer",
+    "White Willow"
+   ],
+   "apex_item": "Apex: Maple",
+   "apex_item_id": 9961635149318,
    "item": "Maple",
    "item_id": 1165542127110,
    "build_location": "Build Maple",
@@ -17628,6 +18164,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Kunzite",
+    "Mudpool",
+    "Warthog"
+   ],
+   "apex_item": "Apex: Marabou",
+   "apex_item_id": 9910589702853,
    "item": "Marabou",
    "item_id": 1114496680645,
    "build_location": "Build Marabou",
@@ -17660,6 +18203,13 @@
      "biome": "Ocean"
     }
    ],
+   "cohorts": [
+    "Barreleyes",
+    "Seabass",
+    "Suckerfish"
+   ],
+   "apex_item": "Apex: Marlin",
+   "apex_item_id": 9922895299027,
    "item": "Marlin",
    "item_id": 1126802276819,
    "build_location": "Build Marlin",
@@ -17936,6 +18486,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "African Violet",
+    "Red Oat",
+    "Termite Hill"
+   ],
+   "apex_item": "Apex: Meerkat",
+   "apex_item_id": 9945999351116,
    "item": "Meerkat",
    "item_id": 1149906328908,
    "build_location": "Build Meerkat",
@@ -18508,6 +19065,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Impala",
+    "Pitaya",
+    "Wildebeest"
+   ],
+   "apex_item": "Apex: Monkey Orange",
+   "apex_item_id": 9919464334574,
    "item": "Monkey Orange",
    "item_id": 1123371312366,
    "build_location": "Build Monkey Orange",
@@ -18569,6 +19133,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Impala",
+    "Kunzite"
+   ],
+   "apex_item": "Apex: Moonstone",
+   "apex_item_id": 9963184557944,
    "item": "Moonstone",
    "item_id": 1167091535736,
    "build_location": "Build Moonstone",
@@ -18723,6 +19293,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Labrador Tea",
+    "Red Cardinal",
+    "Wintergreen"
+   ],
+   "apex_item": "Apex: Moose",
+   "apex_item_id": 9945138673214,
    "item": "Moose",
    "item_id": 1149045651006,
    "build_location": "Build Moose",
@@ -18971,6 +19548,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cranberry",
+    "Rat",
+    "Wintergreen"
+   ],
+   "apex_item": "Apex: Mouflon",
+   "apex_item_id": 9908111689880,
    "item": "Mouflon",
    "item_id": 1112018667672,
    "build_location": "Build Mouflon",
@@ -19115,6 +19699,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Chert",
+    "Hydrothermal vents",
+    "Suckerfish"
+   ],
+   "apex_item": "Apex: Mud Volcano",
+   "apex_item_id": 9913643904665,
    "item": "Mud Volcano",
    "item_id": 1117550882457,
    "build_location": "Build Mud Volcano",
@@ -19484,6 +20075,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Poplar",
+    "Siberian Pine",
+    "Snowshoe Hare"
+   ],
+   "apex_item": "Apex: Natural Gas",
+   "apex_item_id": 9950219377450,
    "item": "Natural Gas",
    "item_id": 1154126355242,
    "build_location": "Build Natural Gas",
@@ -19634,6 +20232,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cloudberry",
+    "Crossbill",
+    "Rowan"
+   ],
+   "apex_item": "Apex: Nightjar",
+   "apex_item_id": 9932851462860,
    "item": "Nightjar",
    "item_id": 1136758440652,
    "build_location": "Build Nightjar",
@@ -19930,6 +20535,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Bamboo",
+    "Feldspar",
+    "Sandstone"
+   ],
+   "apex_item": "Apex: Nightshade",
+   "apex_item_id": 9948737558782,
    "item": "Nightshade",
    "item_id": 1152644536574,
    "build_location": "Build Nightshade",
@@ -20106,6 +20718,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Bamboo",
+    "Cinnabar",
+    "Mica"
+   ],
+   "apex_item": "Apex: Obsidian",
+   "apex_item_id": 9948005341329,
    "item": "Obsidian",
    "item_id": 1151912319121,
    "build_location": "Build Obsidian",
@@ -20136,6 +20755,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Cougar",
+    "Iguana",
+    "Kola Nut Tree"
+   ],
+   "apex_item": "Apex: Ocelot",
+   "apex_item_id": 9950791342460,
    "item": "Ocelot",
    "item_id": 1154698320252,
    "build_location": "Build Ocelot",
@@ -20279,6 +20905,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Chert",
+    "Hydrothermal vents",
+    "Red Algea"
+   ],
+   "apex_item": "Apex: Octopus",
+   "apex_item_id": 9910499916292,
    "item": "Octopus",
    "item_id": 1114406894084,
    "build_location": "Build Octopus",
@@ -20428,6 +21061,14 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Enargite",
+    "Methane",
+    "Rat"
+   ],
+   "apex_item": "Apex: Oil",
+   "apex_item_id": 9937468764658,
    "item": "Oil",
    "item_id": 1141375742450,
    "build_location": "Build Oil",
@@ -20460,6 +21101,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Basalt (Aquatic)",
+    "Jellyfish",
+    "Sea Grass"
+   ],
+   "apex_item": "Apex: Oil (Deep)",
+   "apex_item_id": 9929527458792,
    "item": "Oil (Deep)",
    "item_id": 1133434436584,
    "build_location": "Build Oil (Deep)",
@@ -20918,6 +21566,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Anchovy",
+    "Barreleyes",
+    "Coral Rock"
+   ],
+   "apex_item": "Apex: Olivine",
+   "apex_item_id": 9934081808372,
    "item": "Olivine",
    "item_id": 1137988786164,
    "build_location": "Build Olivine",
@@ -21175,6 +21830,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Gaur",
+    "Grape Vine",
+    "Pheasant"
+   ],
+   "apex_item": "Apex: Orange Tree",
+   "apex_item_id": 9946512862525,
    "item": "Orange Tree",
    "item_id": 1150419840317,
    "build_location": "Build Orange Tree",
@@ -21236,6 +21898,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Dove",
+    "Mudcrack",
+    "Sandgrouse"
+   ],
+   "apex_item": "Apex: Ostrich",
+   "apex_item_id": 9930558554398,
    "item": "Ostrich",
    "item_id": 1134465532190,
    "build_location": "Build Ostrich",
@@ -21268,6 +21937,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Rat",
+    "Shea Tree",
+    "Tanzanite"
+   ],
+   "apex_item": "Apex: Palladium",
+   "apex_item_id": 9947280587032,
    "item": "Palladium",
    "item_id": 1151187564824,
    "build_location": "Build Palladium",
@@ -21762,6 +22438,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Bamboo",
+    "Red Panda",
+    "Sky Pillar"
+   ],
+   "apex_item": "Apex: Panda Bear",
+   "apex_item_id": 9918457484213,
    "item": "Panda Bear",
    "item_id": 1122364462005,
    "build_location": "Build Panda Bear",
@@ -21792,6 +22475,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Bamboo",
+    "Pallas Cat"
+   ],
+   "apex_item": "Apex: Pangolin",
+   "apex_item_id": 9955469707502,
    "item": "Pangolin",
    "item_id": 1159376685294,
    "build_location": "Build Pangolin",
@@ -21851,6 +22540,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Kaolin",
+    "Squirrel",
+    "Tin"
+   ],
+   "apex_item": "Apex: Paper Mulberry",
+   "apex_item_id": 9955616306932,
    "item": "Paper Mulberry",
    "item_id": 1159523284724,
    "build_location": "Build Paper Mulberry",
@@ -22314,6 +23010,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Blackberry",
+    "Red Deer"
+   ],
+   "apex_item": "Apex: Peach Tree",
+   "apex_item_id": 9921632424207,
    "item": "Peach Tree",
    "item_id": 1125539401999,
    "build_location": "Build Peach Tree",
@@ -22374,6 +23076,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Jasper",
+    "Sea Krait"
+   ],
+   "apex_item": "Apex: Pearls",
+   "apex_item_id": 9918154231088,
    "item": "Pearls",
    "item_id": 1122061208880,
    "build_location": "Build Pearls",
@@ -22519,6 +23227,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Hazelnut Tree",
+    "Onyx"
+   ],
+   "apex_item": "Apex: Phosphorus",
+   "apex_item_id": 9952522208965,
    "item": "Phosphorus",
    "item_id": 1156429186757,
    "build_location": "Build Phosphorus",
@@ -22784,6 +23498,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Nickel",
+    "Parakeet",
+    "Tanzanite"
+   ],
+   "apex_item": "Apex: Platinum (Savanna)",
+   "apex_item_id": 9920648528208,
    "item": "Platinum (Savanna)",
    "item_id": 1124555506000,
    "build_location": "Build Platinum (Savanna)",
@@ -22995,6 +23716,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Labradorite",
+    "Snowshoe Hare",
+    "Stellar_Eagle"
+   ],
+   "apex_item": "Apex: Platinum (Taiga)",
+   "apex_item_id": 9900019914268,
    "item": "Platinum (Taiga)",
    "item_id": 1103926892060,
    "build_location": "Build Platinum (Taiga)",
@@ -23284,6 +24012,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Cicer",
+    "Field Eryngo",
+    "Methane"
+   ],
+   "apex_item": "Apex: Pomegranate",
+   "apex_item_id": 9903118961811,
    "item": "Pomegranate",
    "item_id": 1107025939603,
    "build_location": "Build Pomegranate",
@@ -23852,6 +24587,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Blackberry",
+    "Bluebead"
+   ],
+   "apex_item": "Apex: Potato",
+   "apex_item_id": 9905171423476,
    "item": "Potato",
    "item_id": 1109078401268,
    "build_location": "Build Potato",
@@ -23885,6 +24626,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Agave",
+    "Enargite",
+    "Smokey Quartz"
+   ],
+   "apex_item": "Apex: Prickly Pear",
+   "apex_item_id": 9955814604857,
    "item": "Prickly Pear",
    "item_id": 1159721582649,
    "build_location": "Build Prickly Pear",
@@ -24759,6 +25507,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Amber",
+    "Sea Krait",
+    "Sun Coral"
+   ],
+   "apex_item": "Apex: Red Sea Whip",
+   "apex_item_id": 9929011073795,
    "item": "Red Sea Whip",
    "item_id": 1132918051587,
    "build_location": "Build Red Sea Whip",
@@ -25075,6 +25830,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Coral Rock",
+    "Finger Coral",
+    "Parrotfish"
+   ],
+   "apex_item": "Apex: Reef Shark",
+   "apex_item_id": 9953796394110,
    "item": "Reef Shark",
    "item_id": 1157703371902,
    "build_location": "Build Reef Shark",
@@ -25213,6 +25975,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Camphor Tree",
+    "Hazelnut Tree",
+    "Pear Tree"
+   ],
+   "apex_item": "Apex: Rhesus Macaque",
+   "apex_item_id": 9952712428860,
    "item": "Rhesus Macaque",
    "item_id": 1156619406652,
    "build_location": "Build Rhesus Macaque",
@@ -25243,6 +26012,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Jellyfish",
+    "Sea Grass"
+   ],
+   "apex_item": "Apex: Ribbon Eel",
+   "apex_item_id": 9933768153777,
    "item": "Ribbon Eel",
    "item_id": 1137675131569,
    "build_location": "Build Ribbon Eel",
@@ -25736,6 +26511,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Coober Opal",
+    "Field Eryngo",
+    "Smokey Quartz"
+   ],
+   "apex_item": "Apex: Ruby",
+   "apex_item_id": 9930957978099,
    "item": "Ruby",
    "item_id": 1134864955891,
    "build_location": "Build Ruby",
@@ -25820,6 +26602,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Mandarin Duck",
+    "Ptarmagin",
+    "Red-Backed Vole"
+   ],
+   "apex_item": "Apex: Sable",
+   "apex_item_id": 9899005280503,
    "item": "Sable",
    "item_id": 1102912258295,
    "build_location": "Build Sable",
@@ -25849,6 +26638,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Cicer",
+    "Mudcrack",
+    "Sandgrouse"
+   ],
+   "apex_item": "Apex: Saffron",
+   "apex_item_id": 9950525767242,
    "item": "Saffron",
    "item_id": 1154432745034,
    "build_location": "Build Saffron",
@@ -26023,6 +26819,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Impala",
+    "Kunzite",
+    "Pink Diamond"
+   ],
+   "apex_item": "Apex: Sapphire",
+   "apex_item_id": 9942747494451,
    "item": "Sapphire",
    "item_id": 1146654472243,
    "build_location": "Build Sapphire",
@@ -26303,6 +27106,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Sea Grass",
+    "Seabass",
+    "Sunfish"
+   ],
+   "apex_item": "Apex: Sargassum",
+   "apex_item_id": 9905681540128,
    "item": "Sargassum",
    "item_id": 1109588517920,
    "build_location": "Build Sargassum",
@@ -26332,6 +27142,12 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Cinchona Tree",
+    "Squirrel Monkey"
+   ],
+   "apex_item": "Apex: Scarlet Macaw",
+   "apex_item_id": 9907845329507,
    "item": "Scarlet Macaw",
    "item_id": 1111752307299,
    "build_location": "Build Scarlet Macaw",
@@ -26755,6 +27571,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Jellyfish",
+    "Sea Grass",
+    "Turtle Grass"
+   ],
+   "apex_item": "Apex: Sea turtle",
+   "apex_item_id": 9949578514519,
    "item": "Sea turtle",
    "item_id": 1153485492311,
    "build_location": "Build Sea turtle",
@@ -26971,6 +27794,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Hoopoe",
+    "Parakeet",
+    "Wildebeest"
+   ],
+   "apex_item": "Apex: Secretary Bird",
+   "apex_item_id": 9931324965837,
    "item": "Secretary Bird",
    "item_id": 1135231943629,
    "build_location": "Build Secretary Bird",
@@ -27071,6 +27901,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Black Bear",
+    "Red Cardinal",
+    "Rowan"
+   ],
+   "apex_item": "Apex: Sequoia",
+   "apex_item_id": 9909351928309,
    "item": "Sequoia",
    "item_id": 1113258906101,
    "build_location": "Build Sequoia",
@@ -27456,6 +28293,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Amber",
+    "False Trumpet Grounds",
+    "Parrotfish"
+   ],
+   "apex_item": "Apex: Shipwreck",
+   "apex_item_id": 9918842512525,
    "item": "Shipwreck",
    "item_id": 1122749490317,
    "build_location": "Build Shipwreck",
@@ -27843,6 +28687,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Black Bear",
+    "Caribou",
+    "Cougar"
+   ],
+   "apex_item": "Apex: Siberian Tiger",
+   "apex_item_id": 9943370078958,
    "item": "Siberian Tiger",
    "item_id": 1147277056750,
    "build_location": "Build Siberian Tiger",
@@ -27874,6 +28725,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Bluebead",
+    "Peat",
+    "Sulfur"
+   ],
+   "apex_item": "Apex: Silver",
+   "apex_item_id": 9932672331295,
    "item": "Silver",
    "item_id": 1136579309087,
    "build_location": "Build Silver",
@@ -28174,6 +29032,13 @@
      "require_biome": "Taiga"
     }
    ],
+   "cohorts": [
+    "Cranberry",
+    "Peat",
+    "Starflower"
+   ],
+   "apex_item": "Apex: Snow Monkey",
+   "apex_item_id": 9904269683318,
    "item": "Snow Monkey",
    "item_id": 1108176661110,
    "build_location": "Build Snow Monkey",
@@ -28546,6 +29411,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Oryx",
+    "Red Oat",
+    "Yam"
+   ],
+   "apex_item": "Apex: Sorghum",
+   "apex_item_id": 9909593045897,
    "item": "Sorghum",
    "item_id": 1113500023689,
    "build_location": "Build Sorghum",
@@ -28864,6 +29736,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Corsac",
+    "Porcupine",
+    "Red Deer"
+   ],
+   "apex_item": "Apex: South China Tiger",
+   "apex_item_id": 9918376993610,
    "item": "South China Tiger",
    "item_id": 1122283971402,
    "build_location": "Build South China Tiger",
@@ -28894,6 +29773,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Amber",
+    "Pallas Cat",
+    "Spinel"
+   ],
+   "apex_item": "Apex: Spectrolite",
+   "apex_item_id": 9924528510068,
    "item": "Spectrolite",
    "item_id": 1128435487860,
    "build_location": "Build Spectrolite",
@@ -29159,6 +30045,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Mudpool",
+    "White Backed Vulture"
+   ],
+   "apex_item": "Apex: Spotted Hyena",
+   "apex_item_id": 9940001116174,
    "item": "Spotted Hyena",
    "item_id": 1143908093966,
    "build_location": "Build Spotted Hyena",
@@ -29356,6 +30248,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Coral Rock",
+    "Open-Brain Coral",
+    "Seabass"
+   ],
+   "apex_item": "Apex: Staghorn Coral",
+   "apex_item_id": 9947631821289,
    "item": "Staghorn Coral",
    "item_id": 1151538799081,
    "build_location": "Build Staghorn Coral",
@@ -29688,6 +30587,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Caribou",
+    "Cloudberry",
+    "Goose"
+   ],
+   "apex_item": "Apex: Strawberry",
+   "apex_item_id": 9957486357926,
    "item": "Strawberry",
    "item_id": 1161393335718,
    "build_location": "Build Strawberry",
@@ -29923,6 +30829,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Charoite",
+    "Labradorite",
+    "Lignite"
+   ],
+   "apex_item": "Apex: Sugar Beet",
+   "apex_item_id": 9907577637461,
    "item": "Sugar Beet",
    "item_id": 1111484615253,
    "build_location": "Build Sugar Beet",
@@ -30618,6 +31531,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Mahi-Mahi",
+    "Red Algea",
+    "Sea Krait"
+   ],
+   "apex_item": "Apex: Surgeon Fish",
+   "apex_item_id": 9911219931358,
    "item": "Surgeon Fish",
    "item_id": 1115126909150,
    "build_location": "Build Surgeon Fish",
@@ -30989,6 +31909,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Kentucky Coffeetree",
+    "Rambutan",
+    "Rubber Tree"
+   ],
+   "apex_item": "Apex: Tapir",
+   "apex_item_id": 9900580587395,
    "item": "Tapir",
    "item_id": 1104487565187,
    "build_location": "Build Tapir",
@@ -31331,6 +32258,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Bearded Dragon",
+    "Enargite"
+   ],
+   "apex_item": "Apex: Thorny Devil",
+   "apex_item_id": 9919065930441,
    "item": "Thorny Devil",
    "item_id": 1122972908233,
    "build_location": "Build Thorny Devil",
@@ -31678,6 +32611,13 @@
      "any_biome": true
     }
    ],
+   "cohorts": [
+    "Soda Ash",
+    "Vermiculite",
+    "Warthog"
+   ],
+   "apex_item": "Apex: Titan Graveyard",
+   "apex_item_id": 9939758630024,
    "item": "Titan Graveyard",
    "item_id": 1143665607816,
    "build_location": "Build Titan Graveyard",
@@ -31726,6 +32666,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Angler Fish",
+    "Barreleyes",
+    "Manganese"
+   ],
+   "apex_item": "Apex: Titan fall",
+   "apex_item_id": 9956507415821,
    "item": "Titan fall",
    "item_id": 1160414393613,
    "build_location": "Build Titan fall",
@@ -31870,6 +32817,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Honeysuckle",
+    "Nephrite",
+    "Potash"
+   ],
+   "apex_item": "Apex: Titanite",
+   "apex_item_id": 9934807969266,
    "item": "Titanite",
    "item_id": 1138714947058,
    "build_location": "Build Titanite",
@@ -32069,6 +33023,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Caribou",
+    "Crossbill",
+    "Snowshoe Hare"
+   ],
+   "apex_item": "Apex: Tourmaline",
+   "apex_item_id": 9930101506053,
    "item": "Tourmaline",
    "item_id": 1134008483845,
    "build_location": "Build Tourmaline",
@@ -32122,6 +33083,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Anchovy",
+    "Suckerfish"
+   ],
+   "apex_item": "Apex: Tuna",
+   "apex_item_id": 9929092113004,
    "item": "Tuna",
    "item_id": 1132999090796,
    "build_location": "Build Tuna",
@@ -32709,6 +33676,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Barley",
+    "Nickel"
+   ],
+   "apex_item": "Apex: Umbrella Thorn Acacia",
+   "apex_item_id": 9948198917706,
    "item": "Umbrella Thorn Acacia",
    "item_id": 1152105895498,
    "build_location": "Build Umbrella Thorn Acacia",
@@ -32826,6 +33799,13 @@
      "kind": "none"
     }
    ],
+   "cohorts": [
+    "Lignite",
+    "Sulfur",
+    "Talc"
+   ],
+   "apex_item": "Apex: Uranium",
+   "apex_item_id": 9954425121240,
    "item": "Uranium",
    "item_id": 1158332099032,
    "build_location": "Build Uranium",
@@ -33379,6 +34359,13 @@
      "count": 2
     }
    ],
+   "cohorts": [
+    "Crossbill",
+    "Potash",
+    "Ptarmagin"
+   ],
+   "apex_item": "Apex: White Birch",
+   "apex_item_id": 9960738165372,
    "item": "White Birch",
    "item_id": 1164645143164,
    "build_location": "Build White Birch",
@@ -33552,6 +34539,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Coral Rock",
+    "Red Algea"
+   ],
+   "apex_item": "Apex: White Plumed Anemone",
+   "apex_item_id": 9915496244665,
    "item": "White Plumed Anemone",
    "item_id": 1119403222457,
    "build_location": "Build White Plumed Anemone",
@@ -33902,6 +34895,13 @@
      "count": 2
     }
    ],
+   "cohorts": [
+    "African Violet",
+    "Impala",
+    "Yam"
+   ],
+   "apex_item": "Apex: White Rhino",
+   "apex_item_id": 9949751646191,
    "item": "White Rhino",
    "item_id": 1153658623983,
    "build_location": "Build White Rhino",
@@ -33957,6 +34957,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Barreleyes",
+    "Mahi-Mahi",
+    "Suckerfish"
+   ],
+   "apex_item": "Apex: White Shark",
+   "apex_item_id": 9899209229486,
    "item": "White Shark",
    "item_id": 1103116207278,
    "build_location": "Build White Shark",
@@ -34262,6 +35269,13 @@
      "allow_self": true
     }
    ],
+   "cohorts": [
+    "Kentucky Coffeetree",
+    "Nephrite",
+    "Skunk"
+   ],
+   "apex_item": "Apex: White Wolf",
+   "apex_item_id": 9904762895310,
    "item": "White Wolf",
    "item_id": 1108669873102,
    "build_location": "Build White Wolf",
@@ -34931,6 +35945,12 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Egusi",
+    "Gazelle"
+   ],
+   "apex_item": "Apex: Zebra",
+   "apex_item_id": 9898419299843,
    "item": "Zebra",
    "item_id": 1102326277635,
    "build_location": "Build Zebra",
@@ -34955,6 +35975,12 @@
     "Construction"
    ],
    "rules": [],
+   "cohorts": [
+    "Bamboo",
+    "Camphor Tree"
+   ],
+   "apex_item": "Apex: Zinc",
+   "apex_item_id": 9944246636756,
    "item": "Zinc",
    "item_id": 1148153614548,
    "build_location": "Build Zinc",
@@ -35099,6 +36125,13 @@
      "count": 1
     }
    ],
+   "cohorts": [
+    "Fluorite",
+    "Nickel",
+    "White Backed Vulture"
+   ],
+   "apex_item": "Apex: Zircon",
+   "apex_item_id": 9908748047547,
    "item": "Zircon",
    "item_id": 1112655025339,
    "build_location": "Build Zircon",
@@ -35334,7 +36367,9 @@
    "rarity": "Basic",
    "order": 0,
    "item": "Micro: Agraricus Bisporus",
-   "item_id": 6615229424819
+   "item_id": 6615229424819,
+   "charge_item": "Micro Charge: Agraricus Bisporus",
+   "charge_item_id": 11013275935923
   },
   {
    "guid": "281c8df74eae7a54589e0b95c2c187ef",
@@ -35342,7 +36377,9 @@
    "rarity": "Basic",
    "order": 1,
    "item": "Micro: Centipede",
-   "item_id": 6607837126516
+   "item_id": 6607837126516,
+   "charge_item": "Micro Charge: Centipede",
+   "charge_item_id": 11005883637620
   },
   {
    "guid": "8018d05b90669284297a0a77dada48ca",
@@ -35350,7 +36387,9 @@
    "rarity": "Basic",
    "order": 2,
    "item": "Micro: Drone Beetle",
-   "item_id": 6631455524281
+   "item_id": 6631455524281,
+   "charge_item": "Micro Charge: Drone Beetle",
+   "charge_item_id": 11029502035385
   },
   {
    "guid": "fcb92730d1d216841a8dc28747e16fc1",
@@ -35358,7 +36397,9 @@
    "rarity": "Basic",
    "order": 3,
    "item": "Micro: Fly Agaric",
-   "item_id": 6664909648653
+   "item_id": 6664909648653,
+   "charge_item": "Micro Charge: Fly Agaric",
+   "charge_item_id": 11062956159757
   },
   {
    "guid": "03396072a86407d46b5a0858dfb6e07e",
@@ -35366,7 +36407,9 @@
    "rarity": "Basic",
    "order": 4,
    "item": "Micro: Jeweled Beetle",
-   "item_id": 6597935236906
+   "item_id": 6597935236906,
+   "charge_item": "Micro Charge: Jeweled Beetle",
+   "charge_item_id": 10995981748010
   },
   {
    "guid": "44799504adae6c44eb5925d0f8358bcf",
@@ -35374,7 +36417,9 @@
    "rarity": "Basic",
    "order": 5,
    "item": "Micro: Mantis",
-   "item_id": 6615450865738
+   "item_id": 6615450865738,
+   "charge_item": "Micro Charge: Mantis",
+   "charge_item_id": 11013497376842
   },
   {
    "guid": "f860e90a6b468fa4db05a300fef9d7f1",
@@ -35382,7 +36427,9 @@
    "rarity": "Basic",
    "order": 6,
    "item": "Micro: Sphagnum Moss",
-   "item_id": 6663743377574
+   "item_id": 6663743377574,
+   "charge_item": "Micro Charge: Sphagnum Moss",
+   "charge_item_id": 11061789888678
   },
   {
    "guid": "f2b3ba0f2daccaf40b681bbda8048bf4",
@@ -35390,7 +36437,9 @@
    "rarity": "Basic",
    "order": 7,
    "item": "Micro: Woolly Moth Catterpillar",
-   "item_id": 6662219604210
+   "item_id": 6662219604210,
+   "charge_item": "Micro Charge: Woolly Moth Catterpillar",
+   "charge_item_id": 11060266115314
   },
   {
    "guid": "78928cc629bf16e4ca2d5bda7ab1d5dc",
@@ -35398,7 +36447,9 @@
    "rarity": "Basic",
    "order": 8,
    "item": "Micro: Worm",
-   "item_id": 6629435690082
+   "item_id": 6629435690082,
+   "charge_item": "Micro Charge: Worm",
+   "charge_item_id": 11027482201186
   },
   {
    "guid": "b788bf01e9daf9c4da5ddc0312dcd7b4",
@@ -35406,7 +36457,9 @@
    "rarity": "Era1",
    "order": 9,
    "item": "Micro: Antlion",
-   "item_id": 6646336843806
+   "item_id": 6646336843806,
+   "charge_item": "Micro Charge: Antlion",
+   "charge_item_id": 11044383354910
   },
   {
    "guid": "33aaff318c73c804da9a855239b69496",
@@ -35414,7 +36467,9 @@
    "rarity": "Era1",
    "order": 10,
    "item": "Micro: Bullfrog",
-   "item_id": 6610939278104
+   "item_id": 6610939278104,
+   "charge_item": "Micro Charge: Bullfrog",
+   "charge_item_id": 11008985789208
   },
   {
    "guid": "f05845c0a4ef6074e921c996c2756d91",
@@ -35422,7 +36477,9 @@
    "rarity": "Era1",
    "order": 11,
    "item": "Micro: Chanterelle",
-   "item_id": 6661586836490
+   "item_id": 6661586836490,
+   "charge_item": "Micro Charge: Chanterelle",
+   "charge_item_id": 11059633347594
   },
   {
    "guid": "e8a7b95bfa4a80240ab2d11fa5756820",
@@ -35430,7 +36487,9 @@
    "rarity": "Era1",
    "order": 12,
    "item": "Micro: Emperor Butterfly",
-   "item_id": 6659522663871
+   "item_id": 6659522663871,
+   "charge_item": "Micro Charge: Emperor Butterfly",
+   "charge_item_id": 11057569174975
   },
   {
    "guid": "bda0ba55d837c42499234c39ecea065f",
@@ -35438,7 +36497,9 @@
    "rarity": "Era1",
    "order": 13,
    "item": "Micro: Krill",
-   "item_id": 6647972603229
+   "item_id": 6647972603229,
+   "charge_item": "Micro Charge: Krill",
+   "charge_item_id": 11046019114333
   },
   {
    "guid": "e5694fb03d9bef145a4537b4e5db8b8c",
@@ -35446,7 +36507,9 @@
    "rarity": "Era1",
    "order": 14,
    "item": "Micro: Luna Moth",
-   "item_id": 6658651912963
+   "item_id": 6658651912963,
+   "charge_item": "Micro Charge: Luna Moth",
+   "charge_item_id": 11056698424067
   },
   {
    "guid": "aee1929685846b546ac5167ca229fa32",
@@ -35454,7 +36517,9 @@
    "rarity": "Era1",
    "order": 15,
    "item": "Micro: Poison Dart Frog",
-   "item_id": 6644014066024
+   "item_id": 6644014066024,
+   "charge_item": "Micro Charge: Poison Dart Frog",
+   "charge_item_id": 11042060577128
   },
   {
    "guid": "531501a1f0796074ba0b42cbcb270b72",
@@ -35462,7 +36527,9 @@
    "rarity": "Era1",
    "order": 16,
    "item": "Micro: Rainbow Stag",
-   "item_id": 6619371936287
+   "item_id": 6619371936287,
+   "charge_item": "Micro Charge: Rainbow Stag",
+   "charge_item_id": 11017418447391
   },
   {
    "guid": "9e824c315fc5b794f9e2d94617788016",
@@ -35470,7 +36537,9 @@
    "rarity": "Era1",
    "order": 17,
    "item": "Micro: Walking Stick",
-   "item_id": 6639619195669
+   "item_id": 6639619195669,
+   "charge_item": "Micro Charge: Walking Stick",
+   "charge_item_id": 11037665706773
   },
   {
    "guid": "eec40c180770d1c4baaa211bd28ffc47",
@@ -35478,7 +36547,9 @@
    "rarity": "Era2",
    "order": 18,
    "item": "Micro: Assassin Bug",
-   "item_id": 6661162975616
+   "item_id": 6661162975616,
+   "charge_item": "Micro Charge: Assassin Bug",
+   "charge_item_id": 11059209486720
   },
   {
    "guid": "f135d63c4235ca347bd5bc1968dc2c97",
@@ -35486,7 +36557,9 @@
    "rarity": "Era2",
    "order": 19,
    "item": "Micro: Bee",
-   "item_id": 6661819163588
+   "item_id": 6661819163588,
+   "charge_item": "Micro Charge: Bee",
+   "charge_item_id": 11059865674692
   },
   {
    "guid": "03f1311ffd1ebe9409e96525f95479c7",
@@ -35494,7 +36567,9 @@
    "rarity": "Era2",
    "order": 20,
    "item": "Micro: Fruit Bat",
-   "item_id": 6598127981055
+   "item_id": 6598127981055,
+   "charge_item": "Micro Charge: Fruit Bat",
+   "charge_item_id": 10996174492159
   },
   {
    "guid": "140ec5b9d7583da4ea402b98696a312b",
@@ -35502,7 +36577,9 @@
    "rarity": "Era2",
    "order": 21,
    "item": "Micro: Golden Stag Beetle",
-   "item_id": 6602453965725
+   "item_id": 6602453965725,
+   "charge_item": "Micro Charge: Golden Stag Beetle",
+   "charge_item_id": 11000500476829
   },
   {
    "guid": "52c6f1536efb739488d27a1c206e0a0d",
@@ -35510,7 +36587,9 @@
    "rarity": "Era2",
    "order": 22,
    "item": "Micro: Octopus Stinkhorn",
-   "item_id": 6619290080566
+   "item_id": 6619290080566,
+   "charge_item": "Micro Charge: Octopus Stinkhorn",
+   "charge_item_id": 11017336591670
   },
   {
    "guid": "dd7dbde6d3b04c747ba01546da49a9a1",
@@ -35518,7 +36597,9 @@
    "rarity": "Era2",
    "order": 23,
    "item": "Micro: Orchid Mantis",
-   "item_id": 6656525852269
+   "item_id": 6656525852269,
+   "charge_item": "Micro Charge: Orchid Mantis",
+   "charge_item_id": 11054572363373
   },
   {
    "guid": "2b586112a2c3e434baf73aa2178db279",
@@ -35526,7 +36607,9 @@
    "rarity": "Era2",
    "order": 24,
    "item": "Micro: Stag Beetle",
-   "item_id": 6608705163562
+   "item_id": 6608705163562,
+   "charge_item": "Micro Charge: Stag Beetle",
+   "charge_item_id": 11006751674666
   },
   {
    "guid": "45ddb3b2b1d2ea24bbd42bcfbed76f93",
@@ -35534,7 +36617,9 @@
    "rarity": "Era2",
    "order": 25,
    "item": "Micro: Termites",
-   "item_id": 6615824284459
+   "item_id": 6615824284459,
+   "charge_item": "Micro Charge: Termites",
+   "charge_item_id": 11013870795563
   },
   {
    "guid": "a3485404175abe5448797d159d59e041",
@@ -35542,7 +36627,9 @@
    "rarity": "Era3",
    "order": 26,
    "item": "Micro: Black Truffle",
-   "item_id": 6640900587585
+   "item_id": 6640900587585,
+   "charge_item": "Micro Charge: Black Truffle",
+   "charge_item_id": 11038947098689
   },
   {
    "guid": "6907c46ef86466447b11c95dc48156fc",
@@ -35550,7 +36637,9 @@
    "rarity": "Era3",
    "order": 27,
    "item": "Micro: Dragonfly",
-   "item_id": 6625263634159
+   "item_id": 6625263634159,
+   "charge_item": "Micro Charge: Dragonfly",
+   "charge_item_id": 11023310145263
   },
   {
    "guid": "494ec54714e639947aff212eb9694e5d",
@@ -35558,7 +36647,9 @@
    "rarity": "Era3",
    "order": 28,
    "item": "Micro: Ghost Fungus",
-   "item_id": 6616748151921
+   "item_id": 6616748151921,
+   "charge_item": "Micro Charge: Ghost Fungus",
+   "charge_item_id": 11014794663025
   },
   {
    "guid": "2e4ccdcc8103cf0459b74dc3ed395934",
@@ -35566,7 +36657,9 @@
    "rarity": "Era3",
    "order": 29,
    "item": "Micro: Ladybug",
-   "item_id": 6609498332360
+   "item_id": 6609498332360,
+   "charge_item": "Micro Charge: Ladybug",
+   "charge_item_id": 11007544843464
   },
   {
    "guid": "307e583e67fc1ca4aac3cf191d96dfbf",
@@ -35574,7 +36667,9 @@
    "rarity": "Era3",
    "order": 30,
    "item": "Micro: Monarch Butterfly",
-   "item_id": 6610087150566
+   "item_id": 6610087150566,
+   "charge_item": "Micro Charge: Monarch Butterfly",
+   "charge_item_id": 11008133661670
   },
   {
    "guid": "bf5bfa32ab6f7614894d5e3a2f36f0cc",
@@ -35582,7 +36677,9 @@
    "rarity": "Era3",
    "order": 31,
    "item": "Micro: Scarab",
-   "item_id": 6648437383978
+   "item_id": 6648437383978,
+   "charge_item": "Micro Charge: Scarab",
+   "charge_item_id": 11046483895082
   },
   {
    "guid": "d6a8e721ab8be494da1146c39e9f8584",
@@ -35590,7 +36687,9 @@
    "rarity": "Era3",
    "order": 32,
    "item": "Micro: Tarantula",
-   "item_id": 6654692061722
+   "item_id": 6654692061722,
+   "charge_item": "Micro Charge: Tarantula",
+   "charge_item_id": 11052738572826
   }
  ],
  "progressive_micro": {

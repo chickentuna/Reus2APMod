@@ -3,22 +3,25 @@ from collections import defaultdict
 from BaseClasses import CollectionState
 
 from .game_data import DATA
-from .options import MicroMode
+from .items import items_granting_biotica
+from .options import BioticumItems, MicroUnlocks
 
 
 class Reus2Rules:
     """Placement logic.
 
-    A bioticum is placeable in a biome when the player has it, has a giant of its type, has the biome
-    and a giant able to terraform it, has reached the era its level needs, and — if it costs
-    biodiversity — can reach that cost with zero-cost biotica placed in the same biome, each counting
-    for its level.
+    A bioticum is placeable in a biome when the player has an item granting it, has a giant of its
+    type, has the biome and a giant able to terraform it, has reached the era its level needs, and
+    — if it costs biodiversity — can reach that cost with zero-cost biotica placed in the same
+    biome, each counting for its level.
     """
 
     def __init__(self, world) -> None:
         self.player = world.player
-        self.progressive_micros = world.options.micro_mode.value == MicroMode.option_progressive
-        self.biotica = {b["item"]: b for b in DATA["biotica"]}
+        self.micro_unlocks = world.options.micro_unlocks.value
+        self.granting = items_granting_biotica(
+            world.options.bioticum_items.value == BioticumItems.option_apex)
+        self.biotica = {b["name"]: b for b in DATA["biotica"]}
         self.giants_of_type = defaultdict(list)
         self.terraformers = defaultdict(list)
         for giant in DATA["giants"]:
@@ -37,6 +40,9 @@ class Reus2Rules:
         self.micro_order = {m["name"]: m["order"] for m in DATA["micros"]}
         self.progressive_micro = DATA["progressive_micro"]["item"]
 
+    def has_bioticum(self, state: CollectionState, bioticum) -> bool:
+        return state.has_any(self.granting[bioticum["name"]], self.player)
+
     def level_ok(self, state: CollectionState, level: int) -> bool:
         return state.has(self.era_item, self.player, level - 1)
 
@@ -54,7 +60,7 @@ class Reus2Rules:
         for provider in self.providers[biome]:
             if provider is bioticum:
                 continue
-            if (state.has(provider["item"], self.player) and self.level_ok(state, provider["level"])
+            if (self.has_bioticum(state, provider) and self.level_ok(state, provider["level"])
                     and self.has_giant_for(state, provider)):
                 total += provider["level"]
                 if total >= needed:
@@ -62,7 +68,7 @@ class Reus2Rules:
         return False
 
     def can_place(self, state: CollectionState, bioticum, biome: str) -> bool:
-        return (state.has(bioticum["item"], self.player)
+        return (self.has_bioticum(state, bioticum)
                 and self.level_ok(state, bioticum["level"])
                 and self.has_giant_for(state, bioticum)
                 and self.biome_open(state, biome)
@@ -106,7 +112,11 @@ class Reus2Rules:
         return False
 
     def has_micro(self, state: CollectionState, micro: str) -> bool:
-        if self.progressive_micros:
+        """The shop sells a Micro for charges. With `micro_unlocks` off it sells the ones the game
+        draws, which over a run's eras is every type."""
+        if self.micro_unlocks == MicroUnlocks.option_off:
+            return True
+        if self.micro_unlocks == MicroUnlocks.option_progressive:
             return state.has(self.progressive_micro, self.player, self.micro_order[micro] + 1)
         return state.has(self.micro_item[micro], self.player)
 

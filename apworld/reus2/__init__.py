@@ -2,13 +2,13 @@ from collections import Counter, defaultdict
 from typing import Any, Dict, List
 
 from BaseClasses import ItemClassification, Region
-from Options import OptionError
 from worlds.AutoWorld import World
 
 from .game_data import DATA
-from .items import Reus2Item, classifications, item_groups, item_table
+from .items import (Reus2Item, bioticum_pool_items, classifications, filler_items, item_groups,
+                    item_table, items_granting_biotica)
 from .locations import Reus2Location, location_table
-from .options import MicroMode, Reus2Options
+from .options import BioticumItems, MicroUnlocks, Reus2Options
 from .rules import Reus2Rules
 
 GOAL_LOCATION = "Thriving Planet"
@@ -30,15 +30,21 @@ class Reus2World(World):
     location_name_to_id = location_table()
     item_name_groups = item_groups()
     _classifications = classifications()
+    _filler_items = filler_items()
 
+    apex_biotica: bool
     starting_items: List[str]
+    surplus_items: List[str]
 
     def generate_early(self) -> None:
+        self.apex_biotica = self.options.bioticum_items.value == BioticumItems.option_apex
         self.starting_items = self._roll_starting_kit()
+        self.surplus_items = []
 
     def _roll_starting_kit(self) -> List[str]:
-        """One giant per role with their first biomes, some of their special powers, early
-        zero-cost biotica they can place there, and a few city leaders."""
+        """One giant per role with their first biomes, some of their special powers, the items
+        granting `starting_biotica` early zero-cost biotica they can place there, and a few city
+        leaders."""
         rng = self.random
         giants_by_type = defaultdict(list)
         for giant in DATA["giants"]:
@@ -56,7 +62,7 @@ class Reus2World(World):
         for bioticum in DATA["biotica"]:
             if bioticum["level"] == 1 and bioticum["cost"] == 0 and set(bioticum["biomes"]) & set(biomes):
                 for bioticum_type in bioticum["types"]:
-                    candidates[bioticum_type].append(bioticum["item"])
+                    candidates[bioticum_type].append(bioticum["name"])
         for pile in candidates.values():
             rng.shuffle(pile)
         chosen: List[str] = []
@@ -68,7 +74,8 @@ class Reus2World(World):
                     pile.pop()
                 if pile and len(chosen) < wanted:
                     chosen.append(pile.pop())
-        kit += chosen
+        granting = items_granting_biotica(self.apex_biotica)
+        kit += list(dict.fromkeys(granting[name][0] for name in chosen))
 
         characters = [c["item"] for c in DATA["characters"]]
         kit += rng.sample(characters, min(self.options.starting_characters.value, len(characters)))
@@ -81,7 +88,8 @@ class Reus2World(World):
         locations: Dict[str, int] = {}
         for bioticum in DATA["biotica"]:
             locations[bioticum["build_location"]] = bioticum["build_location_id"]
-            locations.update({rule["location"]: rule["location_id"] for rule in bioticum["rules"]})
+            if self.options.combo_checks.value:
+                locations.update({rule["location"]: rule["location_id"] for rule in bioticum["rules"]})
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             locations[reward["location"]] = reward["location_id"]
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:
@@ -99,7 +107,7 @@ class Reus2World(World):
         return Reus2Item(name, self._classifications[name], self.item_name_to_id[name], self.player)
 
     def get_filler_item_name(self) -> str:
-        return DATA["filler"][0]["item"]
+        return self.random.choice(self._filler_items)
 
     def create_items(self) -> None:
         for name in self.starting_items:
@@ -111,19 +119,29 @@ class Reus2World(World):
         def add(name: str, copies: int = 1) -> None:
             pool.extend(self.create_item(name) for _ in range(max(0, copies - started[name])))
 
-        for key in ("biotica", "giants", "biomes", "abilities", "characters"):
+        for name in bioticum_pool_items(self.apex_biotica):
+            add(name)
+        for key in ("giants", "biomes", "abilities", "characters"):
             for entry in DATA[key]:
                 add(entry["item"])
         add(DATA["eras"]["item"], len(DATA["eras"]["eras"]))
-        if self.options.micro_mode.value == MicroMode.option_progressive:
+        if self.options.micro_unlocks.value == MicroUnlocks.option_progressive:
             add(DATA["progressive_micro"]["item"], len(DATA["micros"]))
-        else:
+        elif self.options.micro_unlocks.value == MicroUnlocks.option_individual:
             for micro in DATA["micros"]:
                 add(micro["item"])
 
         slots = len(self.multiworld.get_unfilled_locations(self.player))
         if len(pool) > slots:
-            raise OptionError(f"Reus 2 has {len(pool)} items for {slots} locations; raise the check options.")
+            surplus = set(self.random.sample(range(len(pool)), len(pool) - slots))
+            kept: List[Reus2Item] = []
+            for index, item in enumerate(pool):
+                if index in surplus:
+                    self.multiworld.push_precollected(item)
+                    self.surplus_items.append(item.name)
+                else:
+                    kept.append(item)
+            pool = kept
         pool += [self.create_filler() for _ in range(slots - len(pool))]
         self.multiworld.itempool += pool
 
@@ -132,9 +150,10 @@ class Reus2World(World):
         for bioticum in DATA["biotica"]:
             self.get_location(bioticum["build_location"]).access_rule = \
                 lambda state, b=bioticum: rules.can_build(state, b)
-            for rule in bioticum["rules"]:
-                self.get_location(rule["location"]).access_rule = \
-                    lambda state, b=bioticum, r=rule: rules.can_combo(state, b, r)
+            if self.options.combo_checks.value:
+                for rule in bioticum["rules"]:
+                    self.get_location(rule["location"]).access_rule = \
+                        lambda state, b=bioticum, r=rule: rules.can_combo(state, b, r)
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             self.get_location(reward["location"]).access_rule = lambda state, r=reward: rules.request_reward_ok(state, r)
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:
@@ -146,6 +165,9 @@ class Reus2World(World):
 
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data = self.options.as_dict(
-            "goal_builds", "request_reward_checks", "shop_draft_checks", "micro_mode")
+            "goal_builds", "request_reward_checks", "shop_draft_checks", "bioticum_items",
+            "combo_checks", "micro_unlocks")
         slot_data["game_version"] = DATA["game_version"]
+        slot_data["starting_items"] = self.starting_items
+        slot_data["surplus_items"] = self.surplus_items
         return slot_data

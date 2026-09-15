@@ -47,7 +47,8 @@ ABILITY_ITEMS = {
 
 # Ids are <category> << 40 | <bits>. The bits come from the definition GUID where there is one, so
 # an id stays put when a game patch adds or reorders content.
-ITEM_CATEGORY = {"bioticum": 1, "giant": 2, "biome": 3, "ability": 4, "character": 5, "micro": 6, "era": 7, "filler": 8}
+ITEM_CATEGORY = {"bioticum": 1, "giant": 2, "biome": 3, "ability": 4, "character": 5, "micro": 6, "era": 7,
+                 "filler": 8, "apex": 9, "charge": 10}
 LOCATION_CATEGORY = {"build": 1, "combo": 2, "request": 3, "shop": 4}
 
 
@@ -150,7 +151,9 @@ def build_micros(definitions):
     )
     return [
         {"guid": m["id"], "name": m["name"], "rarity": m.get("rarity"), "order": order,
-         "item": f"Micro: {m['name']}", "item_id": item_id("micro", guid_bits(m["id"]))}
+         "item": f"Micro: {m['name']}", "item_id": item_id("micro", guid_bits(m["id"])),
+         "charge_item": f"Micro Charge: {m['name']}",
+         "charge_item_id": item_id("charge", guid_bits(m["id"]))}
         for order, m in enumerate(micros)
     ]
 
@@ -168,6 +171,7 @@ def build_biotica(definitions, micro_names):
             "level": int(raw.get("level") or 1), "types": list(raw.get("bioticumTypes") or []),
             "biomes": biomes, "cost": int(raw.get("biodiversityCost") or 0),
             "tags": ref_names(raw.get("tags")), "raw_rules": raw.get("rules") or [],
+            "raw_cohorts": ref_names(raw.get("cohorts")),
         })
 
     for suffix in (lambda b: b["biomes"][0], lambda b: f"L{b['level']}"):
@@ -197,6 +201,12 @@ def build_biotica(definitions, micro_names):
                 **requirement,
             })
         b["rules"] = rules
+        # An apex bioticum brings its cohorts with it, so one item can grant all of them.
+        cohorts = sorted({display[n] for n in b.pop("raw_cohorts") if n in display})
+        if cohorts:
+            b["cohorts"] = cohorts
+            b["apex_item"] = f"Apex: {b['name']}"
+            b["apex_item_id"] = item_id("apex", guid_bits(b["guid"]))
         b["item"] = b["name"]
         b["item_id"] = item_id("bioticum", guid_bits(b["guid"]))
         b["build_location"] = f"Build {b['name']}"
@@ -272,7 +282,9 @@ def main():
     }
 
     items = [(b["item"], b["item_id"]) for b in data["biotica"]]
+    items += [(b["apex_item"], b["apex_item_id"]) for b in data["biotica"] if "apex_item" in b]
     items += [(e["item"], e["item_id"]) for key in ("giants", "biomes", "abilities", "characters", "micros", "filler") for e in data[key]]
+    items += [(m["charge_item"], m["charge_item_id"]) for m in data["micros"]]
     items += [(data["progressive_micro"]["item"], data["progressive_micro"]["item_id"]), (data["eras"]["item"], data["eras"]["item_id"])]
     locations = [(b["build_location"], b["build_location_id"]) for b in data["biotica"]]
     locations += [(r["location"], r["location_id"]) for b in data["biotica"] for r in b["rules"]]
@@ -286,9 +298,11 @@ def main():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     combos = sum(len(b["rules"]) for b in data["biotica"])
+    apex = sum(1 for b in data["biotica"] if "apex_item" in b)
     print(f"wrote {OUTPUT.relative_to(ROOT)}  (game {data['game_version']})")
     print(f"  items: {len(items)}  locations: {len(locations)}")
-    print(f"  biotica {len(data['biotica'])}  combos {combos} (skipped {skipped_rules})  giants {len(data['giants'])}"
+    print(f"  biotica {len(data['biotica'])} (apex {apex})  combos {combos} (skipped {skipped_rules})"
+          f"  giants {len(data['giants'])}"
           f"  biomes {len(data['biomes'])}  abilities {len(data['abilities'])}  characters {len(data['characters'])}"
           f"  micros {len(data['micros'])}")
 

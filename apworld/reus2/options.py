@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Options import Choice, PerGameCommonOptions, Range, StartInventoryPool
+from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Range, StartInventoryPool
 
 
 class GoalBuilds(Range):
@@ -53,14 +53,38 @@ class ShopDraftChecks(Range):
     default = 3
 
 
-class MicroMode(Choice):
-    """How Micros are shuffled.
+class BioticumItems(Choice):
+    """How biotica are shuffled.
 
-    - **Individual:** every Micro is its own item.
-    - **Progressive:** Micros are identical items, each granting the next one."""
-    display_name = "Micros"
+    - **Individual:** every bioticum is its own item.
+    - **Apex:** every apex bioticum is one item, granting it and the cohorts it brings; a bioticum
+      no apex brings is still its own item."""
+    display_name = "Biotica"
     option_individual = 0
-    option_progressive = 1
+    option_apex = 1
+    default = 0
+
+
+class ComboChecks(DefaultOnToggle):
+    """Whether triggering a bioticum's combo is a check. Off leaves only the builds, the request
+    rewards and the shop drafts."""
+    display_name = "Combo Checks"
+
+
+class MicroUnlocks(Choice):
+    """Which Micro types the shop sells.
+
+    - **Off:** the ones the game draws for the run's eras.
+    - **Individual:** the ones you have received, every Micro being its own item.
+    - **Progressive:** the ones you have received, Micros being identical items that each grant the
+      next one.
+
+    A Micro Charge item grants one charge of its Micro either way, and the shop sells a Micro for
+    charges."""
+    display_name = "Micro Unlocks"
+    option_off = 0
+    option_individual = 1
+    option_progressive = 2
     default = 0
 
 
@@ -73,4 +97,6 @@ class Reus2Options(PerGameCommonOptions):
     starting_characters: StartingCharacters
     request_reward_checks: RequestRewardChecks
     shop_draft_checks: ShopDraftChecks
-    micro_mode: MicroMode
+    bioticum_items: BioticumItems
+    combo_checks: ComboChecks
+    micro_unlocks: MicroUnlocks

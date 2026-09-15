@@ -18,6 +18,8 @@ WORLD = Path(__file__).resolve().parent.parent / "apworld" / "reus2"
 def load_world_modules():
     base = types.ModuleType("BaseClasses")
     base.CollectionState = object
+    base.Item = type("Item", (), {})
+    base.ItemClassification = type("ItemClassification", (), {"progression": 1, "useful": 2, "filler": 3})
     options = types.ModuleType("Options")
     for name in ("Choice", "Range", "PerGameCommonOptions", "StartInventoryPool", "Toggle", "DefaultOnToggle"):
         setattr(options, name, type(name, (), {}))
@@ -28,7 +30,7 @@ def load_world_modules():
     package.__path__ = [str(WORLD)]
     sys.modules["reus2"] = package
     loaded = {}
-    for name in ("game_data", "options", "rules"):
+    for name in ("game_data", "options", "items", "rules"):
         spec = importlib.util.spec_from_file_location(f"reus2.{name}", WORLD / f"{name}.py")
         module = importlib.util.module_from_spec(spec)
         sys.modules[f"reus2.{name}"] = module
@@ -50,26 +52,30 @@ def main():
     data = modules["game_data"].DATA
 
     failures = []
-    for micro_mode in (0, 1):
-        world = types.SimpleNamespace(
-            player=1, options=types.SimpleNamespace(micro_mode=types.SimpleNamespace(value=micro_mode)))
+    modes = [(micro_unlocks, bioticum_items) for micro_unlocks in (0, 1, 2) for bioticum_items in (0, 1)]
+    for micro_unlocks, bioticum_items in modes:
+        mode = f"micro_unlocks={micro_unlocks} bioticum_items={bioticum_items}"
+        world = types.SimpleNamespace(player=1, options=types.SimpleNamespace(
+            micro_unlocks=types.SimpleNamespace(value=micro_unlocks),
+            bioticum_items=types.SimpleNamespace(value=bioticum_items)))
         rules = modules["rules"].Reus2Rules(world)
         state = FullInventory()
         for bioticum in data["biotica"]:
             if not rules.can_build(state, bioticum):
-                failures.append((micro_mode, bioticum["build_location"], "build"))
+                failures.append((mode, bioticum["build_location"], "build"))
             for rule in bioticum["rules"]:
                 if not rules.can_combo(state, bioticum, rule):
-                    failures.append((micro_mode, rule["location"], rule["type"]))
+                    failures.append((mode, rule["location"], rule["type"]))
         if not rules.builds_reachable(state, len(data["biotica"])):
-            failures.append((micro_mode, "goal", "not every build reachable"))
+            failures.append((mode, "goal", "not every build reachable"))
 
     if failures:
         print(f"{len(failures)} unreachable:")
-        for micro_mode, location, reason in failures:
-            print(f"  [micro_mode={micro_mode}] {location}  ({reason})")
+        for mode, location, reason in failures:
+            print(f"  [{mode}] {location}  ({reason})")
         sys.exit(1)
-    print("every location is reachable with a full inventory, in both micro modes")
+    print(f"every location is reachable with a full inventory, in all {len(modes)} micro_unlocks and"
+          " bioticum_items combinations")
 
 
 if __name__ == "__main__":
