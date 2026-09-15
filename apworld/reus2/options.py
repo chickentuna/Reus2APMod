@@ -71,21 +71,28 @@ class ComboChecks(DefaultOnToggle):
     display_name = "Combo Checks"
 
 
-class MicroUnlocks(Choice):
+class MicroTypes(Choice):
     """Which Micro types the shop sells.
 
-    - **Off:** the ones the game draws for the run's eras.
-    - **Individual:** the ones you have received, every Micro being its own item.
-    - **Progressive:** the ones you have received, Micros being identical items that each grant the
-      next one.
+    - **All unlocked:** every type, from the first planet on.
+    - **Shuffled:** the types whose Micro item you have received, plus the ones Starting Micro Types
+      rolls for you.
 
-    A Micro Charge item grants one charge of its Micro either way, and the shop sells a Micro for
-    charges."""
-    display_name = "Micro Unlocks"
-    option_off = 0
-    option_individual = 1
-    option_progressive = 2
+    Either way, the number of Micros you are given at the start of an era is the number of Bonus
+    Micro items you have received."""
+    display_name = "Micro Types"
+    option_all_unlocked = 0
+    option_shuffled = 1
     default = 0
+
+
+class StartingMicroTypes(Range):
+    """Number of Micro types the shop sells from the start, drawn at random. Read only when Micro
+    Types is shuffled."""
+    display_name = "Starting Micro Types"
+    range_start = 0
+    range_end = 33
+    default = 3
 
 
 @dataclass
@@ -99,4 +106,5 @@ class Reus2Options(PerGameCommonOptions):
     shop_draft_checks: ShopDraftChecks
     bioticum_items: BioticumItems
     combo_checks: ComboChecks
-    micro_unlocks: MicroUnlocks
+    micro_types: MicroTypes
+    starting_micro_types: StartingMicroTypes

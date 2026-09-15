@@ -1,6 +1,5 @@
 using System;
 using HarmonyLib;
-using HarmonyLib.Tools;
 using Reus2Archipelago.Game;
 
 namespace Reus2Archipelago.Patches;
@@ -8,8 +7,7 @@ namespace Reus2Archipelago.Patches;
 internal static class Patching
 {
     /// <summary>Patches a game method found by type and method name. A missing target is logged and
-    /// skipped, so one moved method does not stop the others from loading. The line names the
-    /// target's IL size and shape, which is what says whether Mono can inline the call away.</summary>
+    /// skipped, so one moved method does not stop the others from loading.</summary>
     internal static void Apply(Harmony harmony, string typeName, string methodName, Type owner,
         string prefix = null, string postfix = null)
     {
@@ -37,18 +35,10 @@ internal static class Patching
                 return;
             }
 
-            // Two targets are traced, which makes HarmonyX write the replacement it builds and the
-            // steps it takes to install it into BepInEx/plugins/reus2_harmony.log; tracing all 53
-            // buries the rest of the log.
-            HarmonyFileLog.Enabled = methodName == "BuyOption" || methodName == "OnBioticumPlaced";
             harmony.Patch(method,
                 prefix: prefix == null ? null : new HarmonyMethod(AccessTools.Method(owner, prefix)),
                 postfix: postfix == null ? null : new HarmonyMethod(AccessTools.Method(owner, postfix)));
-            HarmonyFileLog.Enabled = false;
-
-            var shape = ProbeTally.Describe(method);
-            Report($"Patched {method.DeclaringType?.FullName}.{methodName} ({type.Assembly.GetName().Name})"
-                   + (shape == null ? "" : $" | {shape}"), error: false);
+            Report($"Patched {method.DeclaringType?.FullName}.{methodName}", error: false);
         }
         catch (Exception e)
         {

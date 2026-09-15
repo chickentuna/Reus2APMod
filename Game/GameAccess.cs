@@ -17,6 +17,7 @@ internal static class GameAccess
 
     private static readonly Dictionary<(Type, string), MemberInfo> Members = new Dictionary<(Type, string), MemberInfo>();
     private static readonly Dictionary<string, Type> Types = new Dictionary<string, Type>();
+    private static readonly Dictionary<string, object> Resources = new Dictionary<string, object>();
     private static Dictionary<string, object> definitionsByGuid;
     private static PropertyInfo gameManagerInstance;
     private static PropertyInfo sessionContext;
@@ -139,6 +140,18 @@ internal static class GameAccess
     }
 
     internal static object EnumValue(string enumTypeName, string value) => Enum.Parse(TypeNamed(enumTypeName), value);
+
+    /// <summary>The PlayerResource that GameplayController.GetResource and SetResource take. Each
+    /// one is a ScriptableObject reached through the static property of that name on the class.</summary>
+    internal static object Resource(string name)
+    {
+        if (Resources.TryGetValue(name, out var resource))
+            return resource;
+        resource = AccessTools.Property(TypeNamed("PlayerResource"), name)?.GetValue(null);
+        if (resource != null)
+            Resources[name] = resource;
+        return resource;
+    }
 
     internal static Type ElementType(IList list) => list.GetType().GetGenericArguments().FirstOrDefault();
 

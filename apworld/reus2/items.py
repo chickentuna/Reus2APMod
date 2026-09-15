@@ -18,13 +18,15 @@ def apex_items() -> List[str]:
     return [b["apex_item"] for b in DATA["biotica"] if "apex_item" in b]
 
 
-def micro_charge_items() -> List[str]:
-    return [m["charge_item"] for m in DATA["micros"]]
+def bonus_micro_copies() -> int:
+    """The vanilla handout gives one Micro per active biome at the start of an era, so the pool holds
+    one Bonus Micro per biome."""
+    return len(DATA["biomes"])
 
 
 def filler_items() -> List[str]:
     """What a filler slot can hold."""
-    return [f["item"] for f in DATA["filler"]] + micro_charge_items()
+    return [f["item"] for f in DATA["filler"]]
 
 
 def items_granting_biotica(apex: bool) -> Dict[str, List[str]]:
@@ -53,8 +55,7 @@ def item_table() -> Dict[str, int]:
     table.update({b["apex_item"]: b["apex_item_id"] for b in DATA["biotica"] if "apex_item" in b})
     for key in ("giants", "biomes", "abilities", "characters", "micros", "filler"):
         table.update({entry["item"]: entry["item_id"] for entry in DATA[key]})
-    table.update({m["charge_item"]: m["charge_item_id"] for m in DATA["micros"]})
-    table[DATA["progressive_micro"]["item"]] = DATA["progressive_micro"]["item_id"]
+    table[DATA["bonus_micro"]["item"]] = DATA["bonus_micro"]["item_id"]
     table[DATA["eras"]["item"]] = DATA["eras"]["item_id"]
     return table
 
@@ -71,7 +72,7 @@ def classifications() -> Dict[str, ItemClassification]:
     result.update({c["item"]: useful for c in DATA["characters"]})
     result.update({m["item"]: progression if m["name"] in needed_micros else useful for m in DATA["micros"]})
     result.update({item: ItemClassification.filler for item in filler_items()})
-    result[DATA["progressive_micro"]["item"]] = progression
+    result[DATA["bonus_micro"]["item"]] = progression
     result[DATA["eras"]["item"]] = progression
     return result
 
@@ -84,6 +85,5 @@ def item_groups() -> Dict[str, List[str]]:
         "Biomes": [b["item"] for b in DATA["biomes"]],
         "Powers": [a["item"] for a in DATA["abilities"]],
         "Characters": [c["item"] for c in DATA["characters"]],
-        "Micros": [m["item"] for m in DATA["micros"]] + [DATA["progressive_micro"]["item"]],
-        "Micro Charges": micro_charge_items(),
+        "Micros": [m["item"] for m in DATA["micros"]] + [DATA["bonus_micro"]["item"]],
     }

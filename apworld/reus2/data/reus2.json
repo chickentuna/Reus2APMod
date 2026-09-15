@@ -36365,336 +36365,237 @@
    "guid": "43a6664b39009ff488da0155d9a46601",
    "name": "Agraricus Bisporus",
    "rarity": "Basic",
-   "order": 0,
    "item": "Micro: Agraricus Bisporus",
-   "item_id": 6615229424819,
-   "charge_item": "Micro Charge: Agraricus Bisporus",
-   "charge_item_id": 11013275935923
+   "item_id": 6615229424819
   },
   {
    "guid": "281c8df74eae7a54589e0b95c2c187ef",
    "name": "Centipede",
    "rarity": "Basic",
-   "order": 1,
    "item": "Micro: Centipede",
-   "item_id": 6607837126516,
-   "charge_item": "Micro Charge: Centipede",
-   "charge_item_id": 11005883637620
+   "item_id": 6607837126516
   },
   {
    "guid": "8018d05b90669284297a0a77dada48ca",
    "name": "Drone Beetle",
    "rarity": "Basic",
-   "order": 2,
    "item": "Micro: Drone Beetle",
-   "item_id": 6631455524281,
-   "charge_item": "Micro Charge: Drone Beetle",
-   "charge_item_id": 11029502035385
+   "item_id": 6631455524281
   },
   {
    "guid": "fcb92730d1d216841a8dc28747e16fc1",
    "name": "Fly Agaric",
    "rarity": "Basic",
-   "order": 3,
    "item": "Micro: Fly Agaric",
-   "item_id": 6664909648653,
-   "charge_item": "Micro Charge: Fly Agaric",
-   "charge_item_id": 11062956159757
+   "item_id": 6664909648653
   },
   {
    "guid": "03396072a86407d46b5a0858dfb6e07e",
    "name": "Jeweled Beetle",
    "rarity": "Basic",
-   "order": 4,
    "item": "Micro: Jeweled Beetle",
-   "item_id": 6597935236906,
-   "charge_item": "Micro Charge: Jeweled Beetle",
-   "charge_item_id": 10995981748010
+   "item_id": 6597935236906
   },
   {
    "guid": "44799504adae6c44eb5925d0f8358bcf",
    "name": "Mantis",
    "rarity": "Basic",
-   "order": 5,
    "item": "Micro: Mantis",
-   "item_id": 6615450865738,
-   "charge_item": "Micro Charge: Mantis",
-   "charge_item_id": 11013497376842
+   "item_id": 6615450865738
   },
   {
    "guid": "f860e90a6b468fa4db05a300fef9d7f1",
    "name": "Sphagnum Moss",
    "rarity": "Basic",
-   "order": 6,
    "item": "Micro: Sphagnum Moss",
-   "item_id": 6663743377574,
-   "charge_item": "Micro Charge: Sphagnum Moss",
-   "charge_item_id": 11061789888678
+   "item_id": 6663743377574
   },
   {
    "guid": "f2b3ba0f2daccaf40b681bbda8048bf4",
    "name": "Woolly Moth Catterpillar",
    "rarity": "Basic",
-   "order": 7,
    "item": "Micro: Woolly Moth Catterpillar",
-   "item_id": 6662219604210,
-   "charge_item": "Micro Charge: Woolly Moth Catterpillar",
-   "charge_item_id": 11060266115314
+   "item_id": 6662219604210
   },
   {
    "guid": "78928cc629bf16e4ca2d5bda7ab1d5dc",
    "name": "Worm",
    "rarity": "Basic",
-   "order": 8,
    "item": "Micro: Worm",
-   "item_id": 6629435690082,
-   "charge_item": "Micro Charge: Worm",
-   "charge_item_id": 11027482201186
+   "item_id": 6629435690082
   },
   {
    "guid": "b788bf01e9daf9c4da5ddc0312dcd7b4",
    "name": "Antlion",
    "rarity": "Era1",
-   "order": 9,
    "item": "Micro: Antlion",
-   "item_id": 6646336843806,
-   "charge_item": "Micro Charge: Antlion",
-   "charge_item_id": 11044383354910
+   "item_id": 6646336843806
   },
   {
    "guid": "33aaff318c73c804da9a855239b69496",
    "name": "Bullfrog",
    "rarity": "Era1",
-   "order": 10,
    "item": "Micro: Bullfrog",
-   "item_id": 6610939278104,
-   "charge_item": "Micro Charge: Bullfrog",
-   "charge_item_id": 11008985789208
+   "item_id": 6610939278104
   },
   {
    "guid": "f05845c0a4ef6074e921c996c2756d91",
    "name": "Chanterelle",
    "rarity": "Era1",
-   "order": 11,
    "item": "Micro: Chanterelle",
-   "item_id": 6661586836490,
-   "charge_item": "Micro Charge: Chanterelle",
-   "charge_item_id": 11059633347594
+   "item_id": 6661586836490
   },
   {
    "guid": "e8a7b95bfa4a80240ab2d11fa5756820",
    "name": "Emperor Butterfly",
    "rarity": "Era1",
-   "order": 12,
    "item": "Micro: Emperor Butterfly",
-   "item_id": 6659522663871,
-   "charge_item": "Micro Charge: Emperor Butterfly",
-   "charge_item_id": 11057569174975
+   "item_id": 6659522663871
   },
   {
    "guid": "bda0ba55d837c42499234c39ecea065f",
    "name": "Krill",
    "rarity": "Era1",
-   "order": 13,
    "item": "Micro: Krill",
-   "item_id": 6647972603229,
-   "charge_item": "Micro Charge: Krill",
-   "charge_item_id": 11046019114333
+   "item_id": 6647972603229
   },
   {
    "guid": "e5694fb03d9bef145a4537b4e5db8b8c",
    "name": "Luna Moth",
    "rarity": "Era1",
-   "order": 14,
    "item": "Micro: Luna Moth",
-   "item_id": 6658651912963,
-   "charge_item": "Micro Charge: Luna Moth",
-   "charge_item_id": 11056698424067
+   "item_id": 6658651912963
   },
   {
    "guid": "aee1929685846b546ac5167ca229fa32",
    "name": "Poison Dart Frog",
    "rarity": "Era1",
-   "order": 15,
    "item": "Micro: Poison Dart Frog",
-   "item_id": 6644014066024,
-   "charge_item": "Micro Charge: Poison Dart Frog",
-   "charge_item_id": 11042060577128
+   "item_id": 6644014066024
   },
   {
    "guid": "531501a1f0796074ba0b42cbcb270b72",
    "name": "Rainbow Stag",
    "rarity": "Era1",
-   "order": 16,
    "item": "Micro: Rainbow Stag",
-   "item_id": 6619371936287,
-   "charge_item": "Micro Charge: Rainbow Stag",
-   "charge_item_id": 11017418447391
+   "item_id": 6619371936287
   },
   {
    "guid": "9e824c315fc5b794f9e2d94617788016",
    "name": "Walking Stick",
    "rarity": "Era1",
-   "order": 17,
    "item": "Micro: Walking Stick",
-   "item_id": 6639619195669,
-   "charge_item": "Micro Charge: Walking Stick",
-   "charge_item_id": 11037665706773
+   "item_id": 6639619195669
   },
   {
    "guid": "eec40c180770d1c4baaa211bd28ffc47",
    "name": "Assassin Bug",
    "rarity": "Era2",
-   "order": 18,
    "item": "Micro: Assassin Bug",
-   "item_id": 6661162975616,
-   "charge_item": "Micro Charge: Assassin Bug",
-   "charge_item_id": 11059209486720
+   "item_id": 6661162975616
   },
   {
    "guid": "f135d63c4235ca347bd5bc1968dc2c97",
    "name": "Bee",
    "rarity": "Era2",
-   "order": 19,
    "item": "Micro: Bee",
-   "item_id": 6661819163588,
-   "charge_item": "Micro Charge: Bee",
-   "charge_item_id": 11059865674692
+   "item_id": 6661819163588
   },
   {
    "guid": "03f1311ffd1ebe9409e96525f95479c7",
    "name": "Fruit Bat",
    "rarity": "Era2",
-   "order": 20,
    "item": "Micro: Fruit Bat",
-   "item_id": 6598127981055,
-   "charge_item": "Micro Charge: Fruit Bat",
-   "charge_item_id": 10996174492159
+   "item_id": 6598127981055
   },
   {
    "guid": "140ec5b9d7583da4ea402b98696a312b",
    "name": "Golden Stag Beetle",
    "rarity": "Era2",
-   "order": 21,
    "item": "Micro: Golden Stag Beetle",
-   "item_id": 6602453965725,
-   "charge_item": "Micro Charge: Golden Stag Beetle",
-   "charge_item_id": 11000500476829
+   "item_id": 6602453965725
   },
   {
    "guid": "52c6f1536efb739488d27a1c206e0a0d",
    "name": "Octopus Stinkhorn",
    "rarity": "Era2",
-   "order": 22,
    "item": "Micro: Octopus Stinkhorn",
-   "item_id": 6619290080566,
-   "charge_item": "Micro Charge: Octopus Stinkhorn",
-   "charge_item_id": 11017336591670
+   "item_id": 6619290080566
   },
   {
    "guid": "dd7dbde6d3b04c747ba01546da49a9a1",
    "name": "Orchid Mantis",
    "rarity": "Era2",
-   "order": 23,
    "item": "Micro: Orchid Mantis",
-   "item_id": 6656525852269,
-   "charge_item": "Micro Charge: Orchid Mantis",
-   "charge_item_id": 11054572363373
+   "item_id": 6656525852269
   },
   {
    "guid": "2b586112a2c3e434baf73aa2178db279",
    "name": "Stag Beetle",
    "rarity": "Era2",
-   "order": 24,
    "item": "Micro: Stag Beetle",
-   "item_id": 6608705163562,
-   "charge_item": "Micro Charge: Stag Beetle",
-   "charge_item_id": 11006751674666
+   "item_id": 6608705163562
   },
   {
    "guid": "45ddb3b2b1d2ea24bbd42bcfbed76f93",
    "name": "Termites",
    "rarity": "Era2",
-   "order": 25,
    "item": "Micro: Termites",
-   "item_id": 6615824284459,
-   "charge_item": "Micro Charge: Termites",
-   "charge_item_id": 11013870795563
+   "item_id": 6615824284459
   },
   {
    "guid": "a3485404175abe5448797d159d59e041",
    "name": "Black Truffle",
    "rarity": "Era3",
-   "order": 26,
    "item": "Micro: Black Truffle",
-   "item_id": 6640900587585,
-   "charge_item": "Micro Charge: Black Truffle",
-   "charge_item_id": 11038947098689
+   "item_id": 6640900587585
   },
   {
    "guid": "6907c46ef86466447b11c95dc48156fc",
    "name": "Dragonfly",
    "rarity": "Era3",
-   "order": 27,
    "item": "Micro: Dragonfly",
-   "item_id": 6625263634159,
-   "charge_item": "Micro Charge: Dragonfly",
-   "charge_item_id": 11023310145263
+   "item_id": 6625263634159
   },
   {
    "guid": "494ec54714e639947aff212eb9694e5d",
    "name": "Ghost Fungus",
    "rarity": "Era3",
-   "order": 28,
    "item": "Micro: Ghost Fungus",
-   "item_id": 6616748151921,
-   "charge_item": "Micro Charge: Ghost Fungus",
-   "charge_item_id": 11014794663025
+   "item_id": 6616748151921
   },
   {
    "guid": "2e4ccdcc8103cf0459b74dc3ed395934",
    "name": "Ladybug",
    "rarity": "Era3",
-   "order": 29,
    "item": "Micro: Ladybug",
-   "item_id": 6609498332360,
-   "charge_item": "Micro Charge: Ladybug",
-   "charge_item_id": 11007544843464
+   "item_id": 6609498332360
   },
   {
    "guid": "307e583e67fc1ca4aac3cf191d96dfbf",
    "name": "Monarch Butterfly",
    "rarity": "Era3",
-   "order": 30,
    "item": "Micro: Monarch Butterfly",
-   "item_id": 6610087150566,
-   "charge_item": "Micro Charge: Monarch Butterfly",
-   "charge_item_id": 11008133661670
+   "item_id": 6610087150566
   },
   {
    "guid": "bf5bfa32ab6f7614894d5e3a2f36f0cc",
    "name": "Scarab",
    "rarity": "Era3",
-   "order": 31,
    "item": "Micro: Scarab",
-   "item_id": 6648437383978,
-   "charge_item": "Micro Charge: Scarab",
-   "charge_item_id": 11046483895082
+   "item_id": 6648437383978
   },
   {
    "guid": "d6a8e721ab8be494da1146c39e9f8584",
    "name": "Tarantula",
    "rarity": "Era3",
-   "order": 32,
    "item": "Micro: Tarantula",
-   "item_id": 6654692061722,
-   "charge_item": "Micro Charge: Tarantula",
-   "charge_item_id": 11052738572826
+   "item_id": 6654692061722
   }
  ],
- "progressive_micro": {
-  "item": "Progressive Micro",
-  "item_id": 6597069766656
+ "bonus_micro": {
+  "item": "Bonus Micro",
+  "item_id": 10995116277760
  },
  "eras": {
   "item": "Progressive Era",

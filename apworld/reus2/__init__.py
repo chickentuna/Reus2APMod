@@ -5,10 +5,10 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .game_data import DATA
-from .items import (Reus2Item, bioticum_pool_items, classifications, filler_items, item_groups,
-                    item_table, items_granting_biotica)
+from .items import (Reus2Item, bioticum_pool_items, bonus_micro_copies, classifications,
+                    filler_items, item_groups, item_table, items_granting_biotica)
 from .locations import Reus2Location, location_table
-from .options import BioticumItems, MicroUnlocks, Reus2Options
+from .options import BioticumItems, MicroTypes, Reus2Options
 from .rules import Reus2Rules
 
 GOAL_LOCATION = "Thriving Planet"
@@ -43,8 +43,8 @@ class Reus2World(World):
 
     def _roll_starting_kit(self) -> List[str]:
         """One giant per role with their first biomes, some of their special powers, the items
-        granting `starting_biotica` early zero-cost biotica they can place there, and a few city
-        leaders."""
+        granting `starting_biotica` early zero-cost biotica they can place there, a few city
+        leaders, and the Micro types the shop sells from the start."""
         rng = self.random
         giants_by_type = defaultdict(list)
         for giant in DATA["giants"]:
@@ -79,6 +79,10 @@ class Reus2World(World):
 
         characters = [c["item"] for c in DATA["characters"]]
         kit += rng.sample(characters, min(self.options.starting_characters.value, len(characters)))
+
+        if self.options.micro_types.value == MicroTypes.option_shuffled:
+            micros = [m["item"] for m in DATA["micros"]]
+            kit += rng.sample(micros, min(self.options.starting_micro_types.value, len(micros)))
         return kit
 
     def create_regions(self) -> None:
@@ -125,9 +129,8 @@ class Reus2World(World):
             for entry in DATA[key]:
                 add(entry["item"])
         add(DATA["eras"]["item"], len(DATA["eras"]["eras"]))
-        if self.options.micro_unlocks.value == MicroUnlocks.option_progressive:
-            add(DATA["progressive_micro"]["item"], len(DATA["micros"]))
-        elif self.options.micro_unlocks.value == MicroUnlocks.option_individual:
+        add(DATA["bonus_micro"]["item"], bonus_micro_copies())
+        if self.options.micro_types.value == MicroTypes.option_shuffled:
             for micro in DATA["micros"]:
                 add(micro["item"])
 
@@ -166,7 +169,7 @@ class Reus2World(World):
     def fill_slot_data(self) -> Dict[str, Any]:
         slot_data = self.options.as_dict(
             "goal_builds", "request_reward_checks", "shop_draft_checks", "bioticum_items",
-            "combo_checks", "micro_unlocks")
+            "combo_checks", "micro_types", "starting_micro_types")
         slot_data["game_version"] = DATA["game_version"]
         slot_data["starting_items"] = self.starting_items
         slot_data["surplus_items"] = self.surplus_items

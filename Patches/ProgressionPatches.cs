@@ -7,8 +7,9 @@ namespace Reus2Archipelago.Patches;
 
 /// <summary>
 /// Replaces vanilla progression on a profile bound to an Archipelago slot: no profile XP or level
-/// rewards, no drafts, and no in-run biotica beyond what was received. While a slot is configured,
-/// new planets are Normal mode only and challenges are unavailable.
+/// rewards, no drafts, no in-run biotica beyond what was received, and the Micro types and per-era
+/// Micros of the slot rather than the game's. While a slot is configured, new planets are Normal
+/// mode only and challenges are unavailable.
 /// </summary>
 internal static class ProgressionPatches
 {
@@ -26,6 +27,8 @@ internal static class ProgressionPatches
         Patching.Apply(harmony, "NewGameViewModel", "SetHorizonMode", owner, prefix: nameof(ForceStandardMode));
         Patching.Apply(harmony, "CommunityChallengeUI", "OnChallengeSelected", owner, prefix: nameof(BlockChallenge));
         Patching.Apply(harmony, "EraFeatController", "OnWorldStageControllerActivated", owner, postfix: nameof(PlanetLoaded));
+        Patching.Apply(harmony, "AspectController", "DrawSetForEra", owner, prefix: nameof(SkipDrawnMicroType));
+        Patching.Apply(harmony, "MainQuestCompletedMoment", "GiveRewards", owner, postfix: nameof(AfterEraRewards));
     }
 
     private static bool RunUnlessBound(MethodBase __originalMethod)
@@ -71,6 +74,26 @@ internal static class ProgressionPatches
     {
         ItemApplier.MarkDirty();
         Record(__originalMethod, () => "items will be reapplied");
+    }
+
+    // DrawSetForEra draws one more Micro type from the era pools and names it in the era
+    // introduction; the types the shop sells come from the received items instead. Clearing
+    // latestUnlockedAspect is what makes EraIntroductionUI leave the panel out.
+    private static bool SkipDrawnMicroType(MethodBase __originalMethod, object __instance)
+    {
+        var run = !ItemApplier.ProfileBound;
+        if (!run)
+            GameAccess.Set(__instance, "latestUnlockedAspect", null);
+        Record(__originalMethod, () => run ? "original runs" : "original skipped");
+        return run;
+    }
+
+    // GiveRewards ends with one Micro per active biome for the era that is starting.
+    private static void AfterEraRewards(MethodBase __originalMethod)
+    {
+        if (ItemApplier.ProfileBound)
+            ItemApplier.SetEraMicros();
+        Record(__originalMethod, () => $"micros={ItemApplier.MicroAllowance}");
     }
 
     private static void Record(MethodBase original, Func<string> detail, bool quiet = false)

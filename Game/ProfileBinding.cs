@@ -20,8 +20,7 @@ internal static class ProfileBinding
         public string Seed;
         public string Slot;
         public int EonBoostsApplied;
-        public string MicroChargeSession;
-        public Dictionary<string, int> MicroChargesGranted = new Dictionary<string, int>();
+        public string MicroSession;
     }
 
     private static readonly Dictionary<string, Record> Cache = new Dictionary<string, Record>();
@@ -86,24 +85,16 @@ internal static class ProfileBinding
         Write(profile, record);
     }
 
-    /// <summary>How many charges of each Micro, by definition GUID, this session has been granted.
-    /// A session that is not the recorded one starts from nothing.</summary>
-    internal static Dictionary<string, int> MicroChargesGranted(object profile, string session)
-    {
-        var record = Read(profile);
-        return record != null && record.MicroChargeSession == session
-            ? new Dictionary<string, int>(record.MicroChargesGranted)
-            : new Dictionary<string, int>();
-    }
+    /// <summary>The session whose first era has been given its Micros. A reload of that save reads
+    /// the count from the save file rather than starting the era over.</summary>
+    internal static string MicroSession(object profile) => Read(profile)?.MicroSession;
 
-    /// <summary>Records the running session's granted charges, replacing any earlier session's.</summary>
-    internal static void SetMicroChargesGranted(object profile, string session, Dictionary<string, int> granted)
+    internal static void SetMicroSession(object profile, string session)
     {
         var record = Read(profile);
         if (record == null)
             return;
-        record.MicroChargeSession = session;
-        record.MicroChargesGranted = granted;
+        record.MicroSession = session;
         Write(profile, record);
     }
 

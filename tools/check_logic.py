@@ -52,11 +52,11 @@ def main():
     data = modules["game_data"].DATA
 
     failures = []
-    modes = [(micro_unlocks, bioticum_items) for micro_unlocks in (0, 1, 2) for bioticum_items in (0, 1)]
-    for micro_unlocks, bioticum_items in modes:
-        mode = f"micro_unlocks={micro_unlocks} bioticum_items={bioticum_items}"
+    modes = [(micro_types, bioticum_items) for micro_types in (0, 1) for bioticum_items in (0, 1)]
+    for micro_types, bioticum_items in modes:
+        mode = f"micro_types={micro_types} bioticum_items={bioticum_items}"
         world = types.SimpleNamespace(player=1, options=types.SimpleNamespace(
-            micro_unlocks=types.SimpleNamespace(value=micro_unlocks),
+            micro_types=types.SimpleNamespace(value=micro_types),
             bioticum_items=types.SimpleNamespace(value=bioticum_items)))
         rules = modules["rules"].Reus2Rules(world)
         state = FullInventory()
@@ -74,7 +74,7 @@ def main():
         for mode, location, reason in failures:
             print(f"  [{mode}] {location}  ({reason})")
         sys.exit(1)
-    print(f"every location is reachable with a full inventory, in all {len(modes)} micro_unlocks and"
+    print(f"every location is reachable with a full inventory, in all {len(modes)} micro_types and"
           " bioticum_items combinations")
 
 

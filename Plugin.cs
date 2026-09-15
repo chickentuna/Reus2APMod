@@ -27,6 +27,9 @@ public sealed class Plugin : BaseUnityPlugin
     private ConfigEntry<bool> enableDefinitionDump;
     private ConfigEntry<bool> enableProbes;
 
+    /// <summary>Reus 2 destroys this component once the chainloader finishes, which is why the
+    /// plugin's Update never ticks and MainThreadRunner drives the per-frame work from its own
+    /// object. Harmony holds the detours it installed, so they survive that destruction.</summary>
     private Harmony harmony;
 
     private void Awake()
@@ -48,7 +51,7 @@ public sealed class Plugin : BaseUnityPlugin
 
         enableDefinitionDump = Config.Bind("Diagnostics", "EnableDefinitionDump", false,
             "Write the live definition catalogue to JSON once it is available.");
-        enableProbes = Config.Bind("Diagnostics", "EnableProbes", true,
+        enableProbes = Config.Bind("Diagnostics", "EnableProbes", false,
             "Log every milestone, era feat, placement, combo, request, purchase and unlock as it "
             + "happens, without changing progression, together with a tally of which patched methods "
             + "ever ran and a snapshot of the profile and session. "
@@ -61,8 +64,6 @@ public sealed class Plugin : BaseUnityPlugin
         ApMode = !string.IsNullOrWhiteSpace(slot.Value);
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-        HarmonySelfTest.Run(harmony);
-        HarmonySelfTest.SecondOpinion(harmony);
 
         if (enableDefinitionDump.Value)
         {
@@ -160,10 +161,4 @@ public sealed class Plugin : BaseUnityPlugin
             Log.LogError(e.ToString());
         }
     }
-
-    /// <summary>Reus 2 destroys this component once the chainloader finishes, which is why its
-    /// Update never ticks. The patches and the session belong to the static Harmony instance and to
-    /// MainThreadRunner's own object, both of which outlive it, so nothing is torn down here.</summary>
-    private void OnDestroy()
-        => Log.LogWarning("Plugin component destroyed; patches and the Archipelago session stay.");
 }

@@ -21,6 +21,8 @@ internal static class ProbeLog
 
     internal static void Write(string line)
     {
+        if (path == null)
+            return;
         Plugin.Log.LogInfo($"[probe] {line}");
         Append(line);
     }

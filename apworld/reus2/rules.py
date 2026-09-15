@@ -4,7 +4,7 @@ from BaseClasses import CollectionState
 
 from .game_data import DATA
 from .items import items_granting_biotica
-from .options import BioticumItems, MicroUnlocks
+from .options import BioticumItems, MicroTypes
 
 
 class Reus2Rules:
@@ -18,7 +18,7 @@ class Reus2Rules:
 
     def __init__(self, world) -> None:
         self.player = world.player
-        self.micro_unlocks = world.options.micro_unlocks.value
+        self.micro_types = world.options.micro_types.value
         self.granting = items_granting_biotica(
             world.options.bioticum_items.value == BioticumItems.option_apex)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
@@ -37,8 +37,7 @@ class Reus2Rules:
                     self.providers[biome].append(bioticum)
         self.era_item = DATA["eras"]["item"]
         self.micro_item = {m["name"]: m["item"] for m in DATA["micros"]}
-        self.micro_order = {m["name"]: m["order"] for m in DATA["micros"]}
-        self.progressive_micro = DATA["progressive_micro"]["item"]
+        self.bonus_micro = DATA["bonus_micro"]["item"]
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
         return state.has_any(self.granting[bioticum["name"]], self.player)
@@ -112,13 +111,12 @@ class Reus2Rules:
         return False
 
     def has_micro(self, state: CollectionState, micro: str) -> bool:
-        """The shop sells a Micro for charges. With `micro_unlocks` off it sells the ones the game
-        draws, which over a run's eras is every type."""
-        if self.micro_unlocks == MicroUnlocks.option_off:
-            return True
-        if self.micro_unlocks == MicroUnlocks.option_progressive:
-            return state.has(self.progressive_micro, self.player, self.micro_order[micro] + 1)
-        return state.has(self.micro_item[micro], self.player)
+        """An era starts with one Micro per Bonus Micro received, and the shop sells the type for
+        one of them. With Micro Types shuffled the type is sold once its own item arrives."""
+        if not state.has(self.bonus_micro, self.player):
+            return False
+        return (self.micro_types == MicroTypes.option_all_unlocked
+                or state.has(self.micro_item[micro], self.player))
 
     def request_reward_ok(self, state: CollectionState, reward) -> bool:
         return state.has(self.era_item, self.player, reward["level"])
