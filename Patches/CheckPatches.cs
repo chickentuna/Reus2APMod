@@ -16,6 +16,7 @@ internal static class CheckPatches
 {
     private const int ComboChecksNone = 0;
     private const int ComboChecksPerRule = 1;
+    private const int ComboChecksPerBioticum = 2;
 
     internal static void Install(Harmony harmony)
     {
@@ -41,6 +42,10 @@ internal static class CheckPatches
             Plugin.Log.LogWarning($"Placed a bioticum the data does not hold: {guid ?? "no id"}.");
             return;
         }
+        // Per bioticum, a bioticum that has combo rules carries one location, its combos, so its
+        // build sends nothing; one with no rule keeps its build.
+        if (ApState.SlotInt("combo_checks", ComboChecksNone) == ComboChecksPerBioticum && entry.Rules.Count > 0)
+            return;
         ApState.SendCheck(entry.BuildLocation);
     }
 
