@@ -15,6 +15,7 @@ internal sealed class ArchipelagoClient
     internal const string GameName = "Reus 2";
 
     private ArchipelagoSession session;
+    private int nextItemIndex;
 
     internal bool Connected => session?.Socket?.Connected == true;
 
@@ -42,6 +43,7 @@ internal sealed class ArchipelagoClient
             var success = (LoginSuccessful)result;
             ApState.AdoptSession(this, CheckedLocationNames(), slot, session.RoomState.Seed, success.SlotData);
 
+            nextItemIndex = 0;
             session.Items.ItemReceived += OnItemReceived;
             session.Socket.SocketClosed += OnSocketClosed;
 
@@ -124,10 +126,12 @@ internal sealed class ArchipelagoClient
 
     private void OnItemReceived(IReceivedItemsHelper helper)
     {
+        // helper.Index is the number of items received, which is the same for every item in
+        // this loop, so the position each one is dequeued at is what tells two copies apart.
         while (helper.Any())
         {
             var item = helper.DequeueItem();
-            ApState.QueueReceivedItem(this, helper.Index, item.ItemName);
+            ApState.QueueReceivedItem(this, nextItemIndex++, item.ItemName);
         }
     }
 
