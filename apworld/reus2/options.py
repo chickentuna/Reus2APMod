@@ -90,7 +90,7 @@ class MicroTypes(Choice):
     display_name = "Micro Types"
     option_all_unlocked = 0
     option_shuffled = 1
-    default = 0
+    default = 1
 
 
 class StartingMicroTypes(Range):
