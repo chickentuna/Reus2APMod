@@ -209,7 +209,8 @@ internal static class ItemApplier
         SetSoldMicros(aspects, shuffled ? data.Micros.Where(m => received.ContainsKey(m.Item)) : data.Micros);
         Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items"
-                           + $", {soldMicros} Micro types sold, {MicroAllowance} Micros an era.");
+                           + $", the shop offers {soldMicros} Micro types, {MicroAllowance} Micros an era.");
+        Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
         var session = GameAccess.SessionId;
         if (session != null && ProfileBinding.MicroSession(profile) != session)
@@ -248,6 +249,29 @@ internal static class ItemApplier
         foreach (var definition in wanted)
             GameAccess.Call(aspects, "UnlockAspectShopOption", definition);
         soldMicros = wanted.Count;
+    }
+
+    /// <summary>Every entry the run's aspect inventory holds, with its charges, so a Micro on screen
+    /// can be matched to what put it there.</summary>
+    private static string AspectInventory(object aspects)
+    {
+        if (!(GameAccess.Get(aspects, "aspectInventory") is IEnumerable inventory))
+            return "unreadable";
+        var lines = inventory.Cast<object>().Select(entry =>
+        {
+            var name = GameAccess.Get(GameAccess.Get(entry, "Key"), "name");
+            var value = GameAccess.Get(entry, "Value");
+            return $"{name ?? "?"}(charges={GameAccess.Get(value, "Charges") ?? "?"}"
+                   + $" usesCharges={GameAccess.Get(value, "UsesCharges") ?? "?"})";
+        }).ToList();
+
+        var giants = GameAccess.Get(aspects, "giantAspect") as IEnumerable;
+        var baseAspects = giants?.Cast<object>()
+            .Select(entry => $"{GameAccess.Get(GameAccess.Get(GameAccess.Get(entry, "Value"), "Definition"), "name")} (a giant's own)")
+            .ToList();
+        if (baseAspects != null)
+            lines.AddRange(baseAspects);
+        return lines.Count == 0 ? "empty" : string.Join(", ", lines);
     }
 
     private static int SoldMicroCount(object aspects)
