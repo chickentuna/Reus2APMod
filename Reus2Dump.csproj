@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="apworld\reus2\data\reus2.json" LogicalName="Reus2Archipelago.reus2.json" />
-    <Compile Remove="apworld\**;tools\**;dist\**" />
+    <Compile Remove="apworld\**;tools\**;dist\**;decomp\**" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
