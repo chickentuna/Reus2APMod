@@ -14,7 +14,7 @@ namespace Reus2Archipelago.Game;
 internal static class ApNotices
 {
     /// <summary>More waiting items than this are summed up in one line rather than listed.</summary>
-    private const int ListedAtOnce = 3;
+    private const int ListedAtOnce = 300;
 
     private static readonly SortedDictionary<int, ReceivedItem> Received = new SortedDictionary<int, ReceivedItem>();
     private static readonly List<(string Text, ItemFlags Flags)> Pending = new List<(string, ItemFlags)>();
@@ -100,7 +100,12 @@ internal static class ApNotices
         else
         {
             foreach (var item in fresh)
-                Pending.Add((Text("{0} sent you {1}!", item.SenderName, item.ItemName), item.Flags));
+            {
+                var text = item.SenderName == null
+                    ? Text("You received {0}!", item.ItemName)
+                    : Text("{0} sent you {1}!", item.SenderName, item.ItemName);
+                Pending.Add((text, item.Flags));
+            }
         }
 
         ProfileBinding.SetItemsAnnounced(profile, Math.Max(announced, Received.Keys.Last() + 1));
@@ -126,12 +131,13 @@ internal static class ApNotices
         internal ReceivedItem(string itemName, string senderName, bool fromSelf, ItemFlags flags)
         {
             ItemName = itemName ?? "an item";
-            SenderName = senderName ?? "Someone";
+            SenderName = senderName;
             FromSelf = fromSelf;
             Flags = flags;
         }
 
         internal string ItemName { get; }
+        /// <summary>Null when the item came to this slot from no player, as the server's /send does.</summary>
         internal string SenderName { get; }
         internal bool FromSelf { get; }
         internal ItemFlags Flags { get; }

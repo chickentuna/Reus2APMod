@@ -149,7 +149,7 @@ internal static class ApState
                 continue;
 
             Received[item.Index] = item.Name;
-            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"} from {item.SenderName ?? "<unknown>"}");
+            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"} from {item.SenderName ?? (item.FromSelf ? "this slot" : "no player")}");
             ApNotices.ItemReceived(item.Index, item.Name, item.SenderName, item.FromSelf, item.Flags);
             ItemApplier.MarkDirty();
         }
