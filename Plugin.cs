@@ -27,6 +27,7 @@ public sealed class Plugin : BaseUnityPlugin
     private ConfigEntry<bool> enableDefinitionDump;
     private ConfigEntry<bool> enableProbes;
     private ConfigEntry<bool> enableTextDump;
+    private ConfigEntry<bool> enableTextProbe;
     private ConfigEntry<bool> enableTextOverrides;
 
     /// <summary>Reus 2 destroys this component once the chainloader finishes, which is why the
@@ -58,6 +59,9 @@ public sealed class Plugin : BaseUnityPlugin
             + "happens, without changing progression, together with a tally of which patched methods "
             + "ever ran and a snapshot of the profile and session. "
             + "Writes BepInEx/plugins/reus2_probe.log.");
+        enableTextProbe = Config.Bind("Diagnostics", "EnableTextProbe", false,
+            "Log, for each text an override line names, the key the game looks it up by, what the "
+            + "translation table holds, and what the game shows. Writes to BepInEx/LogOutput.log.");
         enableTextDump = Config.Bind("Diagnostics", "EnableTextDump", false,
             "Write the active language's translation table to BepInEx/plugins/reus2_texts_<locale>.tsv.");
         enableTextOverrides = Config.Bind("Text", "EnableOverrides", true,
@@ -84,7 +88,7 @@ public sealed class Plugin : BaseUnityPlugin
 
         var applyTextOverrides = enableTextOverrides.Value && TextOverrides.AnyFilePresent();
         if (applyTextOverrides || enableTextDump.Value)
-            TextPatches.Install(harmony, applyTextOverrides, enableTextDump.Value);
+            TextPatches.Install(harmony, applyTextOverrides, enableTextDump.Value, enableTextProbe.Value);
 
         // A planet saved with Archipelago messages must load even with no slot configured.
         ApChat.Install(harmony);

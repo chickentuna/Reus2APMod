@@ -23,6 +23,9 @@ internal static class TextOverrides
     /// resolved once MacroSettings has read the key table.</summary>
     private static readonly Dictionary<string, string> Unresolved = new Dictionary<string, string>(StringComparer.Ordinal);
 
+    /// <summary>The left side of every override line read, for the text probe to recognise.</summary>
+    internal static readonly HashSet<string> Sources = new HashSet<string>(StringComparer.Ordinal);
+
     /// <summary>The mod's own folder: the override files ship next to the DLL.</summary>
     private static string Folder => Path.GetDirectoryName(typeof(Plugin).Assembly.Location) ?? Paths.PluginPath;
 
@@ -110,6 +113,8 @@ internal static class TextOverrides
 
             table[key] = entry.Value;
             replaced++;
+            if (TextProbe.Enabled)
+                Plugin.Log.LogInfo($"[text probe] override \"{TextEscaping.Escape(Shorten(entry.Key))}\" written under key \"{TextEscaping.Escape(Shorten(key))}\"");
         }
 
         if (replaced > 0)
@@ -163,6 +168,7 @@ internal static class TextOverrides
                 if (nextTab >= 0)
                     text = text.Substring(0, nextTab);
                 entries[TextEscaping.Unescape(key)] = TextEscaping.Unescape(text);
+                Sources.Add(TextEscaping.Unescape(key));
             }
 
             Plugin.Log.LogInfo($"Read {entries.Count} text overrides from {Path.GetFileName(path)}.");
@@ -191,5 +197,5 @@ internal static class TextOverrides
         return lines;
     }
 
-    private static string Shorten(string line) => line.Length <= 60 ? line : line.Substring(0, 57) + "...";
+    internal static string Shorten(string line) => line.Length <= 60 ? line : line.Substring(0, 57) + "...";
 }

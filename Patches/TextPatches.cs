@@ -14,16 +14,19 @@ internal static class TextPatches
     private static bool overrideTexts;
     private static bool dumpTexts;
 
-    internal static void Install(Harmony harmony, bool applyOverrides, bool dump)
+    internal static void Install(Harmony harmony, bool applyOverrides, bool dump, bool probe)
     {
         overrideTexts = applyOverrides;
         dumpTexts = dump;
+        TextProbe.Enabled = probe && applyOverrides;
 
         var owner = typeof(TextPatches);
         if (overrideTexts)
             Patching.Apply(harmony, "i18n.I18n_Translation", "ReadTranslations", owner, postfix: nameof(AfterReadTranslations));
         if (dumpTexts || overrideTexts)
             Patching.Apply(harmony, "MacroSettings", "ReadTranslationKeys", owner, postfix: nameof(AfterReadTranslationKeys));
+        if (TextProbe.Enabled)
+            Patching.Apply(harmony, "MacroSettings", "L", typeof(TextProbe), postfix: nameof(TextProbe.AfterL));
     }
 
     private static void AfterReadTranslations(string locale, object __result)
