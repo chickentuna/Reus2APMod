@@ -31,21 +31,21 @@ EXCLUDED_SHOP_OPTIONS = {"DailyChallengesAvailable", "Micro1", "Micro2", "Micro3
 # Profile-level unlocks that are items. Every other shop option a profile level grants is given from
 # the start.
 UNLOCK_ITEMS = [
-    ("Micros", ["Aspect"]),
-    ("Secondary Biomes", ["SecondaryBiome"]),
+    ("Unlock: Micros", ["Aspect"]),
+    ("Unlock: Secondary Biomes", ["SecondaryBiome"]),
     ("Shop: Upgrade Charges", ["Upgrade"]),
     ("Shop: Border Expansions", ["Borders"]),
-    ("Shop: Mountain Charges", ["Mountain"]),
+    ("Shop: Terraform Charges", ["Mountain"]),
     ("Shop: Nomads", ["Nomad"]),
-    ("Shop: Crevice Charges", ["Expansion"]),
+    ("Shop: Planet Expansion Charges", ["Expansion"]),
 ]
 # Filler items: the player resource each one adds to, and by how much.
 FILLER = [
     ("Eon Boost", "BonusEon", 5),
     ("Upgrade Charge", "UpgradePoints", 1),
     ("Border Expansion", "BorderExpansion", 1),
-    ("Mountain Charge", "MountainPoints", 1),
-    ("Crevice Charge", "CrevicePoints", 1),
+    ("Terraform Charge", "MountainPoints", 1),
+    ("Planet Expansion Charge", "CrevicePoints", 1),
     ("Nomad", "Nomads", 1),
 ]
 # The share of a seed's filler slots a filler item holds, rounded down, for the ones kept rare; the
@@ -64,16 +64,16 @@ PLANET_WIDE_COUNTERS = {"Global", "GlobalExceptThisBiome"}
 MAX_STACKS_REQUIRED = 6
 
 ABILITY_ITEMS = {
-    "PlaceMountain_FrostGiant": "Mountain (Frost Giant)",
-    "PlaceMountain_RockGiant": "Mountain (Rock Giant)",
-    "CreateOceanAnomaly": "Ocean Anomaly",
-    "CreateRiver": "River",
-    "CreateRiver (Use Sanctuary Animation)": "River",
-    "CreateSanctuary": "Sanctuary",
-    "CreateSanctuary (Use River Animation)": "Sanctuary",
-    "InvasiveSpecies": "Invasive Species",
-    "Create Crevice": "Crevice",
-    "UpgradeSlots": "Upgrade Slots",
+    "PlaceMountain_FrostGiant": "Terraform: Hills",
+    "PlaceMountain_RockGiant": "Terraform: Mountain",
+    "CreateOceanAnomaly": "Terraform: Ocean Anomaly",
+    "CreateRiver": "Terraform: River",
+    "CreateRiver (Use Sanctuary Animation)": "Terraform: River",
+    "CreateSanctuary": "Terraform: Sanctuary",
+    "CreateSanctuary (Use River Animation)": "Terraform: Sanctuary",
+    "InvasiveSpecies": "Terraform: Invasive Patch",
+    "Create Crevice": "Terraform: Expand Planet",
+    "UpgradeSlots": "Terraform: Upgrade Slots",
 }
 
 # Ids are <category> << 40 | <bits>. The bits come from the definition GUID where there is one, so

@@ -18,8 +18,8 @@ def apex_items() -> List[str]:
     return [b["apex_item"] for b in DATA["biotica"] if "apex_item" in b]
 
 
-MICROS_ITEM = "Micros"
-SECONDARY_BIOMES_ITEM = "Secondary Biomes"
+MICROS_ITEM = "Unlock: Micros"
+SECONDARY_BIOMES_ITEM = "Unlock: Secondary Biomes"
 
 
 def filler_items() -> List[str]:
@@ -84,7 +84,7 @@ def classifications() -> Dict[str, ItemClassification]:
     result[SECONDARY_BIOMES_ITEM] = progression
     result.update({item: ItemClassification.filler for item in filler_items()})
     result[DATA["eras"]["item"]] = useful_progression
-    result["Upgrade Slots"] = useful_progression
+    result["Terraform: Upgrade Slots"] = useful_progression
     return result
 
 

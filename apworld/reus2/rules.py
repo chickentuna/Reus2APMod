@@ -38,7 +38,7 @@ class Reus2Rules:
                 for biome in bioticum["biomes"]:
                     self.providers[biome].append(bioticum)
         self.era_item = DATA["eras"]["item"]
-        self.upgrade_item = "Upgrade Slots"
+        self.upgrade_item = "Terraform: Upgrade Slots"
         self.micro_item = {m["name"]: m["item"] for m in DATA["micros"]}
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
