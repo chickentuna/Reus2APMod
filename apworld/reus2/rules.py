@@ -3,7 +3,7 @@ from collections import defaultdict
 from BaseClasses import CollectionState
 
 from .game_data import DATA
-from .items import items_granting_biotica
+from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, items_granting_biotica
 from .options import BioticumChecks, BioticumItems
 
 
@@ -11,9 +11,9 @@ class Reus2Rules:
     """Placement logic.
 
     A bioticum is placeable in a biome when the player has an item granting it, has a giant of its
-    type, has the biome and a giant able to terraform it, has reached the era its level needs, and
-    — if it costs biodiversity — can reach that cost with zero-cost biotica placed in the same
-    biome, each counting for its level.
+    type, has the biome and a giant able to terraform it (as that giant's second biome only with
+    Secondary Biomes), has reached the era its level needs, and — if it costs biodiversity — can
+    reach that cost with zero-cost biotica placed in the same biome, each counting for its level.
     """
 
     def __init__(self, world) -> None:
@@ -23,12 +23,14 @@ class Reus2Rules:
             world.options.bioticum_items.value == BioticumItems.option_apex)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
         self.giants_of_type = defaultdict(list)
-        self.terraformers = defaultdict(list)
+        self.first_terraformers = defaultdict(list)
+        self.second_terraformers = defaultdict(list)
         for giant in DATA["giants"]:
             self.giants_of_type[giant["type"]].append(giant["item"])
-            for biome in (giant["first_biome"], giant["second_biome"]):
-                if biome:
-                    self.terraformers[biome].append(giant["item"])
+            if giant["first_biome"]:
+                self.first_terraformers[giant["first_biome"]].append(giant["item"])
+            if giant["second_biome"]:
+                self.second_terraformers[giant["second_biome"]].append(giant["item"])
         self.biome_item = {b["name"]: b["item"] for b in DATA["biomes"]}
         self.providers = defaultdict(list)
         for bioticum in DATA["biotica"]:
@@ -52,7 +54,12 @@ class Reus2Rules:
         return any(state.has_any(self.giants_of_type[t], self.player) for t in bioticum["types"])
 
     def biome_open(self, state: CollectionState, biome: str) -> bool:
-        return state.has(self.biome_item[biome], self.player) and state.has_any(self.terraformers[biome], self.player)
+        """The game locks every giant's second biome until the Secondary Biomes unlock."""
+        if not state.has(self.biome_item[biome], self.player):
+            return False
+        return (state.has_any(self.first_terraformers[biome], self.player)
+                or (state.has(SECONDARY_BIOMES_ITEM, self.player)
+                    and state.has_any(self.second_terraformers[biome], self.player)))
 
     def biodiversity_ok(self, state: CollectionState, bioticum, biome: str) -> bool:
         needed = bioticum["cost"]
@@ -123,9 +130,10 @@ class Reus2Rules:
         return False
 
     def has_micro(self, state: CollectionState, micro: str) -> bool:
-        """A Micro type is placeable once its item arrives. Charges are filler and the game pays
-        some out every era, so they never gate a location."""
-        return state.has(self.micro_item[micro], self.player)
+        """A Micro type is placeable once the Micros unlock and its own item have arrived. Charges
+        are filler and the game pays some out every era once Micros are unlocked, so they never gate
+        a location."""
+        return state.has_all((MICROS_ITEM, self.micro_item[micro]), self.player)
 
     def request_reward_ok(self, state: CollectionState, reward) -> bool:
         return state.has(self.era_item, self.player, reward["level"])

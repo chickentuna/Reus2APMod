@@ -131,7 +131,7 @@ class Reus2World(World):
 
         for name in bioticum_pool_items(self.apex_biotica):
             add(name)
-        for key in ("giants", "biomes", "abilities", "characters", "micros"):
+        for key in ("giants", "biomes", "abilities", "characters", "micros", "unlocks"):
             for entry in DATA[key]:
                 add(entry["item"])
         add(DATA["eras"]["item"], len(DATA["eras"]["eras"]))

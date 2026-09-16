@@ -46,6 +46,9 @@ class FullInventory:
     def has_any(self, names, player):
         return bool(names)
 
+    def has_all(self, names, player):
+        return True
+
 
 def main():
     modules = load_world_modules()

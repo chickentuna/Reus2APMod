@@ -19,8 +19,7 @@ internal static class ProfileBinding
     {
         public string Seed;
         public string Slot;
-        public int EonBoostsApplied;
-        public int MicroChargesApplied;
+        public Dictionary<string, int> FillerApplied = new Dictionary<string, int>();
         public int ItemsAnnounced;
         public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
         public Dictionary<string, Dictionary<int, int>> ComboRuleStacks =
@@ -78,26 +77,17 @@ internal static class ProfileBinding
         return false;
     }
 
-    internal static int EonBoostsApplied(object profile) => Read(profile)?.EonBoostsApplied ?? 0;
+    /// <summary>How many of a filler item have been paid out, each once, to the planet open when it
+    /// was applied.</summary>
+    internal static int FillerApplied(object profile, string item)
+        => Read(profile)?.FillerApplied.TryGetValue(item, out var count) == true ? count : 0;
 
-    internal static void SetEonBoostsApplied(object profile, int count)
+    internal static void SetFillerApplied(object profile, string item, int count)
     {
         var record = Read(profile);
         if (record == null)
             return;
-        record.EonBoostsApplied = count;
-        Write(profile, record);
-    }
-
-    /// <summary>Micro Charge items already paid out, each once, to the planet open when it arrived.</summary>
-    internal static int MicroChargesApplied(object profile) => Read(profile)?.MicroChargesApplied ?? 0;
-
-    internal static void SetMicroChargesApplied(object profile, int count)
-    {
-        var record = Read(profile);
-        if (record == null)
-            return;
-        record.MicroChargesApplied = count;
+        record.FillerApplied[item] = count;
         Write(profile, record);
     }
 

@@ -37614,10 +37614,6 @@
    "item_id": 6654692061722
   }
  ],
- "micro_charge": {
-  "item": "Micro Charge",
-  "item_id": 10995116277760
- },
  "eras": {
   "item": "Progressive Era",
   "item_id": 7696581394433,
@@ -37630,10 +37626,99 @@
    "Era_4_Discovery"
   ]
  },
+ "unlocks": [
+  {
+   "item": "Micros",
+   "item_id": 12097910545936,
+   "shop_options": [
+    "Aspect"
+   ]
+  },
+  {
+   "item": "Secondary Biomes",
+   "item_id": 12095641795261,
+   "shop_options": [
+    "SecondaryBiome"
+   ]
+  },
+  {
+   "item": "Shop: Upgrade Charges",
+   "item_id": 12098523397861,
+   "shop_options": [
+    "Upgrade"
+   ]
+  },
+  {
+   "item": "Shop: Border Expansions",
+   "item_id": 12096228890610,
+   "shop_options": [
+    "Borders"
+   ]
+  },
+  {
+   "item": "Shop: Mountain Charges",
+   "item_id": 12098485833060,
+   "shop_options": [
+    "Mountain"
+   ]
+  },
+  {
+   "item": "Shop: Nomads",
+   "item_id": 12097701042307,
+   "shop_options": [
+    "Nomad"
+   ]
+  },
+  {
+   "item": "Shop: Crevice Charges",
+   "item_id": 12096045811197,
+   "shop_options": [
+    "Expansion"
+   ]
+  }
+ ],
  "filler": [
   {
+   "item": "Micro Charge",
+   "item_id": 10995116277760,
+   "resource": "AspectCharges",
+   "amount": 1
+  },
+  {
    "item": "Eon Boost",
-   "item_id": 8796093022209
+   "item_id": 8796093022209,
+   "resource": "BonusEon",
+   "amount": 5
+  },
+  {
+   "item": "Upgrade Charge",
+   "item_id": 8796093022210,
+   "resource": "UpgradePoints",
+   "amount": 1
+  },
+  {
+   "item": "Border Expansion",
+   "item_id": 8796093022211,
+   "resource": "BorderExpansion",
+   "amount": 1
+  },
+  {
+   "item": "Mountain Charge",
+   "item_id": 8796093022212,
+   "resource": "MountainPoints",
+   "amount": 1
+  },
+  {
+   "item": "Crevice Charge",
+   "item_id": 8796093022213,
+   "resource": "CrevicePoints",
+   "amount": 1
+  },
+  {
+   "item": "Nomad",
+   "item_id": 8796093022214,
+   "resource": "Nomads",
+   "amount": 1
   }
  ],
  "request_rewards": [
@@ -37760,20 +37845,13 @@
   "e8ccd15f6e42a334093fb00da3725e98"
  ],
  "shop_options": [
-  "Aspect",
-  "Borders",
   "DraftPop",
   "DraftTech",
   "DraftWealth",
   "EonPop",
   "EonTech",
   "EonWealth",
-  "Expansion",
   "Extra1StarBiotica",
-  "Mountain",
-  "Nomad",
-  "SecondaryBiome",
-  "TwoStarEffects",
-  "Upgrade"
+  "TwoStarEffects"
  ]
 }

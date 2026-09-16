@@ -8,13 +8,12 @@ namespace Reus2Archipelago.Game;
 
 /// <summary>
 /// Rebuilds the bound profile's unlocks from the full stream of received items, so the profile always
-/// matches the slot, and grants per-planet items (Micros, Eon) inside the running planet. Runs on the
+/// matches the slot, and pays out filler items and Micro types inside the running planet. Runs on the
 /// main thread whenever items arrive, the profile changes, or a planet loads.
 /// </summary>
 internal static class ItemApplier
 {
-    private const float EonPerBoost = 5f;
-    private const string AspectCharges = "AspectCharges";
+    private const string UpgradePoints = "UpgradePoints";
 
     /// <summary>The shop options that buy the next Micro type of an era, which only items give.</summary>
     private static readonly string[] MicroTypeShopOptions = { "Micro1", "Micro2", "Micro3" };
@@ -145,6 +144,7 @@ internal static class ItemApplier
         ApplyEras(profile, received.TryGetValue(data.Eras.Item, out var eras) ? eras : 0);
         GrantMissing(profile, "unlockedTurningPoints", data.TurningPoints.Select(GameAccess.Definition));
         GrantShopOptions(profile, data.ShopOptions);
+        ApplyUnlocks(profile, received);
         GameAccess.Call(profile, "InvalidateSaveFile");
     }
 
@@ -193,24 +193,24 @@ internal static class ItemApplier
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items.");
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
-        var chargeItems = received.TryGetValue(ApData.Instance.MicroCharge.Item, out var chargeCount) ? chargeCount : 0;
-        var chargesApplied = ProfileBinding.MicroChargesApplied(profile);
-        if (chargeItems > chargesApplied)
-        {
-            GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(AspectCharges),
-                (float)(chargeItems - chargesApplied));
-            ProfileBinding.SetMicroChargesApplied(profile, chargeItems);
-            Plugin.Log.LogInfo($"Micro Charge: {chargeItems - chargesApplied} more Micro charge(s) this planet.");
-        }
+        foreach (var filler in ApData.Instance.Filler)
+            ApplyFiller(profile, gameplay, filler, received.TryGetValue(filler.Item, out var count) ? count : 0);
+    }
 
-        var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
-        var applied = ProfileBinding.EonBoostsApplied(profile);
-        if (boosts <= applied)
+    /// <summary>Pays out the filler items of one kind that arrived since the last payout. Upgrade
+    /// charges go through GainUP, which holds them to the game's cap, as every other source does.</summary>
+    private static void ApplyFiller(object profile, object gameplay, FillerEntry filler, int received)
+    {
+        var owed = received - ProfileBinding.FillerApplied(profile, filler.Item);
+        if (owed <= 0)
             return;
-        var bonusEon = GameAccess.Resource("BonusEon");
-        for (var i = applied; i < boosts; i++)
-            GameAccess.Call(gameplay, "ChangePlayerResource", bonusEon, EonPerBoost);
-        ProfileBinding.SetEonBoostsApplied(profile, boosts);
+        var total = owed * filler.Amount;
+        if (filler.Resource == UpgradePoints)
+            GameAccess.Call(gameplay, "GainUP", total);
+        else
+            GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(filler.Resource), total);
+        ProfileBinding.SetFillerApplied(profile, filler.Item, received);
+        Plugin.Log.LogInfo($"{filler.Item} x{owed}: +{total} {filler.Resource}.");
     }
 
     /// <summary>A place-biome ability is flagged as never needing an unlock, and the profile check
@@ -338,6 +338,30 @@ internal static class ItemApplier
         {
             if (Enum.IsDefined(optionType, name))
                 options.Remove(Enum.Parse(optionType, name));
+        }
+    }
+
+    /// <summary>The profile-level unlocks that are items: each one's shop options are on the profile
+    /// exactly while its item has been received.</summary>
+    private static void ApplyUnlocks(object profile, Dictionary<string, int> received)
+    {
+        if (!(GameAccess.Get(profile, "unlockedShopOptions") is IList options))
+            return;
+        var optionType = GameAccess.ElementType(options);
+
+        foreach (var unlock in ApData.Instance.Unlocks)
+        {
+            var held = received.ContainsKey(unlock.Item);
+            foreach (var value in unlock.ShopOptions.Select(name => Enum.Parse(optionType, name)))
+            {
+                if (held && !options.Contains(value))
+                    options.Add(value);
+                else if (!held)
+                {
+                    while (options.Contains(value))
+                        options.Remove(value);
+                }
+            }
         }
     }
 

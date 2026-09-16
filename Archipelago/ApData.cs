@@ -26,11 +26,13 @@ internal sealed class ApData
     [JsonProperty("abilities")] public List<AbilityEntry> Abilities = new List<AbilityEntry>();
     [JsonProperty("characters")] public List<GuidItem> Characters = new List<GuidItem>();
     [JsonProperty("micros")] public List<MicroEntry> Micros = new List<MicroEntry>();
-    [JsonProperty("micro_charge")] public NamedItem MicroCharge;
     [JsonProperty("eras")] public EraEntry Eras;
-    [JsonProperty("filler")] public List<NamedItem> Filler = new List<NamedItem>();
+    [JsonProperty("unlocks")] public List<UnlockEntry> Unlocks = new List<UnlockEntry>();
+    [JsonProperty("filler")] public List<FillerEntry> Filler = new List<FillerEntry>();
     [JsonProperty("request_rewards")] public List<RequestEntry> RequestRewards = new List<RequestEntry>();
     [JsonProperty("shop_drafts")] public List<ShopEntry> ShopDrafts = new List<ShopEntry>();
+    /// <summary>Granted from the start: every turning point, and the shop options that are not
+    /// <see cref="Unlocks"/>.</summary>
     [JsonProperty("turning_points")] public List<string> TurningPoints = new List<string>();
     [JsonProperty("shop_options")] public List<string> ShopOptions = new List<string>();
 
@@ -140,9 +142,19 @@ internal sealed class MicroEntry
     [JsonProperty("item")] public string Item;
 }
 
-internal sealed class NamedItem
+/// <summary>An item standing in for a profile-level unlock: the shop options it grants.</summary>
+internal sealed class UnlockEntry
 {
     [JsonProperty("item")] public string Item;
+    [JsonProperty("shop_options")] public List<string> ShopOptions = new List<string>();
+}
+
+/// <summary>A filler item: the player resource it adds to in the planet, and by how much.</summary>
+internal sealed class FillerEntry
+{
+    [JsonProperty("item")] public string Item;
+    [JsonProperty("resource")] public string Resource;
+    [JsonProperty("amount")] public float Amount;
 }
 
 internal sealed class EraEntry
