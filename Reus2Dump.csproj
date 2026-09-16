@@ -25,6 +25,45 @@
     <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" ExcludeAssets="runtime" />
   </ItemGroup>
 
+  <!-- The game's own assemblies, referenced in place from the install and never copied or
+       committed. Set ReusGameDir in Reus2Dump.local.props (git-ignored) when the game lives
+       elsewhere. -->
+  <Import Project="Reus2Dump.local.props" Condition="Exists('Reus2Dump.local.props')" />
+
+  <PropertyGroup>
+    <ReusGameDir Condition="'$(ReusGameDir)' == ''">E:\SteamLibrary\steamapps\common\Reus2</ReusGameDir>
+    <ReusManagedDir>$(ReusGameDir)\Reus 2_Data\Managed</ReusManagedDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ReusManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ReusManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>$(ReusManagedDir)\netstandard.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- The game is built against netstandard 2.1, and .NET Framework's 2.0 facade would otherwise
+       be picked in its place, which IDEs report as CS0012 on any game type. -->
+  <Target Name="UseGameNetstandard" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <ReferencePath Remove="@(ReferencePath)"
+                     Condition="'%(Filename)' == 'netstandard' And !$([System.String]::Copy('%(FullPath)').StartsWith('$(ReusManagedDir)'))" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CheckReusGameDir" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(ReusManagedDir)\Assembly-CSharp.dll')"
+           Text="Reus 2 not found at $(ReusGameDir). Create Reus2Dump.local.props with a ReusGameDir property pointing at the game folder." />
+  </Target>
+
   <ItemGroup>
     <EmbeddedResource Include="apworld\reus2\data\reus2.json" LogicalName="Reus2Archipelago.reus2.json" />
     <EmbeddedResource Include="assets\archipelago.png" LogicalName="Reus2Archipelago.archipelago.png" />

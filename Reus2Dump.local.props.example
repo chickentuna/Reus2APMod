@@ -1,0 +1,6 @@
+<!-- Copy to Reus2Dump.local.props (git-ignored) and point it at your Reus 2 install. -->
+<Project>
+  <PropertyGroup>
+    <ReusGameDir>C:\Program Files (x86)\Steam\steamapps\common\Reus2</ReusGameDir>
+  </PropertyGroup>
+</Project>
