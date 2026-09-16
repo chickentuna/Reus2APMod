@@ -31,7 +31,7 @@ class StartingPowers(Range):
     display_name = "Starting Powers"
     range_start = 0
     range_end = 3
-    default = 1
+    default = 0
 
 
 class StartingCharacters(Range):
@@ -71,7 +71,7 @@ class BioticumItems(Choice):
     display_name = "Biotica"
     option_individual = 0
     option_apex = 1
-    default = 1
+    default = 0
 
 
 class BioticumChecks(Choice):

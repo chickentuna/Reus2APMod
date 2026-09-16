@@ -69,6 +69,7 @@ def classifications() -> Dict[str, ItemClassification]:
     result.update({item: ItemClassification.filler for item in filler_items()})
     result[DATA["bonus_micro"]["item"]] = ItemClassification.filler
     result[DATA["eras"]["item"]] = useful_progression
+    result["Upgrade Slots"] = useful_progression
     return result
 
 

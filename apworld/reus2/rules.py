@@ -37,13 +37,17 @@ class Reus2Rules:
                 for biome in bioticum["biomes"]:
                     self.providers[biome].append(bioticum)
         self.era_item = DATA["eras"]["item"]
+        self.upgrade_item = "Upgrade Slots"
         self.micro_item = {m["name"]: m["item"] for m in DATA["micros"]}
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
         return state.has_any(self.granting[bioticum["name"]], self.player)
 
     def level_ok(self, state: CollectionState, level: int) -> bool:
-        return state.has(self.era_item, self.player, level - 1)
+        """A bioticum above level 1 needs a slot of its level, and Upgrade Slots is what raises one;
+        the one ability serves both levels."""
+        return (state.has(self.era_item, self.player, level - 1)
+                and (level < 2 or state.has(self.upgrade_item, self.player)))
 
     def has_giant_for(self, state: CollectionState, bioticum) -> bool:
         return any(state.has_any(self.giants_of_type[t], self.player) for t in bioticum["types"])
