@@ -91,6 +91,23 @@ internal static class GameAccess
         return definitionsByGuid.Values.Where(d => d.GetType().Name == typeName);
     }
 
+    /// <summary>Entries of a dictionary whose generic type the plugin does not reference, read
+    /// through the Key and Value of each boxed pair.</summary>
+    internal static IEnumerable<KeyValuePair<string, object>> Pairs(object dictionary)
+    {
+        if (dictionary is not IEnumerable entries)
+            yield break;
+
+        foreach (var entry in entries)
+        {
+            if (entry == null)
+                continue;
+            if (Get(entry, "Key") is not string key)
+                continue;
+            yield return new KeyValuePair<string, object>(key, Get(entry, "Value"));
+        }
+    }
+
     internal static object Get(object target, string name)
     {
         if (target == null)

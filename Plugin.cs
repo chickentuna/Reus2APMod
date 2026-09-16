@@ -26,6 +26,8 @@ public sealed class Plugin : BaseUnityPlugin
     private ConfigEntry<bool> autoConnect;
     private ConfigEntry<bool> enableDefinitionDump;
     private ConfigEntry<bool> enableProbes;
+    private ConfigEntry<bool> enableTextDump;
+    private ConfigEntry<bool> enableTextOverrides;
 
     /// <summary>Reus 2 destroys this component once the chainloader finishes, which is why the
     /// plugin's Update never ticks and MainThreadRunner drives the per-frame work from its own
@@ -56,6 +58,13 @@ public sealed class Plugin : BaseUnityPlugin
             + "happens, without changing progression, together with a tally of which patched methods "
             + "ever ran and a snapshot of the profile and session. "
             + "Writes BepInEx/plugins/reus2_probe.log.");
+        enableTextDump = Config.Bind("Diagnostics", "EnableTextDump", false,
+            "Write the active language's translation table to "
+            + "BepInEx/plugins/reus2_texts_<locale>.tsv, and the override template beside it.");
+        enableTextOverrides = Config.Bind("Text", "EnableOverrides", true,
+            "Replace game texts from BepInEx/plugins/reus2_text_overrides.tsv and "
+            + "reus2_text_overrides.<locale>.tsv when either file is present.");
+
         DefinitionDumper.MaxDepth = Config.Bind("Dump", "MaxDepth", 4,
             "How deep to follow nested objects such as objective filters before writing a placeholder.").Value;
         DefinitionDumper.OutputPath = Config.Bind("Dump", "OutputPath", "",
@@ -73,6 +82,10 @@ public sealed class Plugin : BaseUnityPlugin
 
         if (enableProbes.Value)
             GameProbes.Install(harmony);
+
+        var applyTextOverrides = enableTextOverrides.Value && TextOverrides.AnyFilePresent();
+        if (applyTextOverrides || enableTextDump.Value)
+            TextPatches.Install(harmony, applyTextOverrides, enableTextDump.Value);
 
         if (ApMode && ApData.Load())
         {
