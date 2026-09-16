@@ -87,8 +87,8 @@ public sealed class Plugin : BaseUnityPlugin
         if (applyTextOverrides || enableTextDump.Value)
             TextPatches.Install(harmony, applyTextOverrides, enableTextDump.Value);
 
-        if (ApMode)
-            ApChat.Install(harmony);
+        // A planet saved with Archipelago messages must load even with no slot configured.
+        ApChat.Install(harmony);
 
         if (ApMode && ApData.Load())
         {

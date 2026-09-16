@@ -42,7 +42,7 @@ internal static class ApChat
 
     internal static void Install(Harmony harmony)
     {
-        Patching.Apply(harmony, "ChatMessage", "SerializeData", typeof(ApChat), postfix: nameof(AfterSerializeData));
+        Patching.Apply(harmony, "CityMemory", "Serialize", typeof(ApChat), prefix: nameof(SerializeApMemory));
     }
 
     /// <summary>Adds a message to the chat log. False outside a planet, where there is no log.</summary>
@@ -99,17 +99,24 @@ internal static class ApChat
         return leader;
     }
 
-    /// <summary>A save stores the leader as a definition ID, which the definition database cannot
-    /// resolve on load, so the leader comes back null and the portrait would throw. It is restored
-    /// here from the city index.</summary>
-    private static void AfterSerializeData(ChatMessage __instance)
+    /// <summary>
+    /// CityMemory.Serialize for an Archipelago message, both saving and loading. A save stores a
+    /// leader as its definition ID, and the runtime-made leader has none, so the load would throw
+    /// looking up an empty ID and fail the whole session. The leader is therefore never written, and
+    /// on load it comes back from the city index, which is read first. Every other memory is serialized
+    /// as the original does. A save written before this still holds the empty leader, which is skipped
+    /// the same way.
+    /// </summary>
+    private static bool SerializeApMemory(CityMemory __instance, ISerializationArchive archive)
     {
-        var memory = __instance.cityMemory;
-        if (memory == null || memory.leaderCharacter != null)
-            return;
-
-        var badge = (Badge)(BaseCityIndex - memory.cityIndex);
+        archive.Serialize("cityIndex", ref __instance.cityIndex);
+        archive.Serialize("cityName", ref __instance.cityName);
+        var badge = (Badge)(BaseCityIndex - __instance.cityIndex);
         if (badge >= Badge.None && badge <= Badge.Trap)
-            memory.leaderCharacter = Leader(badge);
+            __instance.leaderCharacter = Leader(badge);
+        else
+            archive.SerializeDefinition("leaderCharacter", ref __instance.leaderCharacter);
+        archive.Serialize("cityColor", ref __instance.cityColor);
+        return false;
     }
 }
