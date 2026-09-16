@@ -54,8 +54,6 @@ internal static class BioticaBadges
     {
         yield return entry.BuildLocation;
         yield return entry.AllCombosLocation;
-        foreach (var rule in entry.Rules)
-            yield return rule.Location;
     }
 
     private static void Show(BioticumDefinition definition, bool badge)

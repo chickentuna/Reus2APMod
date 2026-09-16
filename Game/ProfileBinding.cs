@@ -22,9 +22,6 @@ internal static class ProfileBinding
         public Dictionary<string, Dictionary<string, int>> FillerAppliedBySession =
             new Dictionary<string, Dictionary<string, int>>();
         public int ItemsAnnounced;
-        public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
-        public Dictionary<string, Dictionary<int, int>> ComboRuleStacks =
-            new Dictionary<string, Dictionary<int, int>>();
     }
 
     private static readonly Dictionary<string, Record> Cache = new Dictionary<string, Record>();
@@ -111,38 +108,6 @@ internal static class ProfileBinding
             return;
         record.ItemsAnnounced = count;
         Write(profile, record);
-    }
-
-    /// <summary>Notes a bioticum's rule index as activated and returns how many of that bioticum's
-    /// rule indexes have been activated, over every planet the slot has played.</summary>
-    internal static int AddActivatedComboRule(object profile, string guid, int ruleIndex)
-    {
-        var record = Read(profile);
-        if (record == null)
-            return 0;
-        if (!record.ActivatedComboRules.TryGetValue(guid, out var indexes))
-            record.ActivatedComboRules[guid] = indexes = new List<int>();
-        if (indexes.Contains(ruleIndex))
-            return indexes.Count;
-        indexes.Add(ruleIndex);
-        Write(profile, record);
-        return indexes.Count;
-    }
-
-    /// <summary>Notes the stack a bioticum's rule has reached, keeping the highest that rule has
-    /// reached on any planet the slot has played, and returns the stack of each of its rules.</summary>
-    internal static Dictionary<int, int> AddComboRuleStack(object profile, string guid, int ruleIndex, int stack)
-    {
-        var record = Read(profile);
-        if (record == null)
-            return new Dictionary<int, int>();
-        if (!record.ComboRuleStacks.TryGetValue(guid, out var stacks))
-            record.ComboRuleStacks[guid] = stacks = new Dictionary<int, int>();
-        if (stacks.TryGetValue(ruleIndex, out var highest) && highest >= stack)
-            return stacks;
-        stacks[ruleIndex] = stack;
-        Write(profile, record);
-        return stacks;
     }
 
     private static bool Matches(Record record, string seed, string slot) => record.Seed == seed && record.Slot == slot;

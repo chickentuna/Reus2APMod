@@ -77,22 +77,16 @@ class BioticumItems(Choice):
 class BioticumChecks(Choice):
     """Which locations a bioticum carries.
 
-    - **Build only:** building it, and nothing for its combos.
-    - **Build and combos:** building it, and a second one for triggering every combo rule it has.
-    - **Combos only:** one location, sent once every combo rule it has has been triggered, which
-      takes building it along the way.
-    - **Per rule:** building it, and one for each combo rule separately.
-    - **Max combos:** the combos-only location, sent once every combo rule that stacks 6 times or
-      fewer has reached its maximum stack and every other rule has been triggered.
+    - **Build only:** building it, so 1 check per biotica
+    - **When Synergized:** one location, sent once every synergy rule has been triggered simultaneously, so 1 check per biotica.
+    - **Build And Synergized:** on location for building it, and a second check for triggering every synergy it has simultaneously, so 2 checks per biotica, except those with no synergy rules.
 
-    A bioticum with no combo rule carries its build in every case."""
+    """
     display_name = "Bioticum Checks"
     option_build_only = 0
-    option_build_and_combos = 1
-    option_combos_only = 2
-    option_per_rule = 3
-    option_max_combos = 4
-    default = 2
+    option_when_synergized = 1
+    option_build_and_synergized = 2
+    default = 1
 
 
 @dataclass

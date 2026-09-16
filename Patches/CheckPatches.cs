@@ -9,18 +9,15 @@ using Reus2Archipelago.Game;
 namespace Reus2Archipelago.Patches;
 
 /// <summary>
-/// Sends checks: a bioticum's first build, its combo rules — one check each, or one for all of them
-/// fired, or one for all of them at their maximum stack, as bioticum_checks says — and the
-/// draft-paying request rewards and shop draft purchases within a planet that the slot turned into
-/// checks.
+/// Sends checks: a bioticum's first build and the moment every combo rule of one of its placements
+/// is active at once, as bioticum_checks says, and the draft-paying request rewards and shop draft
+/// purchases within a planet that the slot turned into checks.
 /// </summary>
 internal static class CheckPatches
 {
     private const int BuildOnly = 0;
-    private const int BuildAndCombos = 1;
-    private const int CombosOnly = 2;
-    private const int PerRule = 3;
-    private const int MaxCombos = 4;
+    private const int WhenSynergized = 1;
+    private const int BuildAndSynergized = 2;
 
     internal static void Install(Harmony harmony)
     {
@@ -48,10 +45,10 @@ internal static class CheckPatches
             Plugin.Log.LogWarning($"Placed a bioticum the data does not hold: {guid ?? "no id"}.");
             return;
         }
-        // Under combos_only and max_combos a bioticum that has combo rules carries one location, its
-        // combos, so its build sends nothing; one with no rule keeps its build.
+        // Under when_synergized a bioticum that has combo rules carries one location, its combos, so
+        // its build sends nothing; one with no rule keeps its build.
         var checks = ApState.SlotInt("bioticum_checks", BuildOnly);
-        if ((checks == CombosOnly || checks == MaxCombos) && entry.Rules.Count > 0)
+        if (checks == WhenSynergized && entry.Rules.Count > 0)
             return;
         ApState.SendCheck(entry.BuildLocation);
     }
@@ -65,9 +62,9 @@ internal static class CheckPatches
         SendCombo(__instance, "rule activity");
     }
 
-    /// <summary>Resolves a rule state to the bioticum and rule index it belongs to and sends what the
-    /// mode calls for. Three callbacks reach this; a location is only ever sent once, and under
-    /// max_combos every arrival notes the stack the rule has reached.</summary>
+    /// <summary>Resolves a rule state to the bioticum it belongs to and sends its combos location when
+    /// every combo rule of that placement is active at this moment. Three callbacks reach this; a
+    /// location is only ever sent once.</summary>
     private static void SendCombo(object ruleState, string source)
     {
         if (ruleState == null || !ItemApplier.ProfileBound)
@@ -85,7 +82,8 @@ internal static class CheckPatches
         if (GameAccess.Get(context, "PreviewedBioticum") != null)
             return;
 
-        var definition = GameAccess.Get(GameAccess.Get(context, "slot"), "BioticumDefinition");
+        var slot = GameAccess.Get(context, "slot");
+        var definition = GameAccess.Get(slot, "BioticumDefinition");
         var guid = GameAccess.DefinitionId(definition);
         if (guid == null)
         {
@@ -108,19 +106,10 @@ internal static class CheckPatches
             index++;
             if (!ReferenceEquals(candidate, rule))
                 continue;
-            if (ApData.Instance.ComboRule(guid, index) is RuleEntry combo)
-            {
-                if (mode == PerRule)
-                    ApState.SendCheck(combo.Location);
-                else if (mode == MaxCombos)
-                    SendWhenEveryRuleMaxed(guid, index, StackReached(ruleState));
-                else
-                    SendWhenEveryRuleActivated(guid, index);
-            }
+            if (ApData.Instance.ComboRule(guid, index) != null)
+                SendWhenEveryRuleActive(slot, guid, rules);
             else
-            {
                 Bail(ruleState, $"{source}: rule {index} of {name} carries no location");
-            }
             return;
         }
         Bail(ruleState, $"{source}: the rule is not in {name}'s rules list");
@@ -156,32 +145,31 @@ internal static class CheckPatches
         SendCombo(__args[2], "slot for-each count");
     }
 
-    private static void SendWhenEveryRuleActivated(string guid, int ruleIndex)
+    /// <summary>Sends the combos location when, on this slot, the state of every rule the data keeps
+    /// is active right now. A counting rule is active while its count is above 0. The last rule to
+    /// turn active is the one that sends, whatever order they fire in.</summary>
+    private static void SendWhenEveryRuleActive(object slot, string guid, IEnumerable rules)
     {
         var bioticum = ApData.Instance.BioticumForGuid(guid);
         if (bioticum?.AllCombosLocation == null)
             return;
-        var activated = ProfileBinding.AddActivatedComboRule(GameAccess.CurrentProfile, guid, ruleIndex);
-        if (activated >= bioticum.Rules.Count)
-            ApState.SendCheck(bioticum.AllCombosLocation);
-    }
-
-    /// <summary>SlotForEachRuleState.ForeachCount is the count the rule last calculated, which
-    /// SlotForeachRule.CapOnMaxStacks has already held to the rule's maxStacks. The states of rules
-    /// that only turn active carry no count, and turning active is their one stack.</summary>
-    private static int StackReached(object ruleState)
-        => GameAccess.Get(ruleState, "ForeachCount") is int count ? count : 1;
-
-    private static void SendWhenEveryRuleMaxed(string guid, int ruleIndex, int stack)
-    {
-        var bioticum = ApData.Instance.BioticumForGuid(guid);
-        if (bioticum?.AllCombosLocation == null)
+        if (!(GameAccess.Get(GameAccess.Get(slot, "BonusState"), "AllRuleStates") is IEnumerable states))
             return;
-        var stacks = ProfileBinding.AddComboRuleStack(GameAccess.CurrentProfile, guid, ruleIndex, stack);
-        foreach (var rule in bioticum.Rules)
+
+        var active = new List<object>();
+        foreach (var state in states)
         {
-            var wanted = rule.MaxStacks > 0 ? rule.MaxStacks : 1;
-            if (!stacks.TryGetValue(rule.RuleIndex, out var reached) || reached < wanted)
+            if (GameAccess.Get(state, "IsActive") is bool on && on)
+                active.Add(GameAccess.Get(state, "RuleDefinitionBase"));
+        }
+
+        var index = -1;
+        foreach (var rule in rules)
+        {
+            index++;
+            if (ApData.Instance.ComboRule(guid, index) == null)
+                continue;
+            if (!active.Exists(definition => ReferenceEquals(definition, rule)))
                 return;
         }
         ApState.SendCheck(bioticum.AllCombosLocation);

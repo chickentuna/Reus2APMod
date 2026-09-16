@@ -55,13 +55,6 @@ MICRO_RARITY_ORDER = {"Basic": 0, "Era1": 1, "Era2": 2, "Era3": 3}
 # Rule counters that count across the whole planet; every other counter looks around the bioticum,
 # so its candidates must share the bioticum's biome.
 PLANET_WIDE_COUNTERS = {"Global", "GlobalExceptThisBiome"}
-# SlotForeachRule.maxStacks is how far a rule stacks, and the game reads 0 as no limit. The caps the
-# base game gives the rules kept here are 2 to 6, then 8 and up to 1500 with nothing in between. Each
-# cap of 6 or less counts biotica around the bioticum, at most the six adjacent slots that
-# SlotForeachRule.GetMaxOptimalConnections gives an uncapped adjacency rule; each larger one counts
-# empty slots, biodiversity, fossil fuel or ruggedness instead, and 1500 of any of those is beyond a
-# planet. A rule capped above this is written out as 0, so max_combos asks it to activate and no more.
-MAX_STACKS_REQUIRED = 6
 
 ABILITY_ITEMS = {
     "PlaceMountain_FrostGiant": "Terraform: Hills",
@@ -114,12 +107,6 @@ def ref_names(values):
 
 def clean(name):
     return re.sub(r"^\d+\.?\s+", "", name).strip()
-
-
-def required_stacks(rule):
-    """The stack count max_combos asks a rule to reach, 0 when it asks only that the rule fire."""
-    stacks = int(rule.get("maxStacks") or 0)
-    return stacks if stacks <= MAX_STACKS_REQUIRED else 0
 
 
 def candidates(groups, count=1, **extra):
@@ -225,21 +212,14 @@ def build_biotica(definitions, micro_names):
         real = [(index, rule) for index, rule in enumerate(b.pop("raw_rules"))
                 if isinstance(rule, dict) and not str(rule.get("$type", "")).startswith("Fake")]
         rules = []
-        for number, (index, rule) in enumerate(real, 1):
-            assert index < 32, f"rule index {index} on {b['name']} does not fit the combo id"
+        for index, rule in real:
             requirement = rule_requirement(rule, pool, display, micro_names)
             if requirement and requirement["kind"] == "candidates" and rule.get("ruleCounter") in PLANET_WIDE_COUNTERS:
                 requirement["any_biome"] = True
             if requirement is None or requirement.get("require_biome", b["biomes"][0]) not in b["biomes"]:
                 skipped_rules += 1
                 continue
-            name = f"{b['name']} Combo" if len(real) == 1 else f"{b['name']} Combo {number}"
-            rules.append({
-                "rule_index": index, "type": rule["$type"], "location": name,
-                "location_id": location_id("combo", (guid_bits(b["guid"], 8) << 5) | index),
-                "max_stacks": required_stacks(rule),
-                **requirement,
-            })
+            rules.append({"rule_index": index, "type": rule["$type"], **requirement})
         b["rules"] = rules
         # An apex bioticum brings its cohorts with it, so one item can grant all of them.
         cohorts = sorted({display[n] for n in b.pop("raw_cohorts") if n in display})
@@ -336,7 +316,6 @@ def main():
               for e in data[key]]
     items += [(data["eras"]["item"], data["eras"]["item_id"])]
     locations = [(b["build_location"], b["build_location_id"]) for b in data["biotica"]]
-    locations += [(r["location"], r["location_id"]) for b in data["biotica"] for r in b["rules"]]
     locations += [(b["all_combos_location"], b["all_combos_location_id"]) for b in data["biotica"] if b["rules"]]
     locations += [(e["location"], e["location_id"]) for key in ("request_rewards", "shop_drafts") for e in data[key]]
     for label, table in (("item", items), ("location", locations)):

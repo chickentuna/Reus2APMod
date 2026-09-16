@@ -4,7 +4,7 @@ from BaseClasses import CollectionState
 
 from .game_data import DATA
 from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, items_granting_biotica
-from .options import BioticumChecks, BioticumItems
+from .options import BioticumItems
 
 
 class Reus2Rules:
@@ -18,7 +18,6 @@ class Reus2Rules:
 
     def __init__(self, world) -> None:
         self.player = world.player
-        self.max_combos = world.options.bioticum_checks.value == BioticumChecks.option_max_combos
         self.granting = items_granting_biotica(
             world.options.bioticum_items.value == BioticumItems.option_apex)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
@@ -86,13 +85,18 @@ class Reus2Rules:
     def can_build(self, state: CollectionState, bioticum) -> bool:
         return any(self.can_place(state, bioticum, biome) for biome in bioticum["biomes"])
 
-    def can_combo(self, state: CollectionState, bioticum, rule) -> bool:
-        biomes = [rule["require_biome"]] if rule.get("require_biome") else bioticum["biomes"]
-        return any(self.can_place(state, bioticum, biome) and self.requirement_met(state, bioticum, rule, biome)
-                   for biome in biomes)
-
     def can_combo_all(self, state: CollectionState, bioticum) -> bool:
-        return all(self.can_combo(state, bioticum, rule) for rule in bioticum["rules"])
+        """Every combo rule active at once on one placement, so all of them in the one biome it is
+        placed in. A rule that names a biome decides that biome, and two naming different biomes
+        can never be active together."""
+        rules = bioticum["rules"]
+        named = {rule["require_biome"] for rule in rules if rule.get("require_biome")}
+        if len(named) > 1:
+            return False
+        biomes = sorted(named) or bioticum["biomes"]
+        return any(self.can_place(state, bioticum, biome)
+                   and all(self.requirement_met(state, bioticum, rule, biome) for rule in rules)
+                   for biome in biomes)
 
     def requirement_met(self, state: CollectionState, bioticum, rule, biome: str) -> bool:
         kind = rule["kind"]
@@ -104,13 +108,8 @@ class Reus2Rules:
             return self.has_micro(state, rule["micro"])
         in_biome = None if rule.get("any_biome") else biome
         allow_self = rule.get("allow_self", False)
-        return all(self.enough_candidates(state, bioticum, group, self.needed(rule), in_biome, allow_self)
+        return all(self.enough_candidates(state, bioticum, group, rule["count"], in_biome, allow_self)
                    for group in rule["groups"])
-
-    def needed(self, rule) -> int:
-        """How many of a group's biotica the rule asks for. Each stack of a capped rule counts one
-        more of them, so max_combos asks for `max_stacks` where that is the larger number."""
-        return max(rule["count"], rule["max_stacks"]) if self.max_combos else rule["count"]
 
     def enough_candidates(self, state: CollectionState, bioticum, group, count: int, biome, allow_self: bool) -> bool:
         """A group names each bioticum once, and the player may place a bioticum as many times as

@@ -14,10 +14,6 @@ from .rules import Reus2Rules
 GOAL_LOCATION = "Thriving Planet"
 VICTORY = "Victory"
 ROLE_TYPES = ("Plant", "Animal", "Geo")
-# The values under which a bioticum that has combo rules carries its All Combos location alone, its
-# build sending nothing. They differ in what the location asks of each rule, not in which locations
-# exist, so both read the same All Combos name and id.
-ALL_COMBOS_ALONE = (BioticumChecks.option_combos_only, BioticumChecks.option_max_combos)
 
 
 class Reus2World(World):
@@ -94,11 +90,9 @@ class Reus2World(World):
         for bioticum in DATA["biotica"]:
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
-                if checks == BioticumChecks.option_per_rule:
-                    locations.update({rule["location"]: rule["location_id"] for rule in combos})
-                else:
-                    locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
-            if not (combos and checks in ALL_COMBOS_ALONE):
+                locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
+            # Under when_synergized a bioticum that has combo rules carries its All Combos location alone.
+            if not (combos and checks == BioticumChecks.option_when_synergized):
                 locations[bioticum["build_location"]] = bioticum["build_location_id"]
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
             locations[reward["location"]] = reward["location_id"]
@@ -159,14 +153,9 @@ class Reus2World(World):
         for bioticum in DATA["biotica"]:
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
-                if checks == BioticumChecks.option_per_rule:
-                    for rule in combos:
-                        self.get_location(rule["location"]).access_rule = \
-                            lambda state, b=bioticum, r=rule: rules.can_combo(state, b, r)
-                else:
-                    self.get_location(bioticum["all_combos_location"]).access_rule = \
-                        lambda state, b=bioticum: rules.can_combo_all(state, b)
-            if not (combos and checks in ALL_COMBOS_ALONE):
+                self.get_location(bioticum["all_combos_location"]).access_rule = \
+                    lambda state, b=bioticum: rules.can_combo_all(state, b)
+            if not (combos and checks == BioticumChecks.option_when_synergized):
                 self.get_location(bioticum["build_location"]).access_rule = \
                     lambda state, b=bioticum: rules.can_build(state, b)
         for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:

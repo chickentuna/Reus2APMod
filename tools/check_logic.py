@@ -55,9 +55,7 @@ def main():
     data = modules["game_data"].DATA
 
     checks = modules["options"].BioticumChecks
-    values = (checks.option_build_only, checks.option_build_and_combos,
-              checks.option_combos_only, checks.option_per_rule, checks.option_max_combos)
-    all_combos_alone = (checks.option_combos_only, checks.option_max_combos)
+    values = (checks.option_build_only, checks.option_when_synergized, checks.option_build_and_synergized)
 
     failures = []
     modes = [(bioticum_items, bioticum_checks)
@@ -71,15 +69,11 @@ def main():
         state = FullInventory()
         for bioticum in data["biotica"]:
             combos = bioticum["rules"]
-            if not (combos and bioticum_checks in all_combos_alone):
+            if not (combos and bioticum_checks == checks.option_when_synergized):
                 if not rules.can_build(state, bioticum):
                     failures.append((mode, bioticum["build_location"], "build"))
             if combos and bioticum_checks != checks.option_build_only:
-                if bioticum_checks == checks.option_per_rule:
-                    for rule in combos:
-                        if not rules.can_combo(state, bioticum, rule):
-                            failures.append((mode, rule["location"], rule["type"]))
-                elif not rules.can_combo_all(state, bioticum):
+                if not rules.can_combo_all(state, bioticum):
                     failures.append((mode, bioticum["all_combos_location"], "all combos"))
         if not rules.builds_reachable(state, len(data["biotica"])):
             failures.append((mode, "goal", "not every build reachable"))
