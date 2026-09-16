@@ -188,7 +188,6 @@ internal static class ItemApplier
         var scenario = GameAccess.Get(GameAccess.SessionContext, "Scenario");
         GameAccess.Set(scenario, "draftsLocked", true);
         AddReceivedMicroTypes(GameAccess.Get(gameplay, "aspectController"), received);
-        LockUnreceivedBiomes(gameplay);
         Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items.");
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
@@ -211,28 +210,6 @@ internal static class ItemApplier
             GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(filler.Resource), total);
         ProfileBinding.SetFillerApplied(profile, filler.Item, received);
         Plugin.Log.LogInfo($"{filler.Item} x{owed}: +{total} {filler.Resource}.");
-    }
-
-    /// <summary>A place-biome ability is flagged as never needing an unlock, and the profile check
-    /// that would stop it is only read by the giant information menu, so the run's own locked-ability
-    /// list carries it: GiantAbility reads that list before it asks the scenario.</summary>
-    private static void LockUnreceivedBiomes(object gameplay)
-    {
-        if (!(GameAccess.Get(GameAccess.CurrentProfile, "UnlockedBiomes") is IEnumerable unlocked))
-            return;
-        var held = unlocked.Cast<object>().ToList();
-
-        foreach (var definition in GameAccess.DefinitionsOfType("PlaceBiomeAbilityDefinition"))
-        {
-            var biome = GameAccess.Get(GameAccess.Get(definition, "biomeType"), "biomeType");
-            if (biome == null)
-                continue;
-            if (held.Any(b => Equals(b, biome)))
-                GameAccess.Call(gameplay, "UnlockAbility", definition);
-            else
-                GameAccess.Call(gameplay, "LockAbility", definition,
-                    $"{biome} has not arrived from Archipelago yet.");
-        }
     }
 
     /// <summary>The game draws no Micro types of its own on a bound profile, so a type whose item has

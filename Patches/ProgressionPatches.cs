@@ -31,8 +31,23 @@ internal static class ProgressionPatches
         Patching.Apply(harmony, "EraFeatController", "OnWorldStageControllerActivated", owner, postfix: nameof(PlanetLoaded));
         Patching.Apply(harmony, "AspectController", "DrawSetForEra", owner, prefix: nameof(SkipDrawnMicroType));
         Patching.Apply(harmony, "AspectController", "DrawInitialSet", owner, postfix: nameof(AfterInitialMicros));
+        Patching.Apply(harmony, "GiantAbility", "IsLocked", owner, postfix: nameof(LockUnreceivedBiome));
         Patching.Apply(harmony, "GameplayShop", "IsOptionUnlocked", owner, postfix: nameof(LockSpentDraftShop));
         Patching.Apply(harmony, "GameplayShop", "CanBuy", owner, postfix: nameof(LockSpentDraftShop));
+    }
+
+    // IsLocked answers a biome power from the giant's first and second biome alone and returns before
+    // it reads the planet's locked abilities, so a biome whose item has not arrived is locked here.
+    // IsLockedForMetaGame reads the profile's unlocked biomes, which the received items set; the
+    // ability buttons read IsLocked to decide whether they can be clicked.
+    private static void LockUnreceivedBiome(MethodBase __originalMethod, GiantAbility __instance, ref (bool, string) __result)
+    {
+        if (__result.Item1 || !(__instance.Definition is PlaceBiomeAbilityDefinition biome) || !ItemApplier.ProfileBound)
+            return;
+        if (!biome.IsLockedForMetaGame())
+            return;
+        __result = (true, MacroSettings.L("{0} has not arrived from Archipelago yet.", biome.biomeType.GetRichName()));
+        Record(__originalMethod, () => $"biome={biome.biomeType.biomeType} locked", quiet: true);
     }
 
     // Drafts are locked, so buying one only sends a Shop Draft check. Once none of the seed's is left to
