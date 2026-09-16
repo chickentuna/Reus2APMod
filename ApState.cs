@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Archipelago.MultiClient.Net.Enums;
 using Newtonsoft.Json.Linq;
 using Reus2Archipelago.Archipelago;
 using Reus2Archipelago.Game;
@@ -38,6 +39,14 @@ internal static class ApState
 
     internal static IEnumerable<string> ReceivedItems => Received.Values;
 
+    /// <summary>The item the last sent check held, who it was for, and whether that is this slot.
+    /// Null until a check goes out with the seed scouted.</summary>
+    internal static string LastSentItem { get; private set; }
+
+    internal static string LastSentTo { get; private set; }
+
+    internal static bool LastSentToSelf { get; private set; }
+
     internal static void AdoptSession(
         ArchipelagoClient newClient,
         IEnumerable<string> alreadyChecked,
@@ -49,6 +58,7 @@ internal static class ApState
         client = newClient;
         CheckedLocations.Clear();
         Received.Clear();
+        ApNotices.Reset();
 
         if (alreadyChecked != null)
         {
@@ -92,9 +102,12 @@ internal static class ApState
     internal static void QueueReceivedItem(
         ArchipelagoClient source,
         int index,
-        string itemName)
+        string itemName,
+        string senderName,
+        bool fromSelf,
+        ItemFlags flags)
     {
-        PendingItems.Enqueue(new PendingItem(source, index, itemName));
+        PendingItems.Enqueue(new PendingItem(source, index, itemName, senderName, fromSelf, flags));
     }
 
     internal static void QueueDisconnect(ArchipelagoClient source, string reason)
@@ -121,7 +134,8 @@ internal static class ApState
                 continue;
 
             Received[item.Index] = item.Name;
-            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"}");
+            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"} from {item.SenderName ?? "<unknown>"}");
+            ApNotices.ItemReceived(item.Index, item.Name, item.SenderName, item.FromSelf, item.Flags);
             ItemApplier.MarkDirty();
         }
     }
@@ -141,7 +155,21 @@ internal static class ApState
 
         UnsentChecks.Remove(locationName);
         CheckedLocations.Add(locationName);
-        Plugin.Log.LogInfo($"Sent check: {locationName}");
+
+        // What that check just handed out. Unknown until the connect-time scout lands, so a check
+        // sent in the first seconds of a session has no names to show.
+        var known = client.TryDescribeCheck(locationName, out var itemName, out var receiverName, out var forSelf,
+            out var flags);
+        LastSentItem = known ? itemName : null;
+        LastSentTo = known ? receiverName : null;
+        LastSentToSelf = known && forSelf;
+
+        if (known)
+            ApNotices.CheckSent(itemName, receiverName, forSelf, flags);
+
+        Plugin.Log.LogInfo(known
+            ? $"Sent check: {locationName} — {LastSentItem} for {(forSelf ? "you" : LastSentTo)}"
+            : $"Sent check: {locationName}");
         CheckGoal();
         return true;
     }
@@ -198,16 +226,23 @@ internal static class ApState
 
     private readonly struct PendingItem
     {
-        internal PendingItem(ArchipelagoClient source, int index, string name)
+        internal PendingItem(ArchipelagoClient source, int index, string name, string senderName, bool fromSelf,
+            ItemFlags flags)
         {
             Source = source;
             Index = index;
             Name = name;
+            SenderName = senderName;
+            FromSelf = fromSelf;
+            Flags = flags;
         }
 
         internal ArchipelagoClient Source { get; }
         internal int Index { get; }
         internal string Name { get; }
+        internal string SenderName { get; }
+        internal bool FromSelf { get; }
+        internal ItemFlags Flags { get; }
     }
 
     private readonly struct PendingDisconnect

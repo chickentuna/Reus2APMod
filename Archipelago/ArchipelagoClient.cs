@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
+using Archipelago.MultiClient.Net.Models;
 
 namespace Reus2Archipelago.Archipelago;
 
@@ -16,6 +18,11 @@ internal sealed class ArchipelagoClient
 
     private ArchipelagoSession session;
     private int nextItemIndex;
+
+    /// <summary>What each of this slot's locations holds, scouted once at connect so a check can
+    /// name its item without a round trip. Filled from a background task, hence the lock.</summary>
+    private readonly Dictionary<long, ScoutedItemInfo> scouted = new Dictionary<long, ScoutedItemInfo>();
+    private readonly object scoutLock = new object();
 
     internal bool Connected => session?.Socket?.Connected == true;
 
@@ -44,6 +51,7 @@ internal sealed class ArchipelagoClient
             ApState.AdoptSession(this, CheckedLocationNames(), slot, session.RoomState.Seed, success.SlotData);
 
             nextItemIndex = 0;
+            ScoutSeed();
             session.Items.ItemReceived += OnItemReceived;
             session.Socket.SocketClosed += OnSocketClosed;
 
@@ -108,6 +116,63 @@ internal sealed class ArchipelagoClient
         return true;
     }
 
+    /// <summary>What a location holds and who it is for. False before the scout lands, and for a
+    /// location this slot does not own.</summary>
+    internal bool TryDescribeCheck(string locationName, out string itemName, out string receiverName,
+        out bool forSelf, out ItemFlags flags)
+    {
+        itemName = null;
+        receiverName = null;
+        forSelf = false;
+        flags = ItemFlags.None;
+
+        if (!Connected)
+            return false;
+
+        var id = session.Locations.GetLocationIdFromName(GameName, locationName);
+        ScoutedItemInfo item;
+        lock (scoutLock)
+        {
+            if (id <= 0 || !scouted.TryGetValue(id, out item))
+                return false;
+        }
+
+        itemName = item.ItemDisplayName;
+        var receiver = item.Player;
+        receiverName = string.IsNullOrWhiteSpace(receiver?.Alias) ? receiver?.Name : receiver.Alias;
+        forSelf = receiver != null && receiver.Slot == session.ConnectionInfo.Slot;
+        flags = item.Flags;
+        return true;
+    }
+
+    /// <summary>Asks the server what every location of this slot holds. HintCreationPolicy.None
+    /// keeps it off the hint list, so nothing is announced to the other players.</summary>
+    private void ScoutSeed()
+    {
+        lock (scoutLock)
+            scouted.Clear();
+
+        var locations = session.Locations.AllLocations.ToArray();
+        if (locations.Length == 0)
+            return;
+
+        session.Locations.ScoutLocationsAsync(HintCreationPolicy.None, locations)
+            .ContinueWith(task =>
+            {
+                if (task.IsFaulted || task.Result == null)
+                {
+                    Plugin.Log.LogWarning(
+                        $"Scouting the seed failed; checks cannot name their item: {task.Exception?.GetBaseException().Message}");
+                    return;
+                }
+
+                lock (scoutLock)
+                    foreach (var entry in task.Result)
+                        scouted[entry.Key] = entry.Value;
+                Plugin.Log.LogInfo($"Scouted {task.Result.Count} locations.");
+            });
+    }
+
     internal void SendGoal()
     {
         if (Connected)
@@ -131,7 +196,11 @@ internal sealed class ArchipelagoClient
         while (helper.Any())
         {
             var item = helper.DequeueItem();
-            ApState.QueueReceivedItem(this, nextItemIndex++, item.ItemName);
+            var sender = item.Player;
+            ApState.QueueReceivedItem(this, nextItemIndex++, item.ItemName,
+                string.IsNullOrWhiteSpace(sender?.Alias) ? sender?.Name : sender.Alias,
+                sender != null && sender.Slot == session?.ConnectionInfo.Slot,
+                item.Flags);
         }
     }
 

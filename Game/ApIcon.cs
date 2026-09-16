@@ -32,7 +32,7 @@ internal static class ApIcon
                            + $"{GameAccess.Get(draftPoints, "sprite")}");
     }
 
-    private static Sprite Load()
+    internal static Sprite Load()
     {
         if (sprite != null)
             return sprite;
@@ -65,4 +65,60 @@ internal static class ApIcon
             return null;
         }
     }
+
+    /// <summary>The icon with a dot of that colour in its lower right corner, ringed in a dark
+    /// outline so it reads against the logo's own colours.</summary>
+    internal static Sprite WithBadge(Color color)
+    {
+        var source = Load()?.texture;
+        if (source == null)
+            return null;
+
+        try
+        {
+            var width = source.width;
+            var height = source.height;
+            var pixels = source.GetPixels32();
+
+            // Texture rows start at the bottom, so a low y is the lower edge.
+            var centerX = width * 0.79f;
+            var centerY = height * 0.21f;
+            var radius = width * 0.15f;
+            var outline = width * 0.05f;
+            var ring = new Color(0.08f, 0.08f, 0.08f, 1f);
+
+            for (var y = 0; y < height; y++)
+            {
+                for (var x = 0; x < width; x++)
+                {
+                    var distance = Mathf.Sqrt((x - centerX) * (x - centerX) + (y - centerY) * (y - centerY));
+                    var cover = Mathf.Clamp01(radius + outline - distance + 0.5f);
+                    if (cover <= 0f)
+                        continue;
+
+                    // One pixel of blend between fill and ring, and between ring and logo.
+                    var fill = Color.Lerp(ring, color, Mathf.Clamp01(radius - distance + 0.5f));
+                    var index = y * width + x;
+                    pixels[index] = Color.Lerp(pixels[index], fill, cover);
+                }
+            }
+
+            var texture = new Texture2D(width, height, TextureFormat.RGBA32, mipChain: false)
+            {
+                hideFlags = HideFlags.HideAndDontSave,
+            };
+            texture.SetPixels32(pixels);
+            texture.Apply();
+
+            var badged = Sprite.Create(texture, new Rect(0f, 0f, width, height), new Vector2(0.5f, 0.5f), 100f);
+            badged.hideFlags = HideFlags.HideAndDontSave;
+            return badged;
+        }
+        catch (Exception e)
+        {
+            Plugin.Log.LogError($"Drawing the icon badge failed: {e}");
+            return Load();
+        }
+    }
+
 }

@@ -22,6 +22,7 @@ internal static class ProfileBinding
         public int EonBoostsApplied;
         public string MicroSession;
         public int MicroChargesGiven;
+        public int ItemsAnnounced;
         public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
         public Dictionary<string, Dictionary<int, int>> ComboRuleStacks =
             new Dictionary<string, Dictionary<int, int>>();
@@ -105,6 +106,19 @@ internal static class ProfileBinding
 
     /// <summary>Bonus Micro items this planet has already been given a charge for.</summary>
     internal static int MicroChargesGiven(object profile) => Read(profile)?.MicroChargesGiven ?? 0;
+
+    /// <summary>How many received items, counted from the start of the slot's item stream, the chat
+    /// log has already told the player about.</summary>
+    internal static int ItemsAnnounced(object profile) => Read(profile)?.ItemsAnnounced ?? 0;
+
+    internal static void SetItemsAnnounced(object profile, int count)
+    {
+        var record = Read(profile);
+        if (record == null || record.ItemsAnnounced == count)
+            return;
+        record.ItemsAnnounced = count;
+        Write(profile, record);
+    }
 
     /// <summary>Notes a bioticum's rule index as activated and returns how many of that bioticum's
     /// rule indexes have been activated, over every planet the slot has played.</summary>

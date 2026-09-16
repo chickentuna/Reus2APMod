@@ -25,6 +25,7 @@ internal sealed class MainThreadRunner : MonoBehaviour
     {
         ApState.DrainNetworkEvents();
         ItemApplier.Tick();
+        ApNotices.Tick();
         GameProbes.Tick();
     }
 }

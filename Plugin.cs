@@ -87,6 +87,9 @@ public sealed class Plugin : BaseUnityPlugin
         if (applyTextOverrides || enableTextDump.Value)
             TextPatches.Install(harmony, applyTextOverrides, enableTextDump.Value);
 
+        if (ApMode)
+            ApChat.Install(harmony);
+
         if (ApMode && ApData.Load())
         {
             ProgressionPatches.Install(harmony);
