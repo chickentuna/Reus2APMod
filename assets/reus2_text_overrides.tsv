@@ -6,3 +6,5 @@ For completing your first {0} [b|level {1}] requests, you'll gain [b|1] [DRAFT_P
 [BP][b|1] [DRAFT_POINT] to unlock new [BIOTICA].	[BP][b|1] archipelago check.
 [BP] [b|1] [DRAFT] to unlock new [BIOTICA]!	[BP] [b|1] [DRAFT] archipelago check!
 DRAFTPOINTS_DESCRIPTION	Unlocks archipelago checks to a maximum as defined in the options.
+<color=#bfbfbf>This Ability is still <b>locked</b> in the metagame. Finish more planets to unlock this feature!</color>	<color=#bfbfbf>This Ability has not arrived from the <b>multiworld</b> yet. Finish more planets to unlock this feature!</color>
+<color=#bfbfbf>This is still <b>locked</b> in the metagame. Complete more planets to unlock this feature!</color>	<color=#bfbfbf>This still has not arrived from the <b>multiworld</b>.</color>
