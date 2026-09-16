@@ -46,20 +46,12 @@ class StartingCharacters(Range):
 
 
 class RequestRewardChecks(Range):
-    """How many request rewards are checks. In a planet, completing one of your first 2 level 1
-    requests, your first 3 level 2 requests or your first 3 level 3 requests pays a reward, which
-    is a check here: 8 in all. This option takes that many of them, in this order:
-
-    - **1 to 2:** the level 1 requests.
-    - **3 to 5:** also the first 1 to 3 level 2 requests, which need one Progressive Era.
-    - **6 to 8:** also the first 1 to 3 level 3 requests, which need both Progressive Eras.
-
-    Every planet counts from its first request again, so a check not sent yet can be earned on a
-    later planet. Level 4 requests are never checks."""
-    display_name = "Request Reward Checks"
+    """How many level 4 request rewards are checks in a given planet.
+    Every new planet counts from its first level 4 request again, so if this is too high, the check isn't reachable."""
+    display_name = "Level 4 Request Reward Checks"
     range_start = 0
-    range_end = 8
-    default = 8
+    range_end = 6
+    default = 0
 
 
 class ShopDraftChecks(Range):

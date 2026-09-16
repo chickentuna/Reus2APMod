@@ -84,8 +84,17 @@ internal sealed class ApData
     /// first <paramref name="enabled"/> the slot turned into checks.</summary>
     internal string RequestLocation(int level, int index, int enabled)
     {
-        var position = RequestRewards.FindIndex(r => r.Level == level && r.Index == index);
-        return position >= 0 && position < enabled ? RequestRewards[position].Location : null;
+        if (level < 3)
+        {
+            var position = RequestRewards.FindIndex(r => r.Level == level && r.Index == index);
+            if (position < 0)
+            {
+                return null;
+            }
+            return RequestRewards[position].Location;
+        }
+
+        return index <= enabled ? "Level 1 Request Reward " + index : null;
     }
 
     internal string ShopLocation(int index, int enabled)
