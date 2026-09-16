@@ -65,44 +65,11 @@ internal static class TextDumper
             output.AppendLine("# key\tEnglish source\ttext in this locale");
             output.AppendLine($"# Reus 2 {Application.version}, locale '{locale}', {lines.Count} keys.");
             output.AppendLine("# To replace a text, put its key or English source, a tab, and the new text");
-            output.AppendLine($"# into {Path.GetFileName(TextOverrides.CommonPath)}.");
+            output.AppendLine("# into assets/reus2_text_overrides.tsv in the mod's repository.");
             foreach (var line in lines.Values)
                 output.AppendLine(line);
             File.WriteAllText(path, output.ToString(), Encoding.UTF8);
             Plugin.Log.LogInfo($"Wrote {lines.Count} texts to {path}");
-        }
-        catch (Exception e)
-        {
-            Plugin.Log.LogError($"Writing {path} failed: {e}");
-        }
-
-        WriteTemplate();
-    }
-
-    /// <summary>Creates an empty override file the first time, so the format is on disk next to the
-    /// dump rather than only in the README.</summary>
-    private static void WriteTemplate()
-    {
-        var path = TextOverrides.CommonPath;
-        if (File.Exists(path))
-            return;
-
-        try
-        {
-            File.WriteAllText(path,
-                "# Reus 2 text replacements: one per line, what to replace, a tab, the new text.\n"
-                + "# On the left, either column of reus2_texts_<locale>.tsv, written beside this\n"
-                + "# file: a translation key, or the English source next to it.\n"
-                + "# \\n is a line break, \\t a tab. Lines starting with # are ignored.\n"
-                + "# Keep any {0} placeholders and [MACRO] tags the original text has.\n"
-                + "# This file applies to every language; reus2_text_overrides.<locale>.tsv applies\n"
-                + "# to one and wins over it. Both are read when the language loads, so restart the\n"
-                + "# game after editing.\n"
-                + "#\n"
-                + "# Example:\n"
-                + "# MACROS_FOOD\t<sprite name=\"food\">\n",
-                Encoding.UTF8);
-            Plugin.Log.LogInfo($"Wrote the text override template to {path}");
         }
         catch (Exception e)
         {

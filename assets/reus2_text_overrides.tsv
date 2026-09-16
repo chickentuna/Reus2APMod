@@ -1,11 +1,8 @@
-# Reus 2 text replacements: one per line, what to replace, a tab, the new text.
-# On the left, either column of reus2_texts_<locale>.tsv, written beside this
-# file: a translation key, or the English source next to it.
-# \n is a line break, \t a tab. Lines starting with # are ignored.
-# Keep any {0} placeholders and [MACRO] tags the original text has.
-# This file applies to every language; reus2_text_overrides.<locale>.tsv applies
-# to one and wins over it. Both are read when the language loads, so restart the
-# game after editing.
-#
-# Example:
-# MACROS_FOOD	<sprite name="food">
+﻿Quit Game	Quit Game :(
+Completing a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!
+Completing this request next will give you:\n\n[BP] [b|1] [DRAFT] to unlock new [BIOTICA]!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!
+For completing your first {0} [b|level {1}] requests, you'll gain [b|1] [DRAFT_POINT] to unlock new [BIOTICA]!.	For completing your first {0} [b|level {1}] requests, you'll gain [b|1] archipelago check!
+[BP][b|1] [DRAFT] to unlock new [BIOTICA].	[BP][b|1] archipelago check.
+[BP][b|1] [DRAFT_POINT] to unlock new [BIOTICA].	[BP][b|1] archipelago check.
+[BP] [b|1] [DRAFT] to unlock new [BIOTICA]!	[BP] [b|1] [DRAFT] archipelago check!
+DRAFTPOINTS_DESCRIPTION	Unlocks archipelago checks to a maximum as defined in the options.

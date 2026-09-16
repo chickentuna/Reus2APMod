@@ -59,11 +59,10 @@ public sealed class Plugin : BaseUnityPlugin
             + "ever ran and a snapshot of the profile and session. "
             + "Writes BepInEx/plugins/reus2_probe.log.");
         enableTextDump = Config.Bind("Diagnostics", "EnableTextDump", false,
-            "Write the active language's translation table to "
-            + "BepInEx/plugins/reus2_texts_<locale>.tsv, and the override template beside it.");
+            "Write the active language's translation table to BepInEx/plugins/reus2_texts_<locale>.tsv.");
         enableTextOverrides = Config.Bind("Text", "EnableOverrides", true,
-            "Replace game texts from BepInEx/plugins/reus2_text_overrides.tsv and "
-            + "reus2_text_overrides.<locale>.tsv when either file is present.");
+            "Replace game texts from reus2_text_overrides.tsv and reus2_text_overrides.<locale>.tsv, "
+            + "shipped next to the mod's DLL, when either file is present.");
 
         DefinitionDumper.MaxDepth = Config.Bind("Dump", "MaxDepth", 4,
             "How deep to follow nested objects such as objective filters before writing a placeholder.").Value;

@@ -79,6 +79,7 @@
       <DistributionFiles Include="$(TargetPath)" />
       <DistributionFiles Include="$(TargetDir)Archipelago.MultiClient.Net.dll" />
       <DistributionFiles Include="$(TargetDir)Newtonsoft.Json.dll" />
+      <DistributionFiles Include="assets\reus2_text_overrides*.tsv" />
     </ItemGroup>
     <RemoveDir Directories="$(TargetDir)dist" />
     <MakeDir Directories="$(TargetDir)dist" />

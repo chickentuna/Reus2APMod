@@ -9,9 +9,9 @@ using HarmonyLib;
 namespace Reus2Archipelago.Game;
 
 /// <summary>
-/// Replacement strings for the game's translation table, read from
-/// BepInEx/plugins/reus2_text_overrides.tsv and, for one locale only,
-/// reus2_text_overrides.&lt;locale&gt;.tsv. Each line is a tab between what to replace and what to
+/// Replacement strings for the game's translation table, read from reus2_text_overrides.tsv and,
+/// for one locale only, reus2_text_overrides.&lt;locale&gt;.tsv, both shipped next to the mod's DLL
+/// from the repository's assets folder. Each line is a tab between what to replace and what to
 /// show instead; the left side is either column of the dump, a translation key or the English
 /// source it is inferred from.
 /// </summary>
@@ -23,9 +23,12 @@ internal static class TextOverrides
     /// resolved once MacroSettings has read the key table.</summary>
     private static readonly Dictionary<string, string> Unresolved = new Dictionary<string, string>(StringComparer.Ordinal);
 
-    internal static string CommonPath => Path.Combine(Paths.PluginPath, BaseName + ".tsv");
+    /// <summary>The mod's own folder: the override files ship next to the DLL.</summary>
+    private static string Folder => Path.GetDirectoryName(typeof(Plugin).Assembly.Location) ?? Paths.PluginPath;
 
-    internal static string LocalePath(string locale) => Path.Combine(Paths.PluginPath, $"{BaseName}.{locale}.tsv");
+    internal static string CommonPath => Path.Combine(Folder, BaseName + ".tsv");
+
+    internal static string LocalePath(string locale) => Path.Combine(Folder, $"{BaseName}.{locale}.tsv");
 
     /// <summary>True when there is something to apply, which is what decides whether the text
     /// patches are installed at all.</summary>
@@ -33,7 +36,7 @@ internal static class TextOverrides
     {
         if (File.Exists(CommonPath))
             return true;
-        foreach (var file in Directory.GetFiles(Paths.PluginPath, BaseName + ".*.tsv"))
+        foreach (var file in Directory.GetFiles(Folder, BaseName + ".*.tsv"))
             if (file != null)
                 return true;
         return false;
