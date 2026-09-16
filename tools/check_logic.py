@@ -57,14 +57,11 @@ def main():
     all_combos_alone = (checks.option_combos_only, checks.option_max_combos)
 
     failures = []
-    modes = [(micro_types, bioticum_items, bioticum_checks)
-             for micro_types in (0, 1) for bioticum_items in (0, 1)
-             for bioticum_checks in values]
-    for micro_types, bioticum_items, bioticum_checks in modes:
-        mode = (f"micro_types={micro_types} bioticum_items={bioticum_items}"
-                f" bioticum_checks={bioticum_checks}")
+    modes = [(bioticum_items, bioticum_checks)
+             for bioticum_items in (0, 1) for bioticum_checks in values]
+    for bioticum_items, bioticum_checks in modes:
+        mode = f"bioticum_items={bioticum_items} bioticum_checks={bioticum_checks}"
         world = types.SimpleNamespace(player=1, options=types.SimpleNamespace(
-            micro_types=types.SimpleNamespace(value=micro_types),
             bioticum_items=types.SimpleNamespace(value=bioticum_items),
             bioticum_checks=types.SimpleNamespace(value=bioticum_checks)))
         rules = modules["rules"].Reus2Rules(world)
@@ -89,8 +86,8 @@ def main():
         for mode, location, reason in failures:
             print(f"  [{mode}] {location}  ({reason})")
         sys.exit(1)
-    print(f"every location is reachable with a full inventory, in all {len(modes)} micro_types,"
-          " bioticum_items and bioticum_checks combinations")
+    print(f"every location is reachable with a full inventory, in all {len(modes)} bioticum_items"
+          " and bioticum_checks combinations")
 
 
 if __name__ == "__main__":

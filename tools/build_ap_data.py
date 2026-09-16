@@ -26,7 +26,8 @@ BASE_ERAS = ["Era_1_Genesis", "Era_2_Ancient"]
 PROGRESSIVE_ERAS = ["Era_3_Medieval", "Era_4_Discovery"]
 REQUEST_THRESHOLDS = [2, 3, 3]
 SHOP_DRAFTS = 10
-EXCLUDED_SHOP_OPTIONS = {"DailyChallengesAvailable"}
+# Micro1 to Micro3 buy the next Micro type of an era, and Micro types only come from items.
+EXCLUDED_SHOP_OPTIONS = {"DailyChallengesAvailable", "Micro1", "Micro2", "Micro3"}
 MICRO_RARITY_ORDER = {"Basic": 0, "Era1": 1, "Era2": 2, "Era3": 3}
 # Rule counters that count across the whole planet; every other counter looks around the bioticum,
 # so its candidates must share the bioticum's biome.
@@ -53,7 +54,7 @@ ABILITY_ITEMS = {
 }
 
 # Ids are <category> << 40 | <bits>. The bits come from the definition GUID where there is one, so
-# an id stays put when a game patch adds or reorders content. Bonus Micro names no definition, so it
+# an id stays put when a game patch adds or reorders content. Micro Charge names no definition, so it
 # takes bits 0, which no GUID produces.
 ITEM_CATEGORY = {"bioticum": 1, "giant": 2, "biome": 3, "ability": 4, "character": 5, "micro": 6, "era": 7,
                  "filler": 8, "apex": 9, "charge": 10}
@@ -159,8 +160,11 @@ def rule_requirement(rule, pool, display, micro_names):
 
 
 def build_micros(definitions):
+    """The Micro types a giant can be given. A Flat Micro is a giant's own, which it always has, so
+    it is not an item."""
     micros = sorted(
-        (m for m in definitions["BioticumAspectDefinition"] if is_base(m) and m.get("rarity") != "Disabled"),
+        (m for m in definitions["BioticumAspectDefinition"]
+         if is_base(m) and m.get("rarity") != "Disabled" and m.get("boosterType") != "Flat"),
         key=lambda m: (MICRO_RARITY_ORDER.get(m.get("rarity"), 9), m["name"]),
     )
     return [
@@ -282,7 +286,7 @@ def main():
                        for c in sorted(definitions["CharacterDefinition"], key=lambda c: c["name"])
                        if is_base(c) and c.get("enabled") and not c.get("isUnselectable")],
         "micros": micros,
-        "bonus_micro": {"item": "Bonus Micro", "item_id": item_id("charge", 0)},
+        "micro_charge": {"item": "Micro Charge", "item_id": item_id("charge", 0)},
         "eras": {"item": "Progressive Era", "item_id": item_id("era", 1), "base": BASE_ERAS, "eras": PROGRESSIVE_ERAS},
         "filler": [{"item": "Eon Boost", "item_id": item_id("filler", 1)}],
         "request_rewards": [
@@ -300,7 +304,7 @@ def main():
     items = [(b["item"], b["item_id"]) for b in data["biotica"]]
     items += [(b["apex_item"], b["apex_item_id"]) for b in data["biotica"] if "apex_item" in b]
     items += [(e["item"], e["item_id"]) for key in ("giants", "biomes", "abilities", "characters", "micros", "filler") for e in data[key]]
-    items += [(data["bonus_micro"]["item"], data["bonus_micro"]["item_id"]), (data["eras"]["item"], data["eras"]["item_id"])]
+    items += [(data["micro_charge"]["item"], data["micro_charge"]["item_id"]), (data["eras"]["item"], data["eras"]["item_id"])]
     locations = [(b["build_location"], b["build_location_id"]) for b in data["biotica"]]
     locations += [(r["location"], r["location_id"]) for b in data["biotica"] for r in b["rules"]]
     locations += [(b["all_combos_location"], b["all_combos_location_id"]) for b in data["biotica"] if b["rules"]]

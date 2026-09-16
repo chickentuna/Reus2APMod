@@ -4,7 +4,7 @@ from BaseClasses import CollectionState
 
 from .game_data import DATA
 from .items import items_granting_biotica
-from .options import BioticumChecks, BioticumItems, MicroTypes
+from .options import BioticumChecks, BioticumItems
 
 
 class Reus2Rules:
@@ -18,7 +18,6 @@ class Reus2Rules:
 
     def __init__(self, world) -> None:
         self.player = world.player
-        self.micro_types = world.options.micro_types.value
         self.max_combos = world.options.bioticum_checks.value == BioticumChecks.option_max_combos
         self.granting = items_granting_biotica(
             world.options.bioticum_items.value == BioticumItems.option_apex)
@@ -124,10 +123,9 @@ class Reus2Rules:
         return False
 
     def has_micro(self, state: CollectionState, micro: str) -> bool:
-        """Bonus Micro is filler, so the count of Micros an era starts with never gates a location.
-        With Micro Types shuffled the shop sells the type once its own item arrives."""
-        return (self.micro_types == MicroTypes.option_all_unlocked
-                or state.has(self.micro_item[micro], self.player))
+        """A Micro type is placeable once its item arrives. Charges are filler and the game pays
+        some out every era, so they never gate a location."""
+        return state.has(self.micro_item[micro], self.player)
 
     def request_reward_ok(self, state: CollectionState, reward) -> bool:
         return state.has(self.era_item, self.player, reward["level"])

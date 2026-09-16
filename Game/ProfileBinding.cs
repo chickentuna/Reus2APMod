@@ -20,8 +20,7 @@ internal static class ProfileBinding
         public string Seed;
         public string Slot;
         public int EonBoostsApplied;
-        public string MicroSession;
-        public int MicroChargesGiven;
+        public int MicroChargesApplied;
         public int ItemsAnnounced;
         public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
         public Dictionary<string, Dictionary<int, int>> ComboRuleStacks =
@@ -90,22 +89,17 @@ internal static class ProfileBinding
         Write(profile, record);
     }
 
-    /// <summary>The session whose first era has been given its Micros. A reload of that save reads
-    /// the count from the save file rather than starting the era over.</summary>
-    internal static string MicroSession(object profile) => Read(profile)?.MicroSession;
+    /// <summary>Micro Charge items already paid out, each once, to the planet open when it arrived.</summary>
+    internal static int MicroChargesApplied(object profile) => Read(profile)?.MicroChargesApplied ?? 0;
 
-    internal static void SetMicroSession(object profile, string session, int chargesGiven)
+    internal static void SetMicroChargesApplied(object profile, int count)
     {
         var record = Read(profile);
         if (record == null)
             return;
-        record.MicroSession = session;
-        record.MicroChargesGiven = chargesGiven;
+        record.MicroChargesApplied = count;
         Write(profile, record);
     }
-
-    /// <summary>Bonus Micro items this planet has already been given a charge for.</summary>
-    internal static int MicroChargesGiven(object profile) => Read(profile)?.MicroChargesGiven ?? 0;
 
     /// <summary>How many received items, counted from the start of the slot's item stream, the chat
     /// log has already told the player about.</summary>

@@ -95,33 +95,6 @@ class BioticumChecks(Choice):
     default = 2
 
 
-class MicroTypes(Choice):
-    """Which Micro types the shop sells.
-
-    - **All unlocked:** every type, from the first planet on.
-    - **Shuffled:** the types whose Micro item you have received, plus the ones Starting Micro Types
-      rolls for you.
-
-    Either way, the number of Micros you are given at the start of an era is the number of Bonus
-    Micro items you have received."""
-    display_name = "Micro Types"
-    option_all_unlocked = 0
-    option_shuffled = 1
-    default = 1
-
-
-class StartingMicroTypes(Range):
-    """Number of Micro types the shop sells from the start, drawn at random. Read only when Micro
-    Types is shuffled.
-
-    An item that does not fit the seed's locations is given to you at the start as well, so
-    you can open with more than this."""
-    display_name = "Starting Micro Types"
-    range_start = 0
-    range_end = 33
-    default = 3
-
-
 @dataclass
 class Reus2Options(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
@@ -133,5 +106,3 @@ class Reus2Options(PerGameCommonOptions):
     shop_draft_checks: ShopDraftChecks
     bioticum_items: BioticumItems
     bioticum_checks: BioticumChecks
-    micro_types: MicroTypes
-    starting_micro_types: StartingMicroTypes

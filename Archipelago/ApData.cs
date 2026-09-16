@@ -26,7 +26,7 @@ internal sealed class ApData
     [JsonProperty("abilities")] public List<AbilityEntry> Abilities = new List<AbilityEntry>();
     [JsonProperty("characters")] public List<GuidItem> Characters = new List<GuidItem>();
     [JsonProperty("micros")] public List<MicroEntry> Micros = new List<MicroEntry>();
-    [JsonProperty("bonus_micro")] public NamedItem BonusMicro;
+    [JsonProperty("micro_charge")] public NamedItem MicroCharge;
     [JsonProperty("eras")] public EraEntry Eras;
     [JsonProperty("filler")] public List<NamedItem> Filler = new List<NamedItem>();
     [JsonProperty("request_rewards")] public List<RequestEntry> RequestRewards = new List<RequestEntry>();

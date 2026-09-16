@@ -14,8 +14,10 @@ namespace Reus2Archipelago.Game;
 internal static class ItemApplier
 {
     private const float EonPerBoost = 5f;
-    private const int MicroTypesShuffled = 1;
     private const string AspectCharges = "AspectCharges";
+
+    /// <summary>The shop options that buy the next Micro type of an era, which only items give.</summary>
+    private static readonly string[] MicroTypeShopOptions = { "Micro1", "Micro2", "Micro3" };
 
     private static bool dirty = true;
     private static object lastProfile;
@@ -26,13 +28,6 @@ internal static class ItemApplier
     private static bool logged;
 
     internal static void MarkDirty() => dirty = true;
-
-    /// <summary>GameplayController.Initialize opens a planet with this many Micros, and the era
-    /// allowance never drops below it, so a received Micro type is always usable.</summary>
-    private const int VanillaMicros = 3;
-
-    /// <summary>The Micros an era starts with: the vanilla three, and one more per Bonus Micro.</summary>
-    internal static int MicroAllowance { get; private set; }
 
     /// <summary>Whether the current profile belongs to an Archipelago slot; gates every gameplay patch.</summary>
     internal static bool ProfileBound
@@ -99,8 +94,6 @@ internal static class ItemApplier
             RecordBound(profile, true);
 
             var received = Count(ApState.ReceivedItems);
-            MicroAllowance = VanillaMicros
-                             + (received.TryGetValue(ApData.Instance.BonusMicro.Item, out var micros) ? micros : 0);
             ApplyProfile(profile, received);
             ApplyPlanet(profile, received);
         }
@@ -197,25 +190,17 @@ internal static class ItemApplier
         AddReceivedMicroTypes(GameAccess.Get(gameplay, "aspectController"), received);
         LockUnreceivedBiomes(gameplay);
         Plugin.Log.LogInfo($"Planet: draftsLocked={GameAccess.Get(scenario, "draftsLocked")}"
-                           + $", pool={SetPlanetPool(gameplay, received)} biotica from items"
-                           + $", {MicroAllowance} Micro charges an era.");
+                           + $", pool={SetPlanetPool(gameplay, received)} biotica from items.");
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
-        var session = GameAccess.SessionId;
-        var bonus = MicroAllowance - VanillaMicros;
-        if (session != null && ProfileBinding.MicroSession(profile) != session)
+        var chargeItems = received.TryGetValue(ApData.Instance.MicroCharge.Item, out var chargeCount) ? chargeCount : 0;
+        var chargesApplied = ProfileBinding.MicroChargesApplied(profile);
+        if (chargeItems > chargesApplied)
         {
-            SetEraMicros();
-            ProfileBinding.SetMicroSession(profile, session, bonus);
-        }
-        else if (session != null && bonus > ProfileBinding.MicroChargesGiven(profile))
-        {
-            // A Bonus Micro that lands mid-planet is worth a charge now rather than at the next era.
-            var charges = GameAccess.Resource(AspectCharges);
-            var owed = bonus - ProfileBinding.MicroChargesGiven(profile);
-            GameAccess.Call(gameplay, "ChangePlayerResource", charges, (float)owed);
-            ProfileBinding.SetMicroSession(profile, session, bonus);
-            Plugin.Log.LogInfo($"Bonus Micro: {owed} more Micro charge(s) this planet.");
+            GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(AspectCharges),
+                (float)(chargeItems - chargesApplied));
+            ProfileBinding.SetMicroChargesApplied(profile, chargeItems);
+            Plugin.Log.LogInfo($"Micro Charge: {chargeItems - chargesApplied} more Micro charge(s) this planet.");
         }
 
         var boosts = received.TryGetValue(ApData.Instance.Filler[0].Item, out var count) ? count : 0;
@@ -250,12 +235,11 @@ internal static class ItemApplier
         }
     }
 
-    /// <summary>With Micro Types shuffled the game draws none of its own, so a type whose item has
-    /// arrived is added to the inventory, where a charge can be spent on it. With them all unlocked
-    /// the game's own per-era draw fills the inventory and this adds nothing.</summary>
+    /// <summary>The game draws no Micro types of its own on a bound profile, so a type whose item has
+    /// arrived is added to the inventory, where a charge can be spent on it.</summary>
     private static void AddReceivedMicroTypes(object aspects, Dictionary<string, int> received)
     {
-        if (aspects == null || ApState.SlotInt("micro_types", 0) != MicroTypesShuffled)
+        if (aspects == null)
             return;
         foreach (var micro in ApData.Instance.Micros.Where(m => received.ContainsKey(m.Item)))
         {
@@ -288,16 +272,21 @@ internal static class ItemApplier
         return lines.Count == 0 ? "empty" : string.Join(", ", lines);
     }
 
-    /// <summary>Sets the era's Micros to one per Bonus Micro received. GameplayController.Initialize
-    /// puts three in a new planet and MainQuestCompletedMoment.GiveRewards adds one per active biome
-    /// at each era, and this replaces both of those amounts.</summary>
-    internal static void SetEraMicros()
+    /// <summary>Takes out of a new planet's inventory the Micro type AspectController.DrawInitialSet
+    /// draws for it, which leaves only the types received from items. Each giant's own Micro is kept
+    /// apart from the inventory and stays.</summary>
+    internal static void DropDrawnMicroTypes(AspectController aspects)
     {
-        var gameplay = GameAccess.Gameplay;
-        var charges = GameAccess.Resource(AspectCharges);
-        if (gameplay == null || charges == null)
+        if (!(GameAccess.Get(aspects, "aspectInventory") is GenericDictionary<BioticumAspectDefinition, BioticumAspectInventoryEntry> inventory))
             return;
-        GameAccess.Call(gameplay, "SetResource", charges, (float)MicroAllowance);
+        var received = new HashSet<string>(ApState.ReceivedItems);
+        var drawn = inventory.Keys
+            .Where(type => !ApData.Instance.Micros.Any(m => received.Contains(m.Item) && m.Guid == type.ID))
+            .ToList();
+        foreach (var type in drawn)
+            inventory.Remove(type);
+        if (drawn.Count > 0)
+            Plugin.Log.LogInfo($"Removed the Micro types the game drew for this planet: {string.Join(", ", drawn.Select(Naming.Of))}");
     }
 
     private static void ApplyEras(object profile, int received)
@@ -344,6 +333,11 @@ internal static class ItemApplier
             var value = Enum.Parse(optionType, name);
             if (!options.Contains(value))
                 options.Add(value);
+        }
+        foreach (var name in MicroTypeShopOptions)
+        {
+            if (Enum.IsDefined(optionType, name))
+                options.Remove(Enum.Parse(optionType, name));
         }
     }
 

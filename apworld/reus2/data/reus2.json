@@ -37446,48 +37446,6 @@
    "item_id": 6631455524281
   },
   {
-   "guid": "fcb92730d1d216841a8dc28747e16fc1",
-   "name": "Fly Agaric",
-   "rarity": "Basic",
-   "item": "Micro: Fly Agaric",
-   "item_id": 6664909648653
-  },
-  {
-   "guid": "03396072a86407d46b5a0858dfb6e07e",
-   "name": "Jeweled Beetle",
-   "rarity": "Basic",
-   "item": "Micro: Jeweled Beetle",
-   "item_id": 6597935236906
-  },
-  {
-   "guid": "44799504adae6c44eb5925d0f8358bcf",
-   "name": "Mantis",
-   "rarity": "Basic",
-   "item": "Micro: Mantis",
-   "item_id": 6615450865738
-  },
-  {
-   "guid": "f860e90a6b468fa4db05a300fef9d7f1",
-   "name": "Sphagnum Moss",
-   "rarity": "Basic",
-   "item": "Micro: Sphagnum Moss",
-   "item_id": 6663743377574
-  },
-  {
-   "guid": "f2b3ba0f2daccaf40b681bbda8048bf4",
-   "name": "Woolly Moth Catterpillar",
-   "rarity": "Basic",
-   "item": "Micro: Woolly Moth Catterpillar",
-   "item_id": 6662219604210
-  },
-  {
-   "guid": "78928cc629bf16e4ca2d5bda7ab1d5dc",
-   "name": "Worm",
-   "rarity": "Basic",
-   "item": "Micro: Worm",
-   "item_id": 6629435690082
-  },
-  {
    "guid": "b788bf01e9daf9c4da5ddc0312dcd7b4",
    "name": "Antlion",
    "rarity": "Era1",
@@ -37656,8 +37614,8 @@
    "item_id": 6654692061722
   }
  ],
- "bonus_micro": {
-  "item": "Bonus Micro",
+ "micro_charge": {
+  "item": "Micro Charge",
   "item_id": 10995116277760
  },
  "eras": {
@@ -37812,9 +37770,6 @@
   "EonWealth",
   "Expansion",
   "Extra1StarBiotica",
-  "Micro1",
-  "Micro2",
-  "Micro3",
   "Mountain",
   "Nomad",
   "SecondaryBiome",
