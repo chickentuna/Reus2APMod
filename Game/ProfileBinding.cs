@@ -19,7 +19,8 @@ internal static class ProfileBinding
     {
         public string Seed;
         public string Slot;
-        public Dictionary<string, int> FillerApplied = new Dictionary<string, int>();
+        public Dictionary<string, Dictionary<string, int>> FillerAppliedBySession =
+            new Dictionary<string, Dictionary<string, int>>();
         public int ItemsAnnounced;
         public Dictionary<string, List<int>> ActivatedComboRules = new Dictionary<string, List<int>>();
         public Dictionary<string, Dictionary<int, int>> ComboRuleStacks =
@@ -77,17 +78,25 @@ internal static class ProfileBinding
         return false;
     }
 
-    /// <summary>How many of a filler item have been paid out, each once, to the planet open when it
-    /// was applied.</summary>
-    internal static int FillerApplied(object profile, string item)
-        => Read(profile)?.FillerApplied.TryGetValue(item, out var count) == true ? count : 0;
+    /// <summary>How many of a filler item a planet has been paid, keyed by its session ID: a save keeps
+    /// the ID, so a reload is not paid again, and a new planet starts at none.</summary>
+    internal static int FillerApplied(object profile, string session, string item)
+    {
+        var record = Read(profile);
+        return record != null && record.FillerAppliedBySession.TryGetValue(session, out var items)
+                              && items.TryGetValue(item, out var count)
+            ? count
+            : 0;
+    }
 
-    internal static void SetFillerApplied(object profile, string item, int count)
+    internal static void SetFillerApplied(object profile, string session, string item, int count)
     {
         var record = Read(profile);
         if (record == null)
             return;
-        record.FillerApplied[item] = count;
+        if (!record.FillerAppliedBySession.TryGetValue(session, out var items))
+            record.FillerAppliedBySession[session] = items = new Dictionary<string, int>();
+        items[item] = count;
         Write(profile, record);
     }
 

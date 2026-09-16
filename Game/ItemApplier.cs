@@ -190,19 +190,23 @@ internal static class ItemApplier
                            + $", pool={SetPlanetPool(gameplay, received)} biotica from items.");
         Plugin.Log.LogInfo($"Aspect inventory: {AspectInventory(GameAccess.Get(gameplay, "aspectController"))}");
 
+        var session = GameAccess.SessionId;
+        if (session == null)
+            return;
         foreach (var filler in ApData.Instance.Filler)
-            ApplyFiller(profile, gameplay, filler, received.TryGetValue(filler.Item, out var count) ? count : 0);
+            ApplyFiller(profile, gameplay, session, filler, received.TryGetValue(filler.Item, out var count) ? count : 0);
     }
 
-    /// <summary>Pays out the filler items of one kind that arrived since the last payout.</summary>
-    private static void ApplyFiller(object profile, object gameplay, FillerEntry filler, int received)
+    /// <summary>Pays this planet every filler item of one kind received so far that it has not been
+    /// paid yet, so a new planet starts with the whole stash and a running one gets each new arrival.</summary>
+    private static void ApplyFiller(object profile, object gameplay, string session, FillerEntry filler, int received)
     {
-        var owed = received - ProfileBinding.FillerApplied(profile, filler.Item);
+        var owed = received - ProfileBinding.FillerApplied(profile, session, filler.Item);
         if (owed <= 0)
             return;
         var total = owed * filler.Amount;
         GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(filler.Resource), total);
-        ProfileBinding.SetFillerApplied(profile, filler.Item, received);
+        ProfileBinding.SetFillerApplied(profile, session, filler.Item, received);
         Plugin.Log.LogInfo($"{filler.Item} x{owed}: +{total} {filler.Resource}.");
     }
 
