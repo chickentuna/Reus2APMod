@@ -13,8 +13,6 @@ namespace Reus2Archipelago.Game;
 /// </summary>
 internal static class ItemApplier
 {
-    private const string UpgradePoints = "UpgradePoints";
-
     /// <summary>The shop options that buy the next Micro type of an era, which only items give.</summary>
     private static readonly string[] MicroTypeShopOptions = { "Micro1", "Micro2", "Micro3" };
 
@@ -196,18 +194,14 @@ internal static class ItemApplier
             ApplyFiller(profile, gameplay, filler, received.TryGetValue(filler.Item, out var count) ? count : 0);
     }
 
-    /// <summary>Pays out the filler items of one kind that arrived since the last payout. Upgrade
-    /// charges go through GainUP, which holds them to the game's cap, as every other source does.</summary>
+    /// <summary>Pays out the filler items of one kind that arrived since the last payout.</summary>
     private static void ApplyFiller(object profile, object gameplay, FillerEntry filler, int received)
     {
         var owed = received - ProfileBinding.FillerApplied(profile, filler.Item);
         if (owed <= 0)
             return;
         var total = owed * filler.Amount;
-        if (filler.Resource == UpgradePoints)
-            GameAccess.Call(gameplay, "GainUP", total);
-        else
-            GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(filler.Resource), total);
+        GameAccess.Call(gameplay, "ChangePlayerResource", GameAccess.Resource(filler.Resource), total);
         ProfileBinding.SetFillerApplied(profile, filler.Item, received);
         Plugin.Log.LogInfo($"{filler.Item} x{owed}: +{total} {filler.Resource}.");
     }
