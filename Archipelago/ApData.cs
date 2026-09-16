@@ -80,21 +80,15 @@ internal sealed class ApData
     internal RuleEntry ComboRule(string guid, int ruleIndex)
         => comboRules.TryGetValue(ComboKey(guid, ruleIndex), out var rule) ? rule : null;
 
-    /// <summary>The location for the index-th draft-paying request of a level, if it is among the
-    /// first <paramref name="enabled"/> the slot turned into checks.</summary>
-    internal string RequestLocation(int level, int index, int enabled)
+    /// <summary>The location for the index-th draft-paying request of a level (stored from 0). Every
+    /// seed holds the level 1 to 3 ones; a level 4 one only among the first
+    /// <paramref name="level4Enabled"/> the slot turned into checks.</summary>
+    internal string RequestLocation(int level, int index, int level4Enabled)
     {
-        if (level < 3)
-        {
-            var position = RequestRewards.FindIndex(r => r.Level == level && r.Index == index);
-            if (position < 0)
-            {
-                return null;
-            }
-            return RequestRewards[position].Location;
-        }
-
-        return index <= enabled ? "Level 1 Request Reward " + index : null;
+        if (level >= 3 && index > level4Enabled)
+            return null;
+        var position = RequestRewards.FindIndex(r => r.Level == level && r.Index == index);
+        return position < 0 ? null : RequestRewards[position].Location;
     }
 
     internal string ShopLocation(int index, int enabled)

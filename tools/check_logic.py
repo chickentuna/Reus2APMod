@@ -19,7 +19,7 @@ def load_world_modules():
     base = types.ModuleType("BaseClasses")
     base.CollectionState = object
     base.Item = type("Item", (), {})
-    base.ItemClassification = type("ItemClassification", (), {"progression": 1, "useful": 2, "filler": 3})
+    base.ItemClassification = type("ItemClassification", (), {"progression": 1, "useful": 2, "filler": 0})
     options = types.ModuleType("Options")
     for name in ("Choice", "Range", "PerGameCommonOptions", "StartInventoryPool", "Toggle", "DefaultOnToggle"):
         setattr(options, name, type(name, (), {}))
@@ -75,6 +75,9 @@ def main():
             if combos and bioticum_checks != checks.option_build_only:
                 if not rules.can_combo_all(state, bioticum):
                     failures.append((mode, bioticum["all_combos_location"], "all combos"))
+        for reward in data["request_rewards"]:
+            if not rules.request_reward_ok(state, reward):
+                failures.append((mode, reward["location"], "request reward"))
         if not rules.builds_reachable(state, len(data["biotica"])):
             failures.append((mode, "goal", "not every build reachable"))
 

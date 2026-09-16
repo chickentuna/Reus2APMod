@@ -36445,7 +36445,7 @@
   },
   {
    "item": "Unlock: Secondary Biomes",
-   "item_id": 12098817985403,
+   "item_id": 12097560128853,
    "shop_options": [
     "SecondaryBiome"
    ]
@@ -36579,6 +36579,42 @@
    "location_id": 3298534883363,
    "level": 2,
    "index": 3
+  },
+  {
+   "location": "Level 4 Request Reward 1",
+   "location_id": 3298534883377,
+   "level": 3,
+   "index": 1
+  },
+  {
+   "location": "Level 4 Request Reward 2",
+   "location_id": 3298534883378,
+   "level": 3,
+   "index": 2
+  },
+  {
+   "location": "Level 4 Request Reward 3",
+   "location_id": 3298534883379,
+   "level": 3,
+   "index": 3
+  },
+  {
+   "location": "Level 4 Request Reward 4",
+   "location_id": 3298534883380,
+   "level": 3,
+   "index": 4
+  },
+  {
+   "location": "Level 4 Request Reward 5",
+   "location_id": 3298534883381,
+   "level": 3,
+   "index": 5
+  },
+  {
+   "location": "Level 4 Request Reward 6",
+   "location_id": 3298534883382,
+   "level": 3,
+   "index": 6
   }
  ],
  "shop_drafts": [

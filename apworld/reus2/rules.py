@@ -1,9 +1,13 @@
 from collections import defaultdict
 
-from BaseClasses import CollectionState
+from BaseClasses import CollectionState, ItemClassification
 
 from .game_data import DATA
-from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, items_granting_biotica
+from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, classifications, items_granting_biotica
+
+# How many biotica must be buildable before a request of each level (stored from 0) can be completed.
+# Level 1 stays within the 4 the starting kit guarantees.
+REQUEST_BIOTICA = {0: 4, 1: 8, 2: 16, 3: 24}
 from .options import BioticumItems
 
 
@@ -39,6 +43,9 @@ class Reus2Rules:
         self.era_item = DATA["eras"]["item"]
         self.upgrade_item = "Terraform: Upgrade Slots"
         self.micro_item = {m["name"]: m["item"] for m in DATA["micros"]}
+        both = classifications()
+        self.key_items = sorted(name for name, flags in both.items()
+                                if flags & ItemClassification.progression and flags & ItemClassification.useful)
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
         return state.has_any(self.granting[bioticum["name"]], self.player)
@@ -135,7 +142,15 @@ class Reus2Rules:
         return state.has_all((MICROS_ITEM, self.micro_item[micro]), self.player)
 
     def request_reward_ok(self, state: CollectionState, reward) -> bool:
-        return state.has(self.era_item, self.player, reward["level"])
+        """Levels 1 to 3 need one Progressive Era per level above the first. Level 4 needs every item
+        classed both progression and useful. Every level needs its count of buildable biotica."""
+        level = reward["level"]
+        if level < 3:
+            unlocked = state.has(self.era_item, self.player, level)
+        else:
+            unlocked = (state.has(self.era_item, self.player, len(DATA["eras"]["eras"]))
+                        and state.has_all(self.key_items, self.player))
+        return unlocked and self.builds_reachable(state, REQUEST_BIOTICA[level])
 
     def shop_draft_ok(self, state: CollectionState, draft) -> bool:
         index = draft["index"]

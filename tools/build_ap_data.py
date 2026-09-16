@@ -24,7 +24,9 @@ ROLE_TYPE = {"PlantRole": "Plant", "AnimalRole": "Animal", "GeoRole": "Geo"}
 NOT_GIANTS = {"Test Giant", "EntityTentacleGiantDefinition"}
 BASE_ERAS = ["Era_1_Genesis", "Era_2_Ancient"]
 PROGRESSIVE_ERAS = ["Era_3_Medieval", "Era_4_Discovery"]
-REQUEST_THRESHOLDS = [2, 3, 3]
+# How many requests of each level pay a reward in a planet. Level 4 requests always pay; the data
+# holds as many of them as the request_reward_checks option can ask for.
+REQUEST_THRESHOLDS = [2, 3, 3, 6]
 SHOP_DRAFTS = 10
 # Micro1 to Micro3 buy the next Micro type of an era, and Micro types only come from items.
 EXCLUDED_SHOP_OPTIONS = {"DailyChallengesAvailable", "Micro1", "Micro2", "Micro3"}

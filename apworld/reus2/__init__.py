@@ -14,6 +14,8 @@ from .rules import Reus2Rules
 GOAL_LOCATION = "Thriving Planet"
 VICTORY = "Victory"
 ROLE_TYPES = ("Plant", "Animal", "Geo")
+# Request levels are stored from 0, so level 4 requests are level 3.
+LEVEL_4 = 3
 
 
 class Reus2World(World):
@@ -94,7 +96,7 @@ class Reus2World(World):
             # Under when_synergized a bioticum that has combo rules carries its All Combos location alone.
             if not (combos and checks == BioticumChecks.option_when_synergized):
                 locations[bioticum["build_location"]] = bioticum["build_location_id"]
-        for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
+        for reward in self._request_rewards():
             locations[reward["location"]] = reward["location_id"]
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:
             locations[draft["location"]] = draft["location_id"]
@@ -106,6 +108,12 @@ class Reus2World(World):
 
         self.multiworld.regions += [menu, planet]
         menu.connect(planet)
+
+    def _request_rewards(self) -> List[Dict[str, Any]]:
+        """The 8 level 1 to 3 request rewards, and the first `request_reward_checks` level 4 ones."""
+        base = [r for r in DATA["request_rewards"] if r["level"] < LEVEL_4]
+        level_4 = [r for r in DATA["request_rewards"] if r["level"] == LEVEL_4]
+        return base + level_4[: self.options.request_reward_checks.value]
 
     def create_item(self, name: str) -> Reus2Item:
         return Reus2Item(name, self._classifications[name], self.item_name_to_id[name], self.player)
@@ -158,7 +166,7 @@ class Reus2World(World):
             if not (combos and checks == BioticumChecks.option_when_synergized):
                 self.get_location(bioticum["build_location"]).access_rule = \
                     lambda state, b=bioticum: rules.can_build(state, b)
-        for reward in DATA["request_rewards"][: self.options.request_reward_checks.value]:
+        for reward in self._request_rewards():
             self.get_location(reward["location"]).access_rule = lambda state, r=reward: rules.request_reward_ok(state, r)
         for draft in DATA["shop_drafts"][: self.options.shop_draft_checks.value]:
             self.get_location(draft["location"]).access_rule = lambda state, d=draft: rules.shop_draft_ok(state, d)
