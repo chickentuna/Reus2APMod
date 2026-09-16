@@ -26,6 +26,7 @@ internal sealed class MainThreadRunner : MonoBehaviour
         ApState.DrainNetworkEvents();
         ItemApplier.Tick();
         ApNotices.Tick();
+        BioticaBadges.Tick();
         GameProbes.Tick();
     }
 }

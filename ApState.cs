@@ -15,6 +15,7 @@ namespace Reus2Archipelago;
 /// </summary>
 internal static class ApState
 {
+    private static readonly HashSet<string> SeedLocations = new HashSet<string>();
     private static readonly HashSet<string> CheckedLocations = new HashSet<string>();
     private static readonly HashSet<string> UnsentChecks = new HashSet<string>();
     private static readonly SortedDictionary<int, string> Received = new SortedDictionary<int, string>();
@@ -49,6 +50,7 @@ internal static class ApState
 
     internal static void AdoptSession(
         ArchipelagoClient newClient,
+        IEnumerable<string> seedLocations,
         IEnumerable<string> alreadyChecked,
         string slot,
         string seed,
@@ -56,9 +58,13 @@ internal static class ApState
     {
         ClearPending();
         client = newClient;
+        SeedLocations.Clear();
         CheckedLocations.Clear();
         Received.Clear();
         ApNotices.Reset();
+
+        if (seedLocations != null)
+            SeedLocations.UnionWith(seedLocations);
 
         if (alreadyChecked != null)
         {
@@ -88,7 +94,16 @@ internal static class ApState
         foreach (var location in UnsentChecks.ToList())
             SendCheck(location);
         CheckGoal();
+        BioticaBadges.MarkDirty();
     }
+
+    /// <summary>A location of this slot's seed that has been neither sent nor kept to send. A name
+    /// the seed does not hold, such as a rule the slot's options leave out, is never open.</summary>
+    internal static bool IsOpen(string locationName)
+        => locationName != null
+           && SeedLocations.Contains(locationName)
+           && !CheckedLocations.Contains(locationName)
+           && !UnsentChecks.Contains(locationName);
 
     internal static void ReleaseSession(ArchipelagoClient source)
     {
@@ -149,12 +164,16 @@ internal static class ApState
         if (client == null || !client.SendCheck(locationName))
         {
             if (UnsentChecks.Add(locationName))
+            {
                 Plugin.Log.LogInfo($"Check kept until the next connection: {locationName}");
+                BioticaBadges.MarkDirty();
+            }
             return false;
         }
 
         UnsentChecks.Remove(locationName);
         CheckedLocations.Add(locationName);
+        BioticaBadges.MarkDirty();
 
         // What that check just handed out. Unknown until the connect-time scout lands, so a check
         // sent in the first seconds of a session has no names to show.

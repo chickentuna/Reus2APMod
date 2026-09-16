@@ -48,7 +48,8 @@ internal sealed class ArchipelagoClient
             }
 
             var success = (LoginSuccessful)result;
-            ApState.AdoptSession(this, CheckedLocationNames(), slot, session.RoomState.Seed, success.SlotData);
+            ApState.AdoptSession(this, LocationNames(session.Locations.AllLocations), LocationNames(session.Locations.AllLocationsChecked),
+                slot, session.RoomState.Seed, success.SlotData);
 
             nextItemIndex = 0;
             ScoutSeed();
@@ -179,9 +180,9 @@ internal sealed class ArchipelagoClient
             session.SetGoalAchieved();
     }
 
-    private IEnumerable<string> CheckedLocationNames()
+    private IEnumerable<string> LocationNames(IEnumerable<long> ids)
     {
-        foreach (var id in session.Locations.AllLocationsChecked)
+        foreach (var id in ids)
         {
             var name = session.Locations.GetLocationNameFromId(id, GameName);
             if (!string.IsNullOrWhiteSpace(name))

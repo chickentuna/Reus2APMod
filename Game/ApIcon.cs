@@ -121,4 +121,95 @@ internal static class ApIcon
         }
     }
 
+    /// <summary>
+    /// A copy of a game sprite with a small Archipelago logo on a dark disc in its upper right
+    /// corner. The sprite is copied through a render texture because game sprites sit in atlases
+    /// whose textures are not readable. Null when the sprite cannot be copied.
+    /// </summary>
+    internal static Sprite WithLogo(Sprite original)
+    {
+        var logo = Load()?.texture;
+        if (original == null || logo == null)
+            return null;
+
+        RenderTexture target = null;
+        var previous = RenderTexture.active;
+        try
+        {
+            var rect = original.textureRect;
+            var source = original.texture;
+            var width = Mathf.RoundToInt(rect.width);
+            var height = Mathf.RoundToInt(rect.height);
+
+            target = RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
+            Graphics.Blit(source, target,
+                new Vector2(rect.width / source.width, rect.height / source.height),
+                new Vector2(rect.x / source.width, rect.y / source.height));
+
+            var texture = new Texture2D(width, height, TextureFormat.RGBA32, mipChain: false)
+            {
+                hideFlags = HideFlags.HideAndDontSave,
+                filterMode = source.filterMode,
+                wrapMode = TextureWrapMode.Clamp,
+            };
+            RenderTexture.active = target;
+            texture.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+            var pixels = texture.GetPixels32();
+
+            // Texture rows start at the bottom, so the upper edge is a high y.
+            var size = Mathf.Min(width, height);
+            var radius = size * 0.22f;
+            var centerX = width - radius - size * 0.02f;
+            var centerY = height - radius - size * 0.02f;
+            var logoRadius = radius * 0.82f;
+            var disc = new Color(0.08f, 0.08f, 0.08f, 0.9f);
+
+            for (var y = Mathf.Max(0, Mathf.FloorToInt(centerY - radius - 1)); y < height; y++)
+            {
+                for (var x = Mathf.Max(0, Mathf.FloorToInt(centerX - radius - 1)); x < width; x++)
+                {
+                    var dx = x - centerX;
+                    var dy = y - centerY;
+                    var cover = Mathf.Clamp01(radius - Mathf.Sqrt(dx * dx + dy * dy) + 0.5f);
+                    if (cover <= 0f)
+                        continue;
+
+                    var index = y * width + x;
+                    Color pixel = Color.Lerp(pixels[index], disc, disc.a * cover);
+                    pixel.a = Mathf.Max(pixels[index].a / 255f, cover);
+
+                    var u = 0.5f + dx / (2f * logoRadius);
+                    var v = 0.5f + dy / (2f * logoRadius);
+                    if (u >= 0f && u <= 1f && v >= 0f && v <= 1f)
+                    {
+                        var mark = logo.GetPixelBilinear(u, v);
+                        pixel = Color.Lerp(pixel, new Color(mark.r, mark.g, mark.b, 1f), mark.a);
+                    }
+
+                    pixels[index] = pixel;
+                }
+            }
+
+            texture.SetPixels32(pixels);
+            texture.Apply();
+
+            var pivot = new Vector2(original.pivot.x / original.rect.width, original.pivot.y / original.rect.height);
+            var badged = Sprite.Create(texture, new Rect(0f, 0f, width, height), pivot, original.pixelsPerUnit,
+                0, SpriteMeshType.FullRect, original.border);
+            badged.name = original.name + " (Archipelago)";
+            badged.hideFlags = HideFlags.HideAndDontSave;
+            return badged;
+        }
+        catch (Exception e)
+        {
+            Plugin.Log.LogWarning($"Could not badge sprite {original.name}: {e.Message}");
+            return null;
+        }
+        finally
+        {
+            RenderTexture.active = previous;
+            if (target != null)
+                RenderTexture.ReleaseTemporary(target);
+        }
+    }
 }
