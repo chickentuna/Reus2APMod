@@ -31,6 +31,21 @@ internal static class ProgressionPatches
         Patching.Apply(harmony, "EraFeatController", "OnWorldStageControllerActivated", owner, postfix: nameof(PlanetLoaded));
         Patching.Apply(harmony, "AspectController", "DrawSetForEra", owner, prefix: nameof(SkipDrawnMicroType));
         Patching.Apply(harmony, "AspectController", "DrawInitialSet", owner, postfix: nameof(AfterInitialMicros));
+        Patching.Apply(harmony, "GameplayShop", "IsOptionUnlocked", owner, postfix: nameof(LockSpentDraftShop));
+        Patching.Apply(harmony, "GameplayShop", "CanBuy", owner, postfix: nameof(LockSpentDraftShop));
+    }
+
+    // Drafts are locked, so buying one only sends a Shop Draft check. Once none of the seed's is left to
+    // send, the draft options are shown locked (IsOptionUnlocked) and cannot be bought (CanBuy, which
+    // BuyOption and the buttons read).
+    private static void LockSpentDraftShop(MethodBase __originalMethod, ShopPriceOption option, ref (bool, string) __result)
+    {
+        if (!__result.Item1 || !option.ToString().StartsWith("Draft") || !ItemApplier.ProfileBound || !ApState.HasSession)
+            return;
+        if (Archipelago.ApData.Instance.ShopDrafts.Any(draft => ApState.IsOpen(draft.Location)))
+            return;
+        __result = (false, MacroSettings.L("Every Archipelago check in this shop has been sent."));
+        Record(__originalMethod, () => $"option={option} locked", quiet: true);
     }
 
     private static bool RunUnlessBound(MethodBase __originalMethod)
