@@ -83,6 +83,10 @@ internal static class CheckPatches
             return;
 
         var slot = GameAccess.Get(context, "slot");
+        // Ordering a build grows the bioticum in the slot's future copy until the giant finishes, and
+        // that copy's rules activate at once; the game skips it for its own triggers the same way.
+        if (GameAccess.Get(slot, "IsFutureSlot") is bool future && future)
+            return;
         var definition = GameAccess.Get(slot, "BioticumDefinition");
         var guid = GameAccess.DefinitionId(definition);
         if (guid == null)
