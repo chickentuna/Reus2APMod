@@ -48,6 +48,9 @@ FILLER = [
     ("Crevice Charge", "CrevicePoints", 1),
     ("Nomad", "Nomads", 1),
 ]
+# The share of a seed's filler slots a filler item holds, rounded down, for the ones kept rare; the
+# rest of the slots are spread evenly over the other filler items.
+FILLER_SHARE = {"Nomad": 0.05}
 MICRO_RARITY_ORDER = {"Basic": 0, "Era1": 1, "Era2": 2, "Era3": 3}
 # Rule counters that count across the whole planet; every other counter looks around the bioticum,
 # so its candidates must share the bioticum's biome.
@@ -313,6 +316,7 @@ def main():
         # Micro Charge keeps the id Bonus Micro had.
         "filler": [{"item": "Micro Charge", "item_id": item_id("charge", 0), "resource": "AspectCharges", "amount": 1}]
                   + [{"item": name, "item_id": item_id("filler", index), "resource": resource, "amount": amount}
+                     | ({"share": FILLER_SHARE[name]} if name in FILLER_SHARE else {})
                      for index, (name, resource, amount) in enumerate(FILLER, start=1)],
         "request_rewards": [
             {"location": f"Level {level + 1} Request Reward {index}",

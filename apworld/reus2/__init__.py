@@ -5,8 +5,8 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .game_data import DATA
-from .items import (Reus2Item, bioticum_pool_items, classifications, filler_items,
-                    item_groups, item_table, items_granting_biotica)
+from .items import (Reus2Item, bioticum_pool_items, classifications, common_filler_items,
+                    item_groups, item_table, items_granting_biotica, rare_filler_counts)
 from .locations import Reus2Location, location_table
 from .options import BioticumChecks, BioticumItems, Reus2Options
 from .rules import Reus2Rules
@@ -34,7 +34,7 @@ class Reus2World(World):
     location_name_to_id = location_table()
     item_name_groups = item_groups()
     _classifications = classifications()
-    _filler_items = filler_items()
+    _filler_items = common_filler_items()
 
     apex_biotica: bool
     starting_items: List[str]
@@ -147,6 +147,9 @@ class Reus2World(World):
                 else:
                     kept.append(item)
             pool = kept
+        filler_slots = slots - len(pool)
+        for name, count in rare_filler_counts(filler_slots).items():
+            pool += [self.create_item(name) for _ in range(count)]
         pool += [self.create_filler() for _ in range(slots - len(pool))]
         self.multiworld.itempool += pool
 

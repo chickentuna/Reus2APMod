@@ -27,6 +27,16 @@ def filler_items() -> List[str]:
     return [f["item"] for f in DATA["filler"]]
 
 
+def common_filler_items() -> List[str]:
+    """The filler items drawn at random, which leaves out the ones with a set share."""
+    return [f["item"] for f in DATA["filler"] if "share" not in f]
+
+
+def rare_filler_counts(slots: int) -> Dict[str, int]:
+    """How many of each rare filler item a seed with that many filler slots holds."""
+    return {f["item"]: int(slots * f["share"]) for f in DATA["filler"] if "share" in f}
+
+
 def items_granting_biotica(apex: bool) -> Dict[str, List[str]]:
     """For each bioticum name, the items that grant it. An apex item grants its own bioticum and the
     cohorts it brings, so a cohort brought by several apexes has several."""

@@ -37718,7 +37718,8 @@
    "item": "Nomad",
    "item_id": 8796093022214,
    "resource": "Nomads",
-   "amount": 1
+   "amount": 1,
+   "share": 0.05
   }
  ],
  "request_rewards": [
