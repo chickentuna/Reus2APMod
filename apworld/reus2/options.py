@@ -20,7 +20,7 @@ class StartingBiotica(Range):
     display_name = "Starting Biotica"
     range_start = 4
     range_end = 30
-    default = 12
+    default = 4
 
 
 class StartingPowers(Range):
@@ -42,7 +42,7 @@ class StartingCharacters(Range):
     display_name = "Starting Characters"
     range_start = 1
     range_end = 5
-    default = 2
+    default = 1
 
 
 class RequestRewardChecks(Range):
@@ -65,7 +65,7 @@ class ShopDraftChecks(Range):
 class BioticumItems(Choice):
     """How biotica are shuffled.
 
-    - **Individual:** every bioticum is its own item.
+    - **Individual:** every bioticum is its own item. Puts a lot of items in the pool!
     - **Apex:** every apex bioticum is one item, granting it and the cohorts it brings; a bioticum
       no apex brings is still its own item."""
     display_name = "Biotica"
