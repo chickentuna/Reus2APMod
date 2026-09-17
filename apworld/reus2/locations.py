@@ -10,7 +10,7 @@ class Reus2Location(Location):
 
 
 def location_table() -> Dict[str, int]:
-    """Every name and id, holding the build and All Combos locations whatever `bioticum_checks` is:
+    """Every name and id, holding the build and Synergized locations whatever `bioticum_checks` is:
     `Reus2World.location_name_to_id` is set on the class, where the options of a slot cannot be read."""
     table = {}
     for b in DATA["biotica"]:

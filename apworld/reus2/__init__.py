@@ -109,7 +109,7 @@ class Reus2World(World):
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
                 locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
-            # Under when_synergized a bioticum that has combo rules carries its All Combos location alone.
+            # Under when_synergized a bioticum that has combo rules carries its Synergized location alone.
             if not (combos and checks == BioticumChecks.option_when_synergized):
                 locations[bioticum["build_location"]] = bioticum["build_location_id"]
         for reward in self._request_rewards():

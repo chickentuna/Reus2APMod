@@ -234,7 +234,7 @@ def build_biotica(definitions, micro_names):
         b["build_location"] = f"Build {b['name']}"
         b["build_location_id"] = location_id("build", guid_bits(b["guid"]))
         if rules:
-            b["all_combos_location"] = f"{b['name']} All Combos"
+            b["all_combos_location"] = f"{b['name']} Synergized"
             b["all_combos_location_id"] = location_id("all_combos", guid_bits(b["guid"]))
     for b in pool:
         del b["raw_name"]

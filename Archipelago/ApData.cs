@@ -76,7 +76,7 @@ internal sealed class ApData
     internal List<string> ItemsGranting(string guid) => bioticumItems[guid];
 
     /// <summary>The rule at that index of a bioticum, or null for the rules the data leaves out,
-    /// which send no check of their own and do not count towards the bioticum's All Combos.</summary>
+    /// which send no check of their own and do not count towards the bioticum's Synergized.</summary>
     internal RuleEntry ComboRule(string guid, int ruleIndex)
         => comboRules.TryGetValue(ComboKey(guid, ruleIndex), out var rule) ? rule : null;
 
