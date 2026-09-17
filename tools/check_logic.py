@@ -78,6 +78,9 @@ def main():
         for reward in data["request_rewards"]:
             if not rules.request_reward_ok(state, reward):
                 failures.append((mode, reward["location"], "request reward"))
+        for draft in data["shop_drafts"]:
+            if not rules.shop_draft_ok(state, draft):
+                failures.append((mode, draft["location"], "shop draft"))
         if not rules.builds_reachable(state, len(data["biotica"])):
             failures.append((mode, "goal", "not every build reachable"))
         highest_goal = modules["options"].GoalBuilds.range_end

@@ -6,9 +6,11 @@ from .game_data import DATA
 from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, classifications, items_granting_biotica
 from .options import BioticumChecks, BioticumItems
 
-# How many biotica must be buildable before a request of each level (stored from 0) can be completed.
-# Level 1 stays within the 4 the starting kit guarantees.
-REQUEST_BIOTICA = {0: 4, 1: 8, 2: 16, 3: 24}
+# How many biotica must be synergized before a request of each level (stored from 0) can be completed,
+# since cities only ask for and reward what biotica working at full strength produce.
+REQUEST_BIOTICA = {0: 8, 1: 12, 2: 16, 3: 24}
+# The same for buying a shop draft, by the draft's number: its price is paid in city resources.
+SHOP_DRAFT_BIOTICA = ((2, 8), (5, 12), (10, 16))
 
 
 class Reus2Rules:
@@ -144,20 +146,20 @@ class Reus2Rules:
 
     def request_reward_ok(self, state: CollectionState, reward) -> bool:
         """Levels 1 to 3 need one Progressive Era per level above the first. Level 4 needs every item
-        classed both progression and useful. Every level needs its count of buildable biotica."""
+        classed both progression and useful. Every level needs its count of synergized biotica."""
         level = reward["level"]
         if level < 3:
             unlocked = state.has(self.era_item, self.player, level)
         else:
             unlocked = (state.has(self.era_item, self.player, len(DATA["eras"]["eras"]))
                         and state.has_all(self.key_items, self.player))
-        return unlocked and self.builds_reachable(state, REQUEST_BIOTICA[level])
+        return unlocked and self.synergized_reachable(state, REQUEST_BIOTICA[level])
 
     def shop_draft_ok(self, state: CollectionState, draft) -> bool:
         index = draft["index"]
-        if index <= 2:
-            return True
-        return state.has(self.era_item, self.player, 1 if index <= 5 else 2)
+        biotica = next(count for last, count in SHOP_DRAFT_BIOTICA if index <= last)
+        eras = 0 if index <= 2 else 1 if index <= 5 else 2
+        return state.has(self.era_item, self.player, eras) and self.synergized_reachable(state, biotica)
 
     def builds_reachable(self, state: CollectionState, goal: int) -> bool:
         found = 0
@@ -172,14 +174,15 @@ class Reus2Rules:
         """The goal counts a bioticum once its location is sent. Under when_synergized a bioticum
         with synergy rules carries only its synergy location, so it counts once every rule is active
         at once; every other bioticum counts once built."""
+        return self.synergized_reachable(state, goal) if self.synergy_counts else self.builds_reachable(state, goal)
+
+    def synergized_reachable(self, state: CollectionState, count: int) -> bool:
+        """`count` biotica working at full strength: a bioticum with synergy rules once every rule can
+        be active at once, one without once it can be built."""
         found = 0
         for bioticum in DATA["biotica"]:
-            if self.synergy_counts and bioticum["rules"]:
-                counts = self.can_combo_all(state, bioticum)
-            else:
-                counts = self.can_build(state, bioticum)
-            if counts:
+            if self.can_combo_all(state, bioticum) if bioticum["rules"] else self.can_build(state, bioticum):
                 found += 1
-                if found >= goal:
+                if found >= count:
                     return True
         return False
