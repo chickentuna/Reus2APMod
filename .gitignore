@@ -3,3 +3,5 @@ obj/
 dist/
 __pycache__/
 Reus2Dump.local.props
+decomp/
+dump/
