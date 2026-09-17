@@ -40,6 +40,12 @@ internal static class ApState
 
     internal static IEnumerable<string> ReceivedItems => Received.Values;
 
+    /// <summary>The seed's goal_builds, or 0 before a slot has been logged into.</summary>
+    internal static int GoalBuilds { get; private set; }
+
+    /// <summary>Different biotica built so far towards the goal, updated whenever a check is sent.</summary>
+    internal static int BuiltCount { get; private set; }
+
     /// <summary>The item the last sent check held, who it was for, and whether that is this slot.
     /// Null until a check goes out with the seed scouted.</summary>
     internal static string LastSentItem { get; private set; }
@@ -75,6 +81,7 @@ internal static class ApState
         SlotName = slot;
         Seed = seed;
         slotData = newSlotData ?? new Dictionary<string, object>();
+        GoalBuilds = SlotInt("goal_builds", 0);
         HasSession = true;
         goalSent = false;
         ItemApplier.MarkDirty();
@@ -221,10 +228,11 @@ internal static class ApState
 
     private static void CheckGoal()
     {
+        BuiltCount = BioticaBuilt();
         if (goalSent || client == null)
             return;
         var goal = SlotInt("goal_builds", int.MaxValue);
-        if (BioticaBuilt() < goal)
+        if (BuiltCount < goal)
             return;
 
         client.SendGoal();

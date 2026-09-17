@@ -29,4 +29,6 @@ internal sealed class MainThreadRunner : MonoBehaviour
         BioticaBadges.Tick();
         GameProbes.Tick();
     }
+
+    private void OnGUI() => GoalCounter.Draw();
 }
