@@ -1,5 +1,5 @@
 from collections import Counter, defaultdict
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
@@ -16,6 +16,8 @@ VICTORY = "Victory"
 ROLE_TYPES = ("Plant", "Animal", "Geo")
 # Request levels are stored from 0, so level 4 requests are level 3.
 LEVEL_4 = 3
+# The options slot data carries, which decide the seed's locations and logic.
+SLOT_OPTIONS = ("goal_builds", "request_reward_checks", "shop_draft_checks", "bioticum_items", "bioticum_checks")
 
 
 class Reus2World(World):
@@ -34,13 +36,27 @@ class Reus2World(World):
     _classifications = classifications()
     _filler_items = common_filler_items()
 
+    # Universal Tracker rebuilds a slot's logic from its slot data, without the player's yaml.
+    ut_can_gen_without_yaml = True
+
     apex_biotica: bool
     starting_items: List[str]
     surplus_items: List[str]
+    replayed_surplus: Optional[List[str]] = None
+
+    @staticmethod
+    def interpret_slot_data(slot_data: Dict[str, Any]) -> Dict[str, Any]:
+        return slot_data
 
     def generate_early(self) -> None:
+        # Universal Tracker passes the slot data back; the seed's options and random rolls come from it.
+        replay = getattr(self.multiworld, "re_gen_passthrough", {}).get(self.game)
+        if replay:
+            for name in SLOT_OPTIONS:
+                getattr(self.options, name).value = replay[name]
         self.apex_biotica = self.options.bioticum_items.value == BioticumItems.option_apex
-        self.starting_items = self._roll_starting_kit()
+        self.starting_items = list(replay["starting_items"]) if replay else self._roll_starting_kit()
+        self.replayed_surplus = list(replay["surplus_items"]) if replay else None
         self.surplus_items = []
 
     def _roll_starting_kit(self) -> List[str]:
@@ -139,8 +155,18 @@ class Reus2World(World):
         add(DATA["eras"]["item"], len(DATA["eras"]["eras"]))
 
         slots = len(self.multiworld.get_unfilled_locations(self.player))
-        if len(pool) > slots:
+        if self.replayed_surplus is not None:
+            wanted = Counter(self.replayed_surplus)
+            surplus = set()
+            for index, item in enumerate(pool):
+                if wanted[item.name] > 0:
+                    wanted[item.name] -= 1
+                    surplus.add(index)
+        elif len(pool) > slots:
             surplus = set(self.random.sample(range(len(pool)), len(pool) - slots))
+        else:
+            surplus = set()
+        if surplus:
             kept: List[Reus2Item] = []
             for index, item in enumerate(pool):
                 if index in surplus:
@@ -176,9 +202,7 @@ class Reus2World(World):
         self.multiworld.completion_condition[self.player] = lambda state: state.has(VICTORY, self.player)
 
     def fill_slot_data(self) -> Dict[str, Any]:
-        slot_data = self.options.as_dict(
-            "goal_builds", "request_reward_checks", "shop_draft_checks", "bioticum_items",
-            "bioticum_checks")
+        slot_data = self.options.as_dict(*SLOT_OPTIONS)
         slot_data["game_version"] = DATA["game_version"]
         slot_data["starting_items"] = self.starting_items
         slot_data["surplus_items"] = self.surplus_items
