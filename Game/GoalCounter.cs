@@ -43,7 +43,7 @@ internal static class GoalCounter
         var textSize = style.CalcSize(content);
         var icon = style.fontSize * 1.5f;
         var padding = style.fontSize * 0.5f;
-        var margin = Screen.height * 0.024f;
+        var margin = Screen.height * 0.048f;
 
         var width = padding + icon + padding + textSize.x + padding;
         var height = Mathf.Max(icon, textSize.y) + padding;
