@@ -172,7 +172,7 @@ class Reus2World(World):
             self.get_location(draft["location"]).access_rule = lambda state, d=draft: rules.shop_draft_ok(state, d)
 
         goal = self.options.goal_builds.value
-        self.get_location(GOAL_LOCATION).access_rule = lambda state: rules.builds_reachable(state, goal)
+        self.get_location(GOAL_LOCATION).access_rule = lambda state: rules.goal_reachable(state, goal)
         self.multiworld.completion_condition[self.player] = lambda state: state.has(VICTORY, self.player)
 
     def fill_slot_data(self) -> Dict[str, Any]:

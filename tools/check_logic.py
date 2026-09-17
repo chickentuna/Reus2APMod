@@ -80,6 +80,9 @@ def main():
                 failures.append((mode, reward["location"], "request reward"))
         if not rules.builds_reachable(state, len(data["biotica"])):
             failures.append((mode, "goal", "not every build reachable"))
+        highest_goal = modules["options"].GoalBuilds.range_end
+        if not rules.goal_reachable(state, highest_goal):
+            failures.append((mode, "goal", f"the highest goal, {highest_goal}, is not reachable"))
 
     if failures:
         print(f"{len(failures)} unreachable:")

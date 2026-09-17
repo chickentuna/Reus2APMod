@@ -4,11 +4,11 @@ from BaseClasses import CollectionState, ItemClassification
 
 from .game_data import DATA
 from .items import MICROS_ITEM, SECONDARY_BIOMES_ITEM, classifications, items_granting_biotica
+from .options import BioticumChecks, BioticumItems
 
 # How many biotica must be buildable before a request of each level (stored from 0) can be completed.
 # Level 1 stays within the 4 the starting kit guarantees.
 REQUEST_BIOTICA = {0: 4, 1: 8, 2: 16, 3: 24}
-from .options import BioticumItems
 
 
 class Reus2Rules:
@@ -22,6 +22,7 @@ class Reus2Rules:
 
     def __init__(self, world) -> None:
         self.player = world.player
+        self.synergy_counts = world.options.bioticum_checks.value == BioticumChecks.option_when_synergized
         self.granting = items_granting_biotica(
             world.options.bioticum_items.value == BioticumItems.option_apex)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
@@ -162,6 +163,22 @@ class Reus2Rules:
         found = 0
         for bioticum in DATA["biotica"]:
             if self.can_build(state, bioticum):
+                found += 1
+                if found >= goal:
+                    return True
+        return False
+
+    def goal_reachable(self, state: CollectionState, goal: int) -> bool:
+        """The goal counts a bioticum once its location is sent. Under when_synergized a bioticum
+        with synergy rules carries only its synergy location, so it counts once every rule is active
+        at once; every other bioticum counts once built."""
+        found = 0
+        for bioticum in DATA["biotica"]:
+            if self.synergy_counts and bioticum["rules"]:
+                counts = self.can_combo_all(state, bioticum)
+            else:
+                counts = self.can_build(state, bioticum)
+            if counts:
                 found += 1
                 if found >= goal:
                     return True

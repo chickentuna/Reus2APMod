@@ -4,7 +4,8 @@ from Options import Choice, PerGameCommonOptions, Range, StartInventoryPool
 
 
 class GoalBuilds(Range):
-    """Number of different biotica you must build to win."""
+    """Number of different biotica you must build to win. With Bioticum Checks on When Synergized,
+    a bioticum that has synergy rules counts once its synergy is done, not when it is built."""
     display_name = "Goal: Biotica Built"
     range_start = 10
     range_end = 300
@@ -71,7 +72,7 @@ class BioticumItems(Choice):
     display_name = "Biotica"
     option_individual = 0
     option_apex = 1
-    default = 0
+    default = 1
 
 
 class BioticumChecks(Choice):
