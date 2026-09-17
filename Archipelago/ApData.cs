@@ -101,6 +101,7 @@ internal sealed class BioticumEntry
 {
     [JsonProperty("guid")] public string Guid;
     [JsonProperty("name")] public string Name;
+    [JsonProperty("level")] public int Level;
     [JsonProperty("item")] public string Item;
     [JsonProperty("cohorts")] public List<string> Cohorts = new List<string>();
     [JsonProperty("apex_item")] public string ApexItem;

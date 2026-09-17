@@ -172,6 +172,8 @@ internal static class ApState
     {
         if (string.IsNullOrWhiteSpace(locationName) || CheckedLocations.Contains(locationName))
             return false;
+        if (SeedLocations.Count > 0 && !SeedLocations.Contains(locationName))
+            return false;
 
         if (client == null || !client.SendCheck(locationName))
         {
@@ -233,6 +235,11 @@ internal static class ApState
 
     /// <summary>Biotica the slot has checked. A bioticum whose location is its combos was built to
     /// get there, so both families count, and a bioticum is counted once.</summary>
+    /// <summary>A bioticum above the slot's max_biotica_level has no item or location and is held
+    /// from the start.</summary>
+    internal static bool HeldFromStart(Archipelago.BioticumEntry bioticum)
+        => bioticum.Level > SlotInt("max_biotica_level", int.MaxValue);
+
     private static int BioticaBuilt()
     {
         var data = Archipelago.ApData.Instance;

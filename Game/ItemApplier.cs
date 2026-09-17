@@ -105,8 +105,7 @@ internal static class ItemApplier
         var data = ApData.Instance;
 
         foreach (var bioticum in data.Biotica)
-            SetUnlocked(profile, "GetBioticumData", bioticum.Guid,
-                data.ItemsGranting(bioticum.Guid).Any(received.ContainsKey));
+            SetUnlocked(profile, "GetBioticumData", bioticum.Guid, Holds(bioticum, received));
         foreach (var biome in data.Biomes)
             SetUnlocked(profile, "GetBiomeData", biome.Guid, received.ContainsKey(biome.Item));
         foreach (var character in data.Characters)
@@ -146,6 +145,9 @@ internal static class ItemApplier
         GameAccess.Call(profile, "InvalidateSaveFile");
     }
 
+    private static bool Holds(BioticumEntry bioticum, Dictionary<string, int> received)
+        => ApState.HeldFromStart(bioticum) || ApData.Instance.ItemsGranting(bioticum.Guid).Any(received.ContainsKey);
+
     /// <summary>GameplayController.UnlockBaseBiotica fills masteredBiotica with each legal biome's
     /// base biotica, and GetAllAvailableBiotica returns that list, so the run's pool is written from
     /// the received items instead. Returns how many it holds.</summary>
@@ -155,7 +157,7 @@ internal static class ItemApplier
             return -1;
 
         var wanted = ApData.Instance.Biotica
-            .Where(b => ApData.Instance.ItemsGranting(b.Guid).Any(received.ContainsKey))
+            .Where(b => Holds(b, received))
             .Select(b => GameAccess.Definition(b.Guid))
             .Where(d => d != null)
             .ToList();
