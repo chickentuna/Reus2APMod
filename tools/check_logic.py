@@ -58,16 +58,19 @@ def main():
     values = (checks.option_build_only, checks.option_when_synergized, checks.option_build_and_synergized)
 
     failures = []
-    modes = [(bioticum_items, bioticum_checks)
-             for bioticum_items in (0, 1) for bioticum_checks in values]
-    for bioticum_items, bioticum_checks in modes:
-        mode = f"bioticum_items={bioticum_items} bioticum_checks={bioticum_checks}"
+    rules_module = modules["rules"]
+    modes = [(max_level, bioticum_items, bioticum_checks)
+             for max_level in (1, 2, 3) for bioticum_items in (0, 1) for bioticum_checks in values]
+    for max_level, bioticum_items, bioticum_checks in modes:
+        mode = f"max_biotica_level={max_level} bioticum_items={bioticum_items} bioticum_checks={bioticum_checks}"
         world = types.SimpleNamespace(player=1, options=types.SimpleNamespace(
+            max_biotica_level=types.SimpleNamespace(value=max_level),
             bioticum_items=types.SimpleNamespace(value=bioticum_items),
             bioticum_checks=types.SimpleNamespace(value=bioticum_checks)))
-        rules = modules["rules"].Reus2Rules(world)
+        rules = rules_module.Reus2Rules(world)
         state = FullInventory()
-        for bioticum in data["biotica"]:
+        biotica = modules["items"].biotica_up_to(max_level)
+        for bioticum in biotica:
             combos = bioticum["rules"]
             if not (combos and bioticum_checks == checks.option_when_synergized):
                 if not rules.can_build(state, bioticum):
@@ -81,9 +84,9 @@ def main():
         for draft in data["shop_drafts"]:
             if not rules.shop_draft_ok(state, draft):
                 failures.append((mode, draft["location"], "shop draft"))
-        if not rules.builds_reachable(state, len(data["biotica"])):
+        if not rules.builds_reachable(state, len(biotica)):
             failures.append((mode, "goal", "not every build reachable"))
-        highest_goal = modules["options"].GoalBuilds.range_end
+        highest_goal = min(modules["options"].GoalBuilds.range_end, len(biotica))
         if not rules.goal_reachable(state, highest_goal):
             failures.append((mode, "goal", f"the highest goal, {highest_goal}, is not reachable"))
 
@@ -92,8 +95,8 @@ def main():
         for mode, location, reason in failures:
             print(f"  [{mode}] {location}  ({reason})")
         sys.exit(1)
-    print(f"every location is reachable with a full inventory, in all {len(modes)} bioticum_items"
-          " and bioticum_checks combinations")
+    print(f"every location is reachable with a full inventory, in all {len(modes)} max_biotica_level,"
+          " bioticum_items and bioticum_checks combinations")
 
 
 if __name__ == "__main__":

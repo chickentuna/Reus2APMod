@@ -3,9 +3,26 @@ from dataclasses import dataclass
 from Options import Choice, PerGameCommonOptions, Range, StartInventoryPool
 
 
+class MaxBioticaLevel(Choice):
+    """The highest biotica level that holds items and locations, for shorter games. Biotica above it
+    are yours from the start and send no checks; the Progressive Eras stay in the pool to reach them.
+
+    - **One Star:** 117 biotica with items and locations.
+    - **Two Stars:** 229 biotica with items and locations.
+    - **Three Stars:** all 353 biotica have items and locations."""
+    display_name = "Max Biotica Level"
+    option_one_star = 1
+    option_two_stars = 2
+    option_three_stars = 3
+    default = 3
+
+
 class GoalBuilds(Range):
     """Number of different biotica you must build to win. With Bioticum Checks on When Synergized,
-    a bioticum that has synergy rules counts once its synergy is done, not when it is built."""
+    a bioticum that has synergy rules counts once its synergy is done, not when it is built.
+
+    Only biotica up to Max Biotica Level count, so this is lowered to 117 at most with One Star
+    and 229 with Two Stars."""
     display_name = "Goal: Biotica Built"
     range_start = 10
     range_end = 300
@@ -47,7 +64,8 @@ class StartingCharacters(Range):
 
 
 class RequestRewardChecks(Range):
-    """How many level 4 request rewards are checks in a given planet.
+    """How many level 4 request rewards are checks in a given planet, on top of the 8 level 1 to 3
+    ones, which always are.
     Every new planet counts from its first level 4 request again, so if this is too high, the check isn't reachable."""
     display_name = "Level 4 Request Reward Checks"
     range_start = 0
@@ -93,6 +111,7 @@ class BioticumChecks(Choice):
 @dataclass
 class Reus2Options(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
+    max_biotica_level: MaxBioticaLevel
     goal_builds: GoalBuilds
     starting_biotica: StartingBiotica
     starting_powers: StartingPowers

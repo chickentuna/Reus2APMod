@@ -25,8 +25,9 @@ class Reus2Rules:
     def __init__(self, world) -> None:
         self.player = world.player
         self.synergy_counts = world.options.bioticum_checks.value == BioticumChecks.option_when_synergized
+        self.max_level = world.options.max_biotica_level.value
         self.granting = items_granting_biotica(
-            world.options.bioticum_items.value == BioticumItems.option_apex)
+            world.options.bioticum_items.value == BioticumItems.option_apex, self.max_level)
         self.biotica = {b["name"]: b for b in DATA["biotica"]}
         self.giants_of_type = defaultdict(list)
         self.first_terraformers = defaultdict(list)
@@ -51,7 +52,8 @@ class Reus2Rules:
                                 if flags & ItemClassification.progression and flags & ItemClassification.useful)
 
     def has_bioticum(self, state: CollectionState, bioticum) -> bool:
-        return state.has_any(self.granting[bioticum["name"]], self.player)
+        """A bioticum above Max Biotica Level is held from the start."""
+        return bioticum["level"] > self.max_level or state.has_any(self.granting[bioticum["name"]], self.player)
 
     def level_ok(self, state: CollectionState, level: int) -> bool:
         """A bioticum above level 1 needs a slot of its level, and Upgrade Slots is what raises one;
@@ -148,22 +150,22 @@ class Reus2Rules:
         """Levels 1 to 3 need one Progressive Era per level above the first. Level 4 needs every item
         classed both progression and useful. Every level needs its count of synergized biotica."""
         level = reward["level"]
-        if level < 3:
-            unlocked = state.has(self.era_item, self.player, level)
-        else:
-            unlocked = (state.has(self.era_item, self.player, len(DATA["eras"]["eras"]))
-                        and state.has_all(self.key_items, self.player))
+        unlocked = (state.has(self.era_item, self.player, min(level, len(DATA["eras"]["eras"])))
+                    and (level < 3 or state.has_all(self.key_items, self.player)))
         return unlocked and self.synergized_reachable(state, REQUEST_BIOTICA[level])
 
     def shop_draft_ok(self, state: CollectionState, draft) -> bool:
         index = draft["index"]
         biotica = next(count for last, count in SHOP_DRAFT_BIOTICA if index <= last)
         eras = 0 if index <= 2 else 1 if index <= 5 else 2
-        return state.has(self.era_item, self.player, eras) and self.synergized_reachable(state, biotica)
+        return (state.has(self.era_item, self.player, eras)
+                and self.synergized_reachable(state, biotica))
 
     def builds_reachable(self, state: CollectionState, goal: int) -> bool:
         found = 0
         for bioticum in DATA["biotica"]:
+            if bioticum["level"] > self.max_level:
+                continue
             if self.can_build(state, bioticum):
                 found += 1
                 if found >= goal:
@@ -171,16 +173,20 @@ class Reus2Rules:
         return False
 
     def goal_reachable(self, state: CollectionState, goal: int) -> bool:
-        """The goal counts a bioticum once its location is sent. Under when_synergized a bioticum
-        with synergy rules carries only its synergy location, so it counts once every rule is active
-        at once; every other bioticum counts once built."""
-        return self.synergized_reachable(state, goal) if self.synergy_counts else self.builds_reachable(state, goal)
+        """The goal counts a bioticum once its location is sent, so only biotica up to Max Biotica
+        Level count. Under when_synergized a bioticum with synergy rules carries only its synergy
+        location, so it counts once every rule is active at once; every other bioticum counts once built."""
+        if self.synergy_counts:
+            return self.synergized_reachable(state, goal, self.max_level)
+        return self.builds_reachable(state, goal)
 
-    def synergized_reachable(self, state: CollectionState, count: int) -> bool:
-        """`count` biotica working at full strength: a bioticum with synergy rules once every rule can
-        be active at once, one without once it can be built."""
+    def synergized_reachable(self, state: CollectionState, count: int, max_level: int = 3) -> bool:
+        """`count` biotica up to `max_level` working at full strength: a bioticum with synergy rules
+        once every rule can be active at once, one without once it can be built."""
         found = 0
         for bioticum in DATA["biotica"]:
+            if bioticum["level"] > max_level:
+                continue
             if self.can_combo_all(state, bioticum) if bioticum["rules"] else self.can_build(state, bioticum):
                 found += 1
                 if found >= count:

@@ -5,7 +5,7 @@ from BaseClasses import ItemClassification, Region
 from worlds.AutoWorld import World
 
 from .game_data import DATA
-from .items import (Reus2Item, bioticum_pool_items, classifications, common_filler_items,
+from .items import (Reus2Item, biotica_up_to, bioticum_pool_items, classifications, common_filler_items,
                     item_groups, item_table, items_granting_biotica, rare_filler_counts)
 from .locations import Reus2Location, location_table
 from .options import BioticumChecks, BioticumItems, Reus2Options
@@ -17,7 +17,8 @@ ROLE_TYPES = ("Plant", "Animal", "Geo")
 # Request levels are stored from 0, so level 4 requests are level 3.
 LEVEL_4 = 3
 # The options slot data carries, which decide the seed's locations and logic.
-SLOT_OPTIONS = ("goal_builds", "request_reward_checks", "shop_draft_checks", "bioticum_items", "bioticum_checks")
+SLOT_OPTIONS = ("max_biotica_level", "goal_builds", "request_reward_checks", "shop_draft_checks",
+                "bioticum_items", "bioticum_checks")
 
 
 class Reus2World(World):
@@ -40,6 +41,7 @@ class Reus2World(World):
     ut_can_gen_without_yaml = True
 
     apex_biotica: bool
+    max_level: int
     starting_items: List[str]
     surplus_items: List[str]
     replayed_surplus: Optional[List[str]] = None
@@ -55,6 +57,8 @@ class Reus2World(World):
             for name in SLOT_OPTIONS:
                 getattr(self.options, name).value = replay[name]
         self.apex_biotica = self.options.bioticum_items.value == BioticumItems.option_apex
+        self.max_level = self.options.max_biotica_level.value
+        self.options.goal_builds.value = min(self.options.goal_builds.value, len(biotica_up_to(self.max_level)))
         self.starting_items = list(replay["starting_items"]) if replay else self._roll_starting_kit()
         self.replayed_surplus = list(replay["surplus_items"]) if replay else None
         self.surplus_items = []
@@ -92,7 +96,7 @@ class Reus2World(World):
                     pile.pop()
                 if pile and len(chosen) < wanted:
                     chosen.append(pile.pop())
-        granting = items_granting_biotica(self.apex_biotica)
+        granting = items_granting_biotica(self.apex_biotica, self.max_level)
         kit += list(dict.fromkeys(granting[name][0] for name in chosen))
 
         characters = [c["item"] for c in DATA["characters"]]
@@ -105,7 +109,7 @@ class Reus2World(World):
 
         checks = self.options.bioticum_checks.value
         locations: Dict[str, int] = {}
-        for bioticum in DATA["biotica"]:
+        for bioticum in biotica_up_to(self.max_level):
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
                 locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
@@ -147,7 +151,7 @@ class Reus2World(World):
         def add(name: str, copies: int = 1) -> None:
             pool.extend(self.create_item(name) for _ in range(max(0, copies - started[name])))
 
-        for name in bioticum_pool_items(self.apex_biotica):
+        for name in bioticum_pool_items(self.apex_biotica, self.max_level):
             add(name)
         for key in ("giants", "biomes", "abilities", "characters", "micros", "unlocks"):
             for entry in DATA[key]:
@@ -184,7 +188,7 @@ class Reus2World(World):
     def set_rules(self) -> None:
         rules = Reus2Rules(self)
         checks = self.options.bioticum_checks.value
-        for bioticum in DATA["biotica"]:
+        for bioticum in biotica_up_to(self.max_level):
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
                 self.get_location(bioticum["all_combos_location"]).access_rule = \

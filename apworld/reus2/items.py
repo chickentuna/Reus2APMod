@@ -37,24 +37,33 @@ def rare_filler_counts(slots: int) -> Dict[str, int]:
     return {f["item"]: int(slots * f["share"]) for f in DATA["filler"] if "share" in f}
 
 
-def items_granting_biotica(apex: bool) -> Dict[str, List[str]]:
-    """For each bioticum name, the items that grant it. An apex item grants its own bioticum and the
-    cohorts it brings, so a cohort brought by several apexes has several."""
+def biotica_up_to(max_level: int) -> List[dict]:
+    """The biotica a seed with that Max Biotica Level holds."""
+    return [b for b in DATA["biotica"] if b["level"] <= max_level]
+
+
+def items_granting_biotica(apex: bool, max_level: int) -> Dict[str, List[str]]:
+    """For each bioticum up to `max_level`, the items that grant it. An apex item grants its own
+    bioticum and the cohorts it brings, so a cohort brought by several apexes has several; an apex
+    above `max_level` is left out."""
+    biotica = biotica_up_to(max_level)
+    kept = {b["name"] for b in biotica}
     granting: Dict[str, List[str]] = defaultdict(list)
     if apex:
-        for bioticum in DATA["biotica"]:
+        for bioticum in biotica:
             if "apex_item" in bioticum:
                 for name in [bioticum["name"]] + bioticum["cohorts"]:
-                    granting[name].append(bioticum["apex_item"])
-    for bioticum in DATA["biotica"]:
+                    if name in kept:
+                        granting[name].append(bioticum["apex_item"])
+    for bioticum in biotica:
         if bioticum["name"] not in granting:
             granting[bioticum["name"]] = [bioticum["item"]]
     return dict(granting)
 
 
-def bioticum_pool_items(apex: bool) -> List[str]:
+def bioticum_pool_items(apex: bool, max_level: int) -> List[str]:
     """Every item that grants a bioticum, once each."""
-    granted = items_granting_biotica(apex).values()
+    granted = items_granting_biotica(apex, max_level).values()
     return list(dict.fromkeys(item for items in granted for item in items))
 
 
