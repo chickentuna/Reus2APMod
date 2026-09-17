@@ -89,7 +89,7 @@ internal static class ApState
         Plugin.Log.LogInfo(
             $"Archipelago session adopted with {CheckedLocations.Count} completed checks.");
         Plugin.Log.LogInfo("Slot data: " + string.Join(", ", slotData
-            .Where(pair => !(pair.Value is JArray))
+            .Where(pair => !(pair.Value is JArray || pair.Value is JObject))
             .Select(pair => $"{pair.Key}={pair.Value}")));
         foreach (var key in new[] { "bioticum_checks", "bioticum_items", "goal_builds" })
         {
@@ -127,9 +127,10 @@ internal static class ApState
         string itemName,
         string senderName,
         bool fromSelf,
+        long location,
         ItemFlags flags)
     {
-        PendingItems.Enqueue(new PendingItem(source, index, itemName, senderName, fromSelf, flags));
+        PendingItems.Enqueue(new PendingItem(source, index, itemName, senderName, fromSelf, location, flags));
     }
 
     internal static void QueueDisconnect(ArchipelagoClient source, string reason)
@@ -156,8 +157,12 @@ internal static class ApState
                 continue;
 
             Received[item.Index] = item.Name;
-            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"} from {item.SenderName ?? (item.FromSelf ? "this slot" : "no player")}");
-            ApNotices.ItemReceived(item.Index, item.Name, item.SenderName, item.FromSelf, item.Flags);
+            var from = item.SenderName ?? (item.FromSelf ? "this slot" : "no player");
+            Plugin.Log.LogInfo($"Received item #{item.Index}: {item.Name ?? "<unnamed>"} from {from}");
+            var flags = item.Location > 0 ? item.Flags
+                : item.Location == StartingInventoryLocation ? StartingItemFlags(item.Name)
+                : (ItemFlags?)null;
+            ApNotices.ItemReceived(item.Index, item.Name, item.SenderName, item.FromSelf, flags);
             ItemApplier.MarkDirty();
         }
     }
@@ -198,6 +203,18 @@ internal static class ApState
             : $"Sent check: {locationName}");
         CheckGoal();
         return true;
+    }
+
+    /// <summary>The location the server names for an item of the slot's start inventory.</summary>
+    private const long StartingInventoryLocation = -2;
+
+    /// <summary>The classification the seed gave a start inventory item, which the server sends
+    /// without flags; null when the slot data does not say.</summary>
+    private static ItemFlags? StartingItemFlags(string itemName)
+    {
+        if (itemName == null || !(slotData.TryGetValue("starting_item_flags", out var value) && value is JObject flags))
+            return null;
+        return flags.TryGetValue(itemName, out var token) ? (ItemFlags)token.Value<int>() : (ItemFlags?)null;
     }
 
     internal static int SlotInt(string key, int fallback)
@@ -254,13 +271,14 @@ internal static class ApState
     private readonly struct PendingItem
     {
         internal PendingItem(ArchipelagoClient source, int index, string name, string senderName, bool fromSelf,
-            ItemFlags flags)
+            long location, ItemFlags flags)
         {
             Source = source;
             Index = index;
             Name = name;
             SenderName = senderName;
             FromSelf = fromSelf;
+            Location = location;
             Flags = flags;
         }
 
@@ -269,6 +287,9 @@ internal static class ApState
         internal string Name { get; }
         internal string SenderName { get; }
         internal bool FromSelf { get; }
+        /// <summary>The location the item was found at; 0 or below for none, as the start inventory
+        /// and the server's /send, whose flags the server leaves out.</summary>
+        internal long Location { get; }
         internal ItemFlags Flags { get; }
     }
 

@@ -17,7 +17,8 @@ internal static class ApNotices
     private const int ListedAtOnce = 300;
 
     private static readonly SortedDictionary<int, ReceivedItem> Received = new SortedDictionary<int, ReceivedItem>();
-    private static readonly List<(string Text, ItemFlags Flags)> Pending = new List<(string, ItemFlags)>();
+    /// <summary>Messages waiting for a planet, with the item's classification, or null when unknown.</summary>
+    private static readonly List<(string Text, ItemFlags? Flags)> Pending = new List<(string, ItemFlags?)>();
 
     /// <summary>A new session replays every item from index 0, so nothing from the last one is kept.</summary>
     internal static void Reset()
@@ -26,7 +27,7 @@ internal static class ApNotices
         Pending.Clear();
     }
 
-    internal static void ItemReceived(int index, string itemName, string senderName, bool fromSelf, ItemFlags flags)
+    internal static void ItemReceived(int index, string itemName, string senderName, bool fromSelf, ItemFlags? flags)
     {
         Received[index] = new ReceivedItem(itemName, senderName, fromSelf, flags);
     }
@@ -54,9 +55,11 @@ internal static class ApNotices
 
     /// <summary>The chat log's filters are positive, minor, warnings and crises: items that help are
     /// positive, filler is minor, and a trap is a warning. The badge on the portrait is what tells
-    /// progression from useful.</summary>
-    private static ChatMessageStyle StyleFor(ItemFlags flags)
+    /// progression from useful. An item of unknown classification is minor and carries no badge.</summary>
+    private static ChatMessageStyle StyleFor(ItemFlags? known)
     {
+        if (!(known is ItemFlags flags))
+            return ChatMessageStyle.Neutral;
         if ((flags & ItemFlags.Trap) != 0)
             return ChatMessageStyle.Warning;
         if ((flags & (ItemFlags.Advancement | ItemFlags.NeverExclude)) != 0)
@@ -64,8 +67,10 @@ internal static class ApNotices
         return ChatMessageStyle.Neutral;
     }
 
-    private static ApChat.Badge BadgeFor(ItemFlags flags)
+    private static ApChat.Badge BadgeFor(ItemFlags? known)
     {
+        if (!(known is ItemFlags flags))
+            return ApChat.Badge.None;
         if ((flags & ItemFlags.Trap) != 0)
             return ApChat.Badge.Trap;
         if ((flags & ItemFlags.Advancement) != 0)
@@ -90,7 +95,7 @@ internal static class ApNotices
         if (fresh.Count > ListedAtOnce)
         {
             // Classed as the best of what it stands for; a trap only when nothing among them helps.
-            var flags = fresh.Aggregate(ItemFlags.None, (all, item) => all | item.Flags);
+            var flags = fresh.Aggregate(ItemFlags.None, (all, item) => all | (item.Flags ?? ItemFlags.None));
             if ((flags & ItemFlags.Advancement) != 0)
                 flags = ItemFlags.Advancement;
             else if ((flags & ItemFlags.NeverExclude) != 0)
@@ -128,7 +133,7 @@ internal static class ApNotices
 
     private readonly struct ReceivedItem
     {
-        internal ReceivedItem(string itemName, string senderName, bool fromSelf, ItemFlags flags)
+        internal ReceivedItem(string itemName, string senderName, bool fromSelf, ItemFlags? flags)
         {
             ItemName = itemName ?? "an item";
             SenderName = senderName;
@@ -140,6 +145,6 @@ internal static class ApNotices
         /// <summary>Null when the item came to this slot from no player, as the server's /send does.</summary>
         internal string SenderName { get; }
         internal bool FromSelf { get; }
-        internal ItemFlags Flags { get; }
+        internal ItemFlags? Flags { get; }
     }
 }

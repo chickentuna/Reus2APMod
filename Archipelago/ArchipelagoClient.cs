@@ -199,11 +199,12 @@ internal sealed class ArchipelagoClient
             var item = helper.DequeueItem();
             var sender = item.Player;
             var fromOwnSlot = sender != null && sender.Slot == session?.ConnectionInfo.Slot;
-            // Only an item at one of this slot's locations was found here; the server's /send and the
-            // start inventory come from no location (-1 and -2) and name this slot as the sender.
+            // Only an item at one of this slot's locations was found here. The server's /send comes from
+            // no location (-1) with this slot as the sender, the start inventory (-2) from the server.
             ApState.QueueReceivedItem(this, nextItemIndex++, item.ItemName,
                 fromOwnSlot ? null : string.IsNullOrWhiteSpace(sender?.Alias) ? sender?.Name : sender.Alias,
                 fromOwnSlot && item.LocationId > 0,
+                item.LocationId,
                 item.Flags);
         }
     }

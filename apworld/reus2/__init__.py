@@ -206,4 +206,7 @@ class Reus2World(World):
         slot_data["game_version"] = DATA["game_version"]
         slot_data["starting_items"] = self.starting_items
         slot_data["surplus_items"] = self.surplus_items
+        # The server sends the start inventory without classification flags; the client reads them here.
+        slot_data["starting_item_flags"] = {name: int(self._classifications[name])
+                                            for name in self.starting_items + self.surplus_items}
         return slot_data
