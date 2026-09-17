@@ -25,7 +25,7 @@ class GoalBuilds(Range):
     and 229 with Two Stars."""
     display_name = "Goal: Biotica Built"
     range_start = 10
-    range_end = 300
+    range_end = 353
     default = 200
 
 
