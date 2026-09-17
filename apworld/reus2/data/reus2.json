@@ -200,7 +200,7 @@
     "Leopard",
     "Oryx"
    ],
-   "apex_item": "Apex: African Elephant",
+   "apex_item": "Apex: African Elephant (Cohorts: Impala, Leopard, Oryx)",
    "apex_item_id": 9952624256457,
    "item": "African Elephant",
    "item_id": 1156531234249,
@@ -666,7 +666,7 @@
     "Gazelle",
     "Marula"
    ],
-   "apex_item": "Apex: Amaranth",
+   "apex_item": "Apex: Amaranth (Cohorts: African Violet, Gazelle, Marula)",
    "apex_item_id": 9937367705649,
    "item": "Amaranth",
    "item_id": 1141274683441,
@@ -901,7 +901,7 @@
     "Rowan",
     "Tungsten"
    ],
-   "apex_item": "Apex: Amur Leopard",
+   "apex_item": "Apex: Amur Leopard (Cohorts: Poplar, Rowan, Tungsten)",
    "apex_item_id": 9910295559655,
    "item": "Amur Leopard",
    "item_id": 1114202537447,
@@ -1007,7 +1007,7 @@
     "Tin",
     "White Willow"
    ],
-   "apex_item": "Apex: Antimony",
+   "apex_item": "Apex: Antimony (Cohorts: Tin, White Willow)",
    "apex_item_id": 9915816343131,
    "item": "Antimony",
    "item_id": 1119723320923,
@@ -1084,7 +1084,7 @@
     "Pear Tree",
     "Squirrel"
    ],
-   "apex_item": "Apex: Apple Tree",
+   "apex_item": "Apex: Apple Tree (Cohorts: Pear Tree, Squirrel)",
    "apex_item_id": 9925988198141,
    "item": "Apple Tree",
    "item_id": 1129895175933,
@@ -1721,7 +1721,7 @@
     "Jungle Fowl",
     "Taro"
    ],
-   "apex_item": "Apex: Banana",
+   "apex_item": "Apex: Banana (Cohorts: Jungle Fowl, Taro)",
    "apex_item_id": 9959547041803,
    "item": "Banana",
    "item_id": 1163454019595,
@@ -1759,7 +1759,7 @@
     "Fluorite",
     "Giraffe"
    ],
-   "apex_item": "Apex: Baobab",
+   "apex_item": "Apex: Baobab (Cohorts: Egusi, Fluorite, Giraffe)",
    "apex_item_id": 9904477772955,
    "item": "Baobab",
    "item_id": 1108384750747,
@@ -2229,7 +2229,7 @@
     "White Mulberry",
     "White Willow"
    ],
-   "apex_item": "Apex: Beaver",
+   "apex_item": "Apex: Beaver (Cohorts: Pear Tree, White Mulberry, White Willow)",
    "apex_item_id": 9924018149922,
    "item": "Beaver",
    "item_id": 1127925127714,
@@ -2645,7 +2645,7 @@
     "Sun Coral",
     "Sunfish"
    ],
-   "apex_item": "Apex: Blue Whale",
+   "apex_item": "Apex: Blue Whale (Cohorts: Seep Community, Sun Coral, Sunfish)",
    "apex_item_id": 9941196263529,
    "item": "Blue Whale",
    "item_id": 1145103241321,
@@ -2908,7 +2908,7 @@
     "Pheasant",
     "Squirrel"
    ],
-   "apex_item": "Apex: Boar",
+   "apex_item": "Apex: Boar (Cohorts: Blackberry, Pheasant, Squirrel)",
    "apex_item_id": 9961579364619,
    "item": "Boar",
    "item_id": 1165486342411,
@@ -3084,7 +3084,7 @@
     "Open-Brain Coral",
     "Turtle Grass"
    ],
-   "apex_item": "Apex: Bottlenose Dolphin",
+   "apex_item": "Apex: Bottlenose Dolphin (Cohorts: Anchovy, Open-Brain Coral, Turtle Grass)",
    "apex_item_id": 9903057396123,
    "item": "Bottlenose Dolphin",
    "item_id": 1106964373915,
@@ -3178,7 +3178,7 @@
     "Cinnabar",
     "Jabuticaba"
    ],
-   "apex_item": "Apex: Brazilwood",
+   "apex_item": "Apex: Brazilwood (Cohorts: Cinchona Tree, Cinnabar, Jabuticaba)",
    "apex_item_id": 9905939895227,
    "item": "Brazilwood",
    "item_id": 1109846873019,
@@ -3388,7 +3388,7 @@
     "Sunstone",
     "Yellow Diamond"
    ],
-   "apex_item": "Apex: Brown Bear",
+   "apex_item": "Apex: Brown Bear (Cohorts: Charoite, Sunstone, Yellow Diamond)",
    "apex_item_id": 9917726950091,
    "item": "Brown Bear",
    "item_id": 1121633927883,
@@ -3472,7 +3472,7 @@
     "Rambutan",
     "Taro"
    ],
-   "apex_item": "Apex: Cacao Tree",
+   "apex_item": "Apex: Cacao Tree (Cohorts: Jabuticaba, Rambutan, Taro)",
    "apex_item_id": 9932421525697,
    "item": "Cacao Tree",
    "item_id": 1136328503489,
@@ -3511,7 +3511,7 @@
     "Iguana",
     "Taro"
    ],
-   "apex_item": "Apex: Caiman",
+   "apex_item": "Apex: Caiman (Cohorts: Armadillo, Iguana, Taro)",
    "apex_item_id": 9964173359623,
    "item": "Caiman",
    "item_id": 1168080337415,
@@ -3633,7 +3633,7 @@
     "Red Oat",
     "Warthog"
    ],
-   "apex_item": "Apex: Cape Buffalo",
+   "apex_item": "Apex: Cape Buffalo (Cohorts: Egusi, Red Oat, Warthog)",
    "apex_item_id": 9938404382139,
    "item": "Cape Buffalo",
    "item_id": 1142311359931,
@@ -3978,7 +3978,7 @@
     "Bamboo",
     "Squirrel Monkey"
    ],
-   "apex_item": "Apex: Capybara",
+   "apex_item": "Apex: Capybara (Cohorts: Arrau Turtle, Bamboo, Squirrel Monkey)",
    "apex_item_id": 9954220254609,
    "item": "Capybara",
    "item_id": 1158127232401,
@@ -4473,7 +4473,7 @@
     "Jungle Fowl",
     "Topaz"
    ],
-   "apex_item": "Apex: Cassave",
+   "apex_item": "Apex: Cassave (Cohorts: Aquamarine, Jungle Fowl, Topaz)",
    "apex_item_id": 9927278544027,
    "item": "Cassave",
    "item_id": 1131185521819,
@@ -4852,7 +4852,7 @@
     "Rattlesnake",
     "Sandgrouse"
    ],
-   "apex_item": "Apex: Cheetah",
+   "apex_item": "Apex: Cheetah (Cohorts: Oryx, Rattlesnake, Sandgrouse)",
    "apex_item_id": 9938948449014,
    "item": "Cheetah",
    "item_id": 1142855426806,
@@ -4891,7 +4891,7 @@
     "Spinel",
     "Tin"
    ],
-   "apex_item": "Apex: Cherry Tree",
+   "apex_item": "Apex: Cherry Tree (Cohorts: Red Deer, Spinel, Tin)",
    "apex_item_id": 9912452017188,
    "item": "Cherry Tree",
    "item_id": 1116358994980,
@@ -5064,7 +5064,7 @@
     "Dove Tree",
     "Marula"
    ],
-   "apex_item": "Apex: Chinese Jujube",
+   "apex_item": "Apex: Chinese Jujube (Cohorts: Dove, Dove Tree, Marula)",
    "apex_item_id": 9922818505572,
    "item": "Chinese Jujube",
    "item_id": 1126725483364,
@@ -5308,7 +5308,7 @@
     "Manganese",
     "Seep Community"
    ],
-   "apex_item": "Apex: Christmas Tree Coral",
+   "apex_item": "Apex: Christmas Tree Coral (Cohorts: Chert, Manganese, Seep Community)",
    "apex_item_id": 9937501862413,
    "item": "Christmas Tree Coral",
    "item_id": 1141408840205,
@@ -5376,7 +5376,7 @@
     "Lions Ear",
     "Soda Ash"
    ],
-   "apex_item": "Apex: Chrome",
+   "apex_item": "Apex: Chrome (Cohorts: Barley, Lions Ear, Soda Ash)",
    "apex_item_id": 9904902606243,
    "item": "Chrome",
    "item_id": 1108809584035,
@@ -5576,7 +5576,7 @@
     "Kunzite",
     "Spinel"
    ],
-   "apex_item": "Apex: Citrine",
+   "apex_item": "Apex: Citrine (Cohorts: Cape Fox, Kunzite, Spinel)",
    "apex_item_id": 9905124251890,
    "item": "Citrine",
    "item_id": 1109031229682,
@@ -6005,7 +6005,7 @@
     "Ginkgo",
     "Sandstone"
    ],
-   "apex_item": "Apex: Coal",
+   "apex_item": "Apex: Coal (Cohorts: Feldspar, Ginkgo, Sandstone)",
    "apex_item_id": 9921806146028,
    "item": "Coal",
    "item_id": 1125713123820,
@@ -6158,7 +6158,7 @@
     "Spider Monkey",
     "Vinaceous Amazon"
    ],
-   "apex_item": "Apex: Cobalt",
+   "apex_item": "Apex: Cobalt (Cohorts: Agave, Spider Monkey, Vinaceous Amazon)",
    "apex_item_id": 9946460157284,
    "item": "Cobalt",
    "item_id": 1150367135076,
@@ -6202,7 +6202,7 @@
     "Cinchona Tree",
     "Mica"
    ],
-   "apex_item": "Apex: Coffea Robusta",
+   "apex_item": "Apex: Coffea Robusta (Cohorts: Bauxite, Cinchona Tree, Mica)",
    "apex_item_id": 9923844107409,
    "item": "Coffea Robusta",
    "item_id": 1127751085201,
@@ -6439,7 +6439,7 @@
     "Skunk",
     "Tin"
    ],
-   "apex_item": "Apex: Copper (Taiga)",
+   "apex_item": "Apex: Copper (Taiga) (Cohorts: Skunk, Tin)",
    "apex_item_id": 9930832144984,
    "item": "Copper (Taiga)",
    "item_id": 1134739122776,
@@ -6854,7 +6854,7 @@
     "Fig",
     "Sunstone"
    ],
-   "apex_item": "Apex: Cotton",
+   "apex_item": "Apex: Cotton (Cohorts: Bearded Dragon, Fig, Sunstone)",
    "apex_item_id": 9896922597511,
    "item": "Cotton",
    "item_id": 1100829575303,
@@ -6979,7 +6979,7 @@
     "Basalt (Aquatic)",
     "Clubhook Squid"
    ],
-   "apex_item": "Apex: Crab Meeting Spot",
+   "apex_item": "Apex: Crab Meeting Spot (Cohorts: Anchovy, Basalt (Aquatic), Clubhook Squid)",
    "apex_item_id": 9911175835032,
    "item": "Crab Meeting Spot",
    "item_id": 1115082812824,
@@ -7219,7 +7219,7 @@
     "Jasper",
     "Sunstone"
    ],
-   "apex_item": "Apex: Date Palm",
+   "apex_item": "Apex: Date Palm (Cohorts: Armadillo, Jasper, Sunstone)",
    "apex_item_id": 9911466826527,
    "item": "Date Palm",
    "item_id": 1115373804319,
@@ -7282,7 +7282,7 @@
     "Mudcrack",
     "Olive Tree"
    ],
-   "apex_item": "Apex: Desert Salt",
+   "apex_item": "Apex: Desert Salt (Cohorts: Fan Palm, Mudcrack, Olive Tree)",
    "apex_item_id": 9916629859704,
    "item": "Desert Salt",
    "item_id": 1120536837496,
@@ -7407,7 +7407,7 @@
     "Sunstone",
     "Turquoise"
    ],
-   "apex_item": "Apex: Diamond",
+   "apex_item": "Apex: Diamond (Cohorts: Rattlesnake, Sunstone, Turquoise)",
    "apex_item_id": 9901668334138,
    "item": "Diamond",
    "item_id": 1105575311930,
@@ -7513,7 +7513,7 @@
     "Sandgrouse",
     "Turquoise"
    ],
-   "apex_item": "Apex: Dromedary Camel",
+   "apex_item": "Apex: Dromedary Camel (Cohorts: Olive Tree, Sandgrouse, Turquoise)",
    "apex_item_id": 9897548936708,
    "item": "Dromedary Camel",
    "item_id": 1101455914500,
@@ -7667,7 +7667,7 @@
     "Red Algea",
     "Turtle Grass"
    ],
-   "apex_item": "Apex: Dugong",
+   "apex_item": "Apex: Dugong (Cohorts: Finger Coral, Red Algea, Turtle Grass)",
    "apex_item_id": 9938654709051,
    "item": "Dugong",
    "item_id": 1142561686843,
@@ -7783,7 +7783,7 @@
     "Enargite",
     "Iron"
    ],
-   "apex_item": "Apex: Dysprosium",
+   "apex_item": "Apex: Dysprosium (Cohorts: Basalt, Enargite, Iron)",
    "apex_item_id": 9930317971744,
    "item": "Dysprosium",
    "item_id": 1134224949536,
@@ -8326,7 +8326,7 @@
     "Leaf Turquoise",
     "Raccoon Dog"
    ],
-   "apex_item": "Apex: Emerald",
+   "apex_item": "Apex: Emerald (Cohorts: Kaolin, Leaf Turquoise, Raccoon Dog)",
    "apex_item_id": 9901050280141,
    "item": "Emerald",
    "item_id": 1104957257933,
@@ -8892,7 +8892,7 @@
     "Desert Tortoise",
     "Jackal"
    ],
-   "apex_item": "Apex: Falcon",
+   "apex_item": "Apex: Falcon (Cohorts: Carnelian, Desert Tortoise, Jackal)",
    "apex_item_id": 9952773430181,
    "item": "Falcon",
    "item_id": 1156680407973,
@@ -9071,7 +9071,7 @@
     "Dove",
     "Sunstone"
    ],
-   "apex_item": "Apex: Fennec",
+   "apex_item": "Apex: Fennec (Cohorts: Bearded Dragon, Dove, Sunstone)",
    "apex_item_id": 9953213386273,
    "item": "Fennec",
    "item_id": 1157120364065,
@@ -9614,7 +9614,7 @@
     "Iguana",
     "Topaz"
    ],
-   "apex_item": "Apex: Fire Opal",
+   "apex_item": "Apex: Fire Opal (Cohorts: Iguana, Topaz)",
    "apex_item_id": 9941077113470,
    "item": "Fire Opal",
    "item_id": 1144984091262,
@@ -9906,7 +9906,7 @@
     "Charoite",
     "Red-Backed Vole"
    ],
-   "apex_item": "Apex: Fox",
+   "apex_item": "Apex: Fox (Cohorts: Charoite, Red-Backed Vole)",
    "apex_item_id": 9963095616987,
    "item": "Fox",
    "item_id": 1167002594779,
@@ -10003,7 +10003,7 @@
     "Sunflower",
     "White Mulberry"
    ],
-   "apex_item": "Apex: Foxglove",
+   "apex_item": "Apex: Foxglove (Cohorts: Sandstone, Sunflower, White Mulberry)",
    "apex_item_id": 9949460914323,
    "item": "Foxglove",
    "item_id": 1153367892115,
@@ -10039,7 +10039,7 @@
     "Peat",
     "Rowan"
    ],
-   "apex_item": "Apex: Garnet",
+   "apex_item": "Apex: Garnet (Cohorts: Peat, Rowan)",
    "apex_item_id": 9929108596231,
    "item": "Garnet",
    "item_id": 1133015574023,
@@ -10512,7 +10512,7 @@
     "Damask Rose",
     "Field Eryngo"
    ],
-   "apex_item": "Apex: Giant Cardon",
+   "apex_item": "Apex: Giant Cardon (Cohorts: Armadillo, Damask Rose, Field Eryngo)",
    "apex_item_id": 9955423675276,
    "item": "Giant Cardon",
    "item_id": 1159330653068,
@@ -10695,7 +10695,7 @@
     "Field Eryngo",
     "Topaz"
    ],
-   "apex_item": "Apex: Gila Monster",
+   "apex_item": "Apex: Gila Monster (Cohorts: Enargite, Field Eryngo, Topaz)",
    "apex_item_id": 9953421414724,
    "item": "Gila Monster",
    "item_id": 1157328392516,
@@ -10873,7 +10873,7 @@
     "Desert Tortoise",
     "Gazelle"
    ],
-   "apex_item": "Apex: Gold",
+   "apex_item": "Apex: Gold (Cohorts: Carnelian, Desert Tortoise, Gazelle)",
    "apex_item_id": 9950953254301,
    "item": "Gold",
    "item_id": 1154860232093,
@@ -10924,7 +10924,7 @@
     "Iguana",
     "Red Howler"
    ],
-   "apex_item": "Apex: Gold (Legendary)",
+   "apex_item": "Apex: Gold (Legendary) (Cohorts: Aquamarine, Iguana, Red Howler)",
    "apex_item_id": 9911908238007,
    "item": "Gold (Legendary)",
    "item_id": 1115815215799,
@@ -11099,7 +11099,7 @@
     "Fluorite",
     "Squirrel Monkey"
    ],
-   "apex_item": "Apex: Golden Lion Tamarin",
+   "apex_item": "Apex: Golden Lion Tamarin (Cohorts: Cinchona Tree, Fluorite, Squirrel Monkey)",
    "apex_item_id": 9918504523704,
    "item": "Golden Lion Tamarin",
    "item_id": 1122411501496,
@@ -11418,7 +11418,7 @@
     "Cranberry",
     "Crossbill"
    ],
-   "apex_item": "Apex: Granite",
+   "apex_item": "Apex: Granite (Cohorts: Bluebead, Cranberry, Crossbill)",
    "apex_item_id": 9903365297974,
    "item": "Granite",
    "item_id": 1107272275766,
@@ -11570,7 +11570,7 @@
     "Musk Deer",
     "Raccoon Dog"
    ],
-   "apex_item": "Apex: Grey Wolf",
+   "apex_item": "Apex: Grey Wolf (Cohorts: Amber, Musk Deer, Raccoon Dog)",
    "apex_item_id": 9934981918288,
    "item": "Grey Wolf",
    "item_id": 1138888896080,
@@ -11609,7 +11609,7 @@
     "Passion Fruit",
     "Tinamou"
    ],
-   "apex_item": "Apex: Guarana",
+   "apex_item": "Apex: Guarana (Cohorts: Cinchona Tree, Passion Fruit, Tinamou)",
    "apex_item_id": 9917239958007,
    "item": "Guarana",
    "item_id": 1121146935799,
@@ -11691,7 +11691,7 @@
     "Flint",
     "Parakeet"
    ],
-   "apex_item": "Apex: Gumbo Limbo",
+   "apex_item": "Apex: Gumbo Limbo (Cohorts: Flint, Parakeet)",
    "apex_item_id": 9920416687917,
    "item": "Gumbo Limbo",
    "item_id": 1124323665709,
@@ -11810,7 +11810,7 @@
     "Potash",
     "Tin"
    ],
-   "apex_item": "Apex: Gypsum",
+   "apex_item": "Apex: Gypsum (Cohorts: Poplar, Potash, Tin)",
    "apex_item_id": 9906919343067,
    "item": "Gypsum",
    "item_id": 1110826320859,
@@ -12025,7 +12025,7 @@
     "Pygmy Falcon",
     "Shepherd Tree"
    ],
-   "apex_item": "Apex: Hamadryas Baboon",
+   "apex_item": "Apex: Hamadryas Baboon (Cohorts: Cape Fox, Pygmy Falcon, Shepherd Tree)",
    "apex_item_id": 9906766687394,
    "item": "Hamadryas Baboon",
    "item_id": 1110673665186,
@@ -12199,7 +12199,7 @@
     "Jungle Fowl",
     "Toco Toucan"
    ],
-   "apex_item": "Apex: Harpy",
+   "apex_item": "Apex: Harpy (Cohorts: Cinnabar, Jungle Fowl, Toco Toucan)",
    "apex_item_id": 9920743360068,
    "item": "Harpy",
    "item_id": 1124650337860,
@@ -12519,7 +12519,7 @@
     "Mica",
     "Pitaya"
    ],
-   "apex_item": "Apex: Heliconia",
+   "apex_item": "Apex: Heliconia (Cohorts: Kapok Tree, Mica, Pitaya)",
    "apex_item_id": 9917311813307,
    "item": "Heliconia",
    "item_id": 1121218791099,
@@ -12562,7 +12562,7 @@
     "Fluorite",
     "Kapok Tree"
    ],
-   "apex_item": "Apex: Helium",
+   "apex_item": "Apex: Helium (Cohorts: Flint, Fluorite, Kapok Tree)",
    "apex_item_id": 9945106492255,
    "item": "Helium",
    "item_id": 1149013470047,
@@ -12753,7 +12753,7 @@
     "Kentucky Coffeetree",
     "Parakeet"
    ],
-   "apex_item": "Apex: Hematite",
+   "apex_item": "Apex: Hematite (Cohorts: Cinchona Tree, Kentucky Coffeetree, Parakeet)",
    "apex_item_id": 9928693261527,
    "item": "Hematite",
    "item_id": 1132600239319,
@@ -12934,7 +12934,7 @@
     "Iguana",
     "Tinamou"
    ],
-   "apex_item": "Apex: Hemp",
+   "apex_item": "Apex: Hemp (Cohorts: Flint, Iguana, Tinamou)",
    "apex_item_id": 9911320478112,
    "item": "Hemp",
    "item_id": 1115227455904,
@@ -13330,7 +13330,7 @@
     "Basalt",
     "Rat"
    ],
-   "apex_item": "Apex: Ibex",
+   "apex_item": "Apex: Ibex (Cohorts: Agave, Basalt, Rat)",
    "apex_item_id": 9927716187639,
    "item": "Ibex",
    "item_id": 1131623165431,
@@ -13770,7 +13770,7 @@
     "Fan Palm",
     "Topaz"
    ],
-   "apex_item": "Apex: Index Fossil",
+   "apex_item": "Apex: Index Fossil (Cohorts: Basalt, Fan Palm, Topaz)",
    "apex_item_id": 9917196610179,
    "item": "Index Fossil",
    "item_id": 1121103587971,
@@ -14122,7 +14122,7 @@
     "Leopard",
     "Pygmy Falcon"
    ],
-   "apex_item": "Apex: Jackalberry",
+   "apex_item": "Apex: Jackalberry (Cohorts: Cape Fox, Leopard, Pygmy Falcon)",
    "apex_item_id": 9933207272528,
    "item": "Jackalberry",
    "item_id": 1137114250320,
@@ -14393,7 +14393,7 @@
     "Raccoon Dog",
     "Red Deer"
    ],
-   "apex_item": "Apex: Jade (Imperial)",
+   "apex_item": "Apex: Jade (Imperial) (Cohorts: Corsac, Raccoon Dog, Red Deer)",
    "apex_item_id": 9900995527838,
    "item": "Jade (Imperial)",
    "item_id": 1104902505630,
@@ -14549,7 +14549,7 @@
     "Rubber Tree",
     "Topaz"
    ],
-   "apex_item": "Apex: Jade (Ritual)",
+   "apex_item": "Apex: Jade (Ritual) (Cohorts: Agave, Rubber Tree, Topaz)",
    "apex_item_id": 9928856797738,
    "item": "Jade (Ritual)",
    "item_id": 1132763775530,
@@ -14593,7 +14593,7 @@
     "Bamboo",
     "Onyx"
    ],
-   "apex_item": "Apex: Jaguar",
+   "apex_item": "Apex: Jaguar (Cohorts: Arrau Turtle, Bamboo, Onyx)",
    "apex_item_id": 9962517752986,
    "item": "Jaguar",
    "item_id": 1166424730778,
@@ -15380,7 +15380,7 @@
     "Eucalyptus",
     "Gazelle"
    ],
-   "apex_item": "Apex: Kangaroo",
+   "apex_item": "Apex: Kangaroo (Cohorts: Emu, Eucalyptus, Gazelle)",
    "apex_item_id": 9961775728207,
    "item": "Kangaroo",
    "item_id": 1165682705999,
@@ -15889,7 +15889,7 @@
     "Emu",
     "Topaz"
    ],
-   "apex_item": "Apex: Kookaburra",
+   "apex_item": "Apex: Kookaburra (Cohorts: Bearded Dragon, Emu, Topaz)",
    "apex_item_id": 9942980665780,
    "item": "Kookaburra",
    "item_id": 1146887643572,
@@ -16372,7 +16372,7 @@
     "Jasper",
     "Topaz"
    ],
-   "apex_item": "Apex: Lapis Lazuli",
+   "apex_item": "Apex: Lapis Lazuli (Cohorts: Jasper, Topaz)",
    "apex_item_id": 9895921064639,
    "item": "Lapis Lazuli",
    "item_id": 1099828042431,
@@ -16463,7 +16463,7 @@
     "Red Cardinal",
     "Red-Backed Vole"
    ],
-   "apex_item": "Apex: Larix",
+   "apex_item": "Apex: Larix (Cohorts: Blackberry, Red Cardinal, Red-Backed Vole)",
    "apex_item_id": 9942671207303,
    "item": "Larix",
    "item_id": 1146578185095,
@@ -16692,7 +16692,7 @@
     "Millet",
     "Spinel"
    ],
-   "apex_item": "Apex: Lemongrass",
+   "apex_item": "Apex: Lemongrass (Cohorts: Egusi, Millet, Spinel)",
    "apex_item_id": 9914132238124,
    "item": "Lemongrass",
    "item_id": 1118039215916,
@@ -17100,7 +17100,7 @@
     "Fan Palm",
     "Rattlesnake"
    ],
-   "apex_item": "Apex: Limestone",
+   "apex_item": "Apex: Limestone (Cohorts: Fan Palm, Rattlesnake)",
    "apex_item_id": 9955174038783,
    "item": "Limestone",
    "item_id": 1159081016575,
@@ -17288,7 +17288,7 @@
     "Serval",
     "White Backed Vulture"
    ],
-   "apex_item": "Apex: Lion",
+   "apex_item": "Apex: Lion (Cohorts: Lions Ear, Serval, White Backed Vulture)",
    "apex_item_id": 9908740517039,
    "item": "Lion",
    "item_id": 1112647494831,
@@ -17505,7 +17505,7 @@
     "Iron",
     "King Brown Snake"
    ],
-   "apex_item": "Apex: Lithium",
+   "apex_item": "Apex: Lithium (Cohorts: Carnelian, Iron, King Brown Snake)",
    "apex_item_id": 9932142789533,
    "item": "Lithium",
    "item_id": 1136049767325,
@@ -17536,7 +17536,7 @@
     "Grape Vine",
     "Pallas Cat"
    ],
-   "apex_item": "Apex: Lychee Tree",
+   "apex_item": "Apex: Lychee Tree (Cohorts: Blackberry, Grape Vine, Pallas Cat)",
    "apex_item_id": 9924796915663,
    "item": "Lychee Tree",
    "item_id": 1128703893455,
@@ -17686,7 +17686,7 @@
     "Flint",
     "Kola Nut Tree"
    ],
-   "apex_item": "Apex: Mandril",
+   "apex_item": "Apex: Mandril (Cohorts: Ebony, Flint, Kola Nut Tree)",
    "apex_item_id": 9938093957070,
    "item": "Mandril",
    "item_id": 1142000934862,
@@ -17912,7 +17912,7 @@
     "Parakeet",
     "Pitaya"
    ],
-   "apex_item": "Apex: Mango",
+   "apex_item": "Apex: Mango (Cohorts: Agave, Parakeet, Pitaya)",
    "apex_item_id": 9927624290724,
    "item": "Mango",
    "item_id": 1131531268516,
@@ -17949,7 +17949,7 @@
     "Jellyfish",
     "Manganese"
    ],
-   "apex_item": "Apex: Manta Ray",
+   "apex_item": "Apex: Manta Ray (Cohorts: Jasper, Jellyfish, Manganese)",
    "apex_item_id": 9912954970933,
    "item": "Manta Ray",
    "item_id": 1116861948725,
@@ -18045,7 +18045,7 @@
     "Musk Deer",
     "White Willow"
    ],
-   "apex_item": "Apex: Maple",
+   "apex_item": "Apex: Maple (Cohorts: Ginkgo, Musk Deer, White Willow)",
    "apex_item_id": 9961635149318,
    "item": "Maple",
    "item_id": 1165542127110,
@@ -18093,7 +18093,7 @@
     "Mudpool",
     "Warthog"
    ],
-   "apex_item": "Apex: Marabou",
+   "apex_item": "Apex: Marabou (Cohorts: Kunzite, Mudpool, Warthog)",
    "apex_item_id": 9910589702853,
    "item": "Marabou",
    "item_id": 1114496680645,
@@ -18132,7 +18132,7 @@
     "Seabass",
     "Suckerfish"
    ],
-   "apex_item": "Apex: Marlin",
+   "apex_item": "Apex: Marlin (Cohorts: Barreleyes, Seabass, Suckerfish)",
    "apex_item_id": 9922895299027,
    "item": "Marlin",
    "item_id": 1126802276819,
@@ -18415,7 +18415,7 @@
     "Red Oat",
     "Termite Hill"
    ],
-   "apex_item": "Apex: Meerkat",
+   "apex_item": "Apex: Meerkat (Cohorts: African Violet, Red Oat, Termite Hill)",
    "apex_item_id": 9945999351116,
    "item": "Meerkat",
    "item_id": 1149906328908,
@@ -18992,7 +18992,7 @@
     "Pitaya",
     "Wildebeest"
    ],
-   "apex_item": "Apex: Monkey Orange",
+   "apex_item": "Apex: Monkey Orange (Cohorts: Impala, Pitaya, Wildebeest)",
    "apex_item_id": 9919464334574,
    "item": "Monkey Orange",
    "item_id": 1123371312366,
@@ -19059,7 +19059,7 @@
     "Impala",
     "Kunzite"
    ],
-   "apex_item": "Apex: Moonstone",
+   "apex_item": "Apex: Moonstone (Cohorts: Impala, Kunzite)",
    "apex_item_id": 9963184557944,
    "item": "Moonstone",
    "item_id": 1167091535736,
@@ -19218,7 +19218,7 @@
     "Red Cardinal",
     "Wintergreen"
    ],
-   "apex_item": "Apex: Moose",
+   "apex_item": "Apex: Moose (Cohorts: Labrador Tea, Red Cardinal, Wintergreen)",
    "apex_item_id": 9945138673214,
    "item": "Moose",
    "item_id": 1149045651006,
@@ -19473,7 +19473,7 @@
     "Rat",
     "Wintergreen"
    ],
-   "apex_item": "Apex: Mouflon",
+   "apex_item": "Apex: Mouflon (Cohorts: Cranberry, Rat, Wintergreen)",
    "apex_item_id": 9908111689880,
    "item": "Mouflon",
    "item_id": 1112018667672,
@@ -19624,7 +19624,7 @@
     "Hydrothermal vents",
     "Suckerfish"
    ],
-   "apex_item": "Apex: Mud Volcano",
+   "apex_item": "Apex: Mud Volcano (Cohorts: Chert, Hydrothermal vents, Suckerfish)",
    "apex_item_id": 9913643904665,
    "item": "Mud Volcano",
    "item_id": 1117550882457,
@@ -20000,7 +20000,7 @@
     "Siberian Pine",
     "Snowshoe Hare"
    ],
-   "apex_item": "Apex: Natural Gas",
+   "apex_item": "Apex: Natural Gas (Cohorts: Poplar, Siberian Pine, Snowshoe Hare)",
    "apex_item_id": 9950219377450,
    "item": "Natural Gas",
    "item_id": 1154126355242,
@@ -20157,7 +20157,7 @@
     "Crossbill",
     "Rowan"
    ],
-   "apex_item": "Apex: Nightjar",
+   "apex_item": "Apex: Nightjar (Cohorts: Cloudberry, Crossbill, Rowan)",
    "apex_item_id": 9932851462860,
    "item": "Nightjar",
    "item_id": 1136758440652,
@@ -20458,7 +20458,7 @@
     "Feldspar",
     "Sandstone"
    ],
-   "apex_item": "Apex: Nightshade",
+   "apex_item": "Apex: Nightshade (Cohorts: Bamboo, Feldspar, Sandstone)",
    "apex_item_id": 9948737558782,
    "item": "Nightshade",
    "item_id": 1152644536574,
@@ -20639,7 +20639,7 @@
     "Cinnabar",
     "Mica"
    ],
-   "apex_item": "Apex: Obsidian",
+   "apex_item": "Apex: Obsidian (Cohorts: Bamboo, Cinnabar, Mica)",
    "apex_item_id": 9948005341329,
    "item": "Obsidian",
    "item_id": 1151912319121,
@@ -20676,7 +20676,7 @@
     "Iguana",
     "Kola Nut Tree"
    ],
-   "apex_item": "Apex: Ocelot",
+   "apex_item": "Apex: Ocelot (Cohorts: Cougar, Iguana, Kola Nut Tree)",
    "apex_item_id": 9950791342460,
    "item": "Ocelot",
    "item_id": 1154698320252,
@@ -20826,7 +20826,7 @@
     "Hydrothermal vents",
     "Red Algea"
    ],
-   "apex_item": "Apex: Octopus",
+   "apex_item": "Apex: Octopus (Cohorts: Chert, Hydrothermal vents, Red Algea)",
    "apex_item_id": 9910499916292,
    "item": "Octopus",
    "item_id": 1114406894084,
@@ -20983,7 +20983,7 @@
     "Methane",
     "Rat"
    ],
-   "apex_item": "Apex: Oil",
+   "apex_item": "Apex: Oil (Cohorts: Agave, Enargite, Methane, Rat)",
    "apex_item_id": 9937468764658,
    "item": "Oil",
    "item_id": 1141375742450,
@@ -21022,7 +21022,7 @@
     "Jellyfish",
     "Sea Grass"
    ],
-   "apex_item": "Apex: Oil (Deep)",
+   "apex_item": "Apex: Oil (Deep) (Cohorts: Basalt (Aquatic), Jellyfish, Sea Grass)",
    "apex_item_id": 9929527458792,
    "item": "Oil (Deep)",
    "item_id": 1133434436584,
@@ -21487,7 +21487,7 @@
     "Barreleyes",
     "Coral Rock"
    ],
-   "apex_item": "Apex: Olivine",
+   "apex_item": "Apex: Olivine (Cohorts: Anchovy, Barreleyes, Coral Rock)",
    "apex_item_id": 9934081808372,
    "item": "Olivine",
    "item_id": 1137988786164,
@@ -21749,7 +21749,7 @@
     "Grape Vine",
     "Pheasant"
    ],
-   "apex_item": "Apex: Orange Tree",
+   "apex_item": "Apex: Orange Tree (Cohorts: Gaur, Grape Vine, Pheasant)",
    "apex_item_id": 9946512862525,
    "item": "Orange Tree",
    "item_id": 1150419840317,
@@ -21817,7 +21817,7 @@
     "Mudcrack",
     "Sandgrouse"
    ],
-   "apex_item": "Apex: Ostrich",
+   "apex_item": "Apex: Ostrich (Cohorts: Dove, Mudcrack, Sandgrouse)",
    "apex_item_id": 9930558554398,
    "item": "Ostrich",
    "item_id": 1134465532190,
@@ -21856,7 +21856,7 @@
     "Shea Tree",
     "Tanzanite"
    ],
-   "apex_item": "Apex: Palladium",
+   "apex_item": "Apex: Palladium (Cohorts: Rat, Shea Tree, Tanzanite)",
    "apex_item_id": 9947280587032,
    "item": "Palladium",
    "item_id": 1151187564824,
@@ -22355,7 +22355,7 @@
     "Red Panda",
     "Sky Pillar"
    ],
-   "apex_item": "Apex: Panda Bear",
+   "apex_item": "Apex: Panda Bear (Cohorts: Bamboo, Red Panda, Sky Pillar)",
    "apex_item_id": 9918457484213,
    "item": "Panda Bear",
    "item_id": 1122364462005,
@@ -22391,7 +22391,7 @@
     "Bamboo",
     "Pallas Cat"
    ],
-   "apex_item": "Apex: Pangolin",
+   "apex_item": "Apex: Pangolin (Cohorts: Bamboo, Pallas Cat)",
    "apex_item_id": 9955469707502,
    "item": "Pangolin",
    "item_id": 1159376685294,
@@ -22457,7 +22457,7 @@
     "Squirrel",
     "Tin"
    ],
-   "apex_item": "Apex: Paper Mulberry",
+   "apex_item": "Apex: Paper Mulberry (Cohorts: Kaolin, Squirrel, Tin)",
    "apex_item_id": 9955616306932,
    "item": "Paper Mulberry",
    "item_id": 1159523284724,
@@ -22926,7 +22926,7 @@
     "Blackberry",
     "Red Deer"
    ],
-   "apex_item": "Apex: Peach Tree",
+   "apex_item": "Apex: Peach Tree (Cohorts: Blackberry, Red Deer)",
    "apex_item_id": 9921632424207,
    "item": "Peach Tree",
    "item_id": 1125539401999,
@@ -22992,7 +22992,7 @@
     "Jasper",
     "Sea Krait"
    ],
-   "apex_item": "Apex: Pearls",
+   "apex_item": "Apex: Pearls (Cohorts: Jasper, Sea Krait)",
    "apex_item_id": 9918154231088,
    "item": "Pearls",
    "item_id": 1122061208880,
@@ -23143,7 +23143,7 @@
     "Hazelnut Tree",
     "Onyx"
    ],
-   "apex_item": "Apex: Phosphorus",
+   "apex_item": "Apex: Phosphorus (Cohorts: Hazelnut Tree, Onyx)",
    "apex_item_id": 9952522208965,
    "item": "Phosphorus",
    "item_id": 1156429186757,
@@ -23413,7 +23413,7 @@
     "Parakeet",
     "Tanzanite"
    ],
-   "apex_item": "Apex: Platinum (Savanna)",
+   "apex_item": "Apex: Platinum (Savanna) (Cohorts: Nickel, Parakeet, Tanzanite)",
    "apex_item_id": 9920648528208,
    "item": "Platinum (Savanna)",
    "item_id": 1124555506000,
@@ -23629,7 +23629,7 @@
     "Snowshoe Hare",
     "Stellar_Eagle"
    ],
-   "apex_item": "Apex: Platinum (Taiga)",
+   "apex_item": "Apex: Platinum (Taiga) (Cohorts: Labradorite, Snowshoe Hare, Stellar_Eagle)",
    "apex_item_id": 9900019914268,
    "item": "Platinum (Taiga)",
    "item_id": 1103926892060,
@@ -23923,7 +23923,7 @@
     "Field Eryngo",
     "Methane"
    ],
-   "apex_item": "Apex: Pomegranate",
+   "apex_item": "Apex: Pomegranate (Cohorts: Cicer, Field Eryngo, Methane)",
    "apex_item_id": 9903118961811,
    "item": "Pomegranate",
    "item_id": 1107025939603,
@@ -24497,7 +24497,7 @@
     "Blackberry",
     "Bluebead"
    ],
-   "apex_item": "Apex: Potato",
+   "apex_item": "Apex: Potato (Cohorts: Blackberry, Bluebead)",
    "apex_item_id": 9905171423476,
    "item": "Potato",
    "item_id": 1109078401268,
@@ -24537,7 +24537,7 @@
     "Enargite",
     "Smokey Quartz"
    ],
-   "apex_item": "Apex: Prickly Pear",
+   "apex_item": "Apex: Prickly Pear (Cohorts: Agave, Enargite, Smokey Quartz)",
    "apex_item_id": 9955814604857,
    "item": "Prickly Pear",
    "item_id": 1159721582649,
@@ -25412,7 +25412,7 @@
     "Sea Krait",
     "Sun Coral"
    ],
-   "apex_item": "Apex: Red Sea Whip",
+   "apex_item": "Apex: Red Sea Whip (Cohorts: Amber, Sea Krait, Sun Coral)",
    "apex_item_id": 9929011073795,
    "item": "Red Sea Whip",
    "item_id": 1132918051587,
@@ -25735,7 +25735,7 @@
     "Finger Coral",
     "Parrotfish"
    ],
-   "apex_item": "Apex: Reef Shark",
+   "apex_item": "Apex: Reef Shark (Cohorts: Coral Rock, Finger Coral, Parrotfish)",
    "apex_item_id": 9953796394110,
    "item": "Reef Shark",
    "item_id": 1157703371902,
@@ -25878,7 +25878,7 @@
     "Hazelnut Tree",
     "Pear Tree"
    ],
-   "apex_item": "Apex: Rhesus Macaque",
+   "apex_item": "Apex: Rhesus Macaque (Cohorts: Camphor Tree, Hazelnut Tree, Pear Tree)",
    "apex_item_id": 9952712428860,
    "item": "Rhesus Macaque",
    "item_id": 1156619406652,
@@ -25914,7 +25914,7 @@
     "Jellyfish",
     "Sea Grass"
    ],
-   "apex_item": "Apex: Ribbon Eel",
+   "apex_item": "Apex: Ribbon Eel (Cohorts: Jellyfish, Sea Grass)",
    "apex_item_id": 9933768153777,
    "item": "Ribbon Eel",
    "item_id": 1137675131569,
@@ -26414,7 +26414,7 @@
     "Field Eryngo",
     "Smokey Quartz"
    ],
-   "apex_item": "Apex: Ruby",
+   "apex_item": "Apex: Ruby (Cohorts: Coober Opal, Field Eryngo, Smokey Quartz)",
    "apex_item_id": 9930957978099,
    "item": "Ruby",
    "item_id": 1134864955891,
@@ -26505,7 +26505,7 @@
     "Ptarmagin",
     "Red-Backed Vole"
    ],
-   "apex_item": "Apex: Sable",
+   "apex_item": "Apex: Sable (Cohorts: Mandarin Duck, Ptarmagin, Red-Backed Vole)",
    "apex_item_id": 9899005280503,
    "item": "Sable",
    "item_id": 1102912258295,
@@ -26541,7 +26541,7 @@
     "Mudcrack",
     "Sandgrouse"
    ],
-   "apex_item": "Apex: Saffron",
+   "apex_item": "Apex: Saffron (Cohorts: Cicer, Mudcrack, Sandgrouse)",
    "apex_item_id": 9950525767242,
    "item": "Saffron",
    "item_id": 1154432745034,
@@ -26720,7 +26720,7 @@
     "Kunzite",
     "Pink Diamond"
    ],
-   "apex_item": "Apex: Sapphire",
+   "apex_item": "Apex: Sapphire (Cohorts: Impala, Kunzite, Pink Diamond)",
    "apex_item_id": 9942747494451,
    "item": "Sapphire",
    "item_id": 1146654472243,
@@ -27007,7 +27007,7 @@
     "Seabass",
     "Sunfish"
    ],
-   "apex_item": "Apex: Sargassum",
+   "apex_item": "Apex: Sargassum (Cohorts: Sea Grass, Seabass, Sunfish)",
    "apex_item_id": 9905681540128,
    "item": "Sargassum",
    "item_id": 1109588517920,
@@ -27042,7 +27042,7 @@
     "Cinchona Tree",
     "Squirrel Monkey"
    ],
-   "apex_item": "Apex: Scarlet Macaw",
+   "apex_item": "Apex: Scarlet Macaw (Cohorts: Cinchona Tree, Squirrel Monkey)",
    "apex_item_id": 9907845329507,
    "item": "Scarlet Macaw",
    "item_id": 1111752307299,
@@ -27472,7 +27472,7 @@
     "Sea Grass",
     "Turtle Grass"
    ],
-   "apex_item": "Apex: Sea turtle",
+   "apex_item": "Apex: Sea turtle (Cohorts: Jellyfish, Sea Grass, Turtle Grass)",
    "apex_item_id": 9949578514519,
    "item": "Sea turtle",
    "item_id": 1153485492311,
@@ -27693,7 +27693,7 @@
     "Parakeet",
     "Wildebeest"
    ],
-   "apex_item": "Apex: Secretary Bird",
+   "apex_item": "Apex: Secretary Bird (Cohorts: Hoopoe, Parakeet, Wildebeest)",
    "apex_item_id": 9931324965837,
    "item": "Secretary Bird",
    "item_id": 1135231943629,
@@ -27800,7 +27800,7 @@
     "Red Cardinal",
     "Rowan"
    ],
-   "apex_item": "Apex: Sequoia",
+   "apex_item": "Apex: Sequoia (Cohorts: Black Bear, Red Cardinal, Rowan)",
    "apex_item_id": 9909351928309,
    "item": "Sequoia",
    "item_id": 1113258906101,
@@ -28190,7 +28190,7 @@
     "False Trumpet Grounds",
     "Parrotfish"
    ],
-   "apex_item": "Apex: Shipwreck",
+   "apex_item": "Apex: Shipwreck (Cohorts: Amber, False Trumpet Grounds, Parrotfish)",
    "apex_item_id": 9918842512525,
    "item": "Shipwreck",
    "item_id": 1122749490317,
@@ -28582,7 +28582,7 @@
     "Caribou",
     "Cougar"
    ],
-   "apex_item": "Apex: Siberian Tiger",
+   "apex_item": "Apex: Siberian Tiger (Cohorts: Black Bear, Caribou, Cougar)",
    "apex_item_id": 9943370078958,
    "item": "Siberian Tiger",
    "item_id": 1147277056750,
@@ -28620,7 +28620,7 @@
     "Peat",
     "Sulfur"
    ],
-   "apex_item": "Apex: Silver",
+   "apex_item": "Apex: Silver (Cohorts: Bluebead, Peat, Sulfur)",
    "apex_item_id": 9932672331295,
    "item": "Silver",
    "item_id": 1136579309087,
@@ -28925,7 +28925,7 @@
     "Peat",
     "Starflower"
    ],
-   "apex_item": "Apex: Snow Monkey",
+   "apex_item": "Apex: Snow Monkey (Cohorts: Cranberry, Peat, Starflower)",
    "apex_item_id": 9904269683318,
    "item": "Snow Monkey",
    "item_id": 1108176661110,
@@ -29304,7 +29304,7 @@
     "Red Oat",
     "Yam"
    ],
-   "apex_item": "Apex: Sorghum",
+   "apex_item": "Apex: Sorghum (Cohorts: Oryx, Red Oat, Yam)",
    "apex_item_id": 9909593045897,
    "item": "Sorghum",
    "item_id": 1113500023689,
@@ -29627,7 +29627,7 @@
     "Porcupine",
     "Red Deer"
    ],
-   "apex_item": "Apex: South China Tiger",
+   "apex_item": "Apex: South China Tiger (Cohorts: Corsac, Porcupine, Red Deer)",
    "apex_item_id": 9918376993610,
    "item": "South China Tiger",
    "item_id": 1122283971402,
@@ -29664,7 +29664,7 @@
     "Pallas Cat",
     "Spinel"
    ],
-   "apex_item": "Apex: Spectrolite",
+   "apex_item": "Apex: Spectrolite (Cohorts: Amber, Pallas Cat, Spinel)",
    "apex_item_id": 9924528510068,
    "item": "Spectrolite",
    "item_id": 1128435487860,
@@ -29935,7 +29935,7 @@
     "Mudpool",
     "White Backed Vulture"
    ],
-   "apex_item": "Apex: Spotted Hyena",
+   "apex_item": "Apex: Spotted Hyena (Cohorts: Mudpool, White Backed Vulture)",
    "apex_item_id": 9940001116174,
    "item": "Spotted Hyena",
    "item_id": 1143908093966,
@@ -30137,7 +30137,7 @@
     "Open-Brain Coral",
     "Seabass"
    ],
-   "apex_item": "Apex: Staghorn Coral",
+   "apex_item": "Apex: Staghorn Coral (Cohorts: Coral Rock, Open-Brain Coral, Seabass)",
    "apex_item_id": 9947631821289,
    "item": "Staghorn Coral",
    "item_id": 1151538799081,
@@ -30476,7 +30476,7 @@
     "Cloudberry",
     "Goose"
    ],
-   "apex_item": "Apex: Strawberry",
+   "apex_item": "Apex: Strawberry (Cohorts: Caribou, Cloudberry, Goose)",
    "apex_item_id": 9957486357926,
    "item": "Strawberry",
    "item_id": 1161393335718,
@@ -30718,7 +30718,7 @@
     "Labradorite",
     "Lignite"
    ],
-   "apex_item": "Apex: Sugar Beet",
+   "apex_item": "Apex: Sugar Beet (Cohorts: Charoite, Labradorite, Lignite)",
    "apex_item_id": 9907577637461,
    "item": "Sugar Beet",
    "item_id": 1111484615253,
@@ -31420,7 +31420,7 @@
     "Red Algea",
     "Sea Krait"
    ],
-   "apex_item": "Apex: Surgeon Fish",
+   "apex_item": "Apex: Surgeon Fish (Cohorts: Mahi-Mahi, Red Algea, Sea Krait)",
    "apex_item_id": 9911219931358,
    "item": "Surgeon Fish",
    "item_id": 1115126909150,
@@ -31798,7 +31798,7 @@
     "Rambutan",
     "Rubber Tree"
    ],
-   "apex_item": "Apex: Tapir",
+   "apex_item": "Apex: Tapir (Cohorts: Kentucky Coffeetree, Rambutan, Rubber Tree)",
    "apex_item_id": 9900580587395,
    "item": "Tapir",
    "item_id": 1104487565187,
@@ -32146,7 +32146,7 @@
     "Bearded Dragon",
     "Enargite"
    ],
-   "apex_item": "Apex: Thorny Devil",
+   "apex_item": "Apex: Thorny Devil (Cohorts: Bearded Dragon, Enargite)",
    "apex_item_id": 9919065930441,
    "item": "Thorny Devil",
    "item_id": 1122972908233,
@@ -32498,7 +32498,7 @@
     "Vermiculite",
     "Warthog"
    ],
-   "apex_item": "Apex: Titan Graveyard",
+   "apex_item": "Apex: Titan Graveyard (Cohorts: Soda Ash, Vermiculite, Warthog)",
    "apex_item_id": 9939758630024,
    "item": "Titan Graveyard",
    "item_id": 1143665607816,
@@ -32553,7 +32553,7 @@
     "Barreleyes",
     "Manganese"
    ],
-   "apex_item": "Apex: Titan fall",
+   "apex_item": "Apex: Titan fall (Cohorts: Angler Fish, Barreleyes, Manganese)",
    "apex_item_id": 9956507415821,
    "item": "Titan fall",
    "item_id": 1160414393613,
@@ -32704,7 +32704,7 @@
     "Nephrite",
     "Potash"
    ],
-   "apex_item": "Apex: Titanite",
+   "apex_item": "Apex: Titanite (Cohorts: Honeysuckle, Nephrite, Potash)",
    "apex_item_id": 9934807969266,
    "item": "Titanite",
    "item_id": 1138714947058,
@@ -32910,7 +32910,7 @@
     "Crossbill",
     "Snowshoe Hare"
    ],
-   "apex_item": "Apex: Tourmaline",
+   "apex_item": "Apex: Tourmaline (Cohorts: Caribou, Crossbill, Snowshoe Hare)",
    "apex_item_id": 9930101506053,
    "item": "Tourmaline",
    "item_id": 1134008483845,
@@ -32969,7 +32969,7 @@
     "Anchovy",
     "Suckerfish"
    ],
-   "apex_item": "Apex: Tuna",
+   "apex_item": "Apex: Tuna (Cohorts: Anchovy, Suckerfish)",
    "apex_item_id": 9929092113004,
    "item": "Tuna",
    "item_id": 1132999090796,
@@ -33560,7 +33560,7 @@
     "Barley",
     "Nickel"
    ],
-   "apex_item": "Apex: Umbrella Thorn Acacia",
+   "apex_item": "Apex: Umbrella Thorn Acacia (Cohorts: Barley, Nickel)",
    "apex_item_id": 9948198917706,
    "item": "Umbrella Thorn Acacia",
    "item_id": 1152105895498,
@@ -33682,7 +33682,7 @@
     "Sulfur",
     "Talc"
    ],
-   "apex_item": "Apex: Uranium",
+   "apex_item": "Apex: Uranium (Cohorts: Lignite, Sulfur, Talc)",
    "apex_item_id": 9954425121240,
    "item": "Uranium",
    "item_id": 1158332099032,
@@ -34240,7 +34240,7 @@
     "Potash",
     "Ptarmagin"
    ],
-   "apex_item": "Apex: White Birch",
+   "apex_item": "Apex: White Birch (Cohorts: Crossbill, Potash, Ptarmagin)",
    "apex_item_id": 9960738165372,
    "item": "White Birch",
    "item_id": 1164645143164,
@@ -34419,7 +34419,7 @@
     "Coral Rock",
     "Red Algea"
    ],
-   "apex_item": "Apex: White Plumed Anemone",
+   "apex_item": "Apex: White Plumed Anemone (Cohorts: Coral Rock, Red Algea)",
    "apex_item_id": 9915496244665,
    "item": "White Plumed Anemone",
    "item_id": 1119403222457,
@@ -34774,7 +34774,7 @@
     "Impala",
     "Yam"
    ],
-   "apex_item": "Apex: White Rhino",
+   "apex_item": "Apex: White Rhino (Cohorts: African Violet, Impala, Yam)",
    "apex_item_id": 9949751646191,
    "item": "White Rhino",
    "item_id": 1153658623983,
@@ -34836,7 +34836,7 @@
     "Mahi-Mahi",
     "Suckerfish"
    ],
-   "apex_item": "Apex: White Shark",
+   "apex_item": "Apex: White Shark (Cohorts: Barreleyes, Mahi-Mahi, Suckerfish)",
    "apex_item_id": 9899209229486,
    "item": "White Shark",
    "item_id": 1103116207278,
@@ -35146,7 +35146,7 @@
     "Nephrite",
     "Skunk"
    ],
-   "apex_item": "Apex: White Wolf",
+   "apex_item": "Apex: White Wolf (Cohorts: Kentucky Coffeetree, Nephrite, Skunk)",
    "apex_item_id": 9904762895310,
    "item": "White Wolf",
    "item_id": 1108669873102,
@@ -35819,7 +35819,7 @@
     "Egusi",
     "Gazelle"
    ],
-   "apex_item": "Apex: Zebra",
+   "apex_item": "Apex: Zebra (Cohorts: Egusi, Gazelle)",
    "apex_item_id": 9898419299843,
    "item": "Zebra",
    "item_id": 1102326277635,
@@ -35851,7 +35851,7 @@
     "Bamboo",
     "Camphor Tree"
    ],
-   "apex_item": "Apex: Zinc",
+   "apex_item": "Apex: Zinc (Cohorts: Bamboo, Camphor Tree)",
    "apex_item_id": 9944246636756,
    "item": "Zinc",
    "item_id": 1148153614548,
@@ -36000,7 +36000,7 @@
     "Nickel",
     "White Backed Vulture"
    ],
-   "apex_item": "Apex: Zircon",
+   "apex_item": "Apex: Zircon (Cohorts: Fluorite, Nickel, White Backed Vulture)",
    "apex_item_id": 9908748047547,
    "item": "Zircon",
    "item_id": 1112655025339,
@@ -36458,8 +36458,8 @@
    ]
   },
   {
-   "item": "Shop: Border Expansions",
-   "item_id": 12096228890610,
+   "item": "Shop: Border Boosters",
+   "item_id": 12098881908938,
    "shop_options": [
     "Borders"
    ]
@@ -36506,7 +36506,7 @@
    "amount": 1
   },
   {
-   "item": "Border Expansion",
+   "item": "Border Booster",
    "item_id": 8796093022211,
    "resource": "BorderExpansion",
    "amount": 1

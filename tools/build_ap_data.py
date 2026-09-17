@@ -36,7 +36,7 @@ UNLOCK_ITEMS = [
     ("Unlock: Micros", ["Aspect"]),
     ("Unlock: Secondary Biomes", ["SecondaryBiome"]),
     ("Shop: Upgrade Charges", ["Upgrade"]),
-    ("Shop: Border Expansions", ["Borders"]),
+    ("Shop: Border Boosters", ["Borders"]),
     ("Shop: Terraform Charges", ["Mountain"]),
     ("Shop: Nomads", ["Nomad"]),
     ("Shop: Planet Expansion Charges", ["Expansion"]),
@@ -45,7 +45,7 @@ UNLOCK_ITEMS = [
 FILLER = [
     ("Eon Boost", "BonusEon", 5),
     ("Upgrade Charge", "UpgradePoints", 1),
-    ("Border Expansion", "BorderExpansion", 1),
+    ("Border Booster", "BorderExpansion", 1),
     ("Terraform Charge", "MountainPoints", 1),
     ("Planet Expansion Charge", "CrevicePoints", 1),
     ("Nomad", "Nomads", 1),
@@ -227,7 +227,7 @@ def build_biotica(definitions, micro_names):
         cohorts = sorted({display[n] for n in b.pop("raw_cohorts") if n in display})
         if cohorts:
             b["cohorts"] = cohorts
-            b["apex_item"] = f"Apex: {b['name']}"
+            b["apex_item"] = f"Apex: {b['name']} (Cohorts: {', '.join([cohort for cohort in cohorts])})"
             b["apex_item_id"] = item_id("apex", guid_bits(b["guid"]))
         b["item"] = b["name"]
         b["item_id"] = item_id("bioticum", guid_bits(b["guid"]))
