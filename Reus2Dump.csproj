@@ -44,6 +44,10 @@
       <HintPath>$(ReusManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(ReusManagedDir)\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="netstandard">
       <HintPath>$(ReusManagedDir)\netstandard.dll</HintPath>
       <Private>false</Private>

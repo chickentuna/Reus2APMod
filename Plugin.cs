@@ -15,14 +15,15 @@ public sealed class Plugin : BaseUnityPlugin
     internal static ManualLogSource Log { get; private set; }
     internal static ArchipelagoClient Client { get; private set; }
 
-    /// <summary>A slot is configured: gameplay patches are installed, and the current profile is
-    /// bound to the slot on connect.</summary>
+    /// <summary>A slot has been connected to or configured: gameplay patches are installed, and the
+    /// current profile is bound to the slot on connect.</summary>
     internal static bool ApMode { get; private set; }
 
-    private ConfigEntry<string> server;
-    private ConfigEntry<int> port;
-    private ConfigEntry<string> slot;
-    private ConfigEntry<string> password;
+    internal static ConfigEntry<string> Server { get; private set; }
+    internal static ConfigEntry<int> Port { get; private set; }
+    internal static ConfigEntry<string> Slot { get; private set; }
+    internal static ConfigEntry<string> Password { get; private set; }
+    private static Harmony patches;
     private ConfigEntry<bool> autoConnect;
     private ConfigEntry<bool> enableDefinitionDump;
     private ConfigEntry<bool> enableProbes;
@@ -40,14 +41,15 @@ public sealed class Plugin : BaseUnityPlugin
         Log = Logger;
         Client = new ArchipelagoClient();
 
-        server = Config.Bind("Archipelago", "Server", "localhost",
+        Server = Config.Bind("Archipelago", "Server", "archipelago.gg",
             "Archipelago server hostname.");
-        port = Config.Bind("Archipelago", "Port", 38281,
+        Port = Config.Bind("Archipelago", "Port", 38281,
             "Archipelago server port.");
-        slot = Config.Bind("Archipelago", "Slot", "",
-            "Player slot name. Setting one enables Archipelago mode: drafts, profile levels, "
-            + "alternate modes and challenges are turned off. Leave empty to play vanilla.");
-        password = Config.Bind("Archipelago", "Password", "",
+        Slot = Config.Bind("Archipelago", "Slot", "",
+            "Player slot name, also set from the connection panel (F1). Once one is set or connected "
+            + "to, Archipelago mode is on: drafts, profile levels, alternate modes and challenges are "
+            + "turned off. Leave empty to play vanilla.");
+        Password = Config.Bind("Archipelago", "Password", "",
             "Optional room password.");
         autoConnect = Config.Bind("Archipelago", "AutoConnect", true,
             "Connect at startup when a slot name is configured.");
@@ -73,9 +75,9 @@ public sealed class Plugin : BaseUnityPlugin
         DefinitionDumper.OutputPath = Config.Bind("Dump", "OutputPath", "",
             "Where to write the JSON. Empty means BepInEx/plugins/reus2_definitions.json.").Value;
 
-        ApMode = !string.IsNullOrWhiteSpace(slot.Value);
         Log.LogInfo($"{MyPluginInfo.PLUGIN_NAME} {MyPluginInfo.PLUGIN_VERSION} loaded.");
         harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        patches = harmony;
 
         if (enableDefinitionDump.Value)
         {
@@ -93,13 +95,36 @@ public sealed class Plugin : BaseUnityPlugin
         // A planet saved with Archipelago messages must load even with no slot configured.
         ApChat.Install(harmony);
 
-        if (ApMode && ApData.Load())
-        {
-            ProgressionPatches.Install(harmony);
-            CheckPatches.Install(harmony);
-        }
+        if (!string.IsNullOrWhiteSpace(Slot.Value))
+            EnterApMode();
 
         MainThreadRunner.Create(AutoConnect);
+    }
+
+    /// <summary>Loads the seed data and installs the gameplay patches, once.</summary>
+    private static bool EnterApMode()
+    {
+        if (ApMode)
+            return true;
+        if (!ApData.Load())
+            return false;
+        ProgressionPatches.Install(patches);
+        CheckPatches.Install(patches);
+        ApMode = true;
+        return true;
+    }
+
+    /// <summary>Connects to a slot, remembering the details for the next launch. Returns the error,
+    /// or null once connected.</summary>
+    internal static string Connect(string host, int port, string slot, string password)
+    {
+        Server.Value = host;
+        Port.Value = port;
+        Slot.Value = slot;
+        Password.Value = password;
+        if (!EnterApMode())
+            return "The mod's Archipelago data failed to load; see BepInEx/LogOutput.log.";
+        return Client.Connect(host, port, slot, password);
     }
 
     private void AutoConnect()
@@ -112,11 +137,11 @@ public sealed class Plugin : BaseUnityPlugin
 
         if (!ApMode)
         {
-            Log.LogInfo("Set Archipelago.Slot in the BepInEx config to play with Archipelago.");
+            Log.LogInfo("Connect to a slot from the connection panel (F1) to play with Archipelago.");
             return;
         }
 
-        var error = Client.Connect(server.Value, port.Value, slot.Value, password.Value);
+        var error = Client.Connect(Server.Value, Port.Value, Slot.Value, Password.Value);
         if (error != null)
             Log.LogError($"Archipelago connection failed: {error}");
     }
