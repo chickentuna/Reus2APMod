@@ -160,6 +160,9 @@ internal static class ApState
            && !CheckedLocations.Contains(locationName)
            && !UnsentChecks.Contains(locationName);
 
+    internal static bool HasLocation(string locationName)
+        => locationName != null && SeedLocations.Contains(locationName);
+
     internal static void ReleaseSession(ArchipelagoClient source)
     {
         if (!ReferenceEquals(client, source))
@@ -395,6 +398,7 @@ internal static class ApState
             return;
 
         ProfileBinding.RecordGoalBioticum(GameAccess.CurrentProfile, Seed, SlotName, bioticum.Name);
+        BioticaBadges.MarkDirty();
         CheckGoal();
     }
 
@@ -419,13 +423,27 @@ internal static class ApState
         var data = Archipelago.ApData.Instance;
         if (data == null)
             return CheckedLocations.Count(location => location.StartsWith("Build "));
-        var recorded = new HashSet<string>(ProfileBinding.GoalBiotica(GameAccess.CurrentProfile, Seed, SlotName));
+        var recorded = GoalBioticaCounted();
         var maxLevel = SlotInt("max_biotica_level", int.MaxValue);
-        return data.Biotica.Count(b => b.Level <= maxLevel
-                                       && (recorded.Contains(b.Name)
-                                           || CheckedLocations.Contains(b.BuildLocation)
-                                           || (b.AllCombosLocation != null
-                                               && CheckedLocations.Contains(b.AllCombosLocation))));
+        return data.Biotica.Count(b => b.Level <= maxLevel && recorded.Contains(b.Name));
+    }
+
+    /// <summary>Names counted toward the bioticum goal, including checks restored from the server.</summary>
+    internal static HashSet<string> GoalBioticaCounted()
+    {
+        var counted = new HashSet<string>(
+            ProfileBinding.GoalBiotica(GameAccess.CurrentProfile, Seed, SlotName));
+        var data = Archipelago.ApData.Instance;
+        if (data == null)
+            return counted;
+
+        foreach (var bioticum in data.Biotica)
+        {
+            if (CheckedLocations.Contains(bioticum.BuildLocation)
+                || (bioticum.AllCombosLocation != null && CheckedLocations.Contains(bioticum.AllCombosLocation)))
+                counted.Add(bioticum.Name);
+        }
+        return counted;
     }
 
     private static void CheckGoal()

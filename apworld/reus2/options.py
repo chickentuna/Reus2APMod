@@ -112,7 +112,8 @@ class BioticumChecks(Choice):
 
 
 class OnlyMaxLevelBiotica(Toggle):
-    """Only biotica at Max Biotica Level have locations.
+    """Only biotica at Max Biotica Level have locations, except Evolve biotica, which always have a
+    build location and also a synergy location when this option is off.
 
     Caution: enable other location options as well, or there may not be enough locations and
     progression can lock very quickly."""

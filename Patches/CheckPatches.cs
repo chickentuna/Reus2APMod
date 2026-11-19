@@ -150,10 +150,10 @@ internal static class CheckPatches
             return;
         }
         // Under when_synergized a bioticum that has combo rules carries one location, its combos, so
-        // its build sends nothing; one with no rule keeps its build.
+        // its build sends nothing, except evolve biotica which always keep their build location.
         var checks = ApState.SlotInt("bioticum_checks", BuildOnly);
         var hasSynergyCheck = entry.Rules.Any(rule => ApState.IsComboRuleEnabled(guid, rule.RuleIndex));
-        if (checks == WhenSynergized && hasSynergyCheck)
+        if (checks == WhenSynergized && hasSynergyCheck && !entry.HasEvolve)
             return;
         ApState.SendCheck(entry.BuildLocation);
         ApState.RecordGoalBioticum(entry);
@@ -347,9 +347,6 @@ internal static class CheckPatches
         if (ruleState == null || !ItemApplier.ProfileBound)
             return;
         var mode = ApState.SlotInt("bioticum_checks", BuildOnly);
-        if (mode == BuildOnly)
-            return;
-
         var context = GameAccess.Get(ruleState, "slotContext");
         if (context == null)
         {
@@ -371,6 +368,10 @@ internal static class CheckPatches
             Bail(ruleState, $"{source}: the slot holds no bioticum definition");
             return;
         }
+        var bioticum = ApData.Instance.BioticumForGuid(guid);
+        if (mode == BuildOnly && bioticum?.HasEvolve != true)
+            return;
+
         // BioticumDefinition.rules is a ReferenceList, which carries IList<T> but not IList, so it is
         // walked as a plain sequence; its position is the rule index the data was built with.
         if (!(GameAccess.Get(definition, "rules") is IEnumerable rules))
@@ -379,7 +380,7 @@ internal static class CheckPatches
             return;
         }
 
-        var name = ApData.Instance.BioticumForGuid(guid)?.Name ?? guid;
+        var name = bioticum?.Name ?? guid;
         var rule = GameAccess.Get(ruleState, "RuleDefinitionBase");
         var index = -1;
         foreach (var candidate in rules)

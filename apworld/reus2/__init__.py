@@ -8,7 +8,7 @@ from .game_data import selected_data
 from .items import (Reus2Item, biotica_up_to, bioticum_pool_items, classifications, common_filler_items,
                     item_groups, item_table, items_granting_biotica, rare_filler_counts)
 from .locations import (Reus2Location, biotica_with_locations, final_era_location_count, location_table,
-                        mark_locations_excluded, progressive_era_early_locations,
+                        has_evolve_rule, mark_locations_excluded, progressive_era_early_locations,
                         restrict_item_to_locations, shop_draft_location_count, turning_point_checks)
 from .options import BioticumChecks, BioticumItems, MAX_FINAL_ERA_GOAL, ProjectChecks, Reus2Options
 from .rules import Reus2Rules
@@ -143,6 +143,11 @@ class Reus2World(World):
         only_max_level = bool(self.options.only_max_level_biotica.value)
         active_biotica = biotica_with_locations(self.max_level, only_max_level, self.data)
         for bioticum in active_biotica:
+            if has_evolve_rule(bioticum):
+                locations[bioticum["build_location"]] = bioticum["build_location_id"]
+                if not only_max_level:
+                    locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
+                continue
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
                 locations[bioticum["all_combos_location"]] = bioticum["all_combos_location_id"]
@@ -174,7 +179,9 @@ class Reus2World(World):
                 len(self.data["shop_drafts"]), max(0, int(self.replayed_shop_draft_count)))
         active_shop_drafts = self.data["shop_drafts"][:self.shop_draft_check_count]
         early_location_names = progressive_era_early_locations(
-            active_turning_points, request_rewards, active_shop_drafts, active_biotica, checks)
+            active_turning_points, request_rewards, active_shop_drafts, active_biotica, checks,
+            {giant["first_biome"] for giant in self.data["giants"] if giant.get("first_biome")},
+            only_max_level)
         for draft in active_shop_drafts:
             locations[draft["location"]] = draft["location_id"]
         planet.add_locations(locations, Reus2Location)
@@ -258,6 +265,13 @@ class Reus2World(World):
         checks = self.options.bioticum_checks.value
         only_max_level = bool(self.options.only_max_level_biotica.value)
         for bioticum in biotica_with_locations(self.max_level, only_max_level, self.data):
+            if has_evolve_rule(bioticum):
+                self.get_location(bioticum["build_location"]).access_rule = \
+                    lambda state, b=bioticum: rules.can_build(state, b)
+                if not only_max_level:
+                    self.get_location(bioticum["all_combos_location"]).access_rule = \
+                        lambda state, b=bioticum: rules.can_combo_all(state, b)
+                continue
             combos = bioticum["rules"]
             if combos and checks != BioticumChecks.option_build_only:
                 self.get_location(bioticum["all_combos_location"]).access_rule = \

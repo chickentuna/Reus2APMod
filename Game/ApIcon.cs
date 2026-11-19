@@ -122,11 +122,11 @@ internal static class ApIcon
     }
 
     /// <summary>
-    /// A copy of a game sprite with a small Archipelago logo on a dark disc in its upper right
-    /// corner. The sprite is copied through a render texture because game sprites sit in atlases
-    /// whose textures are not readable. Null when the sprite cannot be copied.
+    /// A copy of a game sprite with a small Archipelago logo on a dark disc, or a black logo on a
+    /// light disc when blackened, in its upper right corner. The sprite is copied through a render
+    /// texture because game sprites sit in atlases whose textures are not readable.
     /// </summary>
-    internal static Sprite WithLogo(Sprite original)
+    internal static Sprite WithLogo(Sprite original, bool blackened = false)
     {
         var logo = Load()?.texture;
         if (original == null || logo == null)
@@ -162,7 +162,9 @@ internal static class ApIcon
             var centerX = width - radius - size * 0.02f;
             var centerY = height - radius - size * 0.02f;
             var logoRadius = radius * 0.82f;
-            var disc = new Color(0.08f, 0.08f, 0.08f, 0.9f);
+            var disc = blackened
+                ? new Color(1f, 1f, 1f, 0.95f)
+                : new Color(0.08f, 0.08f, 0.08f, 0.9f);
 
             for (var y = Mathf.Max(0, Mathf.FloorToInt(centerY - radius - 1)); y < height; y++)
             {
@@ -183,7 +185,8 @@ internal static class ApIcon
                     if (u >= 0f && u <= 1f && v >= 0f && v <= 1f)
                     {
                         var mark = logo.GetPixelBilinear(u, v);
-                        pixel = Color.Lerp(pixel, new Color(mark.r, mark.g, mark.b, 1f), mark.a);
+                        var markColor = blackened ? Color.black : new Color(mark.r, mark.g, mark.b, 1f);
+                        pixel = Color.Lerp(pixel, markColor, mark.a);
                     }
 
                     pixels[index] = pixel;

@@ -145,6 +145,7 @@ internal sealed class BioticumEntry
     [JsonProperty("build_location")] public string BuildLocation;
     [JsonProperty("all_combos_location")] public string AllCombosLocation;
     [JsonProperty("rules")] public List<RuleEntry> Rules = new List<RuleEntry>();
+    internal bool HasEvolve => Rules.Any(rule => rule.Type == "EvolveRule");
 }
 
 internal sealed class DlcTurningPointEntry
@@ -156,6 +157,7 @@ internal sealed class DlcTurningPointEntry
 internal sealed class RuleEntry
 {
     [JsonProperty("rule_index")] public int RuleIndex;
+    [JsonProperty("type")] public string Type;
 }
 
 internal sealed class GiantEntry

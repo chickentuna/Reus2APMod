@@ -1,0 +1,60 @@
+# Reus 2
+## What does randomization do to this game?
+
+Randomization in the case of Reus 2 was a choice between keeping the existing randomness or introducing a new random system. 
+
+Given the existing randomness was on a per-planet basis, the choice was made to revamp the whole game system (see notably "Bioticas" in the item category below).
+Players in Reus 2 start with 3 random giants, each with their main biome, a starting leader, and a few biotica. From there, only unlocks are random, the randomization doesn't change the Eras or Projects behavior for example.
+
+## What is the goal of Reus 2 in Archipelago?
+
+In Reus 2 there are two separate goals in Archipelago. 
+
+The first is to find and place a certain amount of bioticas. The player can choose the Synergize option, they then need to be placed AND synergized. Importantly for this and the rest of the document, "Synergizing" means meeting at least partially every subrule of the item. So Iron for example only needs one other Iron in the biome, not 3, and it also needs a close Iron to trigger the negative subrule. 
+
+The second is to reach 3 stars in a set amount of Final Eras. They need to be different ones, but they're not imposed on the player.
+
+## What Reus 2 items can appear in other players' worlds?
+
+There are 3 categories of items you can receive:
+
+1. Bioticas.
+    Bioticas is the main item in Reus 2, and the main way you progress. Unlike in real Reus 2 unlocking Bioticas is permanent, and they can be used on any planet from then on (including the current one if one is ongoing). No draft system in Archipelago. The player can also choose between the full biotica list or just the Apex (plus the isolated bioticas). Default is Apex to limit the amount of items. The player can also limit the bioticas to a max level if he wants to lower the amount of bioticas. It makes the game shorter but also the Final Eras goal much harder so it's advised to disable it in this case.
+
+2. Unlocks
+    Giants, Biomes, Leaders, every giant Power, every common Ability (like terraform, micro, plant expansion, etc) and every shop Item (as an unlock, so being able to buy them from then on) are items to be found. Even more important, the ability to end a planet at Eras 3 (Medieval) and 4 (Discovery) are locked behind a "Progressive Era" item (or 2 of them, more exactly). They'll defined as early_items, to make sure they come early to the player.
+
+3. Fillers
+    As their name indicates, they're there to fill the locations if needed. They include charges for powers that have some, and elements you could buy (and still can once unlocked) like nomads or border expansions. Importantly the ones received from the Archipelago are kept between planets. The game uses in priority local items. So if the player has received a nomad and unlock one by a level 1 request, he will use the unlocked, local one when calling a Nomad, and will keep the other one into the next planet he'll play.
+
+## There are five ways to find items from another world
+
+1. Optional, ON by default : Bioticas.
+    Each biotica placement earns a location. There are several options about this : the player can limit the locations to only max-level bioticas (using then the "max level" defined in the item options, default being level 3), or he can limit the location to synergized bioticas. It's actually how the goal is setup on synergy rather than placement too.
+
+2. Optional, ON by default : Projects
+    Doing a project in a city earns a location, once per project across the whole game. The player can choose between just launching the project, or synergizing it, exactly like biotica synergy (see Goal above).
+
+3. Optional, ON by default : Eras Turning Points
+    Each star earned in each Turning Point earns the player a location once in the game. Final Eras are limited to the amount needed for the goal minus one.
+
+4. Partially configurable : Requests
+    A set amont of Requests from cities earn locations on completion. Level 1, 2 and 3 requests are fixed at 4, 6 and 6 locations respectively. Level 4 is configurable, default is 6. So the first 4 requests of level 1 completed by the player accross the game (multiple planets possibly) reward a location, then nothing (except growing the city). The first two level 1 requests of a planet still award a nomad like in vanilla, and the player also receive the upgrade items from requests.
+
+3. Not configurable : Shop
+    In the shop, the ability to buy draft is replaced with locations buying. At this point this is not configurable and serves as a "backup" in particular in case of a bad setup of the rules. The shop locations are sold starting at 5 for each resource, their cost grow independantly (so buying with population doesn't make the wealth item more expensive) by 10 for each buying, they're common to all planet, and their total number is calculated to make sure there always is enough locations for all the items.
+
+## DLC compatibility
+DLC should be completely handled. 
+
+Ice Age note: Ice Age Evolve bioticas (which give a random one-time biotica to the player in vanilla) are reworked to give an additional location instead (making Ice Age starts a pretty powerful start for a run, and Ice Age biome/giant interesting things to hint for, especially since Upgrade power is also an item to find before being available so Extinct bioticas are also very powerful). 
+
+If you think other changes are needed because some DLC mechanic doesn't work, please communicate them to us on Discord or here on Github. 
+
+## Is Archipelago compatible with other Reus 2 mods?
+
+No idea, we have not tested that. Feel free to do so and report problems, we might come around to fix them, though no promises.
+
+## AI DISCLAIMER
+
+Yes, it was heavily helped by AI. I should add that it was mostly on a free plan, so no money was given to AI companies in the process, but I understand that for some it will still be too much. It was not a project we could have handled otherwise.

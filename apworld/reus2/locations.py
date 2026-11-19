@@ -30,13 +30,20 @@ def mark_locations_excluded(locations, excluded_names: set) -> None:
 
 
 def progressive_era_early_locations(turning_points, request_rewards, shop_drafts, biotica,
-                                    bioticum_checks: int) -> set:
-    """Active checks suitable for Progressive Era items; other worlds remain valid placements."""
+                                    bioticum_checks: int, starting_biomes: set,
+                                    only_max_level: bool) -> set:
+    """Active checks suitable for Progressive Era items; biotica checks must be level one in a
+    starting biome, and other worlds remain valid placements."""
     names = {check["location"] for check in turning_points if check["era"] == "Era_1_Genesis"}
     names.update(reward["location"] for reward in request_rewards if reward["level"] < 2)
     names.update(draft["location"] for draft in shop_drafts[:6])
     for bioticum in biotica:
-        if bioticum["level"] != 1:
+        if bioticum["level"] != 1 or not starting_biomes.intersection(bioticum["biomes"]):
+            continue
+        if has_evolve_rule(bioticum):
+            names.add(bioticum["build_location"])
+            if not only_max_level:
+                names.add(bioticum["all_combos_location"])
             continue
         combos = bioticum["rules"]
         if combos and bioticum_checks != BioticumChecks.option_build_only:
@@ -59,7 +66,12 @@ def restrict_item_to_locations(locations, item_name: str, allowed_names: set) ->
 def biotica_with_locations(max_level: int, only_max_level: bool, data=DATA) -> List[dict]:
     """Biotica that have build or synergy locations for these options."""
     return [b for b in data["biotica"]
-            if b["level"] <= max_level and (not only_max_level or b["level"] == max_level)]
+            if b["level"] <= max_level
+            and (not only_max_level or b["level"] == max_level or has_evolve_rule(b))]
+
+
+def has_evolve_rule(bioticum: dict) -> bool:
+    return any(rule.get("type") == "EvolveRule" for rule in bioticum["rules"])
 
 
 def turning_point_checks(data, final_era_goal: int) -> List[dict]:

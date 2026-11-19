@@ -116,11 +116,15 @@ def main():
     assert locations.biotica_with_locations(2, False, data) == [
         b for b in data["biotica"] if b["level"] <= 2]
     assert locations.biotica_with_locations(2, True, data) == [
-        b for b in data["biotica"] if b["level"] == 2]
+        b for b in data["biotica"]
+        if b["level"] == 2 or (b["level"] <= 2 and locations.has_evolve_rule(b))]
     checks = options.BioticumChecks
+    starting_biomes = {
+        giant["first_biome"] for giant in data["giants"] if giant.get("first_biome")
+    }
     active_early_locations = locations.progressive_era_early_locations(
         data["turning_point_stars"], data["request_rewards"], data["shop_drafts"],
-        data["biotica"], checks.option_build_only)
+        data["biotica"], checks.option_build_only, starting_biomes, False)
     genesis_turning_points = {
         check["location"] for check in data["turning_point_stars"] if check["era"] == "Era_1_Genesis"
     }
@@ -134,11 +138,35 @@ def main():
     assert {draft["location"] for draft in data["shop_drafts"][:6]} <= active_early_locations
     assert data["shop_drafts"][6]["location"] not in active_early_locations
     level_one_biotica = [b for b in data["biotica"] if b["level"] == 1]
-    assert {b["build_location"] for b in level_one_biotica} <= active_early_locations
+    starting_level_one = [
+        b for b in level_one_biotica if starting_biomes.intersection(b["biomes"])
+    ]
+    assert {b["build_location"] for b in starting_level_one} <= active_early_locations
+    assert not {b["build_location"] for b in level_one_biotica if b not in starting_level_one} \
+        & active_early_locations
     assert not {p["location"] for p in data["projects"]} & active_early_locations
     both_biotica_checks = locations.progressive_era_early_locations(
-        [], [], [], level_one_biotica, checks.option_build_and_synergized)
-    assert {b["all_combos_location"] for b in level_one_biotica if b["rules"]} <= both_biotica_checks
+        [], [], [], level_one_biotica, checks.option_build_and_synergized, starting_biomes, False)
+    assert {b["all_combos_location"] for b in starting_level_one if b["rules"]} \
+        <= both_biotica_checks
+
+    base_data = game_data.selected_data()
+    base_starting_biomes = {
+        giant["first_biome"] for giant in base_data["giants"] if giant.get("first_biome")
+    }
+    base_level_one = [b for b in base_data["biotica"] if b["level"] == 1]
+    base_early = locations.progressive_era_early_locations(
+        [], [], [], base_level_one, checks.option_build_only, base_starting_biomes, False)
+    base_starting_level_one = [
+        b for b in base_level_one if base_starting_biomes.intersection(b["biomes"])
+    ]
+    assert {b["build_location"] for b in base_starting_level_one} <= base_early
+    assert not {b["build_location"] for b in base_level_one if b not in base_starting_level_one} \
+        & base_early
+
+    evolve_biotica = [b for b in data["biotica"] if locations.has_evolve_rule(b)]
+    assert evolve_biotica
+    assert all(b in locations.biotica_with_locations(3, True, data) for b in evolve_biotica)
 
     class TestItem:
         def __init__(self, name):
