@@ -7,3 +7,7 @@ decomp/
 dump/
 docs/
 CLAUDE.md
+apworld/reus2/data/reus2_definitions.json
+apworld/reus2/data/reus2_probe.log
+apworld/reus2/data/reus2dump_status.txt
+Reus2Dump.csproj

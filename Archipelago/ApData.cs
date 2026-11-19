@@ -31,14 +31,25 @@ internal sealed class ApData
     [JsonProperty("filler")] public List<FillerEntry> Filler = new List<FillerEntry>();
     [JsonProperty("request_rewards")] public List<RequestEntry> RequestRewards = new List<RequestEntry>();
     [JsonProperty("shop_drafts")] public List<ShopEntry> ShopDrafts = new List<ShopEntry>();
+    [JsonProperty("final_era_checks")] public List<FinalEraCheckEntry> FinalEraChecks =
+        new List<FinalEraCheckEntry>();
+    [JsonProperty("projects")] public List<ProjectEntry> Projects = new List<ProjectEntry>();
+    [JsonProperty("turning_point_stars")] public List<TurningPointStarEntry> TurningPointStars =
+        new List<TurningPointStarEntry>();
     /// <summary>Granted from the start: every turning point, and the shop options that are not
     /// <see cref="Unlocks"/>.</summary>
     [JsonProperty("turning_points")] public List<string> TurningPoints = new List<string>();
+    [JsonProperty("dlc_turning_points")] public List<DlcTurningPointEntry> DlcTurningPoints =
+        new List<DlcTurningPointEntry>();
+    [JsonProperty("base_combo_rule_ids")] public List<string> BaseComboRuleIds = new List<string>();
     [JsonProperty("shop_options")] public List<string> ShopOptions = new List<string>();
 
     private Dictionary<string, BioticumEntry> bioticumByGuid;
     private Dictionary<string, List<string>> bioticumItems;
     private Dictionary<string, RuleEntry> comboRules;
+    private Dictionary<string, ProjectEntry> projectsByGuid;
+    private Dictionary<string, TurningPointStarEntry> turningPointStarsByMilestoneGuid;
+    private Dictionary<string, TurningPointStarEntry> turningPointStarsByTurningPointAndStar;
 
     internal static bool Load()
     {
@@ -63,6 +74,12 @@ internal sealed class ApData
         data.comboRules = data.Biotica
             .SelectMany(b => b.Rules.Select(r => (key: ComboKey(b.Guid, r.RuleIndex), rule: r)))
             .ToDictionary(p => p.key, p => p.rule);
+        data.projectsByGuid = data.Projects.ToDictionary(project => project.Guid);
+        data.turningPointStarsByMilestoneGuid = data.TurningPointStars
+            .Where(check => check.MilestoneGuid != null)
+            .ToDictionary(check => check.MilestoneGuid);
+        data.turningPointStarsByTurningPointAndStar = data.TurningPointStars
+            .ToDictionary(check => TurningPointStarKey(check.TurningPointGuid, check.Star));
         Instance = data;
         Plugin.Log.LogInfo($"Archipelago data for Reus 2 {data.GameVersion}: {data.Biotica.Count} biotica.");
         return true;
@@ -80,9 +97,18 @@ internal sealed class ApData
     internal RuleEntry ComboRule(string guid, int ruleIndex)
         => comboRules.TryGetValue(ComboKey(guid, ruleIndex), out var rule) ? rule : null;
 
-    /// <summary>The location for the index-th draft-paying request of a level (stored from 0). Every
-    /// seed holds the level 1 to 3 ones; a level 4 one only among the first
-    /// <paramref name="level4Enabled"/> the slot turned into checks.</summary>
+    internal ProjectEntry ProjectForGuid(string guid)
+        => guid != null && projectsByGuid.TryGetValue(guid, out var entry) ? entry : null;
+
+    internal TurningPointStarEntry TurningPointStarForMilestone(string guid)
+        => guid != null && turningPointStarsByMilestoneGuid.TryGetValue(guid, out var entry) ? entry : null;
+
+    internal TurningPointStarEntry TurningPointStarForTurningPoint(string guid, int star)
+        => guid != null && turningPointStarsByTurningPointAndStar.TryGetValue(TurningPointStarKey(guid, star),
+            out var entry) ? entry : null;
+
+    /// <summary>The per-planet indexed location for a level 4 draft-paying request. Levels 1 to 3
+    /// are selected from their next open global location by the caller.</summary>
     internal string RequestLocation(int level, int index, int level4Enabled)
     {
         if (level >= 3 && index > level4Enabled)
@@ -91,16 +117,27 @@ internal sealed class ApData
         return position < 0 ? null : RequestRewards[position].Location;
     }
 
+    internal IEnumerable<string> RequestLocations(int level)
+        => RequestRewards.Where(reward => reward.Level == level).Select(reward => reward.Location);
+
+    internal IEnumerable<string> ShopLocations()
+        => ShopDrafts.Select(draft => draft.Location);
+
     internal string ShopLocation(int index, int enabled)
         => index >= 1 && index <= enabled && index <= ShopDrafts.Count ? ShopDrafts[index - 1].Location : null;
 
+    internal string FinalEraLocation(int index)
+        => index >= 1 && index <= FinalEraChecks.Count ? FinalEraChecks[index - 1].Location : null;
+
     private static string ComboKey(string guid, int ruleIndex) => guid + "#" + ruleIndex;
+    private static string TurningPointStarKey(string guid, int star) => guid + "#" + star;
 }
 
 internal sealed class BioticumEntry
 {
     [JsonProperty("guid")] public string Guid;
     [JsonProperty("name")] public string Name;
+    [JsonProperty("dlc")] public string Dlc;
     [JsonProperty("level")] public int Level;
     [JsonProperty("item")] public string Item;
     [JsonProperty("cohorts")] public List<string> Cohorts = new List<string>();
@@ -108,6 +145,12 @@ internal sealed class BioticumEntry
     [JsonProperty("build_location")] public string BuildLocation;
     [JsonProperty("all_combos_location")] public string AllCombosLocation;
     [JsonProperty("rules")] public List<RuleEntry> Rules = new List<RuleEntry>();
+}
+
+internal sealed class DlcTurningPointEntry
+{
+    [JsonProperty("guid")] public string Guid;
+    [JsonProperty("dlc")] public string Dlc;
 }
 
 internal sealed class RuleEntry
@@ -173,4 +216,32 @@ internal sealed class ShopEntry
 {
     [JsonProperty("location")] public string Location;
     [JsonProperty("index")] public int Index;
+}
+
+internal sealed class FinalEraCheckEntry
+{
+    [JsonProperty("location")] public string Location;
+    [JsonProperty("index")] public int Index;
+}
+
+internal sealed class ProjectEntry
+{
+    [JsonProperty("guid")] public string Guid;
+    [JsonProperty("name")] public string Name;
+    [JsonProperty("dlc")] public string Dlc;
+    [JsonProperty("dlcs")] public List<string> Dlcs = new List<string>();
+    [JsonProperty("level")] public int Level;
+    [JsonProperty("rule_count")] public int RuleCount;
+    [JsonProperty("location")] public string Location;
+}
+
+internal sealed class TurningPointStarEntry
+{
+    [JsonProperty("turning_point_guid")] public string TurningPointGuid;
+    [JsonProperty("milestone_guid")] public string MilestoneGuid;
+    [JsonProperty("name")] public string Name;
+    [JsonProperty("era")] public string Era;
+    [JsonProperty("star")] public int Star;
+    [JsonProperty("dlc")] public string Dlc;
+    [JsonProperty("location")] public string Location;
 }

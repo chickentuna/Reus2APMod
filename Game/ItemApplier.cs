@@ -89,6 +89,7 @@ internal static class ItemApplier
                 return;
             }
             RecordBound(profile, true);
+            ApState.RestoreFinalEraChecks(profile);
 
             var received = Count(ApState.ReceivedItems);
             ApplyProfile(profile, received);
@@ -139,14 +140,20 @@ internal static class ItemApplier
         GameAccess.Set(profile, "tutorialCheckValue", false);
 
         ApplyEras(profile, received.TryGetValue(data.Eras.Item, out var eras) ? eras : 0);
-        GrantMissing(profile, "unlockedTurningPoints", data.TurningPoints.Select(GameAccess.Definition));
+        var turningPoints = data.TurningPoints.Select(GameAccess.Definition)
+            .Concat(data.DlcTurningPoints
+                .Where(turningPoint => ApState.IsDlcEnabled(turningPoint.Dlc))
+                .Select(turningPoint => GameAccess.Definition(turningPoint.Guid)));
+        GrantMissing(profile, "unlockedTurningPoints", turningPoints);
         GrantShopOptions(profile, data.ShopOptions);
         ApplyUnlocks(profile, received);
         GameAccess.Call(profile, "InvalidateSaveFile");
     }
 
     private static bool Holds(BioticumEntry bioticum, Dictionary<string, int> received)
-        => ApState.HeldFromStart(bioticum) || ApData.Instance.ItemsGranting(bioticum.Guid).Any(received.ContainsKey);
+        => ApState.IsDlcEnabled(bioticum.Dlc)
+           && (ApState.HeldFromStart(bioticum)
+               || ApData.Instance.ItemsGranting(bioticum.Guid).Any(received.ContainsKey));
 
     /// <summary>GameplayController.UnlockBaseBiotica fills masteredBiotica with each legal biome's
     /// base biotica, and GetAllAvailableBiotica returns that list, so the run's pool is written from

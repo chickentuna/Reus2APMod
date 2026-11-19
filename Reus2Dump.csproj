@@ -31,7 +31,7 @@
   <Import Project="Reus2Dump.local.props" Condition="Exists('Reus2Dump.local.props')" />
 
   <PropertyGroup>
-    <ReusGameDir Condition="'$(ReusGameDir)' == ''">E:\SteamLibrary\steamapps\common\Reus2</ReusGameDir>
+    <ReusGameDir Condition="'$(ReusGameDir)' == ''">M:\SteamLibrary\steamapps\common\Reus2</ReusGameDir>
     <ReusManagedDir>$(ReusGameDir)\Reus 2_Data\Managed</ReusManagedDir>
   </PropertyGroup>
 
@@ -46,6 +46,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>$(ReusManagedDir)\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ReusManagedDir)\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="netstandard">

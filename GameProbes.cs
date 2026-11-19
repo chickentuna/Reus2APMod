@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Reus2Archipelago.Game;
@@ -217,10 +219,23 @@ internal static class GameProbes
 
     private static void AfterEraChange(MethodBase __originalMethod, object __instance)
         => Observe(__originalMethod, () =>
-            $"worldStage={Naming.Of(GameAccess.Get(__instance, "currentWorldStage"))}"
-            + $" era={GameAccess.Get(__instance, "CurrentEra")}"
-            + $" turningPoint={Naming.Of(GameAccess.Get(__instance, "CurrentTurningPoint"))}"
-            + $" completedTurningPoints={Naming.Count(GameAccess.Get(__instance, "completedTurningPoints"))}");
+        {
+            var stage = GameAccess.Get(__instance, "currentWorldStage");
+            var session = GameAccess.Get(GameAccess.SessionContext, "CurrentSession");
+            var parameters = GameAccess.Get(session, "StartParameters");
+            var gameplay = GameAccess.Gameplay;
+            var eraFeatController = GameAccess.Get(gameplay, "eraFeatController");
+            return $"worldStage={Naming.Of(stage)}"
+                   + $" era={GameAccess.Get(__instance, "CurrentEra")}"
+                   + $" turningPoint={Naming.Of(GameAccess.Get(__instance, "CurrentTurningPoint"))}"
+                   + $" completedTurningPoints={Naming.Count(GameAccess.Get(__instance, "completedTurningPoints"))}"
+                   + $" | era-state: {CandidateState(__instance)}"
+                   + $" | stage-state: {CandidateState(stage)}"
+                   + $" | session-state: {CandidateState(session)}"
+                   + $" | start-parameters: {CandidateState(parameters)}"
+                   + $" | gameplay-state: {CandidateState(gameplay)}"
+                   + $" | era-feat-state: {CandidateState(eraFeatController)}";
+        });
 
     private static void AfterSessionEnded(MethodBase __originalMethod)
     {
@@ -228,7 +243,8 @@ internal static class GameProbes
         {
             var session = GameAccess.Get(GameAccess.SessionContext, "CurrentSession");
             return $"session={GameAccess.SessionId} finished={GameAccess.Get(session, "IsFinished")}"
-                   + $" planetIsLost={GameAccess.Get(session, "PlanetIsLost")}";
+                   + $" planetIsLost={GameAccess.Get(session, "PlanetIsLost")}"
+                   + $" | session-state: {CandidateState(session)}";
         });
         ProbeTally.Dump($"session end through {ProbeTally.Key(__originalMethod)}");
     }
@@ -257,6 +273,8 @@ internal static class GameProbes
             return $"achieved: {Naming.Of(definition)}"
                    + $" | hasEverBeenAchieved={GameAccess.Get(feat, "hasEverBeenAchieved")}"
                    + $" | difficulty={GameAccess.Get(definition, "difficulty")}"
+                   + $" | feat-state: {CandidateState(feat)}"
+                   + $" | definition-state: {CandidateState(definition)}"
                    + $" | would send check: \"Era Feat: {NameOf(definition)}\"";
         });
 
@@ -299,4 +317,55 @@ internal static class GameProbes
 
     private static string NameOf(object definition)
         => definition is UnityEngine.Object o ? o.name : definition?.ToString() ?? "<null>";
+
+    private static string CandidateState(object target)
+    {
+        if (target == null)
+            return "<none>";
+
+        var candidates = new List<string>();
+        const BindingFlags members = BindingFlags.Instance | BindingFlags.Public
+                                     | BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
+        for (var type = target.GetType(); type != null; type = type.BaseType)
+        {
+            foreach (var field in type.GetFields(members))
+            {
+                if (!RelevantStateName(field.Name))
+                    continue;
+
+                try
+                {
+                    candidates.Add($"{field.Name}={Naming.Of(field.GetValue(target))}");
+                }
+                catch (Exception e)
+                {
+                    candidates.Add($"{field.Name}=<unreadable: {e.GetBaseException().Message}>");
+                }
+            }
+
+            foreach (var property in type.GetProperties(members))
+            {
+                if (!property.CanRead || property.GetIndexParameters().Length != 0
+                    || !RelevantStateName(property.Name))
+                    continue;
+
+                try
+                {
+                    candidates.Add($"{property.Name}={Naming.Of(property.GetValue(target, null))}");
+                }
+                catch (Exception e)
+                {
+                    candidates.Add($"{property.Name}=<unreadable: {e.GetBaseException().Message}>");
+                }
+            }
+        }
+
+        return candidates.Count == 0
+            ? $"{target.GetType().Name}: no matching members"
+            : $"{target.GetType().Name}: {string.Join(", ", candidates.OrderBy(value => value, StringComparer.Ordinal))}";
+    }
+
+    private static bool RelevantStateName(string name)
+        => new[] { "star", "score", "rating", "complete", "achiev", "finish", "era", "feat", "stage", "level", "objective" }
+            .Any(part => name.IndexOf(part, StringComparison.OrdinalIgnoreCase) >= 0);
 }

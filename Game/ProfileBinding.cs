@@ -21,6 +21,9 @@ internal static class ProfileBinding
         public string Slot;
         public Dictionary<string, Dictionary<string, int>> FillerAppliedBySession =
             new Dictionary<string, Dictionary<string, int>>();
+        public List<string> FinalEraSessions = new List<string>();
+        public List<string> GoalBiotica = new List<string>();
+        public Dictionary<string, int> ShopDraftPurchasesByOption = new Dictionary<string, int>();
         public int ItemsAnnounced;
     }
 
@@ -97,9 +100,74 @@ internal static class ProfileBinding
         Write(profile, record);
     }
 
+    internal static int FinalEraCompletions(object profile)
+    {
+        var record = Read(profile);
+        return record?.FinalEraSessions?.Count ?? 0;
+    }
+
+    internal static IEnumerable<string> GoalBiotica(object profile, string seed, string slot)
+    {
+        var record = Read(profile);
+        if (record == null || !Matches(record, seed, slot) || record.GoalBiotica == null)
+            return Enumerable.Empty<string>();
+        return record.GoalBiotica;
+    }
+
+    internal static void RecordGoalBioticum(object profile, string seed, string slot, string name)
+    {
+        var record = Read(profile);
+        if (record == null || !Matches(record, seed, slot) || string.IsNullOrWhiteSpace(name))
+            return;
+        if (record.GoalBiotica == null)
+            record.GoalBiotica = new List<string>();
+        if (record.GoalBiotica.Contains(name))
+            return;
+
+        record.GoalBiotica.Add(name);
+        Write(profile, record);
+    }
+
+    /// <summary>Records one completed Final Era per saved planet session and returns its stable
+    /// one-based check number; an existing session keeps its original number.</summary>
+    internal static int RecordFinalEraCompletion(object profile, string session)
+    {
+        var record = Read(profile);
+        if (record == null)
+            return 0;
+        if (record.FinalEraSessions == null)
+            record.FinalEraSessions = new List<string>();
+
+        var existing = record.FinalEraSessions.FindIndex(id => id == session);
+        if (existing >= 0)
+            return existing + 1;
+
+        record.FinalEraSessions.Add(session);
+        Write(profile, record);
+        return record.FinalEraSessions.Count;
+    }
+
     /// <summary>How many received items, counted from the start of the slot's item stream, the chat
     /// log has already told the player about.</summary>
     internal static int ItemsAnnounced(object profile) => Read(profile)?.ItemsAnnounced ?? 0;
+
+    internal static int ShopDraftPurchases(object profile, string option)
+    {
+        var purchases = Read(profile)?.ShopDraftPurchasesByOption;
+        return purchases != null && purchases.TryGetValue(option, out var count) ? Math.Max(0, count) : 0;
+    }
+
+    internal static void RecordShopDraftPurchase(object profile, string option)
+    {
+        var record = Read(profile);
+        if (record == null)
+            return;
+        if (record.ShopDraftPurchasesByOption == null)
+            record.ShopDraftPurchasesByOption = new Dictionary<string, int>();
+        record.ShopDraftPurchasesByOption.TryGetValue(option, out var count);
+        record.ShopDraftPurchasesByOption[option] = count + 1;
+        Write(profile, record);
+    }
 
     internal static void SetItemsAnnounced(object profile, int count)
     {

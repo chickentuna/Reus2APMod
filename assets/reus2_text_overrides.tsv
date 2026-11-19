@@ -1,11 +1,11 @@
 ﻿Quit Game	Quit Game :(
-Completing a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!
-Completing this request next will give you:\n\n[BP] [b|1] [DRAFT] to unlock new [BIOTICA]!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!
+Completing a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nThe number of checks you can collect this way depends on your configuration, default is 6!
+Completing this request next will give you:\n\n[BP] [b|1] [DRAFT] to unlock new [BIOTICA]!\n[BP] [UP|2] to upgrade your Biomes!\n\nCompleting a [b|level 4] request is always impressive, and wil always give you rewards!	Completing this request next will give you:\n\n[BP] [b|1] archipelago check!\n[BP] [UP|2] to upgrade your Biomes!\n\nThe number of checks you can collect this way depends on your configuration, default is 6!
 For completing your first {0} [b|level {1}] requests, you'll gain [b|1] [DRAFT_POINT] to unlock new [BIOTICA]!.	For completing your first {0} [b|level {1}] requests, you'll gain [b|1] archipelago check!
 [BP][b|1] [DRAFT] to unlock new [BIOTICA].	[BP][b|1] archipelago check.
 [BP][b|1] [DRAFT_POINT] to unlock new [BIOTICA].	[BP][b|1] archipelago check.
 [BP] [b|1] [DRAFT] to unlock new [BIOTICA]!	[BP] [b|1] [DRAFT] archipelago check!
-DRAFTPOINTS_DESCRIPTION	Unlocks archipelago checks to a maximum as defined in the options.
+DRAFTPOINTS_DESCRIPTION	Unlocks archipelago checks up to a maximum depending in the options. Minimum is 15, and will always be enough to get you everything in the game. This is a replacement for [DRAFT] points, which are not used in this implementation.
 <color=#bfbfbf>This Ability is still <b>locked</b> in the metagame. Finish more planets to unlock this feature!</color>	<color=#bfbfbf>This Ability has not arrived from the <b>multiworld</b> yet.</color>
 <color=#bfbfbf>This is still <b>locked</b> in the metagame. Complete more planets to unlock this feature!</color>	<color=#bfbfbf>This still has not arrived from the <b>multiworld</b>.</color>
 The first {0} completed [b|level 1] requests will give you:\n\n[BP][b|1] [NOMADS] to settle a new city.\n[BP][b|1] [DRAFT] to unlock new [BIOTICA].\n\nOnce {0} cities have their [b|level 1] request completed, other cities won't be so impressed anymore, and <color=#FF4444>[b|won't]</color> get rewards when completing [b|level 1] request.	The first {0} completed [b|level 1] requests will give you:\n\n[BP][b|1] [NOMADS] to settle a new city.\n[BP][b|1] archipelago check.\n\nOnce {0} cities have their [b|level 1] request completed, other cities won't be so impressed anymore, and <color=#FF4444>[b|won't]</color> get rewards when completing [b|level 1] request.
@@ -14,9 +14,9 @@ You have not unlocked this option yet. Finish more planets to unlock it!	You hav
 TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_YOU_ARE_THE	You are the Universe itself. Eternal. Alone. Bored.
 TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_UNTIL_SOMETHING_DIFFERENT	Until [b|Humanity] invents the Archipelago Multiworld software.
 TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_THEY_YEARN_FOR	The apworlds start rolling it, and finally a Reus 2 one is born.
-TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_HOW_THEY_WANT	In this implementation, Biotica are checks AND locations. You may have to activate their synergies to progress.
-TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_OR_HOW_THEY	Most abilities, and the Giants themselves are items.
-TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_YOU_HEAR_MANY	Filler items are charges, but you can still use the shop (if you have unlocked it).
-TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_THEIR_CREATIVITY_EXCITES	You can play this in any mode, I recommend Free Play.
-TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_AND_WITH_THEM	Please send ideas and feedback, especially problems with logic to Chickentuna on Discord.
+TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_HOW_THEY_WANT	In this implementation, Biotica are locations. You may have to activate their synergies to progress and it may only work with Biotica of max level. Projects and Turning Points may also be locations. There are also locations replacing drafts in the shop, and by completing requests.
+TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_OR_HOW_THEY	Apex Biotica (with their cohorts), leaders, Giants and their powers, biomes, micro types and the ability to buy things in the shop are items to find in the archipelago.
+TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_YOU_HEAR_MANY	Filler items are charges for Micro and Terraform, Planet, Border and Eon boosters, and Nomads, but you can still use the shop (if you have unlocked it).
+TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_THEIR_CREATIVITY_EXCITES	You can play this in any mode, it has been tested in solo and multiplayer archipelagos, and in Free Play and Challenge mode. The goal is to put down a set number of biotica and to complete a set number of Final Era Turning Points.
+TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_AND_WITH_THEM	Please send ideas and feedback, especially problems with logic, to Chickentuna or MMC on Discord.
 TEXTPOPUP_NARRATIVEPROFILEINTRO_PAGE_TEXT_TOGETHER_YOU_START	Trans rights.

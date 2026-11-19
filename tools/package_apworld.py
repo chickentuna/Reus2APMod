@@ -10,13 +10,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "apworld" / "reus2"
 OUTPUT = ROOT / "dist" / "reus2.apworld"
+EXCLUDED_FILES = {"reus2_definitions.json", "reus2_probe.log", "reus2dump_status.txt"}
 
 
 def main():
     OUTPUT.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(OUTPUT, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(SOURCE.rglob("*")):
-            if path.is_file() and "__pycache__" not in path.parts:
+            if (path.is_file() and "__pycache__" not in path.parts
+                    and path.name not in EXCLUDED_FILES):
                 archive.write(path, "reus2/" + path.relative_to(SOURCE).as_posix())
     print(f"wrote {OUTPUT.relative_to(ROOT)}")
 

@@ -5,7 +5,7 @@ namespace Reus2Archipelago.Game;
 
 /// <summary>
 /// Shows the goal in the top right corner of a planet of the slot's profile: the Archipelago logo,
-/// then how many different biotica have been built out of the seed's goal_builds.
+/// then the biotica and three-star Discovery counts for the seed's combined goal.
 /// </summary>
 internal static class GoalCounter
 {
@@ -17,6 +17,8 @@ internal static class GoalCounter
     private static int styledHeight;
     private static int shownBuilt = -1;
     private static int shownGoal = -1;
+    private static int shownFinalEras = -1;
+    private static int shownFinalEraGoal = -1;
     private static string text;
 
     /// <summary>Called from OnGUI.</summary>
@@ -25,17 +27,33 @@ internal static class GoalCounter
         if (Event.current.type != EventType.Repaint)
             return;
         var goal = ApState.GoalBuilds;
-        if (goal <= 0 || GameAccess.Gameplay == null || !ItemApplier.ProfileBound)
+        var finalEraGoal = ApState.GoalFinalEras;
+        if (goal <= 0 && finalEraGoal <= 0 || GameAccess.Gameplay == null || !ItemApplier.ProfileBound)
             return;
 
         var built = Math.Min(ApState.BuiltCount, goal);
-        if (built != shownBuilt || goal != shownGoal)
+        var finalEras = Math.Min(ApState.FinalErasCompleted, finalEraGoal);
+        if (built != shownBuilt || goal != shownGoal
+            || finalEras != shownFinalEras || finalEraGoal != shownFinalEraGoal)
         {
             shownBuilt = built;
             shownGoal = goal;
-            text = built >= goal
-                ? Text("Goal complete: {0}!", goal)
-                : Text("Goal: {0} / {1}", built, goal);
+            shownFinalEras = finalEras;
+            shownFinalEraGoal = finalEraGoal;
+            var complete = built >= goal && finalEras >= finalEraGoal;
+            if (finalEraGoal > 0 && goal > 0)
+                text = complete
+                    ? Text("Goal complete: {0} biotica and {1} three-star Discovery eras!", goal, finalEraGoal)
+                    : Text("Goal: {0} / {1} biotica; Discovery 3-star: {2} / {3}",
+                        built, goal, finalEras, finalEraGoal);
+            else if (finalEraGoal > 0)
+                text = complete
+                    ? Text("Goal complete: {0} three-star Discovery eras!", finalEraGoal)
+                    : Text("Goal: Discovery 3-star: {0} / {1}", finalEras, finalEraGoal);
+            else
+                text = built >= goal
+                    ? Text("Goal complete: {0}!", goal)
+                    : Text("Goal: {0} / {1}", built, goal);
         }
 
         EnsureStyle();
@@ -58,7 +76,7 @@ internal static class GoalCounter
         var previous = GUI.color;
         GUI.color = new Color(0f, 0f, 0f, 0.8f);
         GUI.Label(new Rect(label.x + 1f, label.y + 1f, label.width, label.height), content, style);
-        GUI.color = built >= goal ? Done : Color.white;
+        GUI.color = built >= goal && finalEras >= finalEraGoal ? Done : Color.white;
         GUI.Label(label, content, style);
         GUI.color = previous;
     }

@@ -92,6 +92,8 @@ internal static class ConnectionUI
             GUILayout.Label($"Connected as {ApState.SlotName}.");
             if (ApState.GoalBuilds > 0)
                 GUILayout.Label($"Goal: {ApState.BuiltCount} / {ApState.GoalBuilds} biotica.");
+            if (ApState.GoalFinalEras > 0)
+                GUILayout.Label($"Discovery at 3 stars: {ApState.FinalErasCompleted} / {ApState.GoalFinalEras}.");
         }
         else if (status.Length > 0)
         {
